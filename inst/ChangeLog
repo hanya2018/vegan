@@ -1,5 +1,12 @@
 VEGAN STABLE VERSIONS 
 
+Version 1.10-0 (Sep 6, 2007)
+
+	* Moved vegan_1.8-7 (CRAN release) into R-Forge.R-Project.org and
+	Subversion SCM. This ChangeLog will go in time, and will replaced
+	with SCM logs The revisions will be numbered as 1.10-1 to 1.10-x,
+	and the next release will be 1.11-0.
+	
 Version 1.8-7 (August 24, 2007)
 
 	* Based on devel version 1.9-34.
