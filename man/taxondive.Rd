@@ -14,7 +14,7 @@
 }
 \usage{
 taxondive(comm, dis)
-taxa2dist(x, varstep = FALSE, check = TRUE)
+taxa2dist(x, varstep = FALSE, check = TRUE, labels)
 }
 
 \arguments{
@@ -28,7 +28,11 @@ taxa2dist(x, varstep = FALSE, check = TRUE)
     relative to proportional loss of the number of distinct classes.}
   \item{check}{If \code{TRUE}, remove all redundant levels which are
     different for all rows or constant for all rows. If \code{FALSE} all
-  levels are retained and speciec (basic taxon) also must be coded.}
+    levels are retained and speciec (basic taxon) also must be coded.}
+  \item{labels}{The \code{labels} attribute of taxonomic distances. Row
+    names will be used if this is not given. Species will be matched by
+    these labels in \code{comm} and \code{dis} in \code{taxondive} if
+    these have different dimensions. }
 }
 \details{
   Clarke & Warwick (1998, 2001) suggested several alternative indices of
