@@ -1,0 +1,28 @@
+"summary.cca" <-
+    function (object, scaling = 2, axes = 6, display=c("sp","wa","lc","bp","cn"), 
+              digits = max(3, getOption("digits") - 3), ...) 
+{
+    axes <- min(axes, sum(object$CCA$rank, object$CA$rank))
+    summ <- list()
+    if (axes && length(display) && (!is.na(display) && !is.null(display))) 
+        summ <- scores(object, scaling = scaling, choices = 1:axes, display = display, ...)
+    summ$call <- object$call
+    summ$tot.chi <- object$tot.chi
+    summ$partial.chi <- object$pCCA$tot.chi
+    summ$constr.chi <- object$CCA$tot.chi
+    summ$unconst.chi <- object$CA$tot.chi
+    summ$ev.con <- object$CCA$eig
+    summ$ev.uncon <- object$CA$eig
+    ev.account <- summ$tot.chi
+    if (!is.null(object$pCCA)) 
+        ev.account <- ev.account - summ$partial.chi
+    summ$ev.con.account <- cumsum(summ$ev.con)/ev.account
+    summ$ev.uncon.account <- cumsum(summ$ev.uncon)/ev.account
+    summ$ev.head <- c(summ$ev.con, summ$ev.uncon)[1:axes]
+    summ$scaling <- scaling
+    summ$digits <- digits
+    summ$inertia <- object$inertia
+    summ$method <- object$method
+    class(summ) <- "summary.cca"
+    summ
+}
