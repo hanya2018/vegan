@@ -1,0 +1,33 @@
+`cov.inv` <-
+function(mat, no)
+##
+## This function returns:
+##
+## 1) mat = the matrix of PCA object scores (by SVD);
+## 2) S.inv = the inverse of the covariance matrix;
+## 3) m = the rank of matrix 'mat'
+##
+## The inverse of the PCA covariance matrix is simply the diagonal matrix of (1/eigenvalues).
+## If ncol(mat) = 1, the inverse of the covariance matrix simply contains 1/var(mat).
+{
+    mat <- as.matrix(mat)
+    if(ncol(mat) == 1) {
+        S.inv <- as.matrix(1/var(mat))
+        m <- 1
+    } else {
+        epsilon <- 0.00000001
+        S.svd <- svd(cov(mat))
+        m <- ncol(mat)
+        mm <- 0
+        for(i in 1:m) { if(S.svd$d[i] > epsilon) mm <- mm+1 }
+        if(mm < m) {
+            cat("Matrix",no,"  S: rank=",mm," < order",m,'\n')
+            if((mm == 0) & (no == 4)) stop("Program stopped: X1 has rank = 0 after controlling for X2")
+            m <- mm
+        }
+        S.inv <- diag(1/S.svd$d[1:m])
+        mat <- mat %*% S.svd$u[,1:m]
+    }
+    return(list(mat=mat, S.inv=S.inv, m=m))
+}
+
