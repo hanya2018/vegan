@@ -5,14 +5,8 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
 ### *** Note to Jari: A permutation test of Pillai's trace could easily be added to this function.
 {
     require(MASS) || stop("requires packages 'MASS'")
-    if(is.logical(stand.Y)){
-    } else { stop("Wrong operator; 'center.Y' should be either 'FALSE' or 'TRUE'") }
-    if(is.logical(stand.X1)){
-    } else { stop("Wrong operator; 'center.X1' should be either 'FALSE' or 'TRUE'") }
-    if(is.logical(stand.X2)){
-    } else { stop("Wrong operator; 'center.X2' should be either 'FALSE' or 'TRUE'") }
+    ## Removed checking of is.logical(stand.*): scale()'ll do it.
     partial <- FALSE
-
     Y <- as.matrix(Y)
     var.null(Y,1)
     nY <- nrow(Y)
@@ -35,7 +29,7 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     S.Y.inv <- temp$S.inv
     ## colnames(Y) <- colnames(Y.c[,1:temp$m])
     rownames(Y) <- rownoms
-    if((temp$m == 1) & (print.plot == TRUE)) {
+    if((temp$m == 1) && (print.plot == TRUE)) {
         print.plot <- FALSE
         cat("No plot will be produced because Y has a single dimension",'\n')
     }
@@ -50,7 +44,7 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
         var.null(X2,3)
         X2.c <- apply(X2,2,scale,center=TRUE,scale=stand.X2)
         nX2 <- nrow(X2.c)
-        if(nY != nX2) stop("Program stopped: Different numbers of rows in Y and X2")
+        if(nY != nX2) stop("Different numbers of rows in Y and X2")
         ## Replace X2.c by the table of its PCA object scores, computed by SVD
         temp2 <- cov.inv(X2.c,3)
         X2 <- temp2$mat
@@ -59,7 +53,7 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     if(!partial) {
         X <- X1
         S.X.inv <- S.X1.inv
-        if((temp$m == 1) & (print.plot == TRUE)) {
+        if((temp$m == 1) && (print.plot == TRUE)) {
             print.plot <- FALSE
             cat("No plot will be produced because X1 has a single dimension",'\n')
         }
@@ -71,7 +65,7 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
         temp <- cov.inv(X,4)
         X <- temp$mat
         S.X.inv <- temp$S.inv
-        if((temp$m == 1) & (print.plot == TRUE)) {
+        if((temp$m == 1) && (print.plot == TRUE)) {
             print.plot <- FALSE
             cat("No plot will be produced because X1 has a single dimension after controlling for X2",'\n')
         }
@@ -80,7 +74,7 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     rownames(X) <- rownoms
 
     ## Covariance matrices, etc. from the PCA scores
-    epsilon <- 0.0000000001
+    epsilon <- sqrt(.Machine$double.eps)
     S11 <- cov(Y)
     if(sum(abs(S11)) < epsilon) return(0)
     S22 <- cov(X)
@@ -120,18 +114,9 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     XprX <- t(X1.c) %*% X1.c
     BB <- sqrt(n-1) * ginv(XprX) %*% t(X1.c) %*% Cx
 	
-    rownames(U) <- colnames(Y)
-    rownames(V) <- colnames(X)
-    rownames(Cy) <- rownoms
-    rownames(Cx) <- rownoms
-    colnames(U) <- axenames
-    colnames(A) <- axenames
-    colnames(AA) <- axenames
-    colnames(V) <- axenames
-    colnames(B) <- axenames
-    colnames(BB) <- axenames
-    colnames(Cy) <- axenames
-    colnames(Cx) <- axenames
+    rownames(U) <- rownames(V) <- colnames(X)
+    rownames(Cy) <- rownames(Cx) <- rownoms
+    colnames(U) <- colnames(A) <- colnames(AA) <- colnames(V) <- colnames(B) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
     ## pp <- length(K.svd$d)
 
     ## Check U and V by eigenvalue decomposition
@@ -164,12 +149,12 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     Rsquare.adj.Y.X <- RsquareAdj(RsquareY.X$Rsquare, n, RsquareY.X$m)
     Rsquare.adj.X.Y <- RsquareAdj(RsquareX.Y$Rsquare, n, RsquareX.Y$m)
 
-    return(list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
+    out <- list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
                 Mat.ranks=c(RsquareX.Y$m, RsquareY.X$m), 
                 RDA.Rsquares=c(RsquareY.X$Rsquare, RsquareX.Y$Rsquare),
                 RDA.adj.Rsq=c(Rsquare.adj.Y.X, Rsquare.adj.X.Y),
                 ##      eigval1=eigval1, eigval2=eigval2, UU=UU, VV=VV,
                 ##      U=U, A=A, V=V, B=B,
-                AA=AA, BB=BB, Cy=Cy, Cx=Cx))
+                AA=AA, BB=BB, Cy=Cy, Cx=Cx)
+    out
 }
-
