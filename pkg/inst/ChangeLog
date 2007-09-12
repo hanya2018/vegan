@@ -1,11 +1,25 @@
 VEGAN STABLE VERSIONS 
 
+Version 1.10-2 (under work)
+
+	* CCorA: Pierre Legendre's functions for Canonical Correlation
+	Analysis. These provide a more robust alternative to the standard
+	cancor() in base R. (under work)
+		
+	* scores.default: handles numeric data frames.
+	
+Version 1.10-1 (closed Sep 7, 2007)
+
+	* taxondive: Fixed dimension checking, matching anems and
+	non-unique taxon names.
+	
 Version 1.10-0 (Sep 6, 2007)
 
 	* Moved vegan_1.8-7 (CRAN release) into R-Forge.R-Project.org and
-	Subversion SCM. This ChangeLog will go in time, and will replaced
-	with SCM logs The revisions will be numbered as 1.10-1 to 1.10-x,
-	and the next release will be 1.11-0.
+	Subversion SCM. This ChangeLog will only contain most important
+	news (and should be renamed to NEWS), and the real ChangeLogs are
+	created by the SCM.  The revisions will be numbered as 1.10-1 to
+	1.10-x, and the next release will be 1.11-0.
 	
 Version 1.8-7 (August 24, 2007)
 
