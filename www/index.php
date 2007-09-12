@@ -43,9 +43,22 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> No content added. </p>
+<h2>Vegan resources</h2>
 
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+<p>Here some pointers to vegan resources:
+<ul>
+<li> The old  
+<a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
+
+<li>The project <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>summary page</strong></a> at R-Forge. </li>
+
+<li>Vegan <a href="http://cc.oulu.fi/~jarioksa/softhelp/FAQ-vegan.html">FAQ</a>.</li>
+
+<li>Vegan tutorial as a <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">pdf file</a>.</li>
+
+<li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
+
+</ul>
 
 </body>
 </html>
