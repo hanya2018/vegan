@@ -1,6 +1,6 @@
 `CCorA` <-
     function(Y, X1, X2 = NULL, stand.Y = FALSE, stand.X1 = FALSE,
-             stand.X2 = FALSE, print.plot = TRUE, print.obj = FALSE)
+             stand.X2 = FALSE, ...)
 {
     require(MASS) || stop("requires packages 'MASS'")
     partial <- !is.null(X2)
@@ -26,10 +26,6 @@
     S.Y.inv <- temp$S.inv
     ## colnames(Y) <- colnames(Y.c[,1:temp$m])
     rownames(Y) <- rownoms
-    if((temp$m == 1) && (print.plot == TRUE)) {
-        print.plot <- FALSE
-        cat("No plot will be produced because Y has a single dimension",'\n')
-    }
     temp <- cov.inv(X1.c,2)
     X1 <- temp$mat
     S.X1.inv <- temp$S.inv
@@ -58,10 +54,6 @@
         temp <- cov.inv(X,4)
         X <- temp$mat
         S.X.inv <- temp$S.inv
-        if((temp$m == 1) && (print.plot == TRUE)) {
-            print.plot <- FALSE
-            cat("No plot will be produced because X1 has a single dimension after controlling for X2",'\n')
-        }
     }
     ## colnames(X) <- colnames(X1.c[,1:temp$m])
     rownames(X) <- rownoms
@@ -115,17 +107,6 @@
     ##                        = sum of the squared canonical correlations
     gross.mat <- S12 %*% solve(S22) %*% t(S12) %*% solve(S11)
     PillaiTrace <- sum(diag(gross.mat))
-    ## Graphs
-    if(print.plot == TRUE) {
-        par(mfrow=c(1,2))
-        if(print.obj == TRUE) {
-            biplot(Cy, AA)
-            biplot(Cx, BB)
-        } else {
-            biplot(Cy, AA, col=c("white","black"))
-            biplot(Cx, BB, col=c("white","black"))
-        }      
-    }
     ## Compute the two redundancy statistics
     RsquareY.X <- simpleRDA2(Y, X)
     RsquareX.Y <- simpleRDA2(X, Y)
@@ -137,6 +118,7 @@
                 RDA.adj.Rsq=c(Rsquare.adj.Y.X, Rsquare.adj.X.Y),
                 ##      eigval1=eigval1, eigval2=eigval2, UU=UU, VV=VV,
                 ##      U=U, A=A, V=V, B=B,
-                AA=AA, BB=BB, Cy=Cy, Cx=Cx)
+                AA=AA, BB=BB, Cy=Cy, Cx=Cx, call = match.call())
+    class(out) <- "CCorA"
     out
 }
