@@ -3,15 +3,17 @@
              stand.X2 = FALSE, print.plot = TRUE, print.obj = FALSE)
 {
     require(MASS) || stop("requires packages 'MASS'")
-    partial <- FALSE
+    partial <- !is.null(X2)
     Y <- as.matrix(Y)
     var.null(Y,1)
     nY <- nrow(Y)
     p <- ncol(Y)
+    Ynoms <- colnames(Y)
     X1 <- as.matrix(X1)
     var.null(X1,2)
     nX1 <- nrow(X1)
     q <- ncol(X1)
+    Xnoms <- colnames(X1)
     if(nY != nX1) stop("Different numbers of rows in Y and X1")
     n <- nY
     if((p+q) >= (n-1)) stop("Not enough degrees of freedom!")
@@ -31,8 +33,7 @@
     temp <- cov.inv(X1.c,2)
     X1 <- temp$mat
     S.X1.inv <- temp$S.inv
-    if(length(X2) != 0) {            # Compute residuals of X1 over X2
-        partial <- TRUE
+    if(partial) {            # Compute residuals of X1 over X2
         X2 <- as.matrix(X2)
         var.null(X2,3)
         X2.c <- scale(X2, center = TRUE, scale = stand.X2)
@@ -98,7 +99,8 @@
     ## Compute the 'Biplot scores of X variables' a posteriori --
     XprX <- t(X1.c) %*% X1.c
     BB <- sqrt(n-1) * ginv(XprX) %*% t(X1.c) %*% Cx
-    rownames(U) <- rownames(V) <- colnames(X)
+    rownames(U) <- rownames(AA) <- Ynoms
+    rownames(V) <- rownames(BB) <- Xnoms
     rownames(Cy) <- rownames(Cx) <- rownoms
     colnames(U) <- colnames(A) <- colnames(AA) <- colnames(V) <- colnames(B) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
     ## pp <- length(K.svd$d)
