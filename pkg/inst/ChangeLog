@@ -1,4 +1,4 @@
-VEGAN STABLE VERSIONS 
+VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-2 (under work)
 
@@ -10,7 +10,7 @@ Version 1.10-2 (under work)
 	
 Version 1.10-1 (closed Sep 7, 2007)
 
-	* taxondive: Fixed dimension checking, matching anems and
+	* taxondive: Fixed dimension checking, matching names and
 	non-unique taxon names.
 	
 Version 1.10-0 (Sep 6, 2007)
@@ -20,6 +20,8 @@ Version 1.10-0 (Sep 6, 2007)
 	news (and should be renamed to NEWS), and the real ChangeLogs are
 	created by the SCM.  The revisions will be numbered as 1.10-1 to
 	1.10-x, and the next release will be 1.11-0.
+
+VEGAN STABLE VERSIONS at http://cran.r-project.org/
 	
 Version 1.8-7 (August 24, 2007)
 
