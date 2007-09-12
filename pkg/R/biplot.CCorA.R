@@ -14,7 +14,7 @@
         xlabs <- rownames(x$Cy)
     else if (!is.null(xlabs) && is.na(xlabs))
         xlabs <- rep(NA, nrow(x$Cy))
-    else
+    else if (is.null(xlabs))
         xlabs <- 1:nrow(x$Cy)
     if (any(which == 1))
         biplot(x$Cy, x$AA, xlabs = xlabs, ...)

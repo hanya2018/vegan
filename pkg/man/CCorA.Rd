@@ -5,7 +5,7 @@
 \alias{print.CCorA}
 \alias{biplot.CCorA}
 
-\title{ Canonical correlation analysis }
+\title{ Canonical Correlation Analysis }
 
 \description{Canonical correlation analysis, following Brian McArdle's
 unpublished graduate course notes, plus improvements to allow the
@@ -59,8 +59,9 @@ Algorithmic notes:
 }
 
 The \code{biplot} function can produce two biplots, each for the left
-matrix and right matrix solutions. The function passes parameters to
-\code{\link{biplot.default}}. 
+matrix and right matrix solutions. The function passes all arguments to
+\code{\link{biplot.default}}, and you should consult its help page for
+configuring biplots.
 }
 
 \value{
