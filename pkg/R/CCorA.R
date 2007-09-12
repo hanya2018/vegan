@@ -1,11 +1,8 @@
 `CCorA` <-
-function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
-                  print.plot=TRUE, print.obj=FALSE)
-###
-### *** Note to Jari: A permutation test of Pillai's trace could easily be added to this function.
+    function(Y, X1, X2 = NULL, stand.Y = FALSE, stand.X1 = FALSE,
+             stand.X2 = FALSE, print.plot = TRUE, print.obj = FALSE)
 {
     require(MASS) || stop("requires packages 'MASS'")
-    ## Removed checking of is.logical(stand.*): scale()'ll do it.
     partial <- FALSE
     Y <- as.matrix(Y)
     var.null(Y,1)
@@ -19,10 +16,8 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     n <- nY
     if((p+q) >= (n-1)) stop("Not enough degrees of freedom!")
     rownoms <- rownames(Y)
-
-    Y.c <- apply(Y,2,scale,center=TRUE,scale=stand.Y)
-    X1.c <- apply(X1,2,scale,center=TRUE,scale=stand.X1)
-
+    Y.c <- scale(Y, center = TRUE, scale = stand.Y)
+    X1.c <- scale(X1, center = TRUE, scale = stand.X1)
     ## Replace Y.c and X1.c by tables of their PCA object scores, computed by SVD
     temp <- cov.inv(Y.c,1)
     Y <- temp$mat
@@ -33,23 +28,20 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
         print.plot <- FALSE
         cat("No plot will be produced because Y has a single dimension",'\n')
     }
-                                        #
     temp <- cov.inv(X1.c,2)
     X1 <- temp$mat
     S.X1.inv <- temp$S.inv
-
     if(length(X2) != 0) {            # Compute residuals of X1 over X2
         partial <- TRUE
         X2 <- as.matrix(X2)
         var.null(X2,3)
-        X2.c <- apply(X2,2,scale,center=TRUE,scale=stand.X2)
+        X2.c <- scale(X2, center = TRUE, scale = stand.X2)
         nX2 <- nrow(X2.c)
         if(nY != nX2) stop("Different numbers of rows in Y and X2")
         ## Replace X2.c by the table of its PCA object scores, computed by SVD
         temp2 <- cov.inv(X2.c,3)
         X2 <- temp2$mat
     }
-
     if(!partial) {
         X <- X1
         S.X.inv <- S.X1.inv
@@ -72,7 +64,6 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     }
     ## colnames(X) <- colnames(X1.c[,1:temp$m])
     rownames(X) <- rownoms
-
     ## Covariance matrices, etc. from the PCA scores
     epsilon <- sqrt(.Machine$double.eps)
     S11 <- cov(Y)
@@ -81,28 +72,22 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     if(sum(abs(S22)) < epsilon) return(0)
     S12 <- cov(Y,X)
     if(sum(abs(S12)) < epsilon) return(0)
-
     S11.chol <- chol(S11)
     S11.chol.inv <- solve(S11.chol)
     S22.chol <- chol(S22)
     S22.chol.inv <- solve(S22.chol)
-
     ## K summarizes the correlation structure between the two sets of variables
     K <- t(S11.chol.inv) %*% S12 %*% S22.chol.inv
-
     K.svd <- svd(K)
     EigenValues <- K.svd$d^2
     ## K.svd$u %*% diag(K.svd$d) %*% t(K.svd$v)   # This line checks that K = U D V'
     axenames <- paste("CanAxis",1:length(K.svd$d),sep="")
     U <- K.svd$u
     V <- K.svd$v
-
     A <- S11.chol.inv %*% U
     B <- S22.chol.inv %*% V
-
     Cy <- (Y %*% A)/sqrt(n-1)
     Cx <- (X %*% B)/sqrt(n-1)
-
     ## Compute the 'Biplot scores of Y variables' a posteriori --
     ## use 'ginv' for inversion in case there is collinearity
     ## AA <- coefficients of the regression of Cy on Y.c, times sqrt(n-1)
@@ -113,12 +98,10 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     ## Compute the 'Biplot scores of X variables' a posteriori --
     XprX <- t(X1.c) %*% X1.c
     BB <- sqrt(n-1) * ginv(XprX) %*% t(X1.c) %*% Cx
-	
     rownames(U) <- rownames(V) <- colnames(X)
     rownames(Cy) <- rownames(Cx) <- rownoms
     colnames(U) <- colnames(A) <- colnames(AA) <- colnames(V) <- colnames(B) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
     ## pp <- length(K.svd$d)
-
     ## Check U and V by eigenvalue decomposition
     ## KKpr.eig <- eigen(K %*% t(K))
     ## eigval1 <- KKpr.eig$values
@@ -126,12 +109,10 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     ## KprK.eig <- eigen(t(K) %*% K)
     ## eigval2 <- KprK.eig$values
     ## VV <- KprK.eig$vectors
-
     ## Compute Pillai's trace = sum of the canonical eigenvalues
     ##                        = sum of the squared canonical correlations
     gross.mat <- S12 %*% solve(S22) %*% t(S12) %*% solve(S11)
     PillaiTrace <- sum(diag(gross.mat))
-
     ## Graphs
     if(print.plot == TRUE) {
         par(mfrow=c(1,2))
@@ -148,7 +129,6 @@ function(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
     RsquareX.Y <- simpleRDA2(X, Y)
     Rsquare.adj.Y.X <- RsquareAdj(RsquareY.X$Rsquare, n, RsquareY.X$m)
     Rsquare.adj.X.Y <- RsquareAdj(RsquareX.Y$Rsquare, n, RsquareX.Y$m)
-
     out <- list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
                 Mat.ranks=c(RsquareX.Y$m, RsquareY.X$m), 
                 RDA.Rsquares=c(RsquareY.X$Rsquare, RsquareX.Y$Rsquare),
