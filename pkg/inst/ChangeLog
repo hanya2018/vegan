@@ -1,7 +1,13 @@
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
-
+$Date$
+	
 Version 1.10-2 (under work)
 
+	* vegandocs: added FAQ-vegan, and renamed the old vegan-FAQ to
+	decision-vegan. Only primary sources (texi, Rnw) in the source
+	repository: derived files (.tex, .pdf) should be made when package
+	is built.
+	
 	* CCorA: Pierre Legendre's functions for Canonical Correlation
 	Analysis. These provide a more robust alternative to the standard
 	cancor() in base R. (under work)
@@ -21,7 +27,7 @@ Version 1.10-0 (Sep 6, 2007)
 	created by the SCM.  The revisions will be numbered as 1.10-1 to
 	1.10-x, and the next release will be 1.11-0.
 
-VEGAN STABLE VERSIONS at http://cran.r-project.org/
+VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 	
 Version 1.8-7 (August 24, 2007)
 

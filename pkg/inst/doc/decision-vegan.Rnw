@@ -1,5 +1,5 @@
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
-%\VignetteIndexEntry{FAQ and design desicions}
+%\VignetteIndexEntry{Design decisions and implementation}
 
 \documentclass[a4paper]{article}
 
@@ -16,19 +16,18 @@
 \renewcommand{\floatpagefraction}{0.8}
 
 \author{Jari Oksanen}
-\title{Frequently Asked Questions}
+\title{Design decisions and implementation details in vegan}
 
-\usepackage{/usr/local/lib/R/share/texmf/Sweave}
 \begin{document}
-
+\SweaveOpts{strip.white=TRUE}
 
 \maketitle
 
 \begin{abstract}
 
-\noindent
-The document answers some frequently asked questions and explains some
-design decisions I have made in vegan.
+\noindent This document describes design decisions, and discusses implementation
+and algorithmic details in some vegan functions. The prober FAQ is
+another document.
 
 \end{abstract}
 
@@ -231,25 +230,20 @@ ordination.
 Let us perform a simple CCA analysis using only two environmental
 variables so that we can see the constrained solution completely in
 two dimensions:
-\begin{Schunk}
-\begin{Sinput}
-> library(vegan)
-> data(varespec)
-> data(varechem)
-> orig <- cca(varespec ~ Al + K, varechem)
-\end{Sinput}
-\end{Schunk}
+<<>>=
+library(vegan)
+data(varespec)
+data(varechem)
+orig <- cca(varespec ~ Al + K, varechem)
+@
 Function \texttt{cca} in \texttt{vegan} uses WA scores as
 default. So we must specifically ask for LC scores
 (Fig. \ref{fig:ccalc}).
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(orig, dis = c("lc", "bp"))
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-002}
+<<fig=true>>=
+plot(orig, dis=c("lc","bp"))
+@
 \caption{LC scores in CCA of the original data.}
 \label{fig:ccalc}
 \end{center}
@@ -258,20 +252,15 @@ default. So we must specifically ask for LC scores
 What would happen to linear combinations of LC scores if we shuffle
 the ordering of sites in species data?  Function \texttt{sample()} below
 shuffles the indices.
-\begin{Schunk}
-\begin{Sinput}
-> i <- sample(nrow(varespec))
-> shuff <- cca(varespec[i, ] ~ Al + K, varechem)
-\end{Sinput}
-\end{Schunk}
+<<>>=
+i <- sample(nrow(varespec))
+shuff <- cca(varespec[i,] ~ Al + K, varechem)
+@
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(shuff, dis = c("lc", "bp"))
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-004}
+<<fig=true>>=
+plot(shuff, dis=c("lc","bp"))
+@
 \caption{LC scores of shuffled species data.}
 \label{fig:ccashuff}
 \end{center}
@@ -281,12 +270,9 @@ It seems that site scores are fairly similar, but oriented differently
 similar the site scores indeed are (Fig. \ref{fig:ccaproc}).
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(procrustes(scores(orig, dis = "lc"), scores(shuff, dis = "lc")))
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-005}
+<<fig=true>>=
+plot(procrustes(scores(orig, dis="lc"), scores(shuff, dis="lc")))
+@
 \caption{Procrustes rotation of LC scores from CCA of original and shuffled data.}
 \label{fig:ccaproc}
 \end{center}
@@ -294,21 +280,16 @@ similar the site scores indeed are (Fig. \ref{fig:ccaproc}).
 There is a small difference, but this will disappear if we use
 Redundancy Analysis (RDA) instead of CCA
 (Fig. \ref{fig:rdaproc}). Here we use a new shuffling as well.
-\begin{Schunk}
-\begin{Sinput}
-> tmp1 <- rda(varespec ~ Al + K, varechem)
-> i <- sample(nrow(varespec))
-> tmp2 <- rda(varespec[i, ] ~ Al + K, varechem)
-\end{Sinput}
-\end{Schunk}
+<<>>=
+tmp1 <- rda(varespec ~ Al + K, varechem)
+i <- sample(nrow(varespec)) # Different shuffling
+tmp2 <- rda(varespec[i,] ~ Al + K, varechem)
+@
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(procrustes(scores(tmp1, dis = "lc"), scores(tmp2, dis = "lc")))
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-007}
+<<fig=true>>=
+plot(procrustes(scores(tmp1, dis="lc"), scores(tmp2, dis="lc")))
+@
 \caption{Procrustes rotation of LC scores in RDA of the original and shuffled data.}
 \label{fig:rdaproc}
 \end{center}
@@ -327,62 +308,17 @@ The original data and shuffled data differ in their goodness of
 fit\footnote{Or probably differ: The randomization is done while
 generating this article, and different versions may have different
 randomizations.}.
-\begin{Schunk}
-\begin{Sinput}
-> orig
-\end{Sinput}
-\begin{Soutput}
-Call:
-cca(formula = varespec ~ Al + K, data = varechem) 
-
-              Inertia Rank
-Total           2.083     
-Constrained     0.476    2
-Unconstrained   1.607   21
-Inertia is mean squared contingency coefficient 
-
-Eigenvalues for constrained axes:
-  CCA1   CCA2 
-0.3608 0.1152 
-
-Eigenvalues for unconstrained axes:
-    CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8 
-0.37476 0.24036 0.19696 0.17818 0.15209 0.11840 0.08364 0.07567 
-(Showed only 8 of all 21 unconstrained eigenvalues)
-\end{Soutput}
-\begin{Sinput}
-> shuff
-\end{Sinput}
-\begin{Soutput}
-Call:
-cca(formula = varespec[i, ] ~ Al + K, data = varechem) 
-
-              Inertia Rank
-Total          2.0832     
-Constrained    0.1267    2
-Unconstrained  1.9565   21
-Inertia is mean squared contingency coefficient 
-
-Eigenvalues for constrained axes:
-   CCA1    CCA2 
-0.07181 0.05490 
-
-Eigenvalues for unconstrained axes:
-    CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8 
-0.49059 0.33269 0.22643 0.19197 0.17464 0.11538 0.11347 0.08467 
-(Showed only 8 of all 21 unconstrained eigenvalues)
-\end{Soutput}
-\end{Schunk}
+<<>>=
+orig
+shuff
+@
 Similarly their WA scores will be (probably) very different
 (Fig. \ref{fig:ccawa}).
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(procrustes(orig, shuff))
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-009}
+<<fig=true>>=
+plot(procrustes(orig, shuff))
+@
 \caption{Procrustes rotation of WA scores of CCA with the original and
   shuffled data.}
 \label{fig:ccawa}
@@ -395,43 +331,15 @@ environmental variables the full configuration remains similarly
 unchanged, but its orientation may change, so that two-dimensional
 projections look different.  In the full space, the differences should
 remain within numerical precision:
-\begin{Schunk}
-\begin{Sinput}
-> tmp1 <- rda(varespec ~ ., varechem)
-> tmp2 <- rda(varespec[i, ] ~ ., varechem)
-> tmp1
-\end{Sinput}
-\begin{Soutput}
-Call:
-rda(formula = varespec ~ N + P + K + Ca + Mg + S + Al + Fe +      Mn + Zn + Mo + Baresoil + Humdepth + pH, data = varechem) 
-
-              Inertia Rank
-Total          1825.7     
-Constrained    1459.9   14
-Unconstrained   365.8    9
-Inertia is variance 
-
-Eigenvalues for constrained axes:
-    RDA1     RDA2     RDA3     RDA4     RDA5     RDA6     RDA7     RDA8 
-820.1042 399.2847 102.5617  47.6317  26.8382  24.0481  19.0644  10.1670 
-    RDA9    RDA10    RDA11    RDA12    RDA13    RDA14 
-  4.4288   2.2720   1.5353   0.9255   0.7155   0.3119 
-
-Eigenvalues for unconstrained axes:
-    PC1     PC2     PC3     PC4     PC5     PC6     PC7     PC8     PC9 
-186.192  88.464  38.188  18.402  12.839  10.552   5.519   4.521   1.092 
-\end{Soutput}
-\begin{Sinput}
-> proc <- procrustes(scores(tmp1, dis = "lc", choi = 1:14), scores(tmp2, 
-+     dis = "lc", choi = 1:14))
-> max(residuals(proc))
-\end{Sinput}
-\begin{Soutput}
-[1] 2.266945e-14
-\end{Soutput}
-\end{Schunk}
+<<>>=
+tmp1 <- rda(varespec ~ ., varechem)
+tmp2 <- rda(varespec[i,] ~ ., varechem)
+tmp1
+proc <- procrustes(scores(tmp1, dis="lc", choi=1:14), scores(tmp2, dis="lc", choi=1:14))
+max(residuals(proc))
+@
 In \texttt{cca} the difference would be somewhat larger than now
-observed 2.2669e-14 because site
+observed \Sexpr{format.pval(max(residuals(proc)))} because site
 weights used for environmental variables are shuffled with the species
 data.
 
@@ -440,56 +348,20 @@ data.
 It seems that users often get confused when they perform constrained
 analysis using  only one factor (class variable) as constraint.  The
 following example uses the classical dune meadow data \cite{Jongman87}:
-\begin{Schunk}
-\begin{Sinput}
-> data(dune)
-> data(dune.env)
-> summary(dune.env)
-\end{Sinput}
-\begin{Soutput}
-       A1         Moisture Management       Use    Manure
- Min.   : 2.800   1:7      BF:3       Hayfield:7   0:6   
- 1st Qu.: 3.500   2:4      HF:5       Haypastu:8   1:3   
- Median : 4.200   4:2      NM:6       Pasture :5   2:4   
- Mean   : 4.850   5:7      SF:6                    3:4   
- 3rd Qu.: 5.725                                    4:3   
- Max.   :11.500                                          
-\end{Soutput}
-\begin{Sinput}
-> orig <- cca(dune ~ Moisture, dune.env)
-> orig
-\end{Sinput}
-\begin{Soutput}
-Call:
-cca(formula = dune ~ Moisture, data = dune.env) 
-
-              Inertia Rank
-Total          2.1153     
-Constrained    0.6283    3
-Unconstrained  1.4870   16
-Inertia is mean squared contingency coefficient 
-
-Eigenvalues for constrained axes:
-  CCA1   CCA2   CCA3 
-0.4187 0.1330 0.0766 
-
-Eigenvalues for unconstrained axes:
-     CA1      CA2      CA3      CA4      CA5      CA6      CA7      CA8 
-0.409782 0.225913 0.176062 0.123389 0.108171 0.090751 0.085878 0.060894 
-     CA9     CA10     CA11     CA12     CA13     CA14     CA15     CA16 
-0.056606 0.046688 0.041926 0.020103 0.014335 0.009917 0.008505 0.008033 
-\end{Soutput}
-\end{Schunk}
+<<>>=
+data(dune)
+data(dune.env)
+summary(dune.env)
+orig <- cca(dune ~ Moisture, dune.env)
+orig
+@
 When the results are plotted using LC scores, sample plots fall only
 in four alternative positions (Fig. \ref{fig:factorlc}).
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(orig, dis = "lc")
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-012}
+<<fig=TRUE>>=
+plot(orig, dis="lc")
+@
 \caption{LC scores of the dune meadow data using only one factor as a
   constraint.}
 \label{fig:factorlc}
@@ -509,14 +381,11 @@ Function \texttt{ordispider} adds line segments to connect each WA
 score with the corresponding LC (Fig.  \ref{fig:walcspider}).
 \begin{figure}
 \begin{center}
-\begin{Schunk}
-\begin{Sinput}
-> plot(orig, display = "wa", type = "points")
-> ordispider(orig, col = "red")
-> text(orig, dis = "cn", col = "blue")
-\end{Sinput}
-\end{Schunk}
-\includegraphics{vegan-FAQ-013}
+<<fig=TRUE>>=
+plot(orig, display="wa", type="points")
+ordispider(orig, col="red")
+text(orig, dis="cn", col="blue")
+@
 \caption{A ``spider plot'' connecting WA scores to corresponding LC
   scores. The shorter the web segments, the better the ordination.}
 \label{fig:walcspider}
