@@ -17,6 +17,7 @@
 
 \author{Jari Oksanen}
 \title{Design decisions and implementation details in vegan}
+\date{$ $Date$ $}
 
 \begin{document}
 \SweaveOpts{strip.white=TRUE}
@@ -26,7 +27,7 @@
 \begin{abstract}
 
 \noindent This document describes design decisions, and discusses implementation
-and algorithmic details in some vegan functions. The prober FAQ is
+and algorithmic details in some vegan functions. The proper FAQ is
 another document.
 
 \end{abstract}
