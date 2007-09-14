@@ -8,6 +8,8 @@ Version 1.10-3 (under work)
 	* Trellis graphics for ordination objects with functions
 	ordixyplot, ordicloud and ordisplom. These are still mere
 	skeletons. Contributions are welcome.
+
+	* ordispantree made dysfunctional (deprecated in 1.8-1). 
 	
 Version 1.10-2 (closed Sep 14, 2007)
 
