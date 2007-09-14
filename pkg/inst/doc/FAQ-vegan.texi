@@ -72,7 +72,7 @@ Copyright @copyright{} 2007 Jari Oksanen
 * What R packages vegan depends on?::  
 * What other packages are available for ecologists?::  
 * What other documentation is available for vegan?::  
-* Is there a Graphical User Inteface (GUI) for vegan?::  
+* Is there a Graphical User Interface (GUI) for vegan?::  
 * How to cite vegan?::          
 * Version numbering in vegan::  
 * How to build vegan from sources?::  
@@ -150,7 +150,7 @@ functions.  If you install R package @code{ctv}, you can
 inspect Task Views from your R session, and automatically install sets
 of most important packages.
 
-@node What other documentation is available for vegan?, Is there a Graphical User Inteface (GUI) for vegan?, What other packages are available for ecologists?, Introduction
+@node What other documentation is available for vegan?, Is there a Graphical User Interface (GUI) for vegan?, What other packages are available for ecologists?, Introduction
 @section What other documentation is available for vegan?
 
 Vegan is a fully documented R package with standard help pages.  These
@@ -183,7 +183,7 @@ entry in R-Wiki.
 
 @end itemize
 
-@node Is there a Graphical User Inteface (GUI) for vegan?, How to cite vegan?, What other documentation is available for vegan?, Introduction
+@node Is there a Graphical User Interface (GUI) for vegan?, How to cite vegan?, What other documentation is available for vegan?, Introduction
 @section Is there a Graphical User Interface (GUI) for vegan?
 
 Roeland Kindt has made package @code{BiodiversityR} which provides a
@@ -195,7 +195,7 @@ workbench for biodiversity analysis. You can install @code{BiodiversityR} using
 @code{install.packages("BiodiversityR")} or graphical package
 management menu in R. The GUI works on Windows, MacOS X and Linux.
 
-@node How to cite vegan?, Version numbering in vegan, Is there a Graphical User Inteface (GUI) for vegan?, Introduction
+@node How to cite vegan?, Version numbering in vegan, Is there a Graphical User Interface (GUI) for vegan?, Introduction
 @section How to cite vegan? 
 
 Use command @code{citation("vegan")} in R to see the recommended
@@ -286,7 +286,7 @@ listed as authors in the documentation.
 * Zero dissimilarities in isoMDS::  
 * Variance explained by ordination axes::  
 * Class variables and dummies::  
-* I want to use Helmert or sum constrasts::  
+* I want to use Helmert or sum contrasts::  
 * What are aliased variables and how to see them?::  
 * Plotting aliased variables::  
 * Constrained permutations in vegan::  
@@ -384,7 +384,7 @@ nonlinear fit and gives this statistic.
 
 @end itemize
 
-@node Class variables and dummies, I want to use Helmert or sum constrasts, Variance explained by ordination axes, Ordination
+@node Class variables and dummies, I want to use Helmert or sum contrasts, Variance explained by ordination axes, Ordination
 @section Class variables and dummies
 
 You should define a class variable as R @code{factor}, and vegan will
@@ -403,16 +403,16 @@ You should never make your own dummy variables, but you should use
 standard R factors.  R will internally change these factors into
 dummies in a consistent and correct way.
 
-@node I want to use Helmert or sum constrasts, What are aliased variables and how to see them?, Class variables and dummies, Ordination
-@section I want to use Helmert or sum constrasts
+@node I want to use Helmert or sum contrasts, What are aliased variables and how to see them?, Class variables and dummies, Ordination
+@section I want to use Helmert or sum contrasts
 
 @code{vegan} uses standard @code{R} utilities for defining
 contrasts. The default in standard installations is to use treatment
-contrasts, but you can change the behavious gloablly setting
+contrasts, but you can change the behaviour globally setting
 @code{options} or locally by using keyword @code{contrasts}. Please
 check the @code{R} help pages and user manuals for details.
 
-@node What are aliased variables and how to see them?, Plotting aliased variables, I want to use Helmert or sum constrasts, Ordination
+@node What are aliased variables and how to see them?, Plotting aliased variables, I want to use Helmert or sum contrasts, Ordination
 @section What are aliased variables and how to see them?
 
 Aliased variable has no information because it can be expressed with

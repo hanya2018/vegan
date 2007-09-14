@@ -140,7 +140,7 @@ sites, and species are left unscaled.  For \texttt{Canoco} $c = n^{-1}
 \sqrt{n-1} \sqrt{\sum \lambda_k}$ with positive \texttt{Canoco}
 scaling values. All these $c$ are constants for a matrix, so these are
 all biplots with different internal scaling of species and site scores
-with respect to each other.  For \texttt{Canoco} with postive scaling
+with respect to each other.  For \texttt{Canoco} with positive scaling
 values and \texttt{vegan} with negative scaling values, no constant
 $c$ can be found, but the correction is dependent on species standard
 deviations $s_j$, so this alternative does not define a biplot.
