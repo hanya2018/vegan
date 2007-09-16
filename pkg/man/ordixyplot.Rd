@@ -12,7 +12,7 @@
 }
 \usage{
 ordixyplot(x, data = NULL, formula, display = "sites", choices = 1:3,
-    panel = "panel.ordi", ...)
+    panel = "panel.ordi", aspect = "iso", ...)
 ordisplom(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
     panel = "panel.ordi", ...)
 ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3, 
@@ -34,6 +34,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   \item{display}{ The kind of scores: an argument passed to \code{\link{scores}}. }
   \item{choices}{ The axes selected: an argument passed to \code{\link{scores}}. }
   \item{panel}{ The name of the panel function. }
+  \item{aspect}{The aspect of the plot (passed to the \pkg{lattice} function).}
   \item{\dots}{ Arguments passed to \pkg{lattice} functions. }
 }
 \details{
