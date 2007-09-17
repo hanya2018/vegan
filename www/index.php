@@ -42,6 +42,20 @@ fclose($handle);
 echo $contents; } ?>
 
 <!-- end of project description -->
+<h2>What is in vegan?</h2>
+
+<p>Vegan contains many popular tools used in community ecology. The following list is not exhaustive, but lists only some popular tools:
+<ul>
+
+<li><strong>Diversity analysis:</strong> Shannon, Simpson, Fisher indices, Rényi diversities and Hill numbers.
+<li><strong>Species abundance models:</strong> Fisher and Preston models, species abundance distributions.
+<li><strong>Analysis of species richness:</strong> species accumulation curves, extrapolated richness.
+<li><strong>Ordination:</strong> support and meta functions for NMDS, redundancy analysis, constrained correspondence analysis, constrained analysis of proximities (all three with partial analysis), 
+<li><strong>Support functions for ordination:</strong> dissimilarity indices, extended dissimilarities, Procrustes analysis, ordination diagnostics, permutation tests.
+<li><strong>Ordination and environment:</strong> vector fitting, centroid fitting and smooth surface fitting, adding species scores as weighted averages, adding convex hull, SD ellipses, arrows etc. to ordination.
+<li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.
+<li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.
+</ul>
 
 <h2>Vegan resources</h2>
 
@@ -59,6 +73,10 @@ echo $contents; } ?>
 <li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
 
 </ul>
+
+<hr>
+
+$Date$
 
 </body>
 </html>
