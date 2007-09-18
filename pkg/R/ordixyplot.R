@@ -6,5 +6,9 @@
     x <- as.data.frame(scores(x, display = display, choices = choices))
     if (!is.null(data))
         x <- cbind(x, data)
+    if (missing(formula)) {
+        v <- colnames(x)
+        formula <- as.formula(paste(v[2], "~", v[1]))
+    }
     xyplot(formula, data = x, panel = panel,  aspect = aspect, ...)
 }

@@ -7,5 +7,9 @@
     x <- as.data.frame(scores(x, display = display, choices = choices))
     if (!is.null(data))
         x <- cbind(x, data)
+    if (missing(formula)) {
+        v <- colnames(x)
+        formula <- as.formula(paste(v[2], "~", v[1], "*", v[3]))
+    }
     cloud(formula, data = x, panel = panel,  prepanel = prepanel, ...)
 }

@@ -51,11 +51,12 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   are extracted with \pkg{vegan} function \code{\link{scores}} so that
   these functions work with all \pkg{vegan} ordinations and many others.
 
-  The \code{formula} is optional in \code{ordisplom}, but must be given
-  in other functions. If formula is omitted in \code{ordisplom} it
+  The \code{formula} is used to define the models. All functions have
+  simple default formulas which are used if \code{formula} is missing. 
+  If formula is omitted in \code{ordisplom} it
   produces a pairs plot of ordination axes and variables in
   \code{data}. If \code{formula} is given, ordination results must be
-  referred to as \code{,} and other variables by their names. In other
+  referred to as \code{.} and other variables by their names. In other
   functions, the formula must use the names of ordination scores and names
   of \code{data}.
 
@@ -109,11 +110,11 @@ ordisplom(ord, data=dune.env, form = ~ . | Management, groups=Manure)
 ## Scatter plot
 ordixyplot(ord, data=dune.env, form = CA1 ~ CA2 | Management, groups=Manure)
 ## ... Slices of third axis
-ordixyplot(ord, form = CA1 ~ CA2 | equal.count(CA3, 4))
+ordixyplot(ord, form = CA1 ~ CA2 | equal.count(CA3, 4), type = c("g", "p"))
 ## 3D Scatter plots
 ordicloud(ord, form = CA2 ~ CA3*CA1, groups = Manure, data = dune.env)
 ordicloud(ord, form = CA2 ~ CA3*CA1 | Management, groups = Manure,
-   data = dune.env, auto.key = TRUE)
+   data = dune.env, auto.key = TRUE, type = c("p","h"))
 }
 
 \keyword{ hplot }

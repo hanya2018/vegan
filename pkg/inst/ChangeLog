@@ -3,15 +3,17 @@ $Date$
 	
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 	
-Version 1.10-3 (under work)
+Version 1.10-3 (working)
 
 	* Trellis graphics for ordination objects with functions
-	ordixyplot, ordicloud and ordisplom. These are still mere
-	skeletons. Contributions are welcome.
+	ordixyplot, ordicloud and ordisplom. These functions are still
+	unsatisfactory. In particular, I haven't found a clean way of
+	having biplot arrows in the graphs (how do you know the
+	coordinates and the axes used?). Contributions are welcome.
 
 	* ordispantree made dysfunctional (deprecated in 1.8-1). 
 	
-Version 1.10-2 (closed Sep 14, 2007)
+Version 1.10-2 (closed Sep 14, 2007 at Rev. 36)
 
 	* vegandocs: added FAQ-vegan, and renamed the old vegan-FAQ to
 	decision-vegan. Only primary sources (texi, Rnw) in the source
@@ -24,7 +26,7 @@ Version 1.10-2 (closed Sep 14, 2007)
 		
 	* scores.default: handles numeric data frames.
 	
-Version 1.10-1 (closed Sep 7, 2007)
+Version 1.10-1 (closed Sep 7, 2007 at Rev. 21)
 
 	* taxondive: Fixed dimension checking, matching names and
 	non-unique taxon names.
