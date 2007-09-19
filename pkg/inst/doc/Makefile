@@ -1,4 +1,4 @@
-all: FAQ-vegan.pdf decision-vegan.pdf
+all: FAQ-vegan.pdf decision-vegan.pdf intro-vegan.pdf diversity-vegan.pdf
 FAQ-vegan.pdf: FAQ-vegan.texi
 	texi2dvi --pdf --clean FAQ-vegan.texi
 decision-vegan.pdf: decision-vegan.tex
