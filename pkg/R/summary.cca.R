@@ -3,6 +3,7 @@
               digits = max(3, getOption("digits") - 3), ...) 
 {
     axes <- min(axes, sum(object$CCA$rank, object$CA$rank))
+    summ <- list()
     if (axes && length(display) && (!is.na(display) && !is.null(display))) 
         summ <- scores(object, scaling = scaling, choices = 1:axes, display = display, ...)
     ## scores() drops list to a matrix if there is only one item: workaround below.
