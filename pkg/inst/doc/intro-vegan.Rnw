@@ -1,27 +1,31 @@
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
-%\VignetteIndexEntry{introduction to vegan}
+%\VignetteIndexEntry{Introduction to ordination in vegan}
 \documentclass[a4,10pt]{amsart}
 \usepackage{ucs}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage[wide]{sidecap}
+\usepackage{sidecap}
+\setlength{\captionindent}{0pt}
 \usepackage{url}
 
 \renewcommand{\floatpagefraction}{0.8}
 
 
-\title{Vegan: an introduction}
+\title{Vegan: an introduction to ordination}
 \author{Jari Oksanen}
-\date{Based on $ $Id$ $, processed with vegan
-  \Sexpr{packageDescription("vegan", field="Version")} in
-  \Sexpr{R.version.string} on \today}
+
+\date{$ $Id$
+  processed with vegan
+\Sexpr{packageDescription("vegan", field="Version")}
+in \Sexpr{R.version.string} on \today}
 \begin{document}
-\setkeys{Gin}{width=0.5\linewidth}
+
+\setkeys{Gin}{width=0.55\linewidth}
 \SweaveOpts{strip.white=true}
 <<echo=false>>=
 par(mfrow=c(1,1))
-par(mar=c(4,4,1,0)+.1)
+par(mar=c(3,3,1,0)+.1)
 options(width=72)
 @
 
@@ -47,7 +51,7 @@ The \texttt{vegan} package contains all common ordination methods:
 Principal component analysis (function \texttt{rda}, or
 \texttt{prcomp} in the base \textsf{R}), correspondence analysis
 (\texttt{cca}), detrended correspondence analysis (\texttt{decorana})
-and a wrapper for nonmetric multidimensional scaling
+and a wrapper for non-metric multidimensional scaling
 (\texttt{metaMDS}).  Functions \texttt{rda} and \texttt{cca} mainly
 are designed for constrained ordination, and will be discussed later.
 In this chapter I describe functions \texttt{decorana} and
@@ -70,20 +74,20 @@ The display of results is very brief: only eigenvalues and used
 options are listed.  Actual ordination results are not shown, but you
 can see them with command \texttt{summary(ord)}, or extract the scores
 with command \texttt{scores}.  The \texttt{plot} function also
-automatically knows how to access the scorees.
+automatically knows how to access the scores.
 
 \subsection{Non-metric multidimensional scaling}
 
 Function \texttt{metaMDS} is a bit special case.  The actual
 ordination is performed by function \texttt{isoMDS} of the \texttt{MASS}
-package.  Function \texttt{metaMDS} is a wrapper to perform nonmetric
+package.  Function \texttt{metaMDS} is a wrapper to perform non-metric
 multidimensional scaling (\textsc{nmds}) like recommended in community
 ordination: it uses adequate dissimilarity measures (function
 \texttt{vegdist}), then it runs \textsc{nmds} several times with
 random starting configurations, compares results (function
 \texttt{procrustes}), and stops after finding twice a similar minimum stress
 solution.  Finally it scales and rotates the solution, and adds
-species scores to the configuration as weighted avereges (function
+species scores to the configuration as weighted averages (function
 \texttt{wascores}):
 <<>>=
 ord <- metaMDS(dune)
@@ -104,7 +108,7 @@ plot(ord)
 \begin{SCfigure}
 <<fig=true,echo=false>>=
 <<a>>
-@ 
+@
 \caption{Default ordination plot.}
 \label{fig:plot}
 \end{SCfigure}
@@ -122,11 +126,11 @@ sizes freely (Fig. \ref{fig:plot.args}):
 plot(ord, type = "n")
 points(ord, display = "sites", cex = 0.8, pch=21, col="red", bg="yellow")
 text(ord, display = "spec", cex=0.7, col="blue")
-@ 
+@
 \begin{SCfigure}
 <<fig=true,echo=false>>=
 <<a>>
-@  
+@
 \caption{A more colourful ordination plot where sites are points, and
   species are text.}
 \label{fig:plot.args}
@@ -142,9 +146,9 @@ support functions with the results (\texttt{points}, \texttt{text},
 \texttt{identify}).
 
 Function \texttt{ordirgl} (requires \texttt{rgl} package) provides
-dynamic three-dimensional graphics that can be spinned around or
-zoomed into with your mouse.  Function \texttt{ordiplot3d} (requires
-package \texttt{scatterplot3d}) displays simple three-dimensional
+dynamic three-dimensional graphics that can be spun around or zoomed
+into with your mouse.  Function \texttt{ordiplot3d} (requires package
+\texttt{scatterplot3d}) displays simple three-dimensional
 scatterplots.
 
 \subsection{Cluttered plots}
@@ -186,11 +190,11 @@ ordihull(ord, Management, col="blue")
 ordiellipse(ord, Management, col=3,lwd=2)
 ordispider(ord, Management, col="red")
 points(ord, disp="sites", pch=21, col="red", bg="yellow", cex=1.3)
-@ 
+@
 \begin{SCfigure}
 <<fig=true,echo=false>>=
 <<a>>
-@ 
+@
 \caption{Convex hull, standard error ellipse and a spider web diagram
   for Management levels in ordination.}
 \label{fig:ordihull}
@@ -222,25 +226,25 @@ variables using permutation tests:
 <<>>=
 ord.fit <- envfit(ord ~ A1 + Management, data=dune.env, perm=1000)
 ord.fit
-@ 
+@
 The result can be drawn directly or added to an ordination diagram
 (Fig. \ref{fig:envfit}):
 <<a>>=
 plot(ord, dis="site")
 plot(ord.fit)
-@ 
+@
 
 Function \texttt{ordisurf} directly adds a fitted surface onto
 ordination, but it returns the result of the fitted thinplate spline
 \texttt{gam} (Fig. \ref{fig:envfit}):
 <<b,fig=false>>=
 ordisurf(ord, A1, add=TRUE)
-@  
+@
 \begin{SCfigure}
 <<fig=true,echo=false,results=hide>>=
 <<a>>
 <<b>>
-@ 
+@
 \caption{Fitted vector and smooth surface for the thickness of A1
   horizon (\texttt{A1}, in cm), and centroids of Management levels.}
 \label{fig:envfit}
@@ -293,7 +297,7 @@ cca(dune ~ ., data=dune.env)
 \subsection{Significance tests}
 
 \texttt{Vegan} provides permutation tests for the significance of
-constraints.  The test mimicks standard analysis of variance function
+constraints.  The test mimics standard analysis of variance function
 (\texttt{anova}), and the default test analyses all constraints
 simultaneously:
 <<>>=

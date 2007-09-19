@@ -1,27 +1,26 @@
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
-%\VignetteIndexEntry{diversity analysis in vegan}
+%\VignetteIndexEntry{Diversity analysis in vegan}
 \documentclass[a4,10pt]{amsart}
 \usepackage{ucs}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage[wide]{sidecap}
+\usepackage{sidecap}
+\setlength{\captionindent}{0pt}
 \usepackage{url}
-
-\renewcommand{\floatpagefraction}{0.8}
 
 
 \title{Vegan: ecological diversity}
 \author{Jari Oksanen}
-\date{Based on $ $Id$ $, processed with vegan
-  \Sexpr{packageDescription("vegan", field="Version")} in
-  \Sexpr{R.version.string} on \today}
+\date{$ $Id$ $
+  processed with vegan \Sexpr{packageDescription("vegan", field="Version")}
+  in \Sexpr{R.version.string} on \today}
 \begin{document}
-\setkeys{Gin}{width=0.5\linewidth}
+\setkeys{Gin}{width=0.55\linewidth}
 \SweaveOpts{strip.white=true}
 <<echo=false>>=
 par(mfrow=c(1,1))
-par(mar=c(4,4,1,0)+.1)
+par(mar=c(3,3,1,0)+.1)
 options(width=72)
 @
 
@@ -84,24 +83,21 @@ diversity indices are special cases of Hill numbers: $N_0 = S$, $N_1 =
 \exp(H')$, $N_2 = D_2$, and $N_\infty = 1/(\max p_i)$.  We select a
 random subset of five sites for Rényi diversities:
 <<>>=
-k <- sample(nrow(BCI), 5)
+k <- sample(nrow(BCI), 6)
 R <- renyi(BCI[k,])
 @
 We can really regard a site more diverse if all of its Rényi
 diversities are higher than in another site.  We can inspect this
-graphically (Fig. \ref{fig:renyi}):
-<<a>>=
-matplot(t(R), type="l", axes=FALSE, xlab="Renyi parameter", ylab="Diversity")
-axis(1, at=1:11, labels=colnames(R))
-axis(2)
-legend("topright", legend=k, lty=1:5, col=1:5)
-box()
-@
+graphically using the standard \texttt{plot} function for the
+\texttt{renyi} result(Fig. \ref{fig:renyi}).
 \begin{SCfigure}
 <<fig=true,echo=false>>=
-<<a>>
+print(plot(R))
 @
-\caption{Rényi diversities in five randomly selected plots.}
+\caption{Rényi diversities in six randomly selected plots. The plot
+  uses Trellis graphics with a separate panel for each site. The dots
+  show the values for sites, and the lines the extremes and median in
+  the data set.}
 \label{fig:renyi}
 \end{SCfigure}
 
@@ -121,7 +117,7 @@ rarefied from $N$ to $n$ individuals is:
 \begin{equation}
 \label{eq:rare}
 \hat S_n = \sum_{i=1}^S (1 - p_i),\, \text{where} \quad p_i = {N-x_i
-  \choose n}/{N \choose n}
+  \choose n} \Bigm /{N \choose n}
 \end{equation}
 where $x_i$ is the count of species $i$, and ${N \choose n}$ is the
 binomial coefficient, or the number of ways we can choose $n$ from
@@ -131,7 +127,8 @@ other cases $p_i = 0$ or the species is sure to occur in the sample.
 The variance of rarefied richness is:
 \begin{equation}
 \label{eq:rarevar}
-s^2 = p_i (1-p_i) + 2 \sum_{i=1}^S \sum_{j>i} \left[ {N- x_i - x_j \choose n} / {N
+s^2 = p_i (1-p_i) + 2 \sum_{i=1}^S \sum_{j>i} \left[ {N- x_i - x_j
+    \choose n} \Bigm / {N
     \choose n} - p_i p_j\right]
 \end{equation}
 Equation \ref{eq:rarevar} actually is of the same form as the variance
@@ -140,7 +137,7 @@ of sum of correlated variables:
 \mathrm{var} \left(\sum x_i \right) = \sum \mathrm{var}(x_i) - 2 \mathrm{cov}(x_i, x_j)
 \end{equation}
 
-The number of stems per hectar varies in our
+The number of stems per hectare varies in our
 data set:
 <<>>=
 quantile(rowSums(BCI))
@@ -213,9 +210,9 @@ $\alpha$ often is very non-normal and skewed, and standard errors are
 of not much use.  However, \texttt{fisherfit} has a \texttt{profile}
 method that can be used to inspect the validity of normal assumptions,
 and will be used in calculations of confidence intervals from profile
-deviance: 
-<<>>= 
-confint(fish) 
+deviance:
+<<>>=
+confint(fish)
 @
 
 Preston's log-normal model is the main challenger to Fisher's
@@ -307,11 +304,11 @@ several alternative methods, including accumulating sites in the order
 they happen to be, and repeated accumulation in random order.  In
 addition, there are three analytic models.  Rarefaction pools
 individuals together, and applies rarefaction equation (\ref{eq:rare})
-to these inividuals.  Kindt's exact accumulator resembels rarefaction:
+to these individuals.  Kindt's exact accumulator resembles rarefaction:
 \begin{equation}
 \label{eq:kindt}
 \hat S_n = \sum_{i=1}^S (1 - p_i), \, \text{where} \quad p_i = {N- f_i
-\choose n}/{N \choose n}
+\choose n} \Bigm / {N \choose n}
 \end{equation}
 where $f_i$ is the frequency of species $i$.  Approximate variance
 estimator is:
@@ -392,9 +389,11 @@ Variance of the second-order jackknife is not evaluated in
 For the variance of bootstrap estimator, it is practical to define a
 new variable $q_i = (1-p_i)^N$ for each species:
 \begin{equation}
-s^2 = \sum_{i=1}^{S_o} q_i (1-q_i) + 2 \sum \sum Z_p
+\begin{split}
+s^2 = \sum_{i=1}^{S_o} q_i (1-q_i) + 2 \sum \sum Z_p , \quad \text{where} \\
+Z_p = \dots
+\end{split}
 \end{equation}
-which needs a much longer explanation\dots
 
 The extrapolated richness values for the whole BCI data are:
 <<>>=
@@ -423,19 +422,19 @@ estimateR(BCI[k,])
 @
 Chao's method is similar as above, but uses another, ``unbiased''
 equation. \textsc{ace} is based on rare species also:
-\begin{align}
+\begin{equation}
+\begin{split}
 S_p &= S_\mathrm{abund} + \frac{S_\mathrm{rare}}{C_\mathrm{ACE}} +
 \frac{a_1}{C_\mathrm{ACE}} \gamma^2 \quad \text{where}\\
-\notag
 C_\mathrm{ACE} &= 1 - \frac{a_1}{N_\mathrm{rare}}\\
-\notag
 \gamma^2 &= \frac{S_\mathrm{rare}}{C_\mathrm{ACE}} \sum_{i=1}^{10} i
 (i-1) a_1 \frac{N_\mathrm{rare} - 1}{N_\mathrm{rare}}
-\end{align}
+\end{split}
+\end{equation}
 Now $a_1$ takes the place of $f_1$ above, and means the number of
 species with only one individual.
 Here $S_\mathrm{abund}$ and $S_\mathrm{rare}$ are the numbers of
-species of abundant and rare species, with an arbitary upper limit of
+species of abundant and rare species, with an arbitrary upper limit of
 10 individuals for a rare species, and $N_\mathrm{rare}$ is the total
 number of individuals in rare species.
 
@@ -479,7 +478,7 @@ numbers of stems relate in one of the more familiar species
 (Fig. \ref{fig:beals}):
 <<a>>=
 j <- which(colnames(BCI) == "Ceiba.pentandra")
-plot(smo[,j], BCI[,j], main="Ceiba pentandra", xlab="Probability ofoccurrence",
+plot(smo[,j], BCI[,j], main="Ceiba pentandra", xlab="Probability of occurrence",
 ylab="Occurrence")
 @
 \begin{SCfigure}
