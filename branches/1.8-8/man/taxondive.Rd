@@ -13,7 +13,7 @@
   the community (Clarke & Warwick 1998, 2001)
 }
 \usage{
-taxondive(comm, dis)
+taxondive(comm, dis, match.force = FALSE)
 taxa2dist(x, varstep = FALSE, check = TRUE, labels)
 }
 
@@ -21,6 +21,10 @@ taxa2dist(x, varstep = FALSE, check = TRUE, labels)
   \item{comm}{Community data. }
   \item{dis}{Taxonomic distances among taxa in \code{comm}. This should
     be a \code{\link{dist}} object or a symmetric square matrix. }
+  \item{match.force}{Force matching of column names in \code{comm} and
+    labels in \code{dis}. If \code{FALSE}, matching only happens when
+    dimensions differ, and in that case the species must be in identical
+    order in both.}
   \item{x}{Classification table with a row for each species or other
     basic taxon, and columns
     for identifiers of its classication at higher levels.}

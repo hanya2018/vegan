@@ -1,5 +1,5 @@
 `taxondive` <-
-    function (comm, dis) 
+    function (comm, dis, match.force = FALSE) 
 {
     binary <- FALSE
     comm <- as.matrix(comm)
@@ -8,16 +8,22 @@
         dis <- structure(rep(1, n * (n - 1)/2), Size = n, class = "dist")
     }
     dis <- as.dist(dis)
-    if (attr(dis, "Size") != nrow(comm)) {
-        message("Dimensions do not match between 'comm' and 'dis'")
+    if (match.force || attr(dis, "Size") != ncol(comm)) {
+        if (match.force)
+            message("Forced matching 'dis' labels and 'comm' names")
+        else
+            message("Dimensions do not match between 'comm' and 'dis'")
         if (all(colnames(comm) %in% labels(dis))) {
             dis <- as.matrix(dis)
             dis <- as.dist(dis[colnames(comm), colnames(comm)])
             message("Matched 'dis' labels by 'comm' names")
         } else {
-            stop("Dimensions differ and could not match names in 'dis' and 'comm'")
+            stop("Could not match names in 'dis' and 'comm'")
         }
-        
+        if (length(unique(colnames(comm))) != ncol(comm))
+            stop("Names not in unique in 'comm': match wrong")
+        if (length(unique(labels(dis))) != attr(dis, "Size"))
+            warning("Labels not unique in 'dis': matching probably wrong")
     }
     del <- dstar <- dplus <- Ed <- Edstar <- edplus <- NULL
     if (!binary) {
