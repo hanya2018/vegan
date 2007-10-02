@@ -2,8 +2,14 @@ $Date$
 
 	
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
-	
-Version 1.10-3 (working)
+
+Version 1.10-4 (working)
+       
+	* fitted.cca, fitted.rda: gained agument type = "working" to get
+	the fitted values and residuals used internally in calculation (to
+	be used in plot.lm diagnostic plots residuals ~ fitted).
+ 	
+Version 1.10-3 (closed Oct 2, 2007 at Rev. 62)
 
 	* doc: added vignettes intro-vegan on ordination methods and
 	diversity-vegan.
