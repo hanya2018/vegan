@@ -4,6 +4,10 @@ $Date$
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-4 (working)
+
+	* ordiresids: new function for plot.lm like diagnostic plots for
+	constrained ordination: Residuals ~ Fitted, sqrt(abs(Residuals)) ~
+	Fitted, and qqmath(~ Residuals) using Lattice graphics.
        
 	* fitted.cca, fitted.rda: gained agument type = "working" to get
 	the fitted values and residuals used internally in calculation (to
