@@ -1,14 +1,14 @@
 \name{ordiresids}
 \alias{ordiresids}
  
-\title{Plots of Residuals and Fitted Values for Constrained Ordination }
+\title{Plots of Residuals and Fitted Values for Constrained Ordination}
 \description{
-  The function provides \code{\link{plot.lm}} like diagnostic plots for
-  the results for constrained ordination results from \code{\link{cca}},
+  The function provides \code{\link{plot.lm}} style diagnostic plots for
+  the results of constrained ordination from \code{\link{cca}},
   \code{\link{rda}} and \code{\link{capscale}}. Normally you do not need
   these plots, because ordination is descriptive and does not
-  make assumptions on the distributions of the residuals. However, if
-  you permute residuals in signficance tests (\code{\link{anova.cca}}),
+  make assumptions on the distribution of the residuals. However, if
+  you permute residuals in significance tests (\code{\link{anova.cca}}),
   you may be interested in inspecting that the residuals really are
   exchangeable and independent of fitted values.
 }
@@ -27,7 +27,8 @@ ordiresids(x, kind = c("residuals", "scale", "qqnorm"), residuals = "working",
   \item{residuals}{The kind of residuals and fitted values. The argument
     is passed on to \code{\link{fitted.cca}} with alternatives
     \code{"working"} and \code{"response"}.}
-  \item{type}{The type of plot. The argument is passed on to \pkg{lattice} functions. }
+  \item{type}{The type of plot. The argument is passed on to
+    \pkg{lattice} functions. }
   \item{formula}{Formula to override the default plot. The formula can
     contain items \code{Fitted}, \code{Residuals}, \code{Species} and
     \code{Sites}.  }
@@ -37,8 +38,8 @@ ordiresids(x, kind = c("residuals", "scale", "qqnorm"), residuals = "working",
   The default plots are similar as in \code{\link{plot.lm}}, but they
   use \code{\link[lattice]{Lattice}} functions
   \code{\link[lattice]{xyplot}} and \code{\link[lattice]{qqmath}}. The
-  alternatives have default formulas but these can be replaced with user
-  given formula.  The elements available in formula or for \code{groups}
+  alternatives have default formulas but these can be replaced by the
+  user. The elements available in formula or in the \code{groups} argument
   are \code{Fitted}, \code{Residuals}, \code{Species} and \code{Sites}.
 }
 \value{
