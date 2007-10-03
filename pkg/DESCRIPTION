@@ -7,6 +7,6 @@ Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Suggests: MASS, mgcv, lattice, cluster, scatterplot3d, rgl, ellipse
 Description: Ordination methods, diversity analysis and other
   functions for community and vegetation ecologists.
-License: GPL v2 (but not later)
+License: GPL-2 
 URL: http://r-forge.r-project.org/, http://cc.oulu.fi/~jarioksa/
 
