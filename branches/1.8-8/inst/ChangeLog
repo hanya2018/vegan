@@ -29,6 +29,8 @@ Version 1.8-8 (Oct 2, 2007)
 	* tweaks to pass --pedantic R CMD check, mainly in formatting
 	source files, unused variables in source files and superfluous
 	braces in help files (r39, r46, r62).
+
+	* Updated FAQ-vegan.pdf to the current version at R-Forge.
 	
 Version 1.8-7 (August 24, 2007)
 
