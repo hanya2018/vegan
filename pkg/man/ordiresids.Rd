@@ -13,17 +13,18 @@
   exchangeable and independent of fitted values.
 }
 \usage{
-ordiresids(x, kind = c("residuals", "scale", "qqnorm"), residuals = "working",
-    type = c("p", "smooth", "g"), formula, ...)
+ordiresids(x, kind = c("residuals", "scale", "qqmath"),
+   residuals = "working", type = c("p", "smooth", "g"),
+   formula, ...)
 }
 \arguments{
   \item{x}{Ordination result from \code{\link{cca}}, \code{\link{rda}}
     or \code{\link{capscale}}. }
   \item{kind}{The type of plot: \code{"residuals"} plot residuals
     against fitted values, \code{"scale"} the square root of absolute
-    residuals against fitted values, and \code{"qqnorm"} the residuals
-    against Normal deviate (unless defined differently in \code{formula}
-    argument). }
+    residuals against fitted values, and \code{"qqmath"} the residuals
+    against expected distribution (defaults \code{\link{qnorm}}),
+    unless defined differently in the \code{formula}  argument). }
   \item{residuals}{The kind of residuals and fitted values. The argument
     is passed on to \code{\link{fitted.cca}} with alternatives
     \code{"working"} and \code{"response"}.}
@@ -31,7 +32,8 @@ ordiresids(x, kind = c("residuals", "scale", "qqnorm"), residuals = "working",
     \pkg{lattice} functions. }
   \item{formula}{Formula to override the default plot. The formula can
     contain items \code{Fitted}, \code{Residuals}, \code{Species} and
-    \code{Sites}.  }
+    \code{Sites} (provided that names of species and sites are available
+    in the ordination result).  }
   \item{\dots}{Other arguments passed to \pkg{lattice} functions. }
 }
 \details{
