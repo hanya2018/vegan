@@ -29,8 +29,12 @@ cIndexKM (y, x, index = "all")
     of \eqn{K}.}
   \item{ criterion }{ The criterion that will be used to select the best
     partition. The default value is "calinski", which refers to the
-    Calinski-Harabasz (1974) criterion. The simple structure index, "ssi", is
-    also available. }
+    Calinski-Harabasz (1974) criterion. The simple structure index ("ssi") is
+    also available. Other indices are available in function 
+    \code{\link[cclust]{clustIndex}} (package \pkg{cclust}). In our
+    experience, the two indices that work best and are most likely to
+    return their maximum value at or near the optimal number of clusters
+    are "calinski" and "ssi". }
   \item{y}{Object of class \code{"kmeans"} returned by a clustering algorithm
     such as \code{\link{kmeans}}}
   \item{x}{Data matrix where columns correspond to variables and rows to
@@ -55,7 +59,8 @@ cIndexKM (y, x, index = "all")
 \details{
   The function creates several partitions formimg a cascade from a small
   to a large number of groups formed by \code{\link{kmeans}}.  The most
-  of the work is performed by function \code{cIndex} s based on the clustIndex function. 
+  of the work is performed by function \code{cIndex} which is based on the
+  \code{\link[cclust]{clustIndex}} function (package \pkg{cclust}). 
   Some of the criteria were removed from this version because computation 
   errors were generated when only one object was found in a group.
   
@@ -160,7 +165,7 @@ Pierre Legendre \email{Pierre.Legendre@UMontreal.ca}.  Edited for \pkg{vegan}
 by Jari Oksanen.
 }
 
-\seealso{\code{\link{kmeans}}}
+\seealso{\code{\link{kmeans}}, \code{\link[cclust]{clustIndex}}.}
 
 \examples{
  # Partitioning a (10 x 10) data matrix of random numbers
