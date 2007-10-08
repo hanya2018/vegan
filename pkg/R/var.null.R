@@ -3,8 +3,9 @@
 {
     problems <- diag(cov(mat)) <= 0
     if (any(problems)) {
-        warning("Zero variance in variable(s) ", which(problems))
-        stop("Verify/modify your matrix No. ", no)
+        whichProbs <- paste(which(problems), collapse=", ")
+        warning("zero variance in variable(s) ", whichProbs)
+        stop("verify/modify your matrix No. ", no)
     }
     invisible(0)
 }

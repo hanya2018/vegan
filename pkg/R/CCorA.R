@@ -1,6 +1,8 @@
+### PL to JO, 07oct07
+### In the listing, notes to you are indicated by ###
 `CCorA` <-
     function(Y, X1, X2 = NULL, stand.Y = FALSE, stand.X1 = FALSE,
-             stand.X2 = FALSE, ...)
+             stand.X2 = FALSE, nperm = 0, ...)
 {
     require(MASS) || stop("requires packages 'MASS'")
     partial <- !is.null(X2)
@@ -24,7 +26,6 @@
     temp <- cov.inv(Y.c,1)
     Y <- temp$mat
     S.Y.inv <- temp$S.inv
-    ## colnames(Y) <- colnames(Y.c[,1:temp$m])
     rownames(Y) <- rownoms
     temp <- cov.inv(X1.c,2)
     X1 <- temp$mat
@@ -42,10 +43,6 @@
     if(!partial) {
         X <- X1
         S.X.inv <- S.X1.inv
-        if((temp$m == 1) && (print.plot == TRUE)) {
-            print.plot <- FALSE
-            cat("No plot will be produced because X1 has a single dimension",'\n')
-        }
     } else {
         ## Regress X1 on X2 and compute res(X1)/X2 before the canonical analysis to estimate [a]
         Q <- qr(X2, tol=1e-6)
@@ -55,7 +52,6 @@
         X <- temp$mat
         S.X.inv <- temp$S.inv
     }
-    ## colnames(X) <- colnames(X1.c[,1:temp$m])
     rownames(X) <- rownoms
     ## Covariance matrices, etc. from the PCA scores
     epsilon <- sqrt(.Machine$double.eps)
@@ -73,7 +69,7 @@
     K <- t(S11.chol.inv) %*% S12 %*% S22.chol.inv
     K.svd <- svd(K)
     EigenValues <- K.svd$d^2
-    ## K.svd$u %*% diag(K.svd$d) %*% t(K.svd$v)   # This line checks that K = U D V'
+    ## K.svd$u %*% diag(K.svd$d) %*% t(K.svd$v)   # Check that K = U D V'
     axenames <- paste("CanAxis",1:length(K.svd$d),sep="")
     U <- K.svd$u
     V <- K.svd$v
@@ -91,33 +87,44 @@
     ## Compute the 'Biplot scores of X variables' a posteriori --
     XprX <- t(X1.c) %*% X1.c
     BB <- sqrt(n-1) * ginv(XprX) %*% t(X1.c) %*% Cx
+    ## Add row and column names
     rownames(U) <- rownames(AA) <- Ynoms
     rownames(V) <- rownames(BB) <- Xnoms
     rownames(Cy) <- rownames(Cx) <- rownoms
     colnames(U) <- colnames(A) <- colnames(AA) <- colnames(V) <- colnames(B) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
-    ## pp <- length(K.svd$d)
-    ## Check U and V by eigenvalue decomposition
-    ## KKpr.eig <- eigen(K %*% t(K))
-    ## eigval1 <- KKpr.eig$values
-    ## UU <- KKpr.eig$vectors
-    ## KprK.eig <- eigen(t(K) %*% K)
-    ## eigval2 <- KprK.eig$values
-    ## VV <- KprK.eig$vectors
-    ## Compute Pillai's trace = sum of the canonical eigenvalues
-    ##                        = sum of the squared canonical correlations
-    gross.mat <- S12 %*% solve(S22) %*% t(S12) %*% solve(S11)
-    PillaiTrace <- sum(diag(gross.mat))
     ## Compute the two redundancy statistics
     RsquareY.X <- simpleRDA2(Y, X)
     RsquareX.Y <- simpleRDA2(X, Y)
     Rsquare.adj.Y.X <- RsquareAdj(RsquareY.X$Rsquare, n, RsquareY.X$m)
     Rsquare.adj.X.Y <- RsquareAdj(RsquareX.Y$Rsquare, n, RsquareX.Y$m)
+    ## Compute Pillai's trace = sum of the canonical eigenvalues
+    ##                        = sum of the squared canonical correlations
+    ## Next 3 lines have been modified
+    S11.inv = solve(S11)
+    S22.inv = solve(S22)
+    gross.mat <- S12 %*% S22.inv %*% t(S12) %*% S11.inv
+    PillaiTrace <- sum(diag(gross.mat))
+### New lines: compute the parametric prob associated with Pillai's trace ...
+### 'cat' prints are including only for testing the changes. 
+### Remove them when 'p.Pillai', 'nperm' and 'p.perm' have been incorporated to
+### `print.CCorA`
+    n1 <- abs(RsquareX.Y$m - RsquareY.X$m) - 1
+    n2 <- n - RsquareX.Y$m - RsquareY.X$m - 2
+    s  <- min(RsquareX.Y$m, RsquareY.X$m)
+    df1<- n1 + s + 1
+    df2<- n2 + s + 1
+    F  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
+    p.Pillai <- pf(F,s*df1,s*df2,lower.tail=FALSE)
+    cat("PillaiTrace =",PillaiTrace,"  n =",n,"  F =",F,"  p.Pillai =",p.Pillai,'\n')
+    if(nperm > 0) {
+       p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,F,nperm)
+       cat('F =',F,'  Prob(',nperm,'permutations) =',p.perm,'\n')
+       }
+### ... till here.
     out <- list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
                 Mat.ranks=c(RsquareX.Y$m, RsquareY.X$m), 
                 RDA.Rsquares=c(RsquareY.X$Rsquare, RsquareX.Y$Rsquare),
                 RDA.adj.Rsq=c(Rsquare.adj.Y.X, Rsquare.adj.X.Y),
-                ##      eigval1=eigval1, eigval2=eigval2, UU=UU, VV=VV,
-                ##      U=U, A=A, V=V, B=B,
                 AA=AA, BB=BB, Cy=Cy, Cx=Cx, call = match.call())
     class(out) <- "CCorA"
     out

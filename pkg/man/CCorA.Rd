@@ -4,15 +4,17 @@
 \alias{var.null}
 \alias{print.CCorA}
 \alias{biplot.CCorA}
+\alias{probPillai}
 
-\title{ Canonical Correlation Analysis }
+\title{Canonical Correlation Analysis}
 
 \description{Canonical correlation analysis, following Brian McArdle's
 unpublished graduate course notes, plus improvements to allow the
 calculations in the case of very sparse and collinear matrices. }
 
 \usage{
-CCorA(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE, ...)
+CCorA(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
+    nperm = 0, ...)
 \method{biplot}{CCorA}(x, xlabs, which = 1:2, ...)
 }
 
@@ -23,6 +25,8 @@ CCorA(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE, ...)
 \item{stand.Y}{ Y will be standardized if TRUE }
 \item{stand.X1}{ X1 will be standardized if TRUE }
 \item{stand.X2}{ X2 will be standardized if TRUE }
+\item{nperm}{Number of permutations to evaluate the significance of
+  Pillai's trace}
 \item{x}{\code{CCoaR} result object}
 \item{xlabs}{Row labels. The default is to use row names, \code{NULL}
   uses row numbers instead, and \code{NA} suppresses plotting row names

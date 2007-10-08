@@ -9,7 +9,7 @@
     cat("\n")
     cat("Pillai's trace: ", format(x$Pillai, ...), "\n")
     cat("\n")
-    out <- rbind("Eigen Values" = x$EigenValues, "Canonical Correlations" = x$CanCorr)
+    out <- rbind("Eigenvalues" = x$EigenValues, "Canonical Correlations" = x$CanCorr)
     colnames(out) <- colnames(x$AA)
     printCoefmat(out, ...)
     cat("\n")
