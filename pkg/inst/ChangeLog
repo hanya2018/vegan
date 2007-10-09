@@ -4,7 +4,7 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-5 (Oct 8, working...)
 
-	* CCorA: Pierre Legendre submitted go for permutation test on
+	* CCorA: Pierre Legendre submitted code for permutation test of
 	Pillai's trace.
 
 Version 1.10-4 (closed Oct 6, 2007 at Rev. 75)

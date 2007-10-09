@@ -1,5 +1,3 @@
-### PL to JO, 07oct07
-### In the listing, notes to you are indicated by ###
 `CCorA` <-
     function(Y, X1, X2 = NULL, stand.Y = FALSE, stand.X1 = FALSE,
              stand.X2 = FALSE, nperm = 0, ...)
@@ -99,32 +97,27 @@
     Rsquare.adj.X.Y <- RsquareAdj(RsquareX.Y$Rsquare, n, RsquareX.Y$m)
     ## Compute Pillai's trace = sum of the canonical eigenvalues
     ##                        = sum of the squared canonical correlations
-    ## Next 3 lines have been modified
     S11.inv = solve(S11)
     S22.inv = solve(S22)
     gross.mat <- S12 %*% S22.inv %*% t(S12) %*% S11.inv
     PillaiTrace <- sum(diag(gross.mat))
-### New lines: compute the parametric prob associated with Pillai's trace ...
-### 'cat' prints are including only for testing the changes. 
-### Remove them when 'p.Pillai', 'nperm' and 'p.perm' have been incorporated to
-### `print.CCorA`
     n1 <- abs(RsquareX.Y$m - RsquareY.X$m) - 1
     n2 <- n - RsquareX.Y$m - RsquareY.X$m - 2
     s  <- min(RsquareX.Y$m, RsquareY.X$m)
     df1<- n1 + s + 1
     df2<- n2 + s + 1
-    F  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
-    p.Pillai <- pf(F,s*df1,s*df2,lower.tail=FALSE)
-    cat("PillaiTrace =",PillaiTrace,"  n =",n,"  F =",F,"  p.Pillai =",p.Pillai,'\n')
+    Fval  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
+    p.Pillai <- pf(Fval, s*df1, s*df2,l ower.tail=FALSE)
     if(nperm > 0) {
        p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,F,nperm)
-       cat('F =',F,'  Prob(',nperm,'permutations) =',p.perm,'\n')
-       }
-### ... till here.
+   } else {
+       p.perm <- NA
+   }
     out <- list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
                 Mat.ranks=c(RsquareX.Y$m, RsquareY.X$m), 
                 RDA.Rsquares=c(RsquareY.X$Rsquare, RsquareX.Y$Rsquare),
                 RDA.adj.Rsq=c(Rsquare.adj.Y.X, Rsquare.adj.X.Y),
+                nperm=nperm, p.Pillai=p.Pillai, p.perm=p.perm,
                 AA=AA, BB=BB, Cy=Cy, Cx=Cx, call = match.call())
     class(out) <- "CCorA"
     out

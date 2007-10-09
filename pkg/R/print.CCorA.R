@@ -9,6 +9,12 @@
     cat("\n")
     cat("Pillai's trace: ", format(x$Pillai, ...), "\n")
     cat("\n")
+    cat("Significance of Pillai's trace:\n")
+    if (x$nperm > 0) {
+        cat("based on", x$nperm, "permutations: ")
+        cat(x$p.perm,"\n")
+    }
+    cat("from F-distribution: ", format.pval(x$p.Pillai), "\n\n")
     out <- rbind("Eigenvalues" = x$EigenValues, "Canonical Correlations" = x$CanCorr)
     colnames(out) <- colnames(x$AA)
     printCoefmat(out, ...)
