@@ -7,6 +7,9 @@ Version 1.10-5 (Oct 8, working...)
 	* CCorA: Pierre Legendre submitted code for permutation test of
 	Pillai's trace.
 
+	* capscale: negative scaling works now in plot() and scores():
+	estimates species  sd() from the 'comm' if 'comm' is known.
+
 Version 1.10-4 (closed Oct 6, 2007 at Rev. 75)
 
 	* anova.cca: failed in anova(object, by = "axis") when the fitted
