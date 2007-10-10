@@ -109,7 +109,7 @@
     Fval  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
     p.Pillai <- pf(Fval, s*df1, s*df2, lower.tail=FALSE)
     if(nperm > 0) {
-       p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,F,nperm)
+       p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,Fval,nperm)
    } else {
        p.perm <- NA
    }
