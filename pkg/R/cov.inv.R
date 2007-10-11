@@ -1,5 +1,5 @@
 `cov.inv` <-
-function(mat, no)
+function(mat, no, epsilon)
 ##
 ## This function returns:
 ##
@@ -15,11 +15,9 @@ function(mat, no)
         S.inv <- as.matrix(1/var(mat))
         m <- 1
     } else {
-        epsilon <- sqrt(.Machine$double.eps)
         S.svd <- svd(cov(mat))
         m <- ncol(mat)
-        mm <- 0
-        for(i in 1:m) { if(S.svd$d[i] > epsilon) mm <- mm+1 }
+        mm <- length(which(S.svd$d > epsilon))
         if(mm < m) {
             message("Matrix",no,"  S: rank=",mm," < order",m)
             if((mm == 0) & (no == 4)) stop("X1 has rank = 0 after controlling for X2")
