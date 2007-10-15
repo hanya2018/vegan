@@ -25,12 +25,10 @@
     temp <- cov.inv(Y.c, 1, epsilon)
     Y <- temp$mat
     pp <- temp$m
-    S.Y.inv <- temp$S.inv
     rownames(Y) <- rownoms
     temp <- cov.inv(X1.c, 2, epsilon)
     X1 <- temp$mat
-    S.X1.inv <- temp$S.inv
-    if(partial) {            # Compute residuals of X1 over X2
+    if(partial) {            # Check and center X2
         X2 <- as.matrix(X2)
         var.null(X2,3)
         X2.c <- scale(X2, center = TRUE, scale = stand.X2)
@@ -39,24 +37,32 @@
         ## Replace X2.c by the table of its PCA object scores, computed by SVD
         temp2 <- cov.inv(X2.c,3, epsilon)
         X2 <- temp2$mat
+        rr <- temp2$m
     }
     if(!partial) {
         X <- X1
-        S.X.inv <- S.X1.inv
         qq <- temp$m
     } else {
-        ## Regress X1 on X2 and compute res(X1)/X2 before the canonical analysis to estimate [a]
+        ## Regress X1 on X2 and compute X = res(X1|X2) before canonical analysis
+### Jari: remove next 2 lines and replace them by the next 6 lines
+### Pierre: cannot see why this should be done. qr() handles 1-col matrices,
+### and lm will do nothing else but add some heavy cruft over qr().
         Q <- qr(X2, tol=1e-6)
         X <- qr.resid(Q, X1)
+### Pierre: Put back the old lines above and comment out six next:
+        ## if(rr == 1) {
+        ##    X <- as.matrix(residuals(lm(X1 ~ X2)))
+        ##    } else {
+        ##    Q <- qr(X2, tol=1e-6)
+        ##    X <- qr.resid(Q, X1)
+        ##    }
         ## Replace X by the table of its PCA object scores, computed by SVD
         temp <- cov.inv(X,4,epsilon)
         X <- temp$mat
-        S.X.inv <- temp$S.inv
         qq <- temp$m
     }
     rownames(X) <- rownoms
     ## Covariance matrices, etc. from the PCA scores
-    # epsilon <- sqrt(.Machine$double.eps)
     S11 <- cov(Y)
     if(sum(abs(S11)) < epsilon) return(0)
     S22 <- cov(X)
@@ -87,13 +93,18 @@
     AA <- sqrt(n-1) * ginv(YprY) %*% t(Y.c) %*% Cy
     ##
     ## Compute the 'Biplot scores of X variables' a posteriori --
-    XprX <- t(X1.c) %*% X1.c
-    BB <- sqrt(n-1) * ginv(XprX) %*% t(X1.c) %*% Cx
+    XprX <- t(X) %*% X
+    BB <- sqrt(n-1) * ginv(XprX) %*% t(X) %*% Cx
     ## Add row and column names
-    rownames(U) <- rownames(AA) <- Ynoms
-    rownames(V) <- rownames(BB) <- Xnoms
+    rownames(AA) <- Ynoms
+    if(!partial) {
+        rownames(BB) <- Xnoms
+    } else {
+        res.rownames <- paste("XresAxis",1:nrow(BB),sep="")
+        rownames(BB) <- res.rownames
+    }
     rownames(Cy) <- rownames(Cx) <- rownoms
-    colnames(U) <- colnames(A) <- colnames(AA) <- colnames(V) <- colnames(B) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
+    colnames(AA) <- colnames(BB) <- colnames(Cy) <- colnames(Cx) <- axenames
     ## Compute the two redundancy statistics
     RsquareY.X <- simpleRDA2(Y, X)
     RsquareX.Y <- simpleRDA2(X, Y)
@@ -105,18 +116,20 @@
     S22.inv <- S22.chol.inv %*% t(S22.chol.inv)
     gross.mat <- S12 %*% S22.inv %*% t(S12) %*% S11.inv
     PillaiTrace <- sum(diag(gross.mat))
-    n1 <- abs(pp - qq) - 1
-    n2 <- n - pp - qq - 2
-    s  <- min(pp, qq)
-    df1<- n1 + s + 1
-    df2<- n2 + s + 1
+    s   <- min(pp, qq)
+    df1 <- max(pp,qq)
+    df2 <- (n - max(pp,qq) - 1)
     Fval  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
-    p.Pillai <- pf(Fval, s*df1, s*df2, lower.tail=FALSE)
     if(nperm > 0) {
-       p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,Fval,nperm)
-   } else {
-       p.perm <- 999
-   }
+        p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,Fval,nperm)
+    } else {
+        p.perm <- NA
+    }
+    if(!partial) {
+        p.Pillai <- pf(Fval, s*df1, s*df2, lower.tail=FALSE)
+    } else {
+        p.Pillai <- NA
+    }
     out <- list(Pillai=PillaiTrace, EigenValues=EigenValues, CanCorr=K.svd$d,
                 Mat.ranks=c(RsquareX.Y$m, RsquareY.X$m), 
                 RDA.Rsquares=c(RsquareY.X$Rsquare, RsquareX.Y$Rsquare),
@@ -126,3 +139,4 @@
     class(out) <- "CCorA"
     out
 }
+

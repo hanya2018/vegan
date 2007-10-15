@@ -14,7 +14,12 @@
         cat("based on", x$nperm, "permutations: ")
         cat(x$p.perm,"\n")
     }
-    cat("from F-distribution: ", format.pval(x$p.Pillai), "\n\n")
+    if(is.na(x$p.Pillai)) {
+       cat("Parametric probability not computed with covariables", "\n")
+       cat("Use the results of the permutation test", "\n\n")
+       } else {
+       cat("from F-distribution: ", format.pval(x$p.Pillai), "\n\n")       
+       }
     out <- rbind("Eigenvalues" = x$EigenValues, "Canonical Correlations" = x$CanCorr)
     colnames(out) <- colnames(x$AA)
     printCoefmat(out, ...)

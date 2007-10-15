@@ -3,7 +3,8 @@
 {
     plottable <- x$Mat.ranks[which] > 1
     if (!all(plottable)) {
-        warning("plot ", which(!plottable), " not drawn because it only has one dimension")
+        warning("plot ", paste(which(!plottable), collapse=","),
+                " not drawn because it only has one dimension")
         which <- which[plottable]
     }
     if (prod(par("mfrow")) < length(which)) {

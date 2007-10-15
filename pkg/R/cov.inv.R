@@ -19,7 +19,11 @@ function(mat, no, epsilon)
         m <- ncol(mat)
         mm <- length(which(S.svd$d > epsilon))
         if(mm < m) {
-            message("Matrix",no,"  S: rank=",mm," < order",m)
+            if(no != 4) {
+                message("Information - Matrix",no,": rank=",mm," < order",m)
+            } else {
+                message("Information - Matrix X = res(X1|X2): rank=",mm," < order",m)            
+            }
             if((mm == 0) & (no == 4)) stop("X1 has rank = 0 after controlling for X2")
             m <- mm
         }
