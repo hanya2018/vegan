@@ -51,7 +51,11 @@
       x[ik]))}
     \cr
     \code{gower}
-    \tab \eqn{d_{jk} = \sum_i \frac{|x_{ij}-x_{ik}|}{\max x_i-\min x_i}}{d[jk] = sum (abs(x[ij]-x[ik])/(max(x[i])-min(x[i]))}
+    \tab \eqn{d_{jk} = (1/M) \sum_i \frac{|x_{ij}-x_{ik}|}{\max x_i-\min
+	x_i}}{d[jk] = (1/M) sum (abs(x[ij]-x[ik])/(max(x[i])-min(x[i]))}
+    \cr
+    \tab where \eqn{M} is the number of columns (excluding missing
+    values)
     \cr
     \code{canberra}
     \tab \eqn{d_{jk}=\frac{1}{NZ} \sum_i
