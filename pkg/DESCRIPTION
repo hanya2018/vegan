@@ -1,8 +1,9 @@
 Package: vegan
 Title: Community Ecology Package
-Version: 1.10-5
-Date: Oct 8, 2007 (working)
-Author: Jari Oksanen, Roeland Kindt, Pierre Legendre, Bob O'Hara, M. Henry H. Stevens 
+Version: 1.10-6
+Date: Oct 18, 2007 (working)
+Author: Jari Oksanen, Roeland Kindt, Pierre Legendre, Bob O'Hara, Gavin Simpson, 
+  M. Henry H. Stevens  
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Suggests: MASS, mgcv, lattice, cluster, scatterplot3d, rgl, ellipse
 Description: Ordination methods, diversity analysis and other

@@ -2,8 +2,19 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.10-5 (Oct 8, working...)
+Version 1.10-6 (Oct 18, working...)
 
+	* Gavin Simpson joined the vegan team.
+
+Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
+
+	* biplot.rda: new biplot function for PCA in rda() (Gavin
+	Simpson). 
+
+	* scores: cca method accepts now display = c("species", "sites"),
+	when it only used to accept c("sp","wa"). More consistent
+	arguments in the default method.  
+	
 	* CCorA: Pierre Legendre submitted code for permutation test of
 	Pillai's trace.
 
