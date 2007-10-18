@@ -11,10 +11,13 @@ biplot.rda <- function(x, choices = c(1, 2), scaling = 2,
   if(!is.null(x$CCA))
     stop("'biplot.rda' not suitable for models with constraints")
   TYPES <- c("text", "points", "none")
+  display <- match.arg(display, several.ok = TRUE)
   g <- scores(x, choices = choices, display = display,
               scaling = scaling)
-  if (!is.list(g)) 
-    g <- list(default = g)
+  if (!is.list(g)) {
+      g <- list(default = g)
+      names(g) <- display
+  }
   if (missing(type)) {
     nitlimit <- 80
     nit <- max(nrow(g$species), nrow(g$sites))
