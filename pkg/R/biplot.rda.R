@@ -37,7 +37,7 @@ biplot.rda <- function(x, choices = c(1, 2), scaling = 2,
       else
           arrlen <- 0.85
       if (type != "none")
-          arrows(0, 0, g$species[,1] * arrlen, g$species[, 2] * 0.85,
+          arrows(0, 0, g$species[,1] * arrlen, g$species[, 2] * arrlen,
                  col = "red", length = 0.05)
       if (type == "text")
           text(g$species, rownames(g$species),
