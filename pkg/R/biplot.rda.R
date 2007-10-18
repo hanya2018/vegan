@@ -10,6 +10,7 @@ biplot.rda <- function(x, choices = c(1, 2), scaling = 2,
     stop("'biplot.rda' is only for objects of class 'rda'")
   if(!is.null(x$CCA))
     stop("'biplot.rda' not suitable for models with constraints")
+  TYPES <- c("text", "points", "none")
   g <- scores(x, choices = choices, display = display,
               scaling = scaling)
   if (!is.list(g)) 
@@ -31,10 +32,16 @@ biplot.rda <- function(x, choices = c(1, 2), scaling = 2,
   abline(h = 0, lty = 3)
   abline(v = 0, lty = 3)
   if (!is.null(g$species)) {
-    arrows(0, 0, g$species[,1] * 0.85, g$species[, 2] * 0.85,
-           col = "red", length = 0.05)
-    text(g$species, rownames(g$species),
-         col = "red", cex = 0.7)
+      if (type == "points")
+          arrlen <- 1
+      else
+          arrlen <- 0.85
+      if (type != "none")
+          arrows(0, 0, g$species[,1] * arrlen, g$species[, 2] * 0.85,
+                 col = "red", length = 0.05)
+      if (type == "text")
+          text(g$species, rownames(g$species),
+               col = "red", cex = 0.7)
   }
   if (!is.null(g$sites)) {
     if (type == "text") 
