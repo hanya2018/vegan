@@ -6,6 +6,9 @@ Version 1.10-6 (Oct 18, working...)
 
 	* Gavin Simpson joined the vegan team.
 
+	* oecosimu: new functions for indices of nestedness of patches or
+	islands, and simulation of null communities.
+
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
 	* biplot.rda: new biplot function for PCA in rda() (Gavin
