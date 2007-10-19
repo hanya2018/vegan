@@ -4,7 +4,8 @@ function(comm, nestfun, method, nsimul=99,
 {
     nestfun <- match.fun(nestfun)
     method <- match.arg(method, c("r00", "r0", "r1", "r2", "c0",
-                                  "swap", "tswap", "backtrack"))
+                                  "swap", "tswap", "backtrack",
+                                  "quasiswap"))
     ind <- nestfun(comm, ...)
     simind <- numeric(nsimul)
     comm <- ifelse(comm > 0, 1, 0)
@@ -35,8 +36,10 @@ function(comm, nestfun, method, nsimul=99,
         }
     }
     z <- (ind$statistic - mean(simind))/sd(simind)
-    ind$oecosimu <- list(z = z, simulated=simind, method=method)
+    if (is.null(names(ind$statistic)))
+        names(ind$statistic) <- "Statistic"
+    ind$oecosimu <- list(z = z, simulated=simind, method=method,
+                         statistic = ind$statistic)
     class(ind) <- c("oecosimu", class(ind))
     ind
 }
-

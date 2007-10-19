@@ -3,7 +3,7 @@ function (x, method, thin = 1)
 {
     method <- match.arg(method, 
                         c("r0","r1","r2","r00","c0","swap", "tswap",
-                          "quasiswap", "backtrack"))
+                          "backtrack", "quasiswap"))
     if (any(x > 1))
         x <- ifelse(x > 0, 1, 0)
     nr <- nrow(x)
@@ -55,18 +55,10 @@ function (x, method, thin = 1)
         out <- r2dtable(1, rowSums(x), colSums(x))[[1]]
         swp <- matrix(c(-1,1,1,-1), nrow=2)
         bad <- sum(out*out) - sum(out)
-        cat(bad, " ")
         iter <- 0
         while (bad > 0) {
-            if (iter > 1000) {
-                iter <- 1
-                cat(bad, " ")
-                flush.console()
-            } else {
-                iter <- iter+1
-            }
-            i <- sample(nr, 2)
-            j <- sample(nc, 2)
+            i <- .Internal(sample(nr, 2, FALSE, NULL))
+            j <- .Internal(sample(nc, 2, FALSE, NULL))
             z <- out[i,j]
             if(z[1,1] > 0 && z[2,2] > 0 && sum(-swp*z) >= 2 ) {
                 out[i,j] <- z + swp

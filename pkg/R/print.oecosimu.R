@@ -8,8 +8,8 @@ function(x, ...)
     }
     cat("\n\n")
     cat("summary of simulations:\n")
-    print(summary(x$oecosimu$simulated))
+    sum <- sort(c(x$oecosimu$statistic, summary(x$oecosimu$simulated)))
+    print(sum, ...)
     cat("\nz-value of the statistic:", format(x$oecosimu$z), "\n\n")
     NextMethod("print", x)
 }
-
