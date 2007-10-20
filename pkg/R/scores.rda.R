@@ -14,14 +14,6 @@
       display[display == "sites"] <- "wa"
     if("species" %in% display)
       display[display == "species"] <- "sp"
-    #if (length(display) == 1) {
-    #    display <- match.arg(display, c("sites", "species", "wa", 
-    #                                    "lc", "bp", "cn"))
-    #    if (display == "sites") 
-    #        display <- "wa"
-    #    else if (display == "species") 
-    #        display <- "sp"
-    #}
     take <- tabula[display]
     sumev <- x$tot.chi
     slam <- sqrt(c(x$CCA$eig, x$CA$eig)[choices]/sumev)

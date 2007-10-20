@@ -8,6 +8,9 @@ Version 1.10-6 (Oct 18, working...)
 
 	* oecosimu: new functions for indices of nestedness of patches or
 	islands, and simulation of null communities.
+	
+	* scores: cca method does now accept display = c("species", "sites").
+	Previous fix (1.10-5) was for rda method only.
 
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
