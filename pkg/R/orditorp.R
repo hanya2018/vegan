@@ -1,13 +1,14 @@
 `orditorp` <-
-    function (x, display, labels, choices = c(1, 2), priority, cex = 0.7, 
-              pcex, col = par("col"), pcol, pch = par("pch"), air = 1, 
-              ...) 
+    function (x, display, labels, choices = c(1, 2), priority,
+              scaling = 2, cex = 0.7, pcex, col = par("col"),
+              pcol, pch = par("pch"), air = 1, ...) 
 {
     if (missing(pcex)) 
         pcex <- cex
     if (missing(pcol)) 
         pcol <- col
-    x <- scores(x, display = display, choices = choices, ...)
+    x <- scores(x, display = display, choices = choices,
+                scaling = scaling) ##, ...)
     if (missing(labels)) 
         labels <- rownames(x)
     if (missing(priority)) 

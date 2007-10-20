@@ -17,6 +17,9 @@ Version 1.10-6 (Oct 18, working...)
 	the species and site scores. Function now documented more completely.
 	
 	* ordixyplot, ordicloud and ordisplom: now have argument 'scaling'.
+	
+	* orditorp: now has argument 'scaling' and does not pass extra
+	arguments to scores. This should avoid printing warning messages.
 
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
