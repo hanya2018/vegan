@@ -22,12 +22,15 @@
     Unscaled raw scores stored in the result can be accessed with
     \code{scaling = 0}.}
   \item{display}{Scores shown.  These must some of the alternatives
-    \code{species} or \code{sp} for species scores, and/or \code{sites}
-    or \code{wa} for site scores.}
+    \code{"species"} for species scores, and/or \code{"sites"} for site
+    scores.}
   \item{type}{Type of plot: partial match to \code{text}
     for text labels, \code{points} for points, and \code{none} for
-    setting frames only.  If omitted, \code{text} is selected for
-    smaller data sets, and \code{points} for larger.}
+    setting frames only. If omitted, \code{text} is selected for
+    smaller data sets, and \code{points} for larger. Can be of length 2
+    (e.g. \code{type = c("text", "points")}), in which case the first
+    element describes how species scores are handled, and the second how
+    site score are drawn.}
   \item{xlim, ylim}{the x and y limits (min,max) of the plot.}
   \item{\dots}{Other parameters for plotting functions.}
 }
@@ -41,6 +44,12 @@
 
   \code{\link{biplot.rda}} is only suitable for unconstrained models. If
   used on an ordination object with constraints, an error is issued.
+
+  If species scores are drawn using \code{"text"}, the arrows are drawn
+  from the origin to 0.85 * species score, whilst the labels are
+  drawn at the species score. If the type used is \code{"points"}, then
+  no labels are drawn and therefore the arrows are drawn from the origin
+  to the actual species score.
 }
 \value{
   The \code{plot} function returns invisibly a plotting structure which
@@ -56,5 +65,8 @@
 data(dune)
 mod <- rda(dune, scale = TRUE)
 biplot(mod, scaling = 3)
+
+## different type for species and site scores
+biplot(mod, scaling = 3, type = c("text", "points"))
 }
 \keyword{hplot}
