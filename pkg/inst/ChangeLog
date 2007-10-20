@@ -10,7 +10,11 @@ Version 1.10-6 (Oct 18, working...)
 	islands, and simulation of null communities.
 	
 	* scores: cca method does now accept display = c("species", "sites").
-	Previous fix (1.10-5) was for rda method only.
+	Previous fix (1.10-5) was for rda method only. Documentation updated
+	to reflect changes.
+	
+	* biplot.rda: now allows a different type to be specified for each of
+	the species and site scores. Function now documented more completely.
 
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
