@@ -15,11 +15,11 @@
 }
 \usage{
 ordixyplot(x, data = NULL, formula, display = "sites", choices = 1:3,
-    panel = "panel.ordi", aspect = "iso", ...)
+    scaling = 2, panel = "panel.ordi", aspect = "iso", ...)
 ordisplom(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
-    panel = "panel.ordi", ...)
+    scaling = 2, panel = "panel.ordi", ...)
 ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3, 
-    panel = "panel.ordi3d", prepanel = "prepanel.ordi3d",  ...)
+    scaling = 2, panel = "panel.ordi3d", prepanel = "prepanel.ordi3d",  ...)
 }
 \arguments{
   \item{x}{ An ordination result that \code{\link{scores}} knows: any
@@ -33,10 +33,26 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
     ordination results (and these names vary among methods). In
     \code{ordisplom}, special character \code{.} refers to the
     ordination result. }
-  \item{display}{ The kind of scores: an argument passed to \code{\link{scores}}. }
-  \item{choices}{ The axes selected: an argument passed to \code{\link{scores}}. }
-  \item{panel, prepanel}{ The names of the panel and prepanel functions. }
-  \item{aspect}{The aspect of the plot (passed to the \pkg{lattice} function).}
+  \item{display}{ The kind of scores: an argument passed to
+    \code{\link{scores}}. }
+  \item{choices}{ The axes selected: an argument passed to
+    \code{\link{scores}}. }
+   \item{scaling}{Scaling for species and site scores. Either species
+    (\code{2}) or site (\code{1}) scores are scaled by eigenvalues, and
+    the other set of scores is left unscaled, or with \code{3} both are
+    scaled symmetrically by square root of eigenvalues.  Corresponding
+    negative values can be used in \code{cca} to additionally multiply
+    results with \eqn{\sqrt(1/(1-\lambda))}.  This scaling is know as
+    Hill scaling (although it has nothing to do with Hill's rescaling of
+    \code{\link{decorana}}). With corresponding negative values
+    in\code{rda}, species scores are divided by standard deviation of
+    each species and multiplied with an equalizing constant. Unscaled
+    raw scores stored in the result can be accessed with \code{scaling =
+      0}. } 
+  \item{panel, prepanel}{ The names of the panel and prepanel
+    functions. } 
+  \item{aspect}{The aspect of the plot (passed to the \pkg{lattice}
+    function).} 
   \item{\dots}{ Arguments passed to \pkg{lattice} functions. }
 }
 \details{

@@ -1,9 +1,10 @@
 `ordisplom` <-
     function(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
-             panel = "panel.ordi", ...)
+             scaling = 2, panel = "panel.ordi", ...)
 {
     require(lattice) || stop("requires package 'lattice'")
-    x <- as.data.frame(scores(x, display = display, choices = choices))
+    x <- as.data.frame(scores(x, display = display, choices = choices,
+                              scaling = scaling))
     if (is.null(data))
         data <- x
     else if (is.null(formula))

@@ -15,6 +15,8 @@ Version 1.10-6 (Oct 18, working...)
 	
 	* biplot.rda: now allows a different type to be specified for each of
 	the species and site scores. Function now documented more completely.
+	
+	* ordixyplot, ordicloud and ordisplom: now have argument 'scaling'.
 
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
