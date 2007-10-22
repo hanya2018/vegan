@@ -210,17 +210,16 @@ the input matrix.
 }
 \seealso{ \code{\link{bgdispersal}} studies dispersl in patches. }
 \examples{
-data(dune)
-nestedchecker(dune)
-mod <- oecosimu(dune, nestedtemp, "r00")
+data(sipoo)
+nestedchecker(sipoo)
+mod <- oecosimu(sipoo, nestedtemp, "r00")
 mod
 plot(mod)
 ## Use the first eigenvalue of correspondence analysis as an index
-## of structure: a model for making your own functions. (print function
-## needs improvement.)
-caeval <- function(x) {z <- decorana(x, ira=1);
- z$statistic <- z$evals[1]; z}
-out <- oecosimu(dune, caeval, "swap", burnin=100, thin=5)
+## of structure: a model for making your own functions.
+## This is a minimal structure; fancier function give fancier results
+caeval <- function(x) list(statistic = decorana(x, ira=1)$evals[1])
+out <- oecosimu(sipoo, caeval, "swap", burnin=100, thin=5)
 out
 ## Inspect the swap sequence
 plot(out$oecosimu$simulated, type="l")

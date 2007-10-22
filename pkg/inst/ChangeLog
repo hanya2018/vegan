@@ -21,6 +21,9 @@ Version 1.10-6 (Oct 18, working...)
 	* orditorp: now has argument 'scaling' and does not pass extra
 	arguments to scores. This should avoid printing warning messages.
 
+	* sipoo: a new data set on the bird communities in the Sipoo
+	(Sibbo) archipelago to demonstrate the oecosimu functions.
+
 Version 1.10-5 (closed Oct 18, 2007 at Rev. 86)
 
 	* biplot.rda: new biplot function for PCA in rda() (Gavin
