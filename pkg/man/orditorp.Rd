@@ -11,7 +11,7 @@
 }
 \usage{
 orditorp(x, display, labels, choices = c(1, 2), priority,
-    scaling = 2, cex = 0.7, pcex, col = par("col"), pcol,
+    cex = 0.7, pcex, col = par("col"), pcol,
     pch = par("pch"), air = 1, ...)
 }
 
@@ -27,25 +27,13 @@ orditorp(x, display, labels, choices = c(1, 2), priority,
   \item{priority}{ Text will be used for items with higher priority
     if labels overlap.  This should be vector of the same
     length as the number of items plotted.}
-  \item{scaling}{Scaling for species and site scores. Either species
-    (\code{2}) or site (\code{1}) scores are scaled by eigenvalues, and
-    the other set of scores is left unscaled, or with \code{3} both are
-    scaled symmetrically by square root of eigenvalues.  Corresponding
-    negative values can be used in \code{cca} to additionally multiply
-    results with \eqn{\sqrt(1/(1-\lambda))}.  This scaling is know as
-    Hill scaling (although it has nothing to do with Hill's rescaling of
-    \code{\link{decorana}}). With corresponding negative values
-    in\code{rda}, species scores are divided by standard deviation of
-    each species and multiplied with an equalizing constant. Unscaled
-    raw scores stored in the result can be accessed with \code{scaling =
-      0}. } 
   \item{cex, pcex}{Text and point sizes, see \code{\link{plot.default}}..}
   \item{col, pcol}{Text and point colours, see \code{\link{plot.default}}.}
   \item{pch}{Plotting character, see \code{\link{points}}.}
   \item{air}{Amount of empty space between text labels. Values <1 allow
     overlapping text.}
-  \item{\dots}{ Other arguments to \code{\link{text}} and
-    \code{\link{points}}.  }
+  \item{\dots}{ Other arguments to \code{\link{scores}} (and its various
+    methods), \code{\link{text}} and \code{\link{points}}.}
 }
 \details{
   Function \code{orditorp} will add either text or points to an existing
@@ -57,7 +45,11 @@ orditorp(x, display, labels, choices = c(1, 2), priority,
   with most ordination results, or plotting results from
   \code{\link{ordiplot}} or ordination plot functions
   (\code{\link{plot.cca}}, \code{\link{plot.decorana}},
-  \code{\link{plot.metaMDS}}). 
+  \code{\link{plot.metaMDS}}).
+
+  Arguments can be passed to the relevant \code{\link{scores}} method
+  for the ordination object (\code{x}) being drawn. See the relevant
+  \code{\link{scores}} help page for arguments that can be used.
 }
 \value{
   The function returns invisibly a logical vector where \code{TRUE}

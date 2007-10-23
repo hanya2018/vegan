@@ -18,8 +18,9 @@ Version 1.10-6 (Oct 18, working...)
 	
 	* ordixyplot, ordicloud and ordisplom: now have argument 'scaling'.
 	
-	* orditorp: now has argument 'scaling' and does not pass extra
-	arguments to scores. This should avoid printing warning messages.
+	* orditorp: now handles additional arguments passed as '...' more 
+	cleanly. Arguments can be passed to scores() or points/text. This
+	should avoid the warning messages of previous versions.
 
 	* sipoo: a new data set on the bird communities in the Sipoo
 	(Sibbo) archipelago to demonstrate the oecosimu functions.
