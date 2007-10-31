@@ -1,5 +1,5 @@
-"oecosimu" <-
-function(comm, nestfun, method, nsimul=99,
+`oecosimu` <-
+    function(comm, nestfun, method, nsimul=99,
              burnin=0, thin=1, ...)
 {
     nestfun <- match.fun(nestfun)
@@ -36,9 +36,11 @@ function(comm, nestfun, method, nsimul=99,
         }
     }
     z <- (ind$statistic - mean(simind))/sd(simind)
+    p <- 2*min(sum(ind$statistic > simind), sum(ind$statistic < simind))
+    p <- (p + 1)/(nsimul + 1)
     if (is.null(names(ind$statistic)))
         names(ind$statistic) <- "Statistic"
-    ind$oecosimu <- list(z = z, simulated=simind, method=method,
+    ind$oecosimu <- list(z = z, pval = p, simulated=simind, method=method,
                          statistic = ind$statistic)
     class(ind) <- c("oecosimu", class(ind))
     ind

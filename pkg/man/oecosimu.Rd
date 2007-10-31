@@ -146,7 +146,8 @@ commsimulator(x, method, thin=1)
   Function \code{oecosimu} returns the result of \code{nestfun} with
 one added component called \code{oecosimu}. The \code{oecosimu}
 component contains the simulated values of the statistic (item
-\code{simulated}), the name of the \code{method}, and z-value of the
+\code{simulated}), the name of the \code{method}, two-sided \eqn{P} value
+and  z-value of the
 statistic. The result returned by nestedness function must contain item
 called \code{statistic}, but the other components differ among
 functions. The \code{commsimulator} returns a null model matrix or a swap of

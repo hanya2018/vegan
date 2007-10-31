@@ -1,5 +1,5 @@
-"print.oecosimu" <-
-function(x, ...)
+`print.oecosimu` <-
+    function(x, ...)
 {
     cat("oecosimu with", length(x$oecosimu$simulated), "simulations\n")
     cat("simulation method", x$oecosimu$method)
@@ -10,7 +10,9 @@ function(x, ...)
     cat("summary of simulations:\n")
     sum <- sort(c(x$oecosimu$statistic, summary(x$oecosimu$simulated)))
     print(sum, ...)
-    cat("\nz-value of the statistic:", format(x$oecosimu$z), "\n\n")
+    cat("\n")
+    cat("P value (2-sided): ", format.pval(x$oecosimu$pval, ...), "\n")
+    cat("z (stat/sd(stat)): ", format(x$oecosimu$z), "\n\n")
     cl <- class(x)
     if (length(cl) > 1 && cl[2] != "list")
         NextMethod("print", x)
