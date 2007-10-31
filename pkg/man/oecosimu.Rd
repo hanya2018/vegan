@@ -19,7 +19,7 @@
   same community. In general, species poor communities should be subsets
   of species rich communities, and rare species only should occur on
   species rich communities. Null models generate random communities with
-  different criteria to study the signficance of nestedness.
+  different criteria to study the significance of nestedness.
 }
 \usage{
 oecosimu(comm, nestfun, method, nsimul = 99, burnin = 0, thin = 1, ...)
@@ -64,14 +64,15 @@ commsimulator(x, method, thin=1)
   sites (Stone & Roberts 1990).
   Function \code{nestedn0} implements nestedness measure N0 which is the
   number of absences from the sites which are
-  richer than the most pauperate site species occurs summed over all
-  species (Patterson & Atmar 1986). Function \code{nesteddisc}
+  richer than the most pauperate site species occurs (Patterson & Atmar
+  1986). 
+  Function \code{nesteddisc}
   implements discrepancy index which is the number of ones that should
-  be shifted to fill a row with ones from the left in a table arranged
+  be shifted to fill a row with ones in a table arranged
   by species frequencies (Brualdi & Sanderson
   1999). Function \code{nestedtemp} finds the matrix temperature which
   is defined as the sum of \dQuote{surprises} in arranged matrix.
-  In unsurprising
+  In arranged unsurprising 
   matrix all species within proportion given by matrix fill are in the
   upper left corner of the matrix, and the surprise of the absence or
   presences is the diagonal distance from the fill line (Atmar &
@@ -82,40 +83,43 @@ commsimulator(x, method, thin=1)
   In addition to functions provided in \pkg{vegan}, any function can be used
   that takes \code{comm} as the first argument, and returns the
   nestedness index in item \code{statistic}. Function \code{\link{chisq.test}}
-  is one such function, and examples show how to do this in general. The
-  function can be user-made. However, if you make a function that may be
+  is one such function, and examples show how to do this in general.
+  If you write a function that may be
   useful in general, please consider submitting it to \pkg{vegan} for
   others to enjoy (you will be credited as an author of that function).
 
   Function \code{commsimulator} implements null models for community
   composition. The implemented models are \code{r00} which maintains the
   number of presences but fills these anywhere so that neither species
-  (column) nor site (row) totals are preseved. Methods \code{r0},
-  \code{r1} and \code{r2} maintain the row frequencies. Method \code{r0}
-  fills presences anywhere on the row with no respect to species
+  (column) nor site (row) totals are preserved. Methods \code{r0},
+  \code{r1} and \code{r2} maintain the site (row) frequencies. Method \code{r0}
+  fills presences anywhere on the row with no respect to species (column)
   frequencies, \code{r1} uses column marginal 
   frequencies as probabilities, and \code{r2} uses squared column
-  sums. . Methods \code{r1} and \code{r2} try to simulate original species
+  sums. Methods \code{r1} and \code{r2} try to simulate original species
   frequencies, but they are not strictly constrained. All these methods
   are surveyed by Wright et al. (1998). Method \code{c0} maintains
   species frequencies, but does not honour site (row) frequencies (Jonsson
   2001).
 
-  The other methods maintain both row and column
-  sums. Methods \code{swap} and \code{tswap} inspect random 2x2 submatrices
-  and if they are checkerboard units, the order of rows is
+  The other methods maintain both row and column frequencies.
+  Methods \code{swap} and \code{tswap} inspect random 2x2 submatrices
+  and if they are checkerboard units, the order of columns is
   swapped. This changes the matrix structure, but does not influence
   marginal sums (Gotelli & Entsminger
   2003). Method \code{swap} inspects submatrices so long that a swap
   can be done. Miklós & Podani (2004) suggest that this may lead into
   biased sequence, since some columns or rows may be more easily
-  swapped, and they suggest trying only a fixed number of times and
+  swapped, and they suggest trying a fixed number of times and
   doing zero to many swaps at one step. This method is implemented by
   method \code{tswap} or trial swap. Function \code{commsimulator} makes
-  only one trial swap in time, but \code{oecosimu} estimates how many
-  submatrices must be studied before finding a swappable checkerboard,
+  only one trial swap in time (which probably does nothing),
+  but \code{oecosimu} estimates how many
+  submatrices are expected before finding a swappable checkerboard,
   and uses that ratio to thin the results, so that on average one swap
-  will be found per step of \code{tswap}. Both swap methods are sequential,
+  will be found per step of \code{tswap}.  However, the checkerboard
+  frequency probably changes during swaps, but this is not taken into
+  account in estimating the \code{thin}.  Both swap methods are sequential,
   and the result of the swap is used as the input of the next swap. One
   swap still changes a matrix only little, and it may be useful to
   thin the results so that the statistic is only evaluated after
@@ -133,13 +137,13 @@ commsimulator(x, method, thin=1)
   honouring row and column totals, but with integers that may be larger than
   one. Then the method inspects random 2x2 matrices and performs a
   quasiswap on them. Quasiswap is similar to ordinary swap, but it also
-  can reduce numbers above one to ones honouring marginal
+  can reduce numbers above one to ones maintaining marginal
   totals. The \code{quasiswap} method is not sequential, but it produces
   a random incidence matrix with given marginal totals. 
 }
 
 \value{
-  Function \code{oecosimu} returns the result of \code{nestedfun} with
+  Function \code{oecosimu} returns the result of \code{nestfun} with
 one added component called \code{oecosimu}. The \code{oecosimu}
 component contains the simulated values of the statistic (item
 \code{simulated}), the name of the \code{method}, and z-value of the
@@ -184,7 +188,7 @@ the input matrix.
 \author{ Jari Oksanen }
 \note{
   Functions \code{commsimulator} and \code{oecosimu} do not have default
-  \code{nestedfun} nor default \code{method}, because there is no clear
+  \code{nestfun} nor default \code{method}, because there is no clear
   natural choice. If you use these methods, you must be able to choose
   your own strategy. The choice of nestedness index is difficult because
   the functions seem to imply very different concepts of structure and
@@ -192,7 +196,8 @@ the input matrix.
   \code{r00} has some heuristic value of being really random. However,
   it produces null models which are different from observed communities
   in most respects, and a \dQuote{significant} result may simply mean
-  that not all species are equally common (just like \code{r0}). It is
+  that not all species are equally common (\code{r0} is similar with
+  this respect). It is
   also difficult to find justification for \code{r2}. The methods
   maintaining both row and column totals only study the community
   relations, but they can be very slow. You should evaluate timings in
@@ -208,7 +213,9 @@ the input matrix.
 
   If you wonder about the name of \code{oecosimu}, look at the References.
 }
-\seealso{ \code{\link{bgdispersal}} studies dispersl in patches. }
+\seealso{ \code{\link{r2dtable}} generates table with given marginals but
+  with entries above one.  Function \code{\link[labdsv]{rndtaxa}}
+  (\pkg{labdsv} package) randomizes a community table.}
 \examples{
 data(sipoo)
 nestedchecker(sipoo)
