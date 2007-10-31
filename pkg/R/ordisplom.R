@@ -1,6 +1,6 @@
 `ordisplom` <-
     function(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
-             scaling = 2, panel = "panel.ordi", ...)
+             scaling = 2, panel = "panel.ordi", type = "p", ...)
 {
     require(lattice) || stop("requires package 'lattice'")
     x <- as.data.frame(scores(x, display = display, choices = choices,
@@ -10,10 +10,10 @@
     else if (is.null(formula))
         x <- cbind(x, data)
     if (is.null(formula))
-        pl <- splom(x, panel = panel, ...)
+        pl <- splom(x, panel = panel, type = type, ...)
     else {
         formula <- as.formula(gsub("\\.", "x", deparse(formula)))
-        pl <- splom(x = formula, data = data, panel = panel, ...)
+        pl <- splom(x = formula, data = data,  panel = panel, type = type,  ...)
     }
     pl
 }

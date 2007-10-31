@@ -5,6 +5,7 @@
 \alias{panel.ordi}
 \alias{panel.ordi3d}
 \alias{prepanel.ordi3d}
+\alias{ordilattice.getEnvfit}
 
 \title{ Trellis (Lattice) Plots for Ordination }
 \description{
@@ -15,9 +16,10 @@
 }
 \usage{
 ordixyplot(x, data = NULL, formula, display = "sites", choices = 1:3,
-    scaling = 2, panel = "panel.ordi", aspect = "iso", ...)
+    scaling = 2, panel = "panel.ordi", aspect = "iso", envfit,
+    type = c("p", "biplot"), ...)
 ordisplom(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
-    scaling = 2, panel = "panel.ordi", ...)
+    scaling = 2, panel = "panel.ordi", type = "p",  ...)
 ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3, 
     scaling = 2, panel = "panel.ordi3d", prepanel = "prepanel.ordi3d",  ...)
 }
@@ -52,7 +54,15 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   \item{panel, prepanel}{ The names of the panel and prepanel
     functions. } 
   \item{aspect}{The aspect of the plot (passed to the \pkg{lattice}
-    function).} 
+    function).}
+  \item{envfit}{Result of \code{\link{envfit}} function displayed in
+    \code{ordixyplot}. Please note that this needs same \code{choices}
+    as \code{ordixyplot}.}
+  \item{type}{The type of plot. This knows the same alternatives as
+    \code{\link[lattice]{panel.xyplot}}. In addition \code{ordixyplot}
+    has alternative \code{"biplot"} which displays fitted vectors and
+    factor centroids of \code{envfit}, or in constrained ordination, the
+    biplot arrows and factor centroids if \code{envfit} is not given.}
   \item{\dots}{ Arguments passed to \pkg{lattice} functions. }
 }
 \details{
@@ -126,7 +136,9 @@ ordisplom(ord, data=dune.env, form = ~ . | Management, groups=Manure)
 ## Scatter plot
 ordixyplot(ord, data=dune.env, form = CA1 ~ CA2 | Management, groups=Manure)
 ## ... Slices of third axis
-ordixyplot(ord, form = CA1 ~ CA2 | equal.count(CA3, 4), type = c("g", "p"))
+ordixyplot(ord, form = CA1 ~ CA2 | equal.count(CA3, 4), type = c("g","p"))
+## Display environemntal variables
+ordixyplot(ord, envfit = envfit(ord ~ Management + A1, dune.env, choices=1:3))
 ## 3D Scatter plots
 ordicloud(ord, form = CA2 ~ CA3*CA1, groups = Manure, data = dune.env)
 ordicloud(ord, form = CA2 ~ CA3*CA1 | Management, groups = Manure,

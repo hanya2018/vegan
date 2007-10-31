@@ -1,15 +1,27 @@
 `ordixyplot` <-
     function(x, data = NULL, formula, display = "sites", choices=1:3,
-             scaling = 2, panel = "panel.ordi", aspect = "iso",  ...)
+             scaling = 2, panel = "panel.ordi", aspect = "iso", envfit,
+             type = c("p", "biplot"),  ...)
 {
     require(lattice) || stop("requires package 'lattice'")
-    x <- as.data.frame(scores(x, display = display, choices = choices,
+    p <- as.data.frame(scores(x, display = display, choices = choices,
                               scaling = scaling))
     if (!is.null(data))
-        x <- cbind(x, data)
+        p <- cbind(p, data)
     if (missing(formula)) {
-        v <- colnames(x)
+        v <- colnames(p)
         formula <- as.formula(paste(v[2], "~", v[1]))
     }
-    xyplot(formula, data = x, panel = panel,  aspect = aspect, ...)
+    if ("biplot" %in% type && (!is.null(x$CCA) || !missing(envfit))) {
+        env <- ordilattice.getEnvfit(formula, x, envfit, choices, ...)
+        if (!is.null(env$arrows)) {
+            mul <- apply(p[,colnames(env$arrows)], 2, range)/apply(env$arrows, 2, range)
+            mul <- min(mul[is.finite(mul) & mul > 0])
+            env$arrows <- mul * env$arrows
+        }
+    } else {
+        env <- NULL
+    }
+    xyplot(formula, data = p, panel = panel,  aspect = aspect, biplot = env, type = type,
+           ...)
 }
