@@ -3,6 +3,10 @@
 {
     require(vegan) || stop("needs vegan") # stepacross
     EPS <- 1e-5
+    op <- options(warn = 2)
+    if (!inherits(dist, "dist"))
+        dist <- as.dist(dist)
+    options(op)
     method <- attr(dist, "method")
     if (missing(epsilon) && missing(k))
         stop("Either epsilon or k must be given")
@@ -48,4 +52,3 @@
     attr(dist, "call") <- match.call()
     dist
 }
-
