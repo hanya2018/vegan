@@ -1,16 +1,16 @@
 `ordicloud` <-
     function(x, data = NULL, formula, display = "sites", choices=1:3,
-             scaling = 2, panel = "panel.ordi3d",
+             panel = "panel.ordi3d",
              prepanel = "prepanel.ordi3d", ...)
 {
-    require(lattice) || stop("requires package 'lattice'")
-    x <- as.data.frame(scores(x, display = display, choices = choices,
-                              scaling = scaling))
-    if (!is.null(data))
-        x <- cbind(x, data)
-    if (missing(formula)) {
-        v <- colnames(x)
-        formula <- as.formula(paste(v[2], "~", v[1], "*", v[3]))
-    }
-    cloud(formula, data = x, panel = panel,  prepanel = prepanel, ...)
+  localCloud <- function(..., shrink, origin, scaling) cloud(...)
+  require(lattice) || stop("requires package 'lattice'")
+  x <- as.data.frame(scores(x, display = display, choices = choices, ...))
+  if (!is.null(data))
+    x <- cbind(x, data)
+  if (missing(formula)) {
+    v <- colnames(x)
+    formula <- as.formula(paste(v[2], "~", v[1], "*", v[3]))
+  }
+  localCloud(formula, data = x, panel = panel,  prepanel = prepanel, ...)
 }

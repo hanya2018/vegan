@@ -16,12 +16,12 @@
 }
 \usage{
 ordixyplot(x, data = NULL, formula, display = "sites", choices = 1:3,
-    scaling = 2, panel = "panel.ordi", aspect = "iso", envfit,
+    panel = "panel.ordi", aspect = "iso", envfit,
     type = c("p", "biplot"), ...)
 ordisplom(x, data=NULL, formula = NULL,  display = "sites", choices = 1:3,
-    scaling = 2, panel = "panel.ordi", type = "p",  ...)
+    panel = "panel.ordi", type = "p",  ...)
 ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3, 
-    scaling = 2, panel = "panel.ordi3d", prepanel = "prepanel.ordi3d",  ...)
+    panel = "panel.ordi3d", prepanel = "prepanel.ordi3d",  ...)
 }
 \arguments{
   \item{x}{ An ordination result that \code{\link{scores}} knows: any
@@ -38,19 +38,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   \item{display}{ The kind of scores: an argument passed to
     \code{\link{scores}}. }
   \item{choices}{ The axes selected: an argument passed to
-    \code{\link{scores}}. }
-   \item{scaling}{Scaling for species and site scores. Either species
-    (\code{2}) or site (\code{1}) scores are scaled by eigenvalues, and
-    the other set of scores is left unscaled, or with \code{3} both are
-    scaled symmetrically by square root of eigenvalues.  Corresponding
-    negative values can be used in \code{cca} to additionally multiply
-    results with \eqn{\sqrt(1/(1-\lambda))}.  This scaling is know as
-    Hill scaling (although it has nothing to do with Hill's rescaling of
-    \code{\link{decorana}}). With corresponding negative values
-    in\code{rda}, species scores are divided by standard deviation of
-    each species and multiplied with an equalizing constant. Unscaled
-    raw scores stored in the result can be accessed with \code{scaling =
-      0}. } 
+    \code{\link{scores}}. } 
   \item{panel, prepanel}{ The names of the panel and prepanel
     functions. } 
   \item{aspect}{The aspect of the plot (passed to the \pkg{lattice}
@@ -63,7 +51,8 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
     has alternative \code{"biplot"} which displays fitted vectors and
     factor centroids of \code{envfit}, or in constrained ordination, the
     biplot arrows and factor centroids if \code{envfit} is not given.}
-  \item{\dots}{ Arguments passed to \pkg{lattice} functions. }
+  \item{\dots}{ Arguments passed to \code{\link{scores}} methods or
+    \pkg{lattice} functions.}
 }
 \details{
   The functions provide an interface to the corresponding \pkg{lattice}
@@ -105,7 +94,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   isometric scaling is defined in \code{panel} and \code{prepanel}
   functions. You must replace these functions if you want to have
   non-isometric scaling of graphs. You cannot select isometric scaling
-  in \code{ordisplom}. 
+  in \code{ordisplom}.
 }
 
 \value{
@@ -134,7 +123,10 @@ ordisplom(ord)
 ordisplom(ord, data=dune.env, choices=1:2)
 ordisplom(ord, data=dune.env, form = ~ . | Management, groups=Manure)
 ## Scatter plot
-ordixyplot(ord, data=dune.env, form = CA1 ~ CA2 | Management, groups=Manure)
+ordixyplot(ord, data=dune.env, form = CA1 ~ CA2 | Management,
+  groups=Manure)
+## Choose a different scaling
+ordixyplot(ord, scaling = 3)
 ## ... Slices of third axis
 ordixyplot(ord, form = CA1 ~ CA2 | equal.count(CA3, 4), type = c("g","p"))
 ## Display environemntal variables
