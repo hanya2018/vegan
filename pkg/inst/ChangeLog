@@ -7,6 +7,10 @@ Version 1.10-7 (Oct 31, working...)
 	* ordixyplot: can now display biplot arrows and factor centroids
 	in constrained ordination or from envfit (ordisplom and ordicloud
 	cannot display these).
+	
+	* ordixyplot, ordicloud and ordisplom: no longer have explicit scaling
+	argument, but can now pass arguments to scores() as well as to the
+	plotting functions.
 
 	* oecosimu: evaluates now two-sided P-value of the statistic from
 	simulations. Doc updates.
