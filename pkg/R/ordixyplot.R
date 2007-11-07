@@ -7,7 +7,7 @@
   localOrdilattice.getEnvfit <-
     function(..., shrink, origin, scaling) ordilattice.getEnvfit(...)
   require(lattice) || stop("requires package 'lattice'")
-  p <- as.data.frame(scores(x, display = display, choices = choices))
+  p <- as.data.frame(scores(x, display = display, choices = choices, ...))
   if (!is.null(data))
     p <- cbind(p, data)
     if (missing(formula)) {
