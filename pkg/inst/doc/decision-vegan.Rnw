@@ -1,7 +1,7 @@
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
 %\VignetteIndexEntry{Design decisions and implementation}
 
-\documentclass[a4paper]{article}
+\documentclass[a4paper,10pt]{amsart}
 
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
@@ -9,18 +9,21 @@
 \usepackage[sort&compress]{natbib}
 \usepackage{hyperref}
 \usepackage{graphics}
-\usepackage{float}
-\floatplacement{figure}{htbp}
-\floatstyle{ruled}
-\restylefloat{figure}
+\usepackage{sidecap}
+\setlength{\captionindent}{0pt}
+\usepackage{url}
 \renewcommand{\floatpagefraction}{0.8}
 
 \author{Jari Oksanen}
 \title{Design decisions and implementation details in vegan}
-\date{$ $Date$ $}
+\date{$ $Id$ $
+  processed with vegan
+\Sexpr{packageDescription("vegan", field="Version")}
+in \Sexpr{R.version.string} on \today}
 
 \begin{document}
 \SweaveOpts{strip.white=TRUE}
+\setkeys{Gin}{width=0.55\linewidth}
 
 \maketitle
 
@@ -240,15 +243,16 @@ orig <- cca(varespec ~ Al + K, varechem)
 Function \texttt{cca} in \texttt{vegan} uses WA scores as
 default. So we must specifically ask for LC scores
 (Fig. \ref{fig:ccalc}).
-\begin{figure}
-\begin{center}
-<<fig=true>>=
+<<a,fig=false>>=
 plot(orig, dis=c("lc","bp"))
+@
+\begin{SCfigure}
+<<fig=true,echo=false>>=
+<<a>>
 @
 \caption{LC scores in CCA of the original data.}
 \label{fig:ccalc}
-\end{center}
-\end{figure}
+\end{SCfigure}
 
 What would happen to linear combinations of LC scores if we shuffle
 the ordering of sites in species data?  Function \texttt{sample()} below
@@ -257,27 +261,26 @@ shuffles the indices.
 i <- sample(nrow(varespec))
 shuff <- cca(varespec[i,] ~ Al + K, varechem)
 @
-\begin{figure}
-\begin{center}
-<<fig=true>>=
+\begin{SCfigure}
+<<fig=true,echo=false>>=
 plot(shuff, dis=c("lc","bp"))
 @
 \caption{LC scores of shuffled species data.}
 \label{fig:ccashuff}
-\end{center}
-\end{figure}
+\end{SCfigure}
 It seems that site scores are fairly similar, but oriented differently
 (Fig. \ref{fig:ccashuff}).  We can use Procrustes rotation to see how
 similar the site scores indeed are (Fig. \ref{fig:ccaproc}).
-\begin{figure}
-\begin{center}
-<<fig=true>>=
+<<a,fig=false>>=
 plot(procrustes(scores(orig, dis="lc"), scores(shuff, dis="lc")))
+@
+\begin{SCfigure}
+<<fig=true,echo=false>>=
+<<a>>
 @
 \caption{Procrustes rotation of LC scores from CCA of original and shuffled data.}
 \label{fig:ccaproc}
-\end{center}
-\end{figure}
+\end{SCfigure}
 There is a small difference, but this will disappear if we use
 Redundancy Analysis (RDA) instead of CCA
 (Fig. \ref{fig:rdaproc}). Here we use a new shuffling as well.
@@ -286,15 +289,13 @@ tmp1 <- rda(varespec ~ Al + K, varechem)
 i <- sample(nrow(varespec)) # Different shuffling
 tmp2 <- rda(varespec[i,] ~ Al + K, varechem)
 @
-\begin{figure}
-\begin{center}
-<<fig=true>>=
+\begin{SCfigure}
+<<fig=true,echo=false>>=
 plot(procrustes(scores(tmp1, dis="lc"), scores(tmp2, dis="lc")))
 @
 \caption{Procrustes rotation of LC scores in RDA of the original and shuffled data.}
 \label{fig:rdaproc}
-\end{center}
-\end{figure}
+\end{SCfigure}
 
 LC scores indeed are linear combinations of constraints (environmental
 variables) and \emph{independent of species data}: You can
@@ -315,16 +316,14 @@ shuff
 @
 Similarly their WA scores will be (probably) very different
 (Fig. \ref{fig:ccawa}).
-\begin{figure}
-\begin{center}
-<<fig=true>>=
+\begin{SCfigure}
+<<fig=true,echo=false>>=
 plot(procrustes(orig, shuff))
 @
 \caption{Procrustes rotation of WA scores of CCA with the original and
   shuffled data.}
 \label{fig:ccawa}
-\end{center}
-\end{figure}
+\end{SCfigure}
 
 The example used only two environmental variables so that we can
 easily plot all constrained axes.  With a larger number of
@@ -358,16 +357,14 @@ orig
 @
 When the results are plotted using LC scores, sample plots fall only
 in four alternative positions (Fig. \ref{fig:factorlc}).
-\begin{figure}
-\begin{center}
-<<fig=TRUE>>=
+\begin{SCfigure}
+<<fig=TRUE,echo=false>>=
 plot(orig, dis="lc")
 @
 \caption{LC scores of the dune meadow data using only one factor as a
   constraint.}
 \label{fig:factorlc}
-\end{center}
-\end{figure}
+\end{SCfigure}
 In the previous chapter we saw that this happens because LC scores
 \emph{are} the environmental variables, and they can be distinct only
 if the environmental variables are distinct.  However, normally the user
@@ -380,18 +377,19 @@ site \emph{is}.
 
 Function \texttt{ordispider} adds line segments to connect each WA
 score with the corresponding LC (Fig.  \ref{fig:walcspider}).
-\begin{figure}
-\begin{center}
-<<fig=TRUE>>=
+<<a,fig=false>>=
 plot(orig, display="wa", type="points")
 ordispider(orig, col="red")
 text(orig, dis="cn", col="blue")
 @
+\begin{SCfigure}
+<<fig=TRUE,echo=false>>=
+<<a>>
+@
 \caption{A ``spider plot'' connecting WA scores to corresponding LC
   scores. The shorter the web segments, the better the ordination.}
 \label{fig:walcspider}
-\end{center}
-\end{figure}
+\end{SCfigure}
 This is the standard way of displaying results of discriminant
 analysis, too.  Moisture classes \texttt{1} and \texttt{2} seem to be
 overlapping, and cannot be completely separated by their

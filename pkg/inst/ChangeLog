@@ -23,6 +23,9 @@ Version 1.10-7 (Oct 31, working...)
 
 	* oecosimu: evaluates now two-sided P-value of the statistic from
 	simulations. Doc updates.
+
+	* vignettes: use all similar style (amsart, a4paper, sidecap,
+	$Id$) 
 	
 Version 1.10-6 (closed Oct 31, 2007 at Rev. 100)
 

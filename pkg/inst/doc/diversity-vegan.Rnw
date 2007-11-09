@@ -1,6 +1,6 @@
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
 %\VignetteIndexEntry{Diversity analysis in vegan}
-\documentclass[a4,10pt]{amsart}
+\documentclass[a4paper,10pt]{amsart}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -92,7 +92,7 @@ graphically using the standard \texttt{plot} function for the
 \texttt{renyi} result(Fig. \ref{fig:renyi}).
 <<echo=false,results=hide>>=
 require(lattice, quietly=TRUE)
-@ 
+@
 \begin{SCfigure}
 <<fig=true,echo=false>>=
 print(plot(R))
