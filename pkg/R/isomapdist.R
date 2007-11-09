@@ -4,6 +4,7 @@
     require(vegan) || stop("needs vegan") # stepacross
     EPS <- 1e-5
     op <- options(warn = 2)
+    on.exit(options(op))
     if (!inherits(dist, "dist"))
         dist <- as.dist(dist)
     options(op)
