@@ -50,7 +50,12 @@ FALSE,  ...)
      computed, and added to the non-diagonal dissimilarities  such
      that all eigenvalues are non-negative in underlying
      Principal Co-ordinates Analysis (see \code{\link{cmdscale}} 
-     for details). }
+     for details). This implements the \dQuote{correction method 2} of
+     Legendre & Legendre (1998, p. 434). The negative eigenvalues are
+     caused by using semi-metric or non-metric dissimilarities with
+     basically metric \code{\link{cmdscale}}. They are harmless and
+     ignored in \code{capscale}, but you also can avoid warnings with
+     this option. }
   \item{\dots}{Other parameters passed to \code{\link{rda}}. }
 }
 \details{
@@ -121,6 +126,9 @@ FALSE,  ...)
   Legendre, P. & Anderson, M. J. (1999). Distance-based redundancy
   analysis: testing multispecies responses in multifactorial ecological
   experiments. \emph{Ecological Monographs} 69, 1--24.
+
+  Legendre, P. & Legendre, L. (1998).  \emph{Numerical Ecology}. 2nd English
+  Edition. Elsevier
 }
 \author{ Jari Oksanen }
 \note{
