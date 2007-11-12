@@ -25,7 +25,10 @@ Version 1.10-7 (Oct 31, working...)
 	simulations. Doc updates.
 
 	* vignettes: use all similar style (amsart, a4paper, sidecap,
-	$Id$) 
+	date style).
+
+	* FAQ: tell about docs added to R-Forge versions of vegan. Tell
+	about predict() for having "passive" points.
 	
 Version 1.10-6 (closed Oct 31, 2007 at Rev. 100)
 

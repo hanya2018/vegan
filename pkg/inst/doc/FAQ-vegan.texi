@@ -161,11 +161,19 @@ with other documents which can be read with @code{vegandocs} command
 package are 
 @itemize
 @item 
-Vegan ChangeLog.
-@item 
-Discussion on design decisions in vegan
+Vegan @code{ChangeLog}.
 @item
-Description of variance partition procedures in function @code{varpart}.
+This document (@code{FAQ-vegan.pdf}).
+@item
+Short introduction to basic ordination methods in vegan
+(@code{intro-vegan.pdf}).
+@item
+Introduction to diversity methods in vegan (@code{diversity-vegan.pdf}).
+@item 
+Discussion on design decisions in vegan (@code{decision-vegan.pdf}).
+@item
+Description of variance partition procedures in function
+@code{varpart} (@code{partitioning.pdf}).
 @end itemize
 
 
@@ -299,6 +307,7 @@ listed as authors in the documentation.
 * Why dissimilarities in vegan differ from other sources?::  
 * Zero dissimilarities in isoMDS::  
 * Variance explained by ordination axes::  
+* Is it possible to have passive points in ordination?::  
 * Class variables and dummies::  
 * I want to use Helmert or sum contrasts::  
 * What are aliased variables and how to see them?::  
@@ -342,7 +351,7 @@ with some dissimilarity indices, originally non-unique sites can have
 zero dissimilarity, and you have to resort to the kluge (or work
 harder with your data).
 
-@node Variance explained by ordination axes, Class variables and dummies, Zero dissimilarities in isoMDS, Ordination
+@node Variance explained by ordination axes, Is it possible to have passive points in ordination?, Zero dissimilarities in isoMDS, Ordination
 @section Variance explained by ordination axes.
 
 In general, vegan does not directly give any statistics on the
@@ -398,10 +407,27 @@ nonlinear fit and gives this statistic.
 
 @end itemize
 
-@node Class variables and dummies, I want to use Helmert or sum contrasts, Variance explained by ordination axes, Ordination
+@node Is it possible to have passive points in ordination?, Class variables and dummies, Variance explained by ordination axes, Ordination
+@section Is it possible to have passive points in ordination?
+
+Vegan does not have a concept of passive points, or a point that
+should only little influence the ordination results. However, you can
+add points to eigenvector methods using @code{predict} functions with
+@code{newdata}.  You can first perform an ordination without some
+species or sites, and then you can find scores for all points
+using your complete data as @code{newdata}.  The @code{predict}
+functions are available for basic eigenvector methods in vegan
+(@code{cca}, @code{rda}, @code{decorana}, for an up-to-date list use
+@code{methods("predict")}). You also can simulate the passive points in R by using
+low weights to row and columns (this is the method used in software
+with passive points). For instance, the following command makes row 3
+``passive'': @code{dune[3,] <- 0.001*dune[3,]}.
+
+
+@node Class variables and dummies, I want to use Helmert or sum contrasts, Is it possible to have passive points in ordination?, Ordination
 @section Class variables and dummies
 
-You should define a class variable as R @code{factor}, and vegan will
+You should define a class variable as an R @code{factor}, and vegan will
 automatically handle them with formula interface.  You also can define
 constrained ordination without formula interface, but then you must
 code your class variables by hand.
