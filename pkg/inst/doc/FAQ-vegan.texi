@@ -223,7 +223,8 @@ Up to versions 1.8-7 and 1.9-34, vegan version numbers were of type
 x.y-z, where number y is even for stable release versions at
 @url{http://cran.r-project.org,,CRAN} and odd for unstable release
 versions at @url{http://cc.oulu.fi/~jarioksa/softhelp/vegan.html,,my
-personal homepage}. 
+personal homepage}. Version 1.8-8 was a backport of bug fixes from
+the 1.10 series.
 
 @node How to build vegan from sources?, Are there binaries for devel versions?, Version numbering in vegan, Introduction
 @section How to build vegan from sources?
@@ -367,6 +368,13 @@ be ignored in @code{capscale}. If the warnings are
 disturbing, you can use argument @code{add = TRUE} in @code{capscale}
 which implements ``correction method 2'' of Legendre & Legendre (1998,
 p. 434) in @code{cmdscale}.
+
+You can get a warning about negative eigenvalues also with metric
+indices if you have deficit rank data. This happens, for instance,
+when number of species (columns) is lower than number of sites (rows),
+or if some sites are linear combinations of other sites. You can find
+the rank of the data using, for instance, vegan function @code{rda}
+which is identical to @code{capscale} with Euclidean distance.
 
 @node Variance explained by ordination axes, Is it possible to have passive points in ordination?, Warnings of negative eigenvalues in capscale, Ordination
 @section Variance explained by ordination axes.
@@ -512,7 +520,7 @@ application interface.
 @end menu
 
 @node Is there TWINSPAN?, How is deviance calculated?, Other analysis methods , Other analysis methods
-@section Is there TWINSPAN
+@section Is there TWINSPAN?
 
 No.  It may be possible to port @acronym{TWINSPAN} to vegan, but it is
 not among my top priorities.  If anybody wants to try porting,  I will
