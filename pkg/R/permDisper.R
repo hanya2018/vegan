@@ -1,0 +1,30 @@
+`permDisper` <- function(object, nperm = 999)
+{
+    if(!inherits(object, "betadisper"))
+        stop("Only for class \"betadisper\"")
+    nobs <- length(object$distances)
+    mod <- lm(object$distances ~ object$group)
+    mod.Q <- mod$qr
+    p <- mod.Q$rank
+    resids <- qr.resid(mod.Q, object$distances)
+    res <- numeric(length = nperm + 1)
+    res[1] <- summary(mod)$fstatistic[1]
+    for(i in seq(along = res[-1])) {
+        perm.resid <- sample(resids)
+        f <- qr.fitted(mod.Q, perm.resid)
+        mss <- sum((f - mean(f))^2)
+        r <- qr.resid(mod.Q, perm.resid)
+        rss <- sum(r^2)
+        rdf <- nobs - p
+        resvar <- rss / rdf
+        res[i+1] <- (mss / (p - 1)) / resvar
+    }
+    pval <- sum(res >= res[1]) / length(res)
+    mod.aov <- anova(object)
+    retval <- cbind(mod.aov[, 1:4], c(nperm, NA), c(pval, NA))
+    dimnames(retval) <- list(c("Groups", "Residuals"),
+                             c("Df", "Sum Sq", "Mean Sq", "F", "N.Perm",
+                               "Pr(>F)")) 
+    class(retval) <- c("permDisper", class(retval))
+    retval
+}

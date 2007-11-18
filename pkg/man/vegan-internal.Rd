@@ -5,6 +5,7 @@
 \alias{centroids.cca}
 \alias{ordiTerminfo}
 \alias{ordispantree}
+\alias{pasteCall}
 
 \title{Internal vegan functions}
 
@@ -18,6 +19,7 @@ ordiTerminfo(d, data)
 centroids.cca(x, mf, wt)
 permuted.index(n, strata)
 ordispantree(ord, tree, display = "sites", ...)
+pasteCall(call, prefix = "Call:")
 }
 
 \details{
