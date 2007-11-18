@@ -1,7 +1,11 @@
 `adonis` <-
-function(formula, data, permutations=5, method="bray", strata=NULL,
-             contr.unordered="contr.sum", contr.ordered="contr.poly")
+    function(formula, data, permutations=5, method="bray", strata=NULL,
+             contr.unordered="contr.sum", contr.ordered="contr.poly",
+             distfun = vegdist, ...)
 {
+    ## Get distfun and add ... to its arguments
+    distfun <- match.fun(distfun)
+    formals(distfun) <- c(formals(distfun), alist(... = ))
     ## formula is model formula such as Y ~ A + B*C where Y is a data
     ## frame or a matrix, and A, B, and C may be factors or continuous
     ## variables.  data is the data frame from which A, B, and C would
@@ -20,19 +24,19 @@ function(formula, data, permutations=5, method="bray", strata=NULL,
     
     H.s <- lapply(2:length(u.grps),
                   function(j) {Xj <- rhs[, grps %in% u.grps[1:j] ]
-                  qrX <- qr(Xj, tol=1e-7)
-                  Q <- qr.Q(qrX)
-                  tcrossprod(Q[,1:qrX$rank])
-                             })
+                               qrX <- qr(Xj, tol=1e-7)
+                               Q <- qr.Q(qrX)
+                               tcrossprod(Q[,1:qrX$rank])
+                           })
     
-    dmat <- as.matrix(vegdist(lhs, method=method))^2
+    dmat <- as.matrix(distfun(lhs, method=method, ...))^2
     n <- nrow(dmat)
     I <- diag(n)
     ones <- matrix(1,nrow=n)
     A <- -(dmat)/2
 
     G <- -.5 * dmat %*% (I - ones%*%t(ones)/n)
-   
+    
     SS.Exp.comb <- sapply(H.s, function(hat) sum( diag(G %*% hat) ) )
     
     SS.Exp.each <- c(SS.Exp.comb - c(0,SS.Exp.comb[-nterms]) )
@@ -73,7 +77,7 @@ function(formula, data, permutations=5, method="bray", strata=NULL,
                       R2 = SumsOfSqs/SumsOfSqs[length(SumsOfSqs)],
                       P = c(rowSums(t(f.perms) > F.Mod)/permutations, NA, NA))
     rownames(tab) <- c(attr(attr(rhs.frame, "terms"), "term.labels"),
-            "Residuals", "Total")
+                       "Residuals", "Total")
     colnames(tab)[ncol(tab)] <- "Pr(>F)"
     out <- list(aov.tab = tab, call = match.call(), 
                 coefficients = beta,  f.perms = f.perms, design.matrix = rhs)

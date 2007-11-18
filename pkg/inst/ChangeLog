@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-7 (Oct 31, working...)
 
+	* adonis: gains argument 'distfun' (default 'vegdist') so that
+	other standard conforming dissimilarity functions than vegdist can
+	be used (a user request).
+
 	* decorana: does not crash R when called with NULL row data such
 	as decorana(dune[FALSE,]) (reported by Richard Tellford, Bergen,
 	Norway), and predict(..., type="sites") works correctly with

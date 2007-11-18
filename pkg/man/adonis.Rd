@@ -11,7 +11,8 @@ distance matrices.  }
 
 \usage{
 adonis(formula, data, permutations = 5, method = "bray", strata = NULL,
-     contr.unordered = "contr.sum", contr.ordered = "contr.poly")
+     contr.unordered = "contr.sum", contr.ordered = "contr.poly",
+     distfun = vegdist, ...)
 }
 
 \arguments{
@@ -27,7 +28,13 @@ adonis(formula, data, permutations = 5, method = "bray", strata = NULL,
   \item{strata}{ groups (strata) within which to constrain permutations.  }
   \item{contr.unordered, contr.ordered}{contrasts used for the design
     matrix (default in R is dummy or treatment contrasts for unordered
-    factors). } 
+    factors). }
+  \item{distfun}{Dissimilarity function. Any function returning a
+    \code{dist} object and accepting argument \code{method} can be
+    used. Some accepted functions are \code{\link{dist}} and
+    \code{\link{designdist}}, but all standard conforming functions can be
+    used.}
+  \item{\dots}{Other arguments passed to \code{distfun}.}
 }
 
 \details{\code{adonis} is a function for the analysis and partitioning
