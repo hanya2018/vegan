@@ -10,6 +10,9 @@ Version 1.10-8 (Nov 18, working...)
 	* taxa2dist: issues now a warning if called with 'check = FALSE'
 	and there are zero distances, typically meaning that basal taxa
 	(species) were not coded. Also explained in the help.
+
+	* varpart: failed if there were unused levels in factors (reported
+	by Clément Tisseuil, Toulouse). 
 	
 Version 1.10-7 (closed Nov 18, 2007 at Rev. 119)
 
