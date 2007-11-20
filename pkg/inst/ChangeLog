@@ -7,6 +7,10 @@ Version 1.10-8 (Nov 18, working...)
 	* betadisper: new functions for Marti Anderson's analysis of
 	homogeneity of multivariate dispersions.
 
+	* taxa2dist: issues now a warning if called with 'check = FALSE'
+	and there are zero distances, typically meaning that basal taxa
+	(species) were not coded. Also explained in the help.
+	
 Version 1.10-7 (closed Nov 18, 2007 at Rev. 119)
 
 	* adonis: gains argument 'distfun' (default 'vegdist') so that

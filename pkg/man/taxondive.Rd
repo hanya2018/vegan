@@ -31,8 +31,11 @@ taxa2dist(x, varstep = FALSE, check = TRUE, labels)
   \item{varstep}{Vary step lengths between successive levels
     relative to proportional loss of the number of distinct classes.}
   \item{check}{If \code{TRUE}, remove all redundant levels which are
-    different for all rows or constant for all rows. If \code{FALSE} all
-    levels are retained and speciec (basic taxon) also must be coded.}
+    different for all rows or constant for all rows and regard each row
+    as a different basal taxon (specie). If \code{FALSE} all
+    levels are retained and basal taxa (species) also must be coded as
+    variables (columns). You will get a warning if species are not
+    coded, but you can ignore this if that was your intention.}
   \item{labels}{The \code{labels} attribute of taxonomic distances. Row
     names will be used if this is not given. Species will be matched by
     these labels in \code{comm} and \code{dis} in \code{taxondive} if
