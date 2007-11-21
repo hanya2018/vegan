@@ -12,7 +12,7 @@ distance matrices.  }
 \usage{
 adonis(formula, data, permutations = 5, method = "bray", strata = NULL,
      contr.unordered = "contr.sum", contr.ordered = "contr.poly",
-     distfun = vegdist, ...)
+     ...)
 }
 
 \arguments{
