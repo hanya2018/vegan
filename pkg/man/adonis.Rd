@@ -17,24 +17,21 @@ adonis(formula, data, permutations = 5, method = "bray", strata = NULL,
 
 \arguments{
   \item{formula}{a typical model formula such as \code{Y ~ A + B*C}, but
-    where \code{Y} is a data frame or a matrix; \code{A}, \code{B}, and
+    where \code{Y} is either a dissimilarity object (inheriting from
+    class \code{"dist"}) or data frame or a matrix; \code{A}, \code{B}, and
     \code{C} may be factors or continuous variables. } 
   \item{data}{ the data frame from which \code{A}, \code{B}, and
     \code{C} would be drawn.} 
   \item{permutations}{ number of replicate permutations used for the
     hypothesis tests (\eqn{F} tests).} 
   \item{method}{ the name of any method used in \code{\link{vegdist}} to
-    calculate pairwise distances. } 
+    calculate pairwise distances if the left hand side of the
+    \code{formula} was a data frame or a matrix. } 
   \item{strata}{ groups (strata) within which to constrain permutations.  }
   \item{contr.unordered, contr.ordered}{contrasts used for the design
     matrix (default in R is dummy or treatment contrasts for unordered
     factors). }
-  \item{distfun}{Dissimilarity function. Any function returning a
-    \code{dist} object and accepting argument \code{method} can be
-    used. Some accepted functions are \code{\link{dist}} and
-    \code{\link{designdist}}, but all standard conforming functions can be
-    used.}
-  \item{\dots}{Other arguments passed to \code{distfun}.}
+  \item{\dots}{Other arguments passed to \code{vegdist}.}
 }
 
 \details{\code{adonis} is a function for the analysis and partitioning

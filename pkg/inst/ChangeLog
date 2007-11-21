@@ -13,6 +13,9 @@ Version 1.10-8 (Nov 18, working...)
 
 	* varpart: failed if there were unused levels in factors (reported
 	by Clément Tisseuil, Toulouse). 
+
+	* adonis: loses argument 'distfun'. Instead accepts now any 'dist'
+	object as input instead of a data frame or a matrix.
 	
 Version 1.10-7 (closed Nov 18, 2007 at Rev. 119)
 

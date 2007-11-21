@@ -32,7 +32,7 @@ taxa2dist(x, varstep = FALSE, check = TRUE, labels)
     relative to proportional loss of the number of distinct classes.}
   \item{check}{If \code{TRUE}, remove all redundant levels which are
     different for all rows or constant for all rows and regard each row
-    as a different basal taxon (specie). If \code{FALSE} all
+    as a different basal taxon (species). If \code{FALSE} all
     levels are retained and basal taxa (species) also must be coded as
     variables (columns). You will get a warning if species are not
     coded, but you can ignore this if that was your intention.}

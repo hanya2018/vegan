@@ -1,11 +1,8 @@
 `adonis` <-
     function(formula, data, permutations=5, method="bray", strata=NULL,
              contr.unordered="contr.sum", contr.ordered="contr.poly",
-             distfun = vegdist, ...)
+             ...)
 {
-    ## Get distfun and add ... to its arguments
-    distfun <- match.fun(distfun)
-    formals(distfun) <- c(formals(distfun), alist(... = ))
     ## formula is model formula such as Y ~ A + B*C where Y is a data
     ## frame or a matrix, and A, B, and C may be factors or continuous
     ## variables.  data is the data frame from which A, B, and C would
@@ -28,8 +25,10 @@
                                Q <- qr.Q(qrX)
                                tcrossprod(Q[,1:qrX$rank])
                            })
-    
-    dmat <- as.matrix(distfun(lhs, method=method, ...))^2
+    if (inherits(lhs, "dist"))
+        dmat <- as.matrix(lhs^2)
+    else
+        dmat <- as.matrix(vegdist(lhs, method=method, ...))^2
     n <- nrow(dmat)
     I <- diag(n)
     ones <- matrix(1,nrow=n)
@@ -84,4 +83,3 @@
     class(out) <- "adonis"
     out
 }
-
