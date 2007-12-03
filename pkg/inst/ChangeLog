@@ -7,6 +7,10 @@ Version 1.10-8 (Nov 18, working...)
 	* betadisper: new functions for Marti Anderson's analysis of
 	homogeneity of multivariate dispersions.
 
+	* nestedtemp: handles now tied frequencies using ties.method =
+	"average" in rank(). Function is still preliminary, and may be
+	dropped from the release.
+	
 	* taxa2dist: issues now a warning if called with 'check = FALSE'
 	and there are zero distances, typically meaning that basal taxa
 	(species) were not coded. Also explained in the help.
