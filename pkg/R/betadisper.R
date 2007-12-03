@@ -1,4 +1,5 @@
-`betadisper` <- function(d, group, type = c("centroid","median"))
+`betadisper` <-
+    function(d, group, type = c("centroid","median"))
 {
     ## uses code from stats:::cmdscale by R Core Development Team
     if(!inherits(d, "dist"))
@@ -22,10 +23,14 @@
     centroids <- apply(vectors, 2, function(x) tapply(x, group, mean))
     ## for each of the groups, calculate distance to centroid for
     ## observation in the group
-    dist.pos <- vectors[,pos] - centroids[group, pos]
+    dist.pos <- vectors[,pos, drop=FALSE] - centroids[group, pos]
     dist.pos <- rowSums(dist.pos^2)
-    dist.neg <- vectors[,!pos] - centroids[group, !pos]
-    dist.neg <- rowSums(dist.neg^2)
+    if (any(!pos)) {
+        dist.neg <- vectors[,!pos, drop=FALSE] - centroids[group, !pos]
+        dist.neg <- rowSums(dist.neg^2)
+    } else {
+        dist.neg <- 0
+    }
     ## zij are the distances of each point to its group centroid
     zij <- sqrt(dist.pos - dist.neg)
     ## add in correct labels
