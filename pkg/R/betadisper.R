@@ -23,10 +23,11 @@
     centroids <- apply(vectors, 2, function(x) tapply(x, group, mean))
     ## for each of the groups, calculate distance to centroid for
     ## observation in the group
-    dist.pos <- vectors[,pos, drop=FALSE] - centroids[group, pos]
+    dist.pos <- vectors[, pos, drop=FALSE] - centroids[group, pos, drop = FALSE]
     dist.pos <- rowSums(dist.pos^2)
     if (any(!pos)) {
-        dist.neg <- vectors[,!pos, drop=FALSE] - centroids[group, !pos]
+        dist.neg <- vectors[, !pos, drop=FALSE] -
+            centroids[group, !pos, drop = FALSE]
         dist.neg <- rowSums(dist.neg^2)
     } else {
         dist.neg <- 0
