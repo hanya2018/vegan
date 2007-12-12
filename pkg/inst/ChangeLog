@@ -4,6 +4,9 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-8 (Nov 18, working...)
 
+	* metaMDS: gains argument wascores (defaults TRUE) to suppress
+	calculation of species scores.
+
 	* wascores: return now NA for missing (all zero) species instead
 	of failing.
 
