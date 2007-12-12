@@ -121,7 +121,8 @@
     df2 <- (n - max(pp,qq) - 1)
     Fval  <- (PillaiTrace*df2)/((s-PillaiTrace)*df1)
     if(nperm > 0) {
-        p.perm <- probPillai(Y,X,n,S11.inv,S22.inv,s,df1,df2,epsilon,Fval,nperm)
+        p.perm <- probPillai(Y, X, n, S11.inv, S22.inv, s, df1, df2,
+                             epsilon, Fval, nperm, ...)
     } else {
         p.perm <- NA
     }
