@@ -10,7 +10,7 @@
     res <- numeric(length = nperm + 1)
     res[1] <- summary(mod)$fstatistic[1]
     for(i in seq(along = res[-1])) {
-        perm.resid <- sample(resids)
+        perm.resid <- resids[permuted.index(nobs)]
         f <- qr.fitted(mod.Q, perm.resid)
         mss <- sum((f - mean(f))^2)
         r <- qr.resid(mod.Q, perm.resid)
