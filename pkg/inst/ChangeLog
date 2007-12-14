@@ -2,7 +2,18 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.10-8 (Nov 18, working...)
+Version 1.10-9 (Dec 14, 2007, working...)
+	
+	* permuted.index2: New version of permuted.index() that now allows
+	restricted permutations. Can produce permutations for time-series
+	or line transects and for spatial grids. These can also be nested
+	within 'strata'. permuted.series() and permuted.grid() are the 
+	relevant workhorse functions. Permutation options are set by new 
+	function permControl(). Plan to migrate vegan functions to 
+	permuted.index2() in the devel version, and will eventually replace
+	the current permuted.index().
+	
+Version 1.10-8 (closed Dec 14 2007, at Rev. 133)
 
 	* metaMDS: gains argument wascores (defaults TRUE) to suppress
 	calculation of species scores.

@@ -6,6 +6,11 @@
 \alias{ordiTerminfo}
 \alias{ordispantree}
 \alias{pasteCall}
+% for new permutation schemes
+\alias{permuted.index2}
+\alias{permuted.series}
+\alias{permuted.grid}
+\alias{permControl}
 
 \title{Internal vegan functions}
 
