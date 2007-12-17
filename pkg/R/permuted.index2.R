@@ -8,6 +8,8 @@
                       "grid" = permuted.grid(nrow = control$nrow,
                       ncol = control$ncol, mirror = control$mirror)
                       )
+    } else if(control$type == "strata") {
+        out <- permuted.strata(control$strata)
     } else {
         out <- 1:n
         inds <- names(table(control$strata))
@@ -18,36 +20,23 @@
                 start.row <- .Internal(sample(control$nrow, 1, FALSE, NULL))
                 start.col <- .Internal(sample(control$ncol, 1, FALSE, NULL))
             }
-            for (is in inds) {
-                gr <- out[control$strata == is]
-                if ((n.gr <- length(gr))> 1) {
-                    out [gr]<- switch(control$type,
-                                      "free" = .Internal(sample(n.gr, n.gr,
-                                      FALSE, NULL)),
-                                      "series" = permuted.series(gr,
-                                      mirror = control$mirror, start = start),
-                                      "grid" = permuted.grid(nrow = control$nrow,
-                                      ncol = control$ncol,
-                                      mirror = control$mirror,
-                                      start.row = start.row,
-                                      start.col = start.col)
-                                      )
-                }
-            }
         } else {
-            for (is in inds) {
-                gr <- out[control$strata == is]
-                if ((n.gr <- length(gr))> 1) {
-                    out [gr]<- switch(control$type,
-                                      "free" = .Internal(sample(n.gr, n.gr,
-                                      FALSE, NULL)),
-                                      "series" = permuted.series(gr,
-                                      mirror = control$mirror),
-                                      "grid" = permuted.grid(nrow = control$nrow,
-                                      ncol = control$ncol,
-                                      mirror = control$mirror)
-                                      )
-                }
+            start <- start.row <- start.col <- NULL
+        }
+        for (is in inds) {
+            gr <- out[control$strata == is]
+            if ((n.gr <- length(gr))> 1) {
+                out [gr]<- switch(control$type,
+                                  "free" = .Internal(sample(n.gr, n.gr,
+                                  FALSE, NULL)),
+                                  "series" = permuted.series(gr,
+                                  mirror = control$mirror, start = start),
+                                  "grid" = permuted.grid(nrow = control$nrow,
+                                  ncol = control$ncol,
+                                  mirror = control$mirror,
+                                  start.row = start.row,
+                                  start.col = start.col)
+                                  )
             }
         }
     }

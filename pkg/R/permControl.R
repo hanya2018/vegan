@@ -1,5 +1,5 @@
 `permControl` <- function(strata = NULL, nperm = 199, maxperm = 9999,
-                          type = c("free", "series", "grid"),
+                          type = c("free", "series", "grid", "strata"),
                           mirror = FALSE, constant = FALSE,
                           ncol = NULL, nrow = NULL)
 {

@@ -10,6 +10,7 @@
 \alias{permuted.index2}
 \alias{permuted.series}
 \alias{permuted.grid}
+\alias{permuted.strata}
 \alias{permControl}
 
 \title{Internal vegan functions}
