@@ -21,7 +21,7 @@ betadisper(d, group, type = c("centroid", "median"))
 
 \method{anova}{betadisper}(object, \dots)
 
-permDisper(object, nperm = 999)
+permDisper(object, control = permControl(nperm = 999))
 
 \method{scores}{betadisper}(x, display = c("sites", "centroids"),
        choices = c(1,2), \dots)
@@ -42,7 +42,9 @@ permDisper(object, nperm = 999)
       "centroid"} is currently supported.}
   \item{object, x}{an object of class \code{"betadisper"}, the result of a
     call to \code{betadisper}.}
-  \item{nperm}{the number of permutations to use.}
+  \item{control}{a list of control values for the permutations
+    to replace the default values returned by the function
+    \code{\link{permControl}}.}
   \item{display}{character; artial match to access scores for
     \code{"sites"} or \code{"species"}.}
   \item{choices, axes}{the principal coordinate axes wanted.}
@@ -149,7 +151,7 @@ mod
 anova(mod)
 
 ## Permutation test for F
-permDisper(mod, nperm = 999)
+permDisper(mod)
 
 ## Plot the groups and distances to centroids on the
 ## first two PCoA axes
