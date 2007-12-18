@@ -4,7 +4,6 @@
 \alias{anova.ccabyterm}
 \alias{permutest.cca}
 \alias{print.permutest.cca}
-\alias{print.anova.cca}
 
 \title{Permutation Test for Constrained Correspondence Analysis,
   Redundancy Analysis and Constrained Analysis of Principal Coordinates }
@@ -15,7 +14,7 @@
   (\code{\link{capscale}}) to assess the significance of constraints.
 }
 \usage{
-\method{anova}{cca}(object, alpha=0.05, beta=0.01, step=100, perm.max=10000,
+\method{anova}{cca}(object, alpha=0.05, beta=0.01, step=100, perm.max=9999,
       by = NULL, ...)
 permutest.cca(x, permutations=100, model=c("direct", "reduced","full"),
       first = FALSE, strata, ...)
@@ -57,7 +56,8 @@ permutest.cca(x, permutations=100, model=c("direct", "reduced","full"),
   terminated.  If the current estimate of \eqn{P} does not
   differ significantly from \code{alpha} of the alternative hypothesis,
   the permutations are
-  continued with \code{step} new permutations.  However, with \code{by =
+  continued with \code{step} new permutations (at the first step, the
+  number of permuations is \code{step - 1}).  However, with \code{by =
     "terms"} a fixed number of permutations will be used, and this 
   is given by argument \code{permutations}, or if this is missing,
   by \code{step}.  

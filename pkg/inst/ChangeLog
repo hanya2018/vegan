@@ -3,6 +3,9 @@ $Date$
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-9 (Dec 14, 2007, working...)
+
+	* anova.cca: P-value is now assessed in the true blue way as
+	(hits+1)/(permutations+1). 
 	
 	* permuted.index2: New version of permuted.index() that now allows
 	restricted permutations. Can produce permutations for time-series
