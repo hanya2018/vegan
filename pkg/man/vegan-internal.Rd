@@ -12,6 +12,7 @@
 \alias{permuted.grid}
 \alias{permuted.strata}
 \alias{permControl}
+\alias{print.permControl}
 
 \title{Internal vegan functions}
 
