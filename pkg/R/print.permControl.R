@@ -1,4 +1,4 @@
-print.permControl <- function(x, digits = max(3, getOption("digits") - 3), ...)
+`print.permControl` <- function(x, ...)
 {
     ## only for objects of correct class
     stopifnot(class(x) == "permControl")
@@ -17,7 +17,9 @@ print.permControl <- function(x, digits = max(3, getOption("digits") - 3), ...)
     if(x$type == "grid")
         msg.grid <- paste("Data are spatial grid(s) of dimension",
                           x$nrow, "*", x$ncol, "\n")
-    msg.nperm <- paste("No. of permutations:", x$nperm, "\n")
+    msg.nperm <- paste("No. of permutations:", x$nperm,
+                       ifelse(x$complete, "(complete enumeration)", ""),
+                       "\n")
     msg.mirror <- paste("Mirrored permutations?:",
                         ifelse(x$mirror, "Yes", "No"), "\n")
     msg.constant <- paste("Use same permutation within strata?:",
