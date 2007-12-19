@@ -25,6 +25,7 @@
     dimnames(retval) <- list(c("Groups", "Residuals"),
                              c("Df", "Sum Sq", "Mean Sq", "F", "N.Perm",
                                "Pr(>F)"))
-    class(retval) <- c("permDisper", class(retval))
+    retval <- list(tab = retval, control = control)
+    class(retval) <- "permDisper" ##c("permDisper", class(retval))
     retval
 }

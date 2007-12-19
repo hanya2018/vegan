@@ -94,8 +94,10 @@ permDisper(object, control = permControl(nperm = 999))
   The \code{anova} method returns an object of class \code{"anova"}
   inheriting from class \code{"data.frame"}.
 
-  \code{permDisp} returns an object of class \code{"permDisper"}
-  inheriting from class \code{"data.frame"}.
+  \code{permDisp} returns an object of class \code{"permDisper"}, a list
+  with components \code{tab}, the ANOVA table which is an object
+  inheriting from class \code{"data.frame"}, and \code{control}, the
+  result of a call to \code{\link{permControl}}.. 
 
   The \code{scores} method returns a list with one or both of the
   components \code{"sites"} and \code{"centroids"}.
