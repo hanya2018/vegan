@@ -8,11 +8,16 @@
         stop("Nothing to analyse: no constrained component")
     perm.max <- max(step-1, perm.max)
     if (!is.null(by)) {
-        by <- match.arg(by, c("axis", "terms"))
+        by <- match.arg(by, c("axis", "terms", "margin"))
         if (by == "axis") 
             sol <- anova.ccabyaxis(object, alpha = alpha, beta = beta, 
                                    step = step, perm.max = perm.max, by = NULL, 
                                    ...)
+        else if (by == "margin") {
+            sol <- anova.ccabymargin(object, alpha = alpha, beta = beta,
+                                     step = step, perm.max = perm.max,
+                                     by = NULL, ...)
+            }
         else {
             mf <- match.call(expand.dots = FALSE)
             if (!is.null(mf$...) && any(k <- pmatch(names(mf$...), 
@@ -54,3 +59,4 @@
     structure(table, heading = c(head, mod), Random.seed = seed, 
               class = c("anova.cca", "anova", "data.frame"))
 }
+

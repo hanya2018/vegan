@@ -2,6 +2,7 @@
 \alias{anova.cca}
 \alias{anova.ccabyaxis}
 \alias{anova.ccabyterm}
+\alias{anova.ccabymargin}
 \alias{permutest.cca}
 \alias{print.permutest.cca}
 
@@ -27,9 +28,12 @@ permutest.cca(x, permutations=100, model=c("direct", "reduced","full"),
   \item{step}{Number of permutations during one step. }
   \item{perm.max}{Maximum number of permutations. }
   \item{by}{Setting \code{by = "axis"} will assess significance for each
-    constrained axis, and setting \code{by = "terms"} will asses
-    significance for each term (sequentially from first to last).}
-  \item{\dots}{Parameters to permutest.cca. }
+    constrained axis, and setting \code{by = "terms"} will assess
+    significance for each term (sequentially from first to last), and
+    setting \code{by = "margin"} will assess the marginal effects of the
+    terms (each marginal term analysed in a model with all other
+    variables).}
+    \item{\dots}{Parameters to permutest.cca. }
   \item{permutations}{Number of permutations for assessing significance
     of constraints.}
   \item{model}{Permutation model (partial match).}
@@ -96,7 +100,12 @@ permutest.cca(x, permutations=100, model=c("direct", "reduced","full"),
   perform separate
   significance test for each term (constraining variable). The terms are
   assessed sequentially from first to last, and the order of the terms
-  will influence their significances. In calculating pseudo-\eqn{F}, all
+  will influence their significances. Setting \code{by = "margin"} will
+  perform separate significance test for each marginal term in a model
+  with all other terms. These are similar to \dQuote{Type III} effects,
+  but the current function only evaluates marginal terms. It will, for
+  instance, ignore main effects that are included in interaction terms. 
+  In calculating pseudo-\eqn{F}, all
   terms are compared to the same residual of the full model.
   Permutations for all axes or terms will
   start from the same \code{\link{.Random.seed}}, and the seed will be
@@ -123,6 +132,7 @@ vare.cca <- cca(varespec ~ Al + P + K, varechem)
 anova(vare.cca)
 anova(vare.cca, by="axis", perm.max=500)
 anova(vare.cca, by="terms", permu=200)
+anova(vare.cca, by="margin")
 }
 \keyword{ multivariate }
 \keyword{ htest }

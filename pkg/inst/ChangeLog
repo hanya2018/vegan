@@ -4,8 +4,14 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-9 (Dec 14, 2007, working...)
 
-	* anova.cca: P-value is now assessed in the true blue way as
-	(hits+1)/(permutations+1). 
+	* anova.cca: new option by = "margin" to perform separate tests
+	for each marginal effect in a model with all other terms. This is
+	similar to Type III tests, but will only work with marginal terms,
+	and will exclude main effects when corresponding interactions are
+	in the model.  P-value is now assessed in the true blue way as
+	(hits+1)/(permutations+1) in all anova.cca methods. Permutations
+	should be able to handle now rank deficit cases with pivoting in
+	the QR decomposition (permutest.cca).
 	
 	* permuted.index2: New version of permuted.index() that now allows
 	restricted permutations. Can produce permutations for time-series
