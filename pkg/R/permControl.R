@@ -9,7 +9,8 @@
         type <- match.arg(type)
     out <- list(strata = strata, nperm = nperm, maxperm = maxperm,
                 type = type, mirror = mirror,
-                constant = constant, ncol = ncol, nrow = nrow)
+                constant = constant, ncol = ncol, nrow = nrow,
+                name.strata = deparse(substitute(strata)))
     class(out) <- "permControl"
     return(out)
 }
