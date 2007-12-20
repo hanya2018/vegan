@@ -21,6 +21,11 @@ Version 1.10-9 (Dec 14, 2007, working...)
 	function permControl(). Plan to migrate vegan functions to 
 	permuted.index2() in the devel version, and will eventually replace
 	the current permuted.index().
+
+	* permCheck: New function for checking permutation schemes under
+	permuted.index2. Uses new function numPerms() to generate the 
+	number of possible permutations. permCheck() has print, summary
+	and print.summary methods.
 	
 Version 1.10-8 (closed Dec 14 2007, at Rev. 133)
 
