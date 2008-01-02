@@ -30,7 +30,6 @@
     if (isCCA) {
         w <- weights(x, "sites")
         X <- qr.X(Q, ncol=length(Q$pivot))
-        X <- X[, Q$pivot[1:Q$rank], drop=FALSE]
         X <- sweep(X, 1, sqrt(w), "/")
     }
     if (isPartial) {
