@@ -2,7 +2,14 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.10-9 (Dec 14, 2007, working...)
+Version 1.10-10 (Jan 16, 2008, working...)
+
+	* DESCRIPTION: suggests "tcltk"
+
+	* orditkplot: new function for ordination plots based on Tcl/Tk:
+	you can edit graph by moving labels using a mouse. 
+	
+Version 1.10-9 (closed Jan 16, 2008)
 
 	* anova.cca: new option by = "margin" to perform separate tests
 	for each marginal effect in a model with all other terms. This is
