@@ -5,8 +5,9 @@
     require(tcltk) || stop("requires package tcltk")
     ## Graphical parameters and constants
     p <- par()
-    PPI <- 72 # pixels per inch
-    YSCR <- 600 # max pixels vertical
+    ## PPI is points per inch, and p2p pixels per point
+    PPI <- 72 
+    p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) 
     ## Sanitize colours
     sanecol <- function(x) {
         if (is.na(x))
@@ -17,6 +18,7 @@
             x <- ""
         x
     }
+    p$bg <- sanecol(p$bg)
     p$fg <- sanecol(p$fg)
     p$col <- sanecol(p$col)
     p$col.axis <- sanecol(p$col.axis)
@@ -26,6 +28,9 @@
     ## toplevel
     w <- tktoplevel()
     tktitle(w) <- "orditkplot"
+    ## Max dim of windows (depends on screen)
+    YSCR <- as.numeric(tkwinfo("screenheight", w)) - 100
+    XSCR <- as.numeric(tkwinfo("screenwidth", w))
     ## Buttons
     buts <- tkframe(w)
     tkpack(buts, side="bottom", fill="x", pady="2m")
@@ -52,12 +57,11 @@
     yrange[1] <- 1.04*(yrange[1] - tmp) + tmp
     yrange[2] <- 1.04*(yrange[2] - tmp) + tmp
     ypretty <- ypretty[ypretty >= yrange[1] & ypretty <= yrange[2]]
-    ## Canvas width 5.99 inches, margins from par()
-    ## FIXME: does really only work when pixel/point == 1
-    ## like approximately in my Mac, but not in my Linux.
+    ## Canvas width 6.99 inches, margins from par()
     if (missing(width))
-        width <- round(5.99 * PPI)
-    mar <- round(p$mar * p$ps * p$cex)
+        width <- 6.99
+    width <- width * PPI * p2p
+    mar <- round(p$mar * p$ps * p$cex * p2p)
     xusr <- width - mar[2] - mar[4]
     xincr <- xusr/diff(xrange)
     yincr <- xincr
@@ -71,8 +75,11 @@
     ## Equal aspect ratio
     height <- round((diff(yrange)/diff(xrange)) * xusr)
     height <- height + mar[1] + mar[3]
+    ## Canvas, finally
     can <- tkcanvas(w, relief="sunken", width=width, height=min(height,YSCR),
                     scrollregion=c(0,0,width,height))
+    if (p$bg != "")
+        tkconfigure(can, bg=p$bg)
     yscr <- tkscrollbar(w, command = function(...) tkyview(can, ...))
     tkconfigure(can, yscrollcommand = function(...) tkset(yscr, ...))
     ## Pack it up
