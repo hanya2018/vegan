@@ -57,11 +57,17 @@
     yrange[1] <- 1.04*(yrange[1] - tmp) + tmp
     yrange[2] <- 1.04*(yrange[2] - tmp) + tmp
     ypretty <- ypretty[ypretty >= yrange[1] & ypretty <= yrange[2]]
-    ## Canvas width 6.99 inches, margins from par()
-    if (missing(width))
-        width <- 6.99
+    ## Canvas like they were in the default devices when I last checked
+    if (missing(width)) {
+        if (options("device") == "quartz")
+            width <- 5.99
+        else
+            width <- 6.99
+    }
     width <- width * PPI * p2p
-    mar <- round(p$mar * p$ps * p$cex * p2p)
+    ## Margin row width also varies with platform and devices
+    rpix <- (p$mai/p$mar * PPI * p2p)[1]
+    mar <- round(p$mar * rpix)
     xusr <- width - mar[2] - mar[4]
     xincr <- xusr/diff(xrange)
     yincr <- xincr
@@ -86,23 +92,23 @@
     tkpack(can, side="left", fill="x")
     tkpack(yscr, side="right", fill="y")
     tkgrid(cp2eps, dismiss, sticky="s")
-
+ 
     ## Box
     x0 <- usr2xy(c(xrange[1], yrange[1]))
     x1 <- usr2xy(c(xrange[2], yrange[2]))
     tkcreate(can, "rectangle", x0[1], x0[2], x1[1], x1[2], outline = p$fg,
              width = p$lwd)
     ## Axes and ticks
-    tl <- round(-p$tcl * p$ps)
+    tl <- -p$tcl * p$ps * p2p
     tmp <- xpretty
     for (i in 1:length(tmp)) {
         xx <- usr2xy(c(tmp[i], yrange[1]))
         tkcreate(can, "line", xx[1], xx[2], xx[1], xx[2]+tl, fill=p$fg)
-        tkcreate(can, "text", xx[1], xx[2] + p$ps + max(tl, 0),
+        tkcreate(can, "text", xx[1], xx[2] + rpix * p$mgp[2],
                  text=as.character(tmp[i]), fill=p$col.axis)
     }
     xx <- usr2xy(c(mean(xrange), yrange[1]))
-    tkcreate(can, "text", xx[1], xx[2] + max(tl,0) + 2.5*p$ps,
+    tkcreate(can, "text", xx[1], xx[2] + rpix * p$mgp[1],
              text=colnames(sco)[1], fill=p$col.lab)
     tmp <- ypretty
     for (i in 1:length(tmp)) {
@@ -142,7 +148,7 @@
     }
     ## Dummy location of the mouse
     .lastX <- 0
-    .lastY <- 0
+    .lastY <- 0 
     ## Highlight a label when mouse moves in
     tkitembind(can, "label", "<Any-Enter>",
                function() tkitemconfigure(can, "current", fill="red"))
@@ -152,4 +158,3 @@
     tkitembind(can, "<ButtonRelease-1>", function(x) tkdtag(can, "selected")) 
     tkbind(can, "<B1-Motion>", pMove)
 }
-
