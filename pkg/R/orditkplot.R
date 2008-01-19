@@ -1,5 +1,5 @@
 `orditkplot` <-
-    function(x, display = "species", width, col = "black",
+    function(x, display = "species", cex=0.8, width, col = "black",
              bg="transparent", diam = 3, ...)
 {
     require(tcltk) || stop("requires package tcltk")
@@ -25,6 +25,17 @@
     p$col.lab <- sanecol(p$col.lab)
     pt.col <- sanecol(col)
     pt.bg <- sanecol(bg)
+    ## Define fonts
+    idx <- match(p$family, c("","serif","sans","mono"))
+    if (!is.na(idx))
+        family <- c("helvetica", "times", "helvetica", "courier")[idx]
+    saneslant <- function(x) {
+        if (x > 1 ) 
+            list("roman", "bold", "italic", c("bold", "italic"))[[x]]
+    }
+    fnt <- c(family, round(p$ps*p$cex*cex), saneslant(p$font))
+    fnt.axis <- c(family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
+    fnt.lab <- c(family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
     ## toplevel
     w <- tktoplevel()
     tktitle(w) <- "orditkplot"
@@ -66,7 +77,8 @@
     }
     width <- width * PPI * p2p
     ## Margin row width also varies with platform and devices
-    rpix <- (p$mai/p$mar * PPI * p2p)[1]
+    ## rpix <- (p$mai/p$mar * PPI * p2p)[1]
+    rpix <- p$cra[2]
     mar <- round(p$mar * rpix)
     xusr <- width - mar[2] - mar[4]
     xincr <- xusr/diff(xrange)
@@ -92,7 +104,7 @@
     tkpack(can, side="left", fill="x")
     tkpack(yscr, side="right", fill="y")
     tkgrid(cp2eps, dismiss, sticky="s")
- 
+    
     ## Box
     x0 <- usr2xy(c(xrange[1], yrange[1]))
     x1 <- usr2xy(c(xrange[2], yrange[2]))
@@ -100,22 +112,32 @@
              width = p$lwd)
     ## Axes and ticks
     tl <- -p$tcl * p$ps * p2p
+    axoff <- p$mgp[3] * rpix
     tmp <- xpretty
     for (i in 1:length(tmp)) {
+        x0 <- usr2xy(c(xpretty[1], yrange[1]))
+        x1 <- usr2xy(c(xpretty[length(xpretty)], yrange[1]))
+        tkcreate(can, "line", x0[1], x0[2]+axoff, x1[1], x1[2]+axoff,
+                 fill=p$fg)
         xx <- usr2xy(c(tmp[i], yrange[1]))
-        tkcreate(can, "line", xx[1], xx[2], xx[1], xx[2]+tl, fill=p$fg)
-        tkcreate(can, "text", xx[1], xx[2] + rpix * p$mgp[2],
-                 text=as.character(tmp[i]), fill=p$col.axis)
+        tkcreate(can, "line", xx[1], xx[2] + axoff, xx[1], xx[2]+tl+axoff,
+                 fill=p$fg)
+        tkcreate(can, "text", xx[1], xx[2] + rpix * p$mgp[2], anchor="n",
+                 text=as.character(tmp[i]), fill=p$col.axis, font=fnt.axis)
     }
     xx <- usr2xy(c(mean(xrange), yrange[1]))
     tkcreate(can, "text", xx[1], xx[2] + rpix * p$mgp[1],
-             text=colnames(sco)[1], fill=p$col.lab)
+             text=colnames(sco)[1], fill=p$col.lab, anchor="n", font=fnt.lab)
     tmp <- ypretty
     for (i in 1:length(tmp)) {
+        x0 <- usr2xy(c(xrange[1], tmp[1]))
+        x1 <- usr2xy(c(xrange[1], tmp[length(tmp)]))
+        tkcreate(can, "line", x0[1]-axoff, x0[2], x1[1]-axoff, x1[2])
         yy <- usr2xy(c(xrange[1], tmp[i]))
-        tkcreate(can, "line", yy[1], yy[2], yy[1]-tl, yy[2], fill=p$fg )
-        tkcreate(can, "text", yy[1]- max(tl, 0) - p$ps, yy[2],
-                 text=as.character(tmp[i]), fill = p$col.axis)
+        tkcreate(can, "line", yy[1]-axoff, yy[2], yy[1]-tl-axoff, yy[2],
+                 fill=p$fg )
+        tkcreate(can, "text", yy[1] - rpix * p$mgp[2] , yy[2], anchor="e",
+                 text=as.character(tmp[i]), fill = p$col.axis, font=fnt.axis)
     }
     ## Points and labels
     laboff <- round(p$ps/2 + diam + 1)
@@ -125,7 +147,7 @@
                          xy[1]+diam,  xy[2]+diam, 
                          width=1, outline=pt.col, fill=pt.bg)
         lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
-                        fill = p$col)
+                        fill = p$col, font=fnt)
         tkaddtag(can, "point", "withtag", item)
         tkaddtag(can, "label", "withtag", lab)
     }
@@ -158,3 +180,4 @@
     tkitembind(can, "<ButtonRelease-1>", function(x) tkdtag(can, "selected")) 
     tkbind(can, "<B1-Motion>", pMove)
 }
+
