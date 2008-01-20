@@ -13,18 +13,15 @@ unpublished graduate course notes, plus improvements to allow the
 calculations in the case of very sparse and collinear matrices. }
 
 \usage{
-CCorA(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
-    nperm = 0, ...)
+CCorA(Y, X, stand.Y=FALSE, stand.X=FALSE, nperm = 0, ...)
 \method{biplot}{CCorA}(x, xlabs, which = 1:2, ...)
 }
 
 \arguments{
 \item{Y}{ left matrix }
-\item{X1}{ right matrix }
-\item{X2}{ control for the linear effect (over X1) of an optional matrix of covariables }
-\item{stand.Y}{ Y will be standardized if TRUE }
-\item{stand.X1}{ X1 will be standardized if TRUE }
-\item{stand.X2}{ X2 will be standardized if TRUE }
+\item{X}{ right matrix }
+\item{stand.Y}{ Y will be standardized if \code{TRUE} }
+\item{stand.X}{ X1 will be standardized if \code{TRUE} }
 \item{nperm}{Number of permutations to evaluate the significance of
   Pillai's trace}
 \item{x}{\code{CCoaR} result object}
@@ -40,9 +37,8 @@ CCorA(Y, X1, X2=NULL, stand.Y=FALSE, stand.X1=FALSE, stand.X2=FALSE,
 
 \details{ Canonical correlation analysis (Hotelling 1936) seeks linear
 combinations of the variables of Y that are maximally correlated to
-linear combinations of the variables of X1. The analysis estimates the
-relationships and displays them in graphs. In the present function, the
-linear effects of a matrix X2 (optional) on X1 can be controlled for.
+linear combinations of the variables of X. The analysis estimates the
+relationships and displays them in graphs.
 
 Algorithmic notes:
 \enumerate{
@@ -56,10 +52,11 @@ Algorithmic notes:
   \item
   This approach may fail, however, when there is heavy multicollinearity in very sparse data matrices, as it is the case in 4th-corner inflated data matrices for example. The safe approach is to replace all data matrices by their PCA object scores.
   \item
-  Inversion by 'solve' is avoided. Computation of inverses is done by SVD in most cases.
+  Inversion by \code{\link{solve}} is avoided. Computation of inverses
+  is done by SVD  (\code{\link{svd}})in most cases.
   \item
   Regression by OLS is also avoided. Regression residuals are
-  computed by QR decomposition.
+  computed by QR decomposition (\code{\link{qr}}).
 }
 
 The \code{biplot} function can produce two biplots, each for the left
@@ -88,7 +85,8 @@ Function \pkg{CCorA} returns a list containing the following results and matrice
 }
 
 \author{ Pierre Legendre, Departement de Sciences Biologiques,
-  Universite de Montreal. Edited by Jari Oksanen. }
+  Universite de Montreal. Implemented in \pkg{vegan} with the help of
+  Jari Oksanen. }
 
 \examples{
 # Example using random numbers

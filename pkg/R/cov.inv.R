@@ -19,12 +19,7 @@ function(mat, no, epsilon)
         m <- ncol(mat)
         mm <- length(which(S.svd$d > epsilon))
         if(mm < m) {
-            if(no != 4) {
-                message("Information - Matrix",no,": rank=",mm," < order",m)
-            } else {
-                message("Information - Matrix X = res(X1|X2): rank=",mm," < order",m)            
-            }
-            if((mm == 0) & (no == 4)) stop("X1 has rank = 0 after controlling for X2")
+            message("Information - Matrix",no,": rank=",mm," < order",m)
             m <- mm
         }
         S.inv <- diag(1/S.svd$d[1:m])
