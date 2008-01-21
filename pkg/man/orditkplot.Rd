@@ -1,7 +1,7 @@
 \name{orditkplot}
 \alias{orditkplot}
 
-\title{ Ordination Plot with Movable Lables }
+\title{ Ordination Plot with Movable Labels }
 \description{
   Function \code{orditkplot} produces an editable ordination plot with
   points and labels. The labels can be moved with mouse, and the edited
@@ -49,7 +49,9 @@ orditkplot(x, display = "species", cex = 0.8, width, col = "black",
 }
 \value{
   Function returns nothing useful directly, but you can save the edited
-  graph into encapsulated postscript.
+  graph into encapsulated postscript. How postscript is produced is very
+  dependent on the platform, and the results are not satisfactory on all
+  platforms.
 }
 
 \author{ Jari Oksanen }

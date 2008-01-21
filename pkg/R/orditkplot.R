@@ -28,14 +28,13 @@
     ## Define fonts
     idx <- match(p$family, c("","serif","sans","mono"))
     if (!is.na(idx))
-        family <- c("helvetica", "times", "helvetica", "courier")[idx]
+        p$family <- c("helvetica", "times", "helvetica", "courier")[idx]
     saneslant <- function(x) {
-        if (x > 1 ) 
             list("roman", "bold", "italic", c("bold", "italic"))[[x]]
     }
-    fnt <- c(family, round(p$ps*p$cex*cex), saneslant(p$font))
-    fnt.axis <- c(family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
-    fnt.lab <- c(family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
+    fnt <- c(p$family, round(p$ps*p$cex*cex), saneslant(p$font))
+    fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
+    fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
     ## toplevel
     w <- tktoplevel()
     tktitle(w) <- "orditkplot"
@@ -46,7 +45,7 @@
     buts <- tkframe(w)
     tkpack(buts, side="bottom", fill="x", pady="2m")
     cp2eps <- tkbutton(buts, text="Copy to EPS", 
-                       command=function() tkpostscript(can, x=0, y=0,
+                       command=function(...) tkpostscript(can, x=0, y=0,
                        height=height, width=width, 
                        file=tkgetSaveFile(defaultextension=".eps")))
     dismiss <- tkbutton(buts, text="Dismiss", command=function() tkdestroy(w))
@@ -180,4 +179,3 @@
     tkitembind(can, "<ButtonRelease-1>", function(x) tkdtag(can, "selected")) 
     tkbind(can, "<B1-Motion>", pMove)
 }
-
