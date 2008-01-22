@@ -26,22 +26,27 @@ orditkplot(x, display = "species", cex = 0.8, width, col = "black",
   Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk based
   ordination graphics with points and labels. The points are fixed, but
   the labels can be moved with mouse to better positions, and the final
-  plot can be exported to a postscript file.
+  plot can be exported to a postscript file or the new positions of the
+  labels can be save in the \R session and used in ordinary
+  \code{\link{text}} function to label an existing plot. 
 
   The produced plot will have equal aspect ratio. The width of the
   horizontal axis is fixed, but vertical axes will be scaled to needed
   height, and you can use scrollbar to move vertically if the whole
-  canvas does not fit the window. The plot is a Tcl/Tk canvas, but the
-  function tries to replicate standard graphical device of the platform,
-  and it honours several graphical parameters (see \code{\link{par}}).
-  At the moment, the following graphical parameters
-  are honoured: \code{bg}, \code{cex}, \code{cex.axis}, \code{cex.lab},
-  \code{col} (for labels), \code{col.axis}, \code{col.lab},
-  \code{family} (for font faces), \code{fg}, \code{font},
-  \code{font.axis}, \code{font.lab}, \code{lheight}, \code{lwd} (for the
-  box), \code{mar}, \code{mex}, \code{mgp}, \code{ps}, \code{tcl}. These
-  can be set with \code{\link{par}}, and they also will influence other
-  plots similarly.
+  canvas does not fit the window. If you use dumped labels in ordinary
+  \R plots, your plot must have the same dimensions as the
+  \code{orditkplot} canvas to have identical location of the labels.
+
+  The plot is a Tcl/Tk canvas, but the function tries to replicate
+  standard graphical device of the platform, and it honours several
+  graphical parameters (see \code{\link{par}}).  At the moment, the
+  following graphical parameters are honoured: \code{bg}, \code{cex},
+  \code{cex.axis}, \code{cex.lab}, \code{col} (for labels),
+  \code{col.axis}, \code{col.lab}, \code{family} (for font faces),
+  \code{fg}, \code{font}, \code{font.axis}, \code{font.lab},
+  \code{lheight}, \code{lwd} (for the box), \code{mar}, \code{mex},
+  \code{mgp}, \code{ps}, \code{tcl}. These can be set with
+  \code{\link{par}}, and they also will influence other plots similarly.
   
   The \code{\link[tcltk]{tkcanvas}} text cannot be rotated,
   and therefore vertical axis is not labelled, and \code{las}
