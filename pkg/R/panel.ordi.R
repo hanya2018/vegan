@@ -13,6 +13,6 @@
                      pch = "+", cex = 3*tp$plot.symbol$cex, lwd=2,
                      ...)
     }
-    panel.abline(h=0, lty = 3, ...)
-    panel.abline(v=0, lty = 3, ...)
+    panel.abline(h=0, lty = 3)
+    panel.abline(v=0, lty = 3)
 }
