@@ -1,13 +1,15 @@
 `orditkplot` <-
     function(x, display = "species", cex=0.8, width, col = "black",
-             bg="transparent", diam = 3, ...)
+             bg="transparent", pcex = 0.7, labels,  ...)
 {
     require(tcltk) || stop("requires package tcltk")
     ## Graphical parameters and constants
     p <- par()
-    ## PPI is points per inch, and p2p pixels per point
-    PPI <- 72 
-    p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) 
+    PPI <- 72                                         # Points per Inch
+    p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) # Pixel per point
+    DIAM <- 2.7                               # diam of plotting symbol
+    ## Plotting symbol diam
+    diam <- round(pcex * DIAM * p2p, 1) 
     ## Sanitize colours
     sanecol <- function(x) {
         if (is.na(x))
@@ -83,28 +85,23 @@
     dump <- tkbutton(buts, text="Dump to R", command=pDump)
     ## Make canvas
     sco <- scores(x, display=display, ...)
+    if (!missing(labels))
+        rownames(sco) <- labels
     labs <- rownames(sco)
+ 
     ## Ranges and pretty values for axes
     xrange <- range(sco[,1])
     yrange <- range(sco[,2])
     xpretty <- pretty(xrange)
     ypretty <- pretty(yrange)
-    ## Extend ranges by 4%
-    tmp <- mean(xrange)
-    xrange[1] <- 1.04*(xrange[1] - tmp) + tmp
-    xrange[2] <- 1.04*(xrange[2] - tmp) + tmp
+    ## Extend ranges by 4% 
+    xrange <- c(-0.04, 0.04) * diff(xrange) + xrange
     xpretty <- xpretty[xpretty >= xrange[1] & xpretty <= xrange[2]]
-    tmp <- mean(yrange)
-    yrange[1] <- 1.04*(yrange[1] - tmp) + tmp
-    yrange[2] <- 1.04*(yrange[2] - tmp) + tmp
+    yrange <- c(-0.04, 0.04) * diff(yrange) + yrange
     ypretty <- ypretty[ypretty >= yrange[1] & ypretty <= yrange[2]]
     ## Canvas like they were in the default devices when I last checked
-    if (missing(width)) {
-        if (options("device") == "quartz")
-            width <- 5
-        else
-            width <- 6.99
-    }
+    if (missing(width)) 
+        width <- p$din[1]
     width <- width * PPI * p2p
     ## Margin row width also varies with platform and devices
     ## rpix <- (p$mai/p$mar * PPI * p2p)[1]

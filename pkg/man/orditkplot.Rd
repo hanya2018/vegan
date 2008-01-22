@@ -9,7 +9,7 @@
 }
 \usage{
 orditkplot(x, display = "species", cex = 0.8, width, col = "black",
-   bg = "transparent", diam = 3, ...)
+   bg = "transparent", pcex = 0.7, labels,  ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,9 +17,11 @@ orditkplot(x, display = "species", cex = 0.8, width, col = "black",
     \code{\link{scores}} can handle. }
   \item{display}{ Type of \code{\link{scores}} displayed. }
   \item{cex}{Character expansion for text labels.}
-  \item{width}{ Width of the plot in inches (default supplied). }
+  \item{width}{ Width of the plot in inches; defaults to the current
+    width of graphical device. }
   \item{col, bg}{ Line and fill colours of points. }
-  \item{diam}{ Diameter of points in pixels.}
+  \item{pcex}{Expansion factor for point size.}
+  \item{labels}{Labels used instead of row names.}
   \item{\dots}{ Other arguments to \code{\link{scores}}. }
 }
 \details{
