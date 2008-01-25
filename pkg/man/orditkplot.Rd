@@ -11,7 +11,7 @@
 \usage{
 orditkplot(x, display = "species", choices = 1:2, cex = 0.8, width,
    col = "black", bg = "transparent", pcex = 0.7, labels,  ...)
-\method{plot}{orditkplot}(x)
+\method{plot}{orditkplot}(x, ...)
 }
 
 \arguments{
@@ -26,7 +26,7 @@ orditkplot(x, display = "species", choices = 1:2, cex = 0.8, width,
   \item{col, bg}{ Line and fill colours of points. }
   \item{pcex}{Expansion factor for point size.}
   \item{labels}{Labels used instead of row names.}
-  \item{\dots}{ Other arguments to \code{\link{scores}}. }
+  \item{\dots}{ Other arguments to \code{\link{scores}} or ignored in \code{plot}. }
 }
 \details{
   Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk based
