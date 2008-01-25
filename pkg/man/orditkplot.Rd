@@ -1,5 +1,6 @@
 \name{orditkplot}
 \alias{orditkplot}
+\alias{plot.orditkplot}
 
 \title{ Ordination Plot with Movable Labels }
 \description{
@@ -8,14 +9,17 @@
   plot can be exported to an encapsulated postscript file.
 }
 \usage{
-orditkplot(x, display = "species", cex = 0.8, width, col = "black",
-   bg = "transparent", pcex = 0.7, labels,  ...)
+orditkplot(x, display = "species", choices = 1:2, cex = 0.8, width,
+   col = "black", bg = "transparent", pcex = 0.7, labels,  ...)
+\method{plot}{orditkplot}(x)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{An ordination result or any other object that
-    \code{\link{scores}} can handle. }
+    \code{\link{scores}} can handle, or for the \code{plot} function the
+    object dumped from the interactive \code{orditkplot} session.}
   \item{display}{ Type of \code{\link{scores}} displayed. }
+  \item{choices}{ Axes displayed.}
   \item{cex}{Character expansion for text labels.}
   \item{width}{ Width of the plot in inches; defaults to the current
     width of graphical device. }
@@ -27,10 +31,15 @@ orditkplot(x, display = "species", cex = 0.8, width, col = "black",
 \details{
   Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk based
   ordination graphics with points and labels. The points are fixed, but
-  the labels can be moved with mouse to better positions, and the final
-  plot can be exported to a postscript file or the new positions of the
-  labels can be save in the \R session and used in ordinary
-  \code{\link{text}} function to label an existing plot. 
+  the labels can be moved with mouse to better positions. The edited
+  plot can be copied to an encapsulated postscript (eps) file using
+  standard Tcl/Tk utilities. The faithfullness of this copy seems to be
+  very system dependent. Alternatively, the plot can be exported via \R
+  standard devices into eps, pdf, png or jpeg file. Finally, the edited
+  coordinates of labels and points can be dumped to an \R object, and
+  \code{plot.orditkplot} functin can be used to display the results. For
+  faithtfull replication of the plot, the graph must have similar
+  dimensions as the \code{orditkplot} canvas had originally.
 
   The produced plot will have equal aspect ratio. The width of the
   horizontal axis is fixed, but vertical axes will be scaled to needed

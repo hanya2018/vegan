@@ -1,10 +1,13 @@
 `orditkplot` <-
-    function(x, display = "species", cex=0.8, width, col = "black",
-             bg="transparent", pcex = 0.7, labels,  ...)
+    function(x, display = "species", choices = 1:2, cex=0.8, width,
+             col = "black", bg="transparent", pcex = 0.7, labels,  ...)
 {
     require(tcltk) || stop("requires package tcltk")
-    ## Graphical parameters and constants
+    ## Graphical parameters and constants, and save some for later plotting
     p <- par()
+    savepar <- p[c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
+                   "family", "fg", "font", "font.axis", "font.lab", "lheight",
+                   "lwd", "mar", "mex", "mgp", "ps", "tcl")]
     PPI <- 72                                         # Points per Inch
     p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) # Pixel per point
     DIAM <- 2.7                               # diam of plotting symbol
@@ -19,7 +22,7 @@
         else if (x == "transparent")
             x <- ""
         x
-    }
+    } 
     p$bg <- sanecol(p$bg)
     p$fg <- sanecol(p$fg)
     p$col <- sanecol(p$col)
@@ -45,25 +48,35 @@
     XSCR <- as.numeric(tkwinfo("screenwidth", w))
     ## Buttons
     buts <- tkframe(w)
+    ## Copy current canvas to EPS using the standard Tcl/Tk utility
     cp2eps <- tkbutton(buts, text="Copy to EPS", 
                        command=function() tkpostscript(can, x=0, y=0,
                        height=height, width=width, 
                        file=tkgetSaveFile(defaultextension=".eps")))
     dismiss <- tkbutton(buts, text="Dismiss", command=function() tkdestroy(w))
-    ## Button to dump new label locations to an R object
-    pDump <- function() {
+    ## Dump current plot to an "orditkplot" object (internally)
+    ordDump <- function() {
         xy <- matrix(0, nrow=nrow(sco), ncol=2)
         rownames(xy) <- rownames(sco)
         colnames(xy) <- colnames(sco)
         for(nm in names(pola)) {
             xy[tclvalue(labtext[[nm]]),] <- xy2usr(nm)
         }
+        curdim <- round(c(width, height) /PPI/p2p, 2)
+        args <- list(cex = cex, col = col, bg=bg, pcex = pcex)
+        xy <- list(labels = xy, points = sco, par = savepar, args = args, dim = curdim)
+        class(xy) <- "orditkplot"
+        xy
+    }        
+    ## Button to dump "orditkplot" object to the R session
+    pDump <- function() {
+        xy <- ordDump()
         dumpVar <- tclVar("")
         tt <- tktoplevel()
         tktitle(tt) <- "R Dump"
         entryDump <- tkentry(tt, width=20, textvariable=dumpVar)
         tkgrid(tklabel(tt, text="Enter name for an R object"))
-        tkgrid(entryDump)
+        tkgrid(entryDump, pady="5m")
         isDone <- function() {
             dumpName <- tclvalue(dumpVar)
             if (exists(dumpName, envir=.GlobalEnv)) {
@@ -83,12 +96,41 @@
         tkfocus(tt)
     }
     dump <- tkbutton(buts, text="Dump to R", command=pDump)
+    ## Button to write current "orditkplot" object to a graphical device
+    ## FIXME: needs checking of input names, success in opening the device,
+    ## and that R has capabilities() for these devices
+    devDump <- function() {
+        xy <- ordDump()
+        fname <- tkgetSaveFile(filetypes="{{eps files} {.eps}}
+                                          {{pdf files} {.pdf}}
+                                          {{png files} {.png}}
+                                          {{jpeg files} {.jpg}}")
+        if(tclvalue(fname) == "")
+            return(NULL)
+        fname <- tclvalue(fname)
+        ftype <- unlist(strsplit(fname, "\\."))
+        ftype <- ftype[length(ftype)]
+        if (ftype == "jpeg")
+            ftype <- "jpg"
+        if (!(ftype %in% c("eps", "pdf", "png", "jpg")))
+            return(NULL)
+        pixdim <- round(xy$dim*PPI*p2p)
+        switch(ftype,
+               eps = postscript(file=fname, width=xy$dim[1], height=xy$dim[2],
+                     paper="special", horizontal = FALSE),
+               pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
+               png = png(file=fname, width=pixdim[1], height=pixdim[2]),
+               jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2]))
+        plot.orditkplot(xy)
+        dev.off()
+    }
+    export <- tkbutton(buts, text="Export plot", command=devDump)
     ## Make canvas
-    sco <- scores(x, display=display, ...)
+    sco <- scores(x, display=display, choices = choices, ...)
     if (!missing(labels))
         rownames(sco) <- labels
     labs <- rownames(sco)
- 
+    
     ## Ranges and pretty values for axes
     xrange <- range(sco[,1])
     yrange <- range(sco[,2])
@@ -139,8 +181,7 @@
     tkpack(buts, side="bottom", fill="x", pady="2m")
     tkpack(can, side="left", fill="x")
     tkpack(yscr, side="right", fill="y")
-    tkgrid(cp2eps, dump, dismiss, sticky="s")
-    
+    tkgrid(cp2eps, export, dump, dismiss, sticky="s")
     ## Box
     x0 <- usr2xy(c(xrange[1], yrange[1]))
     x1 <- usr2xy(c(xrange[2], yrange[2]))
