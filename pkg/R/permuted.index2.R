@@ -60,9 +60,9 @@
         for (is in inds) {
             gr <- out[control$strata == is]
             if ((n.gr <- length(gr))> 1) {
-                out [gr]<- switch(control$type,
-                                  "free" = .Internal(sample(n.gr, n.gr,
-                                  FALSE, NULL)),
+                out[gr] <- switch(control$type,
+                                  "free" = out[gr][.Internal(sample(n.gr, n.gr,
+                                  FALSE, NULL))],
                                   "series" = permuted.series(gr,
                                   mirror = control$mirror, start = start),
                                   "grid" = permuted.grid(nrow = control$nrow,
