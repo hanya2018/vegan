@@ -1,6 +1,37 @@
 `permuted.index2` <-
     function (n, control = permControl())
 {
+    `permuted.strata` <-
+        function(strata)
+        {
+            lev <- length(levels(strata))
+            ngr <- length(strata) / lev
+            rep(sample(lev), ngr) + (rep(seq(0, ngr-1), each = lev) * lev)
+        }
+    `permuted.grid` <-
+        function(nrow, ncol, mirror = FALSE, start.row = NULL, start.col = NULL)
+        {
+            if(is.null(start.row))
+                start.row <- .Internal(sample(nrow, 1, FALSE, NULL))
+            if(is.null(start.col))
+                start.col <- .Internal(sample(ncol, 1, FALSE, NULL))
+            ir <- seq(start.row, length=nrow) %% nrow
+            ic <- seq(start.col, length=ncol) %% ncol
+            if (mirror) {
+                if (runif(1) < 0.5)
+                    ir <- rev(ir)
+                if (runif(1) < 0.5)
+                    ic <- rev(ic)
+            }
+            rep(ic, each=nrow) * nrow + rep(ir, len=nrow*ncol) + 1
+        }
+    `permuted.strata` <-
+        function(strata)
+        {
+            lev <- length(levels(strata))
+            ngr <- length(strata) / lev
+            rep(sample(lev), ngr) + (rep(seq(0, ngr-1), each = lev) * lev)
+        }
     if (is.null(control$strata)) {
         out <- switch(control$type,
                       "free" = .Internal(sample(n, n, FALSE, NULL)),

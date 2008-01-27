@@ -9,9 +9,6 @@
 % for new permutation schemes
 % all need documenting
 \alias{permuted.index2}
-\alias{permuted.series}
-\alias{permuted.grid}
-\alias{permuted.strata}
 \alias{permControl}
 \alias{print.permControl}
 \alias{getNumObs}
