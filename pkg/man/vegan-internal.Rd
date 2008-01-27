@@ -8,9 +8,6 @@
 \alias{pasteCall}
 % for new permutation schemes
 % all need documenting
-\alias{permuted.index2}
-\alias{permControl}
-\alias{print.permControl}
 \alias{getNumObs}
 \alias{getNumObs.default}
 \alias{getNumObs.integer}
