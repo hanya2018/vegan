@@ -25,13 +25,16 @@
             }
             rep(ic, each=nrow) * nrow + rep(ir, len=nrow*ncol) + 1
         }
-    `permuted.strata` <-
-        function(strata)
-        {
-            lev <- length(levels(strata))
-            ngr <- length(strata) / lev
-            rep(sample(lev), ngr) + (rep(seq(0, ngr-1), each = lev) * lev)
-        }
+    `permuted.series` <- function(inds, mirror = FALSE, start = NULL)
+    {
+        n <- length(inds)
+        if(is.null(start))
+            start <- .Internal(sample(n, 1, FALSE, NULL))
+        out <- seq(start, length = n) %% n + 1
+        if(mirror && runif(1) < 0.5)
+            out <- rev(out)
+        inds[out]
+    }
     if (is.null(control$strata)) {
         out <- switch(control$type,
                       "free" = .Internal(sample(n, n, FALSE, NULL)),
