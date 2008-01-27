@@ -126,4 +126,3 @@ permuted.index2(20, permControl(strata = block, type = "strata"))
 }
 \keyword{ htest }
 \keyword{ design }
-

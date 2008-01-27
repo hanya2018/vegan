@@ -6,17 +6,6 @@
 \alias{ordiTerminfo}
 \alias{ordispantree}
 \alias{pasteCall}
-% for new permutation schemes
-% all need documenting
-\alias{getNumObs}
-\alias{getNumObs.default}
-\alias{getNumObs.integer}
-\alias{getNumObs.numeric}
-\alias{numPerms}
-\alias{permCheck}
-\alias{print.permCheck}
-\alias{print.summary.permCheck}
-\alias{summary.permCheck}
 \title{Internal vegan functions}
 
 \description{
