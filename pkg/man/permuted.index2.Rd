@@ -77,6 +77,12 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
   For \code{permControl} a list with components for each of the possible
   arguments.
 }
+\note{
+  \code{permuted.index2} is currently used in one Vegan function;
+  \code{\link{permDisper}}. Over time, the other functions that
+  currently use the older \code{\link{permuted.index}} will be updated
+  to use \code{permuted.index2}.
+}
 %\references{
 %}
 \author{Gavin Simpson}
