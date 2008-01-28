@@ -29,8 +29,8 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
   \item{nperm}{the number of permutations.}
   \item{complete}{logical; should complete enumeration of all
     permutations be performed?}
-  \item{type}{the type of permutations required. One of \code{free},
-    \code{series}, \code{grid} or \code{series}. See Details.}
+  \item{type}{the type of permutations required. One of \code{"free"},
+    \code{"series"}, \code{"grid"} or \code{"series"}. See Details.}
   \item{maxperm}{the maximum number of permutations to
     perform. Currently unused.}
   \item{minperm}{the lower limit to the number of possible permutations
@@ -58,9 +58,10 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
   explicitly turn this on using \code{mirror = TRUE} in
   \code{permControl}.
 
-  To permute \code{strata} rather that the observations within strata, use
-  \code{type = "strata"}. However, note that the number of observations
-  within each level of strata \strong{must} by equal!
+  To permute \code{strata} rather than the observations within the
+  levels of \code{strata}, use \code{type = "strata"}. However, note
+  that the number of observations within each level of strata
+  \strong{must} be equal! 
 
   For some experiments, such as BACI designs, one might wish to use the
   same permutation within each level of strata. This is controlled by

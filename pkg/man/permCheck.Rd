@@ -12,10 +12,10 @@
 \title{Number of possible permutations and checking of permutation schemes}
 \description{
   \code{permCheck} provides checking of permutation schemes for
-  vailidity. \code{numPerms} calculates the maximum number of
+  validity. \code{numPerms} calculates the maximum number of
   permutations possible under the current permutation
   scheme. \code{getNumObs} is a utility function to return the number of
-  observations for a wide range of R and popular ordination objects.
+  observations for a range of R and ordination objects.
 }
 \usage{
 permCheck(object, control = permControl())
@@ -35,8 +35,8 @@ getNumObs(object, \dots)
 
 \arguments{
   \item{object}{an R object. Specifically, any object handled by
-    \code{\link{scores}} or data frames, matrices, and numeric and
-    integer  vectors. For \code{\link{summary.permCheck}} and object of
+    \code{\link{scores}}, data frames, matrices, and numeric and
+    integer  vectors. For \code{\link{summary.permCheck}} an object of
     class \code{"permCheck"}.}
   \item{control}{a list of control values describing properties of the
     permutation design, as returned by a call to
@@ -44,7 +44,7 @@ getNumObs(object, \dots)
   \item{\dots}{arguments to other methods.}
 }
 \details{
-  \code{permCheck} and \code{numPerms} are utility function for working
+  \code{permCheck} and \code{numPerms} are utility functions for working
   with the new permutation schemes available in
   \code{\link{permuted.index2}}.
 
@@ -52,20 +52,20 @@ getNumObs(object, \dots)
   against the object to which it will be applied. It calculates the
   maximum number of possible permutations for the number of observations
   in \code{object} and the permutation scheme described by
-  \code{control}. The returned object contains \code{control}, and
-  object of class \code{"permControl"} suitably modified if
+  \code{control}. The returned object contains component \code{control},
+  an object of class \code{"permControl"} suitably modified if
   \code{permCheck} identifies a problem.
 
   The main problem is requesting more permutations than possible with
-  the number of observations and the permutation design requested. In
-  such cases, \code{nperm} is reduced to equal the number of possible
-  permutations, and complete enumeration of all permutations is turned
-  on (\code{control$complete} is set to \code{TRUE}.
+  the number of observations and the permutation design. In such cases,
+  \code{nperm} is reduced to equal the number of possible permutations,
+  and complete enumeration of all permutations is turned on
+  (\code{control$complete} is set to \code{TRUE}). 
 
   Alternatively, if the number of possible permutations is low, and less
   than \code{control$minperm}, it is better to enumerate all possible
   permutations, and as such complete enumeration of all permutations is
-  turned  on (\code{control$complete} is set to \code{TRUE}.
+  turned  on (\code{control$complete} is set to \code{TRUE}).
 }
 \value{
   For \code{permCheck} a list containing the maximum number of
