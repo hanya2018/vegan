@@ -43,8 +43,8 @@ bgdispersal <- function (mat, PAonly = FALSE, abc = FALSE)
         }
     }
     if (!PAonly) {
-        DD3 <- matrix(0, n, n)
-        DD4 <- matrix(0, n, n)
+        DD3 <- matrix(0, n, n, dimnames=list(names,names))
+        DD4 <- matrix(0, n, n, dimnames=list(names,names))
         row.sum <- apply(mat2, 1, sum)
         for (j in 1:(n - 1)) {
             for (jj in (j + 1):n) {
