@@ -14,14 +14,14 @@ bgdispersal(mat, PAonly = FALSE, abc = FALSE)
 }
 
 \arguments{
-\item{mat}{ Data frame or matrix containing a community composition data table
-(species presence-absence or abundance data) }
-\item{PAonly}{ \code{FALSE} if the four types of coefficients, DD1 to
-  DD4, are requested; \code{TRUE} if \code{DD1} and \code{DD2} only are
-  sought (see Details). }
-\item{abc}{If \code{TRUE], return tables \code{a}, \code{b} and \code{c}
-  used in \code{DD1} and \code{DD2].}
-}
+  \item{mat}{ Data frame or matrix containing a community composition
+    data table (species presence-absence or abundance data). }
+  \item{PAonly}{ \code{FALSE} if the four types of coefficients, DD1 to
+    DD4, are requested; \code{TRUE} if \code{DD1} and \code{DD2} only are
+    sought (see Details). }
+  \item{abc}{If \code{TRUE}, return tables \code{a}, \code{b} and \code{c}
+    used in \code{DD1} and \code{DD2}.}
+  }
 \details{
 The signs of the DD coefficients indicate the 
 direction of dispersal, provided that the 
