@@ -10,14 +10,17 @@ Legendre (1984), and also described in Legendre and Legendre (1998,
 section 13.3.4). }
 
 \usage{
-bgdispersal(mat, PAonly = FALSE)
+bgdispersal(mat, PAonly = FALSE, abc = FALSE)
 }
 
 \arguments{
 \item{mat}{ Data frame or matrix containing a community composition data table
 (species presence-absence or abundance data) }
 \item{PAonly}{ \code{FALSE} if the four types of coefficients, DD1 to
-  DD4, are requested; \code{TRUE} if DD1 and DD2 only are sought (see Details). }
+  DD4, are requested; \code{TRUE} if \code{DD1} and \code{DD2} only are
+  sought (see Details). }
+\item{abc}{If \code{TRUE], return tables \code{a}, \code{b} and \code{c}
+  used in \code{DD1} and \code{DD2].}
 }
 \details{
 The signs of the DD coefficients indicate the 
