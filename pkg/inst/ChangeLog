@@ -9,8 +9,12 @@ Version 1.10-11 (Jan 27, 2008, working...)
 	
 	* permuted.index2: fixed a bug in permutations with strata.
 
-	* Documentation: added documentation for permuted.index2, 
-	permControl, permCheck and helkper functions.
+	* Documentation: added documentation for permuted.index2,
+	permControl, permCheck and helper functions. FAQ and intro know
+	now about orditkplot, anova.cca(..., by="margin") and
+	permuted.index2. FAQ gained new sections on using different
+	plotting symbols and handling congested plots in ordination
+	graphics.
 
 Version 1.10-10 (closed Jan 27, 2008)
 
@@ -18,7 +22,9 @@ Version 1.10-10 (closed Jan 27, 2008)
 
 	* orditkplot: new function for ordination plots based on Tcl/Tk:
 	you can edit graph by moving labels using a mouse and save the
-	edited graph as an EPS file.
+	edited graph as an eps file, or expoert via R plot function to
+	eps, pdf, png or jpeg, or to dump to R session for further
+	processing. 
 
 	* CCorA: removed partial analysis (which needs more work and may
 	reappear later).

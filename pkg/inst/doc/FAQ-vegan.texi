@@ -139,6 +139,9 @@ is needed by @code{ordiplot3d}
 @item Package @code{rgl}
 is needed by @code{ordirgl}
 
+@item Package @code{tcltk}
+is needed by @code{orditkplot}
+
 @end itemize
 
 @node What other packages are available for ecologists?, What other documentation is available for vegan?, What R packages vegan depends on?, Introduction
@@ -315,6 +318,8 @@ listed as authors in the documentation.
 * What are aliased variables and how to see them?::  
 * Plotting aliased variables::  
 * Constrained permutations in vegan::  
+* How to use different plotting symbols in ordination graphics?::  
+* How to avoid cluttered ordination graphs?::  
 @end menu
 
 @node Can you analyse binary or cover class data?, Why dissimilarities in vegan differ from other sources?, Ordination, Ordination
@@ -497,7 +502,7 @@ You can fit vectors or class centroids for aliased variables using
 fitting, and the fitted vectors are identical to the vectors in
 correspondence analysis.
 
-@node Constrained permutations in vegan,  , Plotting aliased variables, Ordination
+@node Constrained permutations in vegan, How to use different plotting symbols in ordination graphics?, Plotting aliased variables, Ordination
 @section Constrained permutations in vegan
 
 You can constrain your permutations within @code{strata} or levels of
@@ -506,10 +511,61 @@ functions that use permutation, such as @code{adonis}, @code{anosim},
 @code{anova.cca}, @code{mantel}, @code{mrpp}, @code{envfit} and
 @code{protest}.
 
-Other constrained permutations types are not (yet) available, but I am
-happy to accept contribution. If you want to write code for other
-permutation types, please contact me first so that we can discuss the
-application interface.
+Vegan has an alternative permutation function @code{permuted.index2}
+which allows restricted permutation designs for time series, line
+transects, spatial grids and blocking factors. Over time, the other
+functions that currently use the older @code{permuted.index} will be updated
+to use @code{permuted.index2}, but at the moment it is used only in one
+pilot function.
+
+@node How to use different plotting symbols in ordination graphics?, How to avoid cluttered ordination graphs?, Constrained permutations in vegan, Ordination
+@section How to use different plotting symbols in ordination graphics?
+
+The default ordination @code{plot} function is intended for fast
+plotting and it is not very configurable. To use different plotting
+symbols, you should first create and empty ordination plot with
+@code{plot(..., type="n")}, and then add @code{points} or @code{text} to
+the created empty frame (here @code{...} means other arguments you want
+to give to your @code{plot} command). The @code{points} and @code{text}
+commands are fully configurable, and allow different plotting symbols
+and characters.
+
+@node How to avoid cluttered ordination graphs?,  , How to use different plotting symbols in ordination graphics?, Ordination
+@section How to avoid cluttered ordination graphs?
+
+If there is a really high number of species or sites, the graphs often
+are congested and many labels are overwritten. It may be impossible to
+have complete readable graphics with some data sets. However, here are
+some tricks you can use:
+@itemize
+
+@item Use only points, possibly with different types if you do not need
+to see the labels. You may need to first create an empty plot using
+@code{plot(..., type="n")}, if you are not satisfied with the default
+graph. (Here and below  @code{...} means other arguments you want
+to give to your @code{plot} command.)
+
+@item Use points, and add labels to desired points using @code{identify}
+for ordination graphics, if you do not need to see all labels.  You may
+need to first create an empty plot using @code{plot(..., type="n")}, if
+you are not satisfied with the default graph.
+
+@item Use @code{orditorp} function that uses labels only if these can be
+added to a graph without overwriting other labels, and points otherwise,
+if you do not need to see all labels. You must first create an empty
+plot using  @code{plot(..., type="n")}, and then add labels or points
+with @code{orditorp}.  
+
+@item Use interactive @code{orditkplot} function that lets you drag
+labels of points to better positions if you need to see all labels. Only
+one set of points can be used. 
+
+@item Most @code{plot} functions allow you to zoom to a part of the
+graph using @code{xlim} and @code{ylim} arguments to reduce clutter in
+congested areas.  
+
+@end itemize
+
 
 @node Other analysis methods ,  , Ordination, Top
 @chapter Other analysis methods

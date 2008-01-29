@@ -170,6 +170,12 @@ methods you can try:
 \item Use automatic \texttt{orditorp} function that uses text only if
   this can be done without overwriting previous labels, but points in
   other cases.
+\item Use interactive \texttt{orditkplot} function that draws both
+  points and labels for ordination scores, and allows you to drag labels
+  to better positions. You can export the results of the edited graph to
+  encapsulated postscript, pdf, png or jpeg files, or copy directly to
+  encapsulated postscript, or return the edited positions to R for
+  further processing.
 \end{itemize}
 
 \subsection{Adding items to ordination plots}
@@ -319,7 +325,12 @@ It is also possible to analyse terms separately:
 anova(ord, by="term", permu=200)
 @
 In this case, the function is unable to automatically select the
-number of iterations.
+number of iterations. This test is sequential: the terms are analysed
+in the order they happen to be in the model. You can also analyse
+significances of marginal effects (``Type III effects''):
+<<>>=
+anova(ord, by="mar")
+@
 
 Moreover, it is possible to analyse significance of each axis:
 <<a>>=
