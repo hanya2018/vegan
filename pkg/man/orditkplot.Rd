@@ -9,37 +9,43 @@
   plot can be exported to an encapsulated postscript file.
 }
 \usage{
-orditkplot(x, display = "species", choices = 1:2, cex = 0.8, width,
-   col = "black", bg = "transparent", pcex = 0.7, labels,  ...)
+orditkplot(x, display = "species", choices = 1:2, xlim, ylim, cex = 0.8, 
+   width, col = "black", bg = "transparent", pcex = 0.7, labels,  ...)
 \method{plot}{orditkplot}(x, ...)
 }
 
-\arguments{
+\arguments{ 
   \item{x}{An ordination result or any other object that
     \code{\link{scores}} can handle, or for the \code{plot} function the
     object dumped from the interactive \code{orditkplot} session.}
   \item{display}{ Type of \code{\link{scores}} displayed. }
   \item{choices}{ Axes displayed.}
+  \item{xlim, ylim}{x and y limits for plots: points outside these
+    limits will be completely removed.}
   \item{cex}{Character expansion for text labels.}
   \item{width}{ Width of the plot in inches; defaults to the current
     width of graphical device. }
-  \item{col, bg}{ Line and fill colours of points. }
-  \item{pcex}{Expansion factor for point size.}
+  \item{col, bg}{ Line and fill colours of points. } 
+  \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
-  \item{\dots}{ Other arguments to \code{\link{scores}} or ignored in \code{plot}. }
+  \item{\dots}{ Other arguments to \code{\link{scores}} or ignored in
+    \code{plot}. } 
 }
-\details{
-  Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk based
-  ordination graphics with points and labels. The points are fixed, but
-  the labels can be moved with mouse to better positions. The edited
-  plot can be copied to an encapsulated postscript (eps) file using
-  standard Tcl/Tk utilities. The faithfullness of this copy seems to be
-  very system dependent. Alternatively, the plot can be exported via \R
-  standard devices into eps, pdf, png or jpeg file. Finally, the edited
-  coordinates of labels and points can be dumped to an \R object, and
-  \code{plot.orditkplot} functin can be used to display the results. For
-  faithtfull replication of the plot, the graph must have similar
-  dimensions as the \code{orditkplot} canvas had originally.
+
+\details{ Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk
+  based ordination graphics with points and labels. The points are
+  fixed, but the labels can be moved with mouse to better
+  positions. The edited plot can be copied to an encapsulated
+  postscript (eps) file using standard Tcl/Tk utilities. The
+  faithfullness of this copy seems to be very system
+  dependent. Alternatively, the plot can be exported via \R standard
+  devices into eps, pdf, png, jpeg or bmp file (not all types are
+  available in all platforms), or to editable \code{\link{xfig}} file.
+  Finally, the edited coordinates of labels and points can be dumped
+  to an \R object for further processin, and \code{plot.orditkplot}
+  function can be used to display the results. For faithtfull
+  replication of the plot, the graph must have similar dimensions as
+  the \code{orditkplot} canvas had originally.
 
   The produced plot will have equal aspect ratio. The width of the
   horizontal axis is fixed, but vertical axes will be scaled to needed
@@ -63,11 +69,10 @@ orditkplot(x, display = "species", choices = 1:2, cex = 0.8, width,
   and therefore vertical axis is not labelled, and \code{las}
   \code{\link{par}}ameter will not be honoured. 
 }
-\value{
-  Function returns nothing useful directly, but you can save the edited
-  graph into encapsulated postscript. How postscript is produced is very
-  dependent on the platform, and the results are not satisfactory on all
-  platforms.
+
+\value{ Function returns nothing useful directly, but you can save the
+  edited graph to a file or dump the edited positions to an \R session
+  for further processing and plotting.  
 }
 
 \author{ Jari Oksanen }

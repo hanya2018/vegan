@@ -1,7 +1,9 @@
 `orditkplot` <-
-    function(x, display = "species", choices = 1:2, cex=0.8, width,
+    function(x, display = "species", choices = 1:2, xlim, ylim, cex=0.8, width,
              col = "black", bg="transparent", pcex = 0.7, labels,  ...)
 {
+    if (!capabilities("tcltk"))
+        stop("Your R has no capability for Tcl/Tk")
     require(tcltk) || stop("requires package tcltk")
     ## Graphical parameters and constants, and save some for later plotting
     p <- par()
@@ -12,7 +14,7 @@
     p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) # Pixel per point
     DIAM <- 2.7                               # diam of plotting symbol
     ## Plotting symbol diam
-    diam <- round(pcex * DIAM * p2p, 1) 
+    diam <- round(pcex * DIAM * p2p, 1)
     ## Sanitize colours
     sanecol <- function(x) {
         if (is.na(x))
@@ -33,7 +35,7 @@
     ## Define fonts
     idx <- match(p$family, c("","serif","sans","mono"))
     if (!is.na(idx))
-        p$family <- c("helvetica", "times", "helvetica", "courier")[idx]
+        p$family <- c("Helvetica", "Times", "Helvetica", "Courier")[idx]
     saneslant <- function(x) {
         list("roman", "bold", "italic", c("bold", "italic"))[[x]]
     }
@@ -42,9 +44,9 @@
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
     ## toplevel
     w <- tktoplevel()
-    tktitle(w) <- "orditkplot"
+    tktitle(w) <- deparse(match.call())
     ## Max dim of windows (depends on screen)
-    YSCR <- as.numeric(tkwinfo("screenheight", w)) - 100
+    YSCR <- as.numeric(tkwinfo("screenheight", w)) - 150
     XSCR <- as.numeric(tkwinfo("screenwidth", w))
     ## Buttons
     buts <- tkframe(w)
@@ -63,7 +65,8 @@
             xy[tclvalue(labtext[[nm]]),] <- xy2usr(nm)
         }
         curdim <- round(c(width, height) /PPI/p2p, 2)
-        args <- list(cex = cex, col = col, bg=bg, pcex = pcex)
+        args <- list(cex = cex, col = col, bg=bg, pcex = pcex, xlim = xlim,
+                     ylim = ylim)
         xy <- list(labels = xy, points = sco, par = savepar, args = args, dim = curdim)
         class(xy) <- "orditkplot"
         xy
@@ -101,10 +104,22 @@
     ## and that R has capabilities() for these devices
     devDump <- function() {
         xy <- ordDump()
-        fname <- tkgetSaveFile(filetypes="{{eps files} {.eps}}
-                                          {{pdf files} {.pdf}}
-                                          {{png files} {.png}}
-                                          {{jpeg files} {.jpg}}")
+        ftypes <- c("eps" = "{EPS File} {.eps}",
+                    "pdf" = "{PDF File} {.pdf}",
+                    "png" = "{PNG File} {.png}",
+                    "jpg" = "{JPEG File} {.jpg .jpeg}",
+                    "bmp" = "{BMP File} {.bmp}",
+                    "fig" = "{XFig File} {.fig}")
+        falt <- rep(TRUE, length(ftypes))
+        names(falt) <- names(ftypes)
+        if (!capabilities("png"))
+            falt["png"] <- FALSE
+        if (!capabilities("jpeg"))
+            falt["jpg"] <- FALSE
+        if (.Platform$OS.type != "windows")
+            falt["bmp"] <- FALSE
+        ftypes <- ftypes[falt]
+        fname <- tkgetSaveFile(filetypes=ftypes)
         if(tclvalue(fname) == "")
             return(NULL)
         fname <- tclvalue(fname)
@@ -112,34 +127,48 @@
         ftype <- ftype[length(ftype)]
         if (ftype == "jpeg")
             ftype <- "jpg"
-        if (!(ftype %in% c("eps", "pdf", "png", "jpg")))
+        mess <- "is not a supported type: file not produced. Supported types are"
+        if (!(ftype %in% names(ftypes))) {
+            tkmessageBox(message=paste(ftype, mess, paste(names(ftypes),
+                         collapse=", ")), icon="warning")
             return(NULL)
+        }
         pixdim <- round(xy$dim*PPI*p2p)
         switch(ftype,
                eps = postscript(file=fname, width=xy$dim[1], height=xy$dim[2],
                      paper="special", horizontal = FALSE),
                pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
                png = png(file=fname, width=pixdim[1], height=pixdim[2]),
-               jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2]))
+               jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2],
+                     quality = 100),
+               bmp = bmp(file=fname, width=pixdim[1], height=pixdim[2]),
+               fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
         plot.orditkplot(xy)
         dev.off()
     }
+
     export <- tkbutton(buts, text="Export plot", command=devDump)
     ## Make canvas
     sco <- scores(x, display=display, choices = choices, ...)
+    if (!missing(xlim))
+        sco <- sco[sco[,1] >= xlim[1] & sco[,1] <= xlim[2], , drop = FALSE]
+    if (!missing(ylim))
+        sco <- sco[sco[,2] >= ylim[1] & sco[,2] <= ylim[2], , drop = FALSE]
     if (!missing(labels))
         rownames(sco) <- labels
     labs <- rownames(sco)
     
     ## Ranges and pretty values for axes
-    xrange <- range(sco[,1])
-    yrange <- range(sco[,2])
-    xpretty <- pretty(xrange)
-    ypretty <- pretty(yrange)
+    if (missing(xlim))
+        xlim <- range(sco[,1])
+    if (missing(ylim))
+        ylim <- range(sco[,2])
+    xpretty <- pretty(xlim)
+    ypretty <- pretty(ylim)
     ## Extend ranges by 4% 
-    xrange <- c(-0.04, 0.04) * diff(xrange) + xrange
+    xrange <- c(-0.04, 0.04) * diff(xlim) + xlim
     xpretty <- xpretty[xpretty >= xrange[1] & xpretty <= xrange[2]]
-    yrange <- c(-0.04, 0.04) * diff(yrange) + yrange
+    yrange <- c(-0.04, 0.04) * diff(ylim) + ylim
     ypretty <- ypretty[ypretty >= yrange[1] & ypretty <= yrange[2]]
     ## Canvas like they were in the default devices when I last checked
     if (missing(width)) 

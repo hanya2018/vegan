@@ -6,6 +6,10 @@ Version 1.10-11 (Jan 27, 2008, working...)
 
 	* bgdispersal: New, more powerful test statistic (in terms of Type
 	1 error rate) for the McNemar test (Pierre Legendre).
+
+	* orditkplot: More resilient against user errors, new output file
+	types (bmp, xfig), jpeg uses 100% quality, more aware of operating
+	system and capabilities, gains arguments xlim, ylim.
 	
 	* permuted.index2: fixed a bug in permutations with strata.
 
