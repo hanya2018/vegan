@@ -7,9 +7,18 @@
     require(tcltk) || stop("requires package tcltk")
     ## Graphical parameters and constants, and save some for later plotting
     p <- par()
-    savepar <- p[c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
-                   "family", "fg", "font", "font.axis", "font.lab", "lheight",
-                   "lwd", "mar", "mex", "mgp", "ps", "tcl")]
+    sparnam <- c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
+                 "family", "fg", "font", "font.axis", "font.lab", "lheight",
+                 "lwd", "mar", "mex", "mgp", "ps", "tcl", "las")
+    ## Get par given in the command line and put them to p
+    dots <- match.call(expand.dots = FALSE)$...
+    if (length(dots) > 0) {
+        dots <- dots[names(dots) %in% sparnam]
+        ## eval() or mar=c(4,4,1,1) will be a call, not numeric
+        dots <- lapply(dots, function(x) if (is.call(x)) eval(x) else x)
+        p <- check.options(new = dots, name.opt = "p", envir = environment())
+    }
+    savepar <- p[sparnam]
     PPI <- 72                                         # Points per Inch
     p2p <- as.numeric(tclvalue(tcl("tk", "scaling"))) # Pixel per point
     DIAM <- 2.7                               # diam of plotting symbol
@@ -54,7 +63,7 @@
     cp2eps <- tkbutton(buts, text="Copy to EPS", 
                        command=function() tkpostscript(can, x=0, y=0,
                        height=height, width=width, 
-                       file=tkgetSaveFile(defaultextension=".eps")))
+                       file=tkgetSaveFile(filetypes="{{EPS file} {.eps}}")))
     dismiss <- tkbutton(buts, text="Dismiss", command=function() tkdestroy(w))
     ## Dump current plot to an "orditkplot" object (internally)
     ordDump <- function() {

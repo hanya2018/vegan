@@ -28,8 +28,10 @@ orditkplot(x, display = "species", choices = 1:2, xlim, ylim, cex = 0.8,
   \item{col, bg}{ Line and fill colours of points. } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
-  \item{\dots}{ Other arguments to \code{\link{scores}} or ignored in
-    \code{plot}. } 
+  \item{\dots}{ Other arguments passed to the function. These can be
+    graphical parameters (see \code{\link{par}}) used in the plot, or
+    extra arguments to \code{\link{scores}}. These arguments are
+    ignored in \code{plot}. }  
 }
 
 \details{ Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk
@@ -56,7 +58,10 @@ orditkplot(x, display = "species", choices = 1:2, xlim, ylim, cex = 0.8,
 
   The plot is a Tcl/Tk canvas, but the function tries to replicate
   standard graphical device of the platform, and it honours several
-  graphical parameters (see \code{\link{par}}).  At the moment, the
+  graphical parameters (see \code{\link{par}}).  Many of the graphical
+  parameters can be given on the command line, and they will be passed
+  to the function without influencing other graphical devices in \R.
+  At the moment, the
   following graphical parameters are honoured: \code{bg}, \code{cex},
   \code{cex.axis}, \code{cex.lab}, \code{col} (for labels),
   \code{col.axis}, \code{col.lab}, \code{family} (for font faces),
