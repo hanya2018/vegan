@@ -13,6 +13,9 @@ Version 1.10-11 (Jan 27, 2008, working...)
 	
 	* permuted.index2: fixed a bug in permutations with strata.
 
+	* summary.prc: honours now argument 'axis'. Reported by Francois
+	Gillet, Lausanne.
+
 	* Documentation: added documentation for permuted.index2,
 	permControl, permCheck and helper functions. FAQ and intro know
 	now about orditkplot, anova.cca(..., by="margin") and
