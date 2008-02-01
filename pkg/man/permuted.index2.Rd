@@ -30,7 +30,7 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
   \item{complete}{logical; should complete enumeration of all
     permutations be performed?}
   \item{type}{the type of permutations required. One of \code{"free"},
-    \code{"series"}, \code{"grid"} or \code{"series"}. See Details.}
+    \code{"series"}, \code{"grid"} or \code{"strata"}. See Details.}
   \item{maxperm}{the maximum number of permutations to
     perform. Currently unused.}
   \item{minperm}{the lower limit to the number of possible permutations
