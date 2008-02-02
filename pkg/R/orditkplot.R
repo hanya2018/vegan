@@ -158,7 +158,14 @@
 
     export <- tkbutton(buts, text="Export plot", command=devDump)
     ## Make canvas
-    sco <- scores(x, display=display, choices = choices, ...)
+    sco <- try(scores(x, display=display, choices = choices, ...),
+               silent = TRUE)
+    if (inherits(sco, "try-error")) {
+        tkmessageBox(message=paste("No ordination scores were found in",
+                     deparse(substitute(x))), icon="error")
+        tkdestroy(w)
+        stop("argument x did not contain ordination scores")
+    }
     if (!missing(xlim))
         sco <- sco[sco[,1] >= xlim[1] & sco[,1] <= xlim[2], , drop = FALSE]
     if (!missing(ylim))
