@@ -7,6 +7,8 @@ Version 1.10-11 (Jan 27, 2008, working...)
 	* bgdispersal: New, more powerful test statistic (in terms of Type
 	1 error rate) for the McNemar test (Pierre Legendre).
 
+	* CCorA: internal functions embedded in CCorA().
+
 	* orditkplot: More resilient against user errors. New output file
 	types (bmp, xfig), jpeg uses 100% quality. more aware of operating
 	system and capabilities. Accepts graphical par in the function

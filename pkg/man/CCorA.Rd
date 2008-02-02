@@ -1,10 +1,7 @@
 \name{CCorA}
 \alias{CCorA}
-\alias{cov.inv}
-\alias{var.null}
 \alias{print.CCorA}
 \alias{biplot.CCorA}
-\alias{probPillai}
 
 \title{Canonical Correlation Analysis}
 
