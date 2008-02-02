@@ -71,7 +71,7 @@
         rownames(xy) <- rownames(sco)
         colnames(xy) <- colnames(sco)
         for(nm in names(pola)) {
-            xy[tclvalue(labtext[[nm]]),] <- xy2usr(nm)
+            xy[as.numeric(tclvalue(id[[nm]])),] <- xy2usr(nm)
         }
         curdim <- round(c(width, height) /PPI/p2p, 2)
         args <- list(cex = cex, col = col, bg=bg, pcex = pcex, xlim = xlim,
@@ -92,8 +92,10 @@
         isDone <- function() {
             dumpName <- tclvalue(dumpVar)
             if (exists(dumpName, envir=.GlobalEnv)) {
-                ok <- tkmessageBox(message=paste(dumpName, "exists.\nOK to overwrite?"),
-                                   icon="warning", type="okcancel", default="ok")
+                ok <- tkmessageBox(message=paste(sQuote(dumpName),
+                                   "exists.\nOK to overwrite?"),
+                                   icon="warning", type="okcancel",
+                                   default="ok")
                 if(tclvalue(ok) == "ok") {
                     assign(dumpName, xy, envir=.GlobalEnv)
                     tkdestroy(tt)
@@ -109,8 +111,6 @@
     }
     dump <- tkbutton(buts, text="Dump to R", command=pDump)
     ## Button to write current "orditkplot" object to a graphical device
-    ## FIXME: needs checking of input names, success in opening the device,
-    ## and that R has capabilities() for these devices
     devDump <- function() {
         xy <- ordDump()
         ftypes <- c("eps" = "{EPS File} {.eps}",
@@ -138,7 +138,7 @@
             ftype <- "jpg"
         mess <- "is not a supported type: file not produced. Supported types are"
         if (!(ftype %in% names(ftypes))) {
-            tkmessageBox(message=paste(ftype, mess, paste(names(ftypes),
+            tkmessageBox(message=paste(sQuote(ftype), mess, paste(names(ftypes),
                          collapse=", ")), icon="warning")
             return(NULL)
         }
@@ -155,14 +155,13 @@
         plot.orditkplot(xy)
         dev.off()
     }
-
     export <- tkbutton(buts, text="Export plot", command=devDump)
     ## Make canvas
     sco <- try(scores(x, display=display, choices = choices, ...),
                silent = TRUE)
     if (inherits(sco, "try-error")) {
         tkmessageBox(message=paste("No ordination scores were found in",
-                     deparse(substitute(x))), icon="error")
+                     sQuote(deparse(substitute(x)))), icon="error")
         tkdestroy(w)
         stop("argument x did not contain ordination scores")
     }
@@ -200,8 +199,8 @@
     xy0 <- c(xrange[1], yrange[2]) # upper left corner
     ## Functions to translate scores to canvas coordinates and back
     usr2xy <- function(row) {
-        x <- round((row[1] - xy0[1]) * xincr) + mar[2]
-        y <- round((xy0[2] - row[2]) * yincr) + mar[3]
+        x <- (row[1] - xy0[1]) * xincr + mar[2]
+        y <- (xy0[2] - row[2]) * yincr + mar[3]
         c(x,y)
     }
     xy2usr <- function(item) {
@@ -262,9 +261,10 @@
                  text=as.character(tmp[i]), fill = p$col.axis, font=fnt.axis)
     }
     ## Points and labels
-    laboff <- round(p$ps/2 + diam + 1)
-    pola <- tclArray()
-    labtext <- tclArray()
+    laboff <- round(p2p * p$ps/2 + diam + 1)
+    pola <- tclArray()        # points
+    labtext <- tclArray()     # text
+    id <- tclArray()          # index
     for (i in 1:nrow(sco)) {
         xy <- usr2xy(sco[i,])
         item <- tkcreate(can, "oval", xy[1]-diam, xy[2]-diam,
@@ -276,6 +276,7 @@
         tkaddtag(can, "label", "withtag", lab)
         pola[[lab]] <- item
         labtext[[lab]] <- labs[i]
+        id[[lab]] <- i
     }
     ## Plotting and Moving
     pDown <- function(x, y) {
