@@ -9,8 +9,8 @@
   plot can be exported to an encapsulated postscript file.
 }
 \usage{
-orditkplot(x, display = "species", choices = 1:2, xlim, ylim, cex = 0.8, 
-   width, col = "black", bg = "transparent", pcex = 0.7, labels,  ...)
+orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim, 
+   tcex = 0.8, pcol, pbg, pcex = 0.7, labels,  ...)
 \method{plot}{orditkplot}(x, ...)
 }
 
@@ -20,12 +20,13 @@ orditkplot(x, display = "species", choices = 1:2, xlim, ylim, cex = 0.8,
     object dumped from the interactive \code{orditkplot} session.}
   \item{display}{ Type of \code{\link{scores}} displayed. }
   \item{choices}{ Axes displayed.}
-  \item{xlim, ylim}{x and y limits for plots: points outside these
-    limits will be completely removed.}
-  \item{cex}{Character expansion for text labels.}
   \item{width}{ Width of the plot in inches; defaults to the current
     width of graphical device. }
-  \item{col, bg}{ Line and fill colours of points. } 
+  \item{xlim, ylim}{x and y limits for plots: points outside these
+    limits will be completely removed.}
+  \item{tcex}{Character expansion for text labels.}
+  \item{pcol, pbg}{ Line and fill colours of points. Defaults \code{pcol="black"} 
+    and \code{pbg="transparent"}. } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
   \item{\dots}{ Other arguments passed to the function. These can be

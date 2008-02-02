@@ -1,6 +1,7 @@
 `orditkplot` <-
-    function(x, display = "species", choices = 1:2, xlim, ylim, cex=0.8, width,
-             col = "black", bg="transparent", pcex = 0.7, labels,  ...)
+    function(x, display = "species", choices = 1:2, width, xlim, ylim,
+             tcex=0.8, pcol, pbg, pcex = 0.7,
+             labels,  ...)
 {
     if (!capabilities("tcltk"))
         stop("Your R has no capability for Tcl/Tk")
@@ -39,8 +40,13 @@
     p$col <- sanecol(p$col)
     p$col.axis <- sanecol(p$col.axis)
     p$col.lab <- sanecol(p$col.lab)
-    pt.col <- sanecol(col)
-    pt.bg <- sanecol(bg)
+    ## Point colours
+    if (missing(pcol))
+        pcol <- p$col
+    if (missing(pbg))
+        pbg <- "transparent"
+    pcol <- sanecol(pcol)
+    pbg <- sanecol(pbg)
     ## Define fonts
     idx <- match(p$family, c("","serif","sans","mono"))
     if (!is.na(idx))
@@ -48,7 +54,7 @@
     saneslant <- function(x) {
         list("roman", "bold", "italic", c("bold", "italic"))[[x]]
     }
-    fnt <- c(p$family, round(p$ps*p$cex*cex), saneslant(p$font))
+    fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
     fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
     ## toplevel
@@ -74,9 +80,10 @@
             xy[as.numeric(tclvalue(id[[nm]])),] <- xy2usr(nm)
         }
         curdim <- round(c(width, height) /PPI/p2p, 2)
-        args <- list(cex = cex, col = col, bg=bg, pcex = pcex, xlim = xlim,
-                     ylim = ylim)
-        xy <- list(labels = xy, points = sco, par = savepar, args = args, dim = curdim)
+        args <- list(tcex = tcex, pcol = pcol, pbg = pbg, pcex = pcex,
+                     xlim = xlim, ylim = ylim)
+        xy <- list(labels = xy, points = sco, par = savepar, args = args,
+                   dim = curdim)
         class(xy) <- "orditkplot"
         xy
     }        
@@ -232,7 +239,7 @@
     tkcreate(can, "rectangle", x0[1], x0[2], x1[1], x1[2], outline = p$fg,
              width = p$lwd)
     ## Axes and ticks
-    tl <- -p$tcl * p$ps * p2p
+    tl <-  -p$tcl * rpix     # -p$tcl * p$ps * p2p
     axoff <- p$mgp[3] * rpix
     tmp <- xpretty
     for (i in 1:length(tmp)) {
@@ -269,7 +276,7 @@
         xy <- usr2xy(sco[i,])
         item <- tkcreate(can, "oval", xy[1]-diam, xy[2]-diam,
                          xy[1]+diam,  xy[2]+diam, 
-                         width=1, outline=pt.col, fill=pt.bg)
+                         width=1, outline=pcol, fill=pbg)
         lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
                         fill = p$col, font=fnt)
         tkaddtag(can, "point", "withtag", item)

@@ -7,9 +7,11 @@ Version 1.10-11 (Jan 27, 2008, working...)
 	* bgdispersal: New, more powerful test statistic (in terms of Type
 	1 error rate) for the McNemar test (Pierre Legendre).
 
-	* orditkplot: More resilient against user errors, new output file
-	types (bmp, xfig), jpeg uses 100% quality, more aware of operating
-	system and capabilities, gains arguments xlim, ylim.
+	* orditkplot: More resilient against user errors. New output file
+	types (bmp, xfig), jpeg uses 100% quality. more aware of operating
+	system and capabilities. Accepts graphical par in the function
+	call. Gains arguments xlim, ylim. Arguments col, bg, cex renamed
+	to pcol, pb, pcex so that the do not shadow par().
 	
 	* permuted.index2: fixed a bug in permutations with strata.
 
@@ -29,7 +31,7 @@ Version 1.10-10 (closed Jan 27, 2008)
 
 	* orditkplot: new function for ordination plots based on Tcl/Tk:
 	you can edit graph by moving labels using a mouse and save the
-	edited graph as an eps file, or expoert via R plot function to
+	edited graph as an eps file, or export via R plot function to
 	eps, pdf, png or jpeg, or to dump to R session for further
 	processing. 
 
