@@ -70,18 +70,19 @@ asymmetry in \eqn{(b-c)}. }
 \references{ 
   Legendre, P. and V. Legendre. 1984. Postglacial dispersal of
   freshwater fishes in the Québec
-  peninsula. Can. J. Fish. Aquat. Sci. 41: 1781-1802.
+  peninsula. \emph{Can. J. Fish. Aquat. Sci.} \strong{41}: 1781-1802.
   
-  Legendre, P. and L. Legendre. 1998. Numerical ecology, 2nd English
-  edition. Elsevier Science BV, Amsterdam.
+  Legendre, P. and L. Legendre. 1998. \emph{Numerical ecology}, 2nd
+  English edition. Elsevier Science BV, Amsterdam.
   
-  Sokal, R. R. and F. J. Rohlf. 1995. Biometry. The principles and
-  practice of statistics in biological research. 3rd edn.
-  W. H. Freeman, New York.
+  Sokal, R. R. and F. J. Rohlf. 1995. \emph{Biometry. The principles and
+  practice of statistics in biological research.} 3rd
+  edn. W. H. Freeman, New York. 
 }
 
 
-\author{ Pierre Legendre, Departement de Sciences Biologiques, Universite de Montreal }
+\author{ Pierre Legendre, Departement de Sciences Biologiques,
+  Universite de Montreal}
 
 \note{The function uses a more powerful alternative for the McNemar test
   than the classical formula. The classical formula was constructed in
@@ -101,4 +102,3 @@ bgdispersal(mat)
 
 \keyword{ multivariate }
 \keyword{ nonparametric }
-
