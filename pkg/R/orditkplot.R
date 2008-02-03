@@ -80,6 +80,10 @@
             xy[as.numeric(tclvalue(id[[nm]])),] <- xy2usr(nm)
         }
         curdim <- round(c(width, height) /PPI/p2p, 2)
+        if (pbg == "")
+            pbg <- "transparent"
+        if (pcol == "")
+            pcol <- "transparent"
         args <- list(tcex = tcex, pcol = pcol, pbg = pbg, pcex = pcex,
                      xlim = xlim, ylim = ylim)
         xy <- list(labels = xy, points = sco, par = savepar, args = args,
