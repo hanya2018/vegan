@@ -1,17 +1,25 @@
 \name{orditkplot}
 \alias{orditkplot}
 \alias{plot.orditkplot}
+\alias{scores.orditkplot}
+\alias{points.orditkplot}
+\alias{text.orditkplot}
 
 \title{ Ordination Plot with Movable Labels }
 \description{
   Function \code{orditkplot} produces an editable ordination plot with
   points and labels. The labels can be moved with mouse, and the edited
-  plot can be exported to an encapsulated postscript file.
+  plot can be saved as an encapsulated postscript file or exported via \R 
+  \code{plot} function to other graphical formats, or saved in the \R session 
+  for further processing.
 }
 \usage{
 orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim, 
    tcex = 0.8, pcol, pbg, pcex = 0.7, labels,  ...)
 \method{plot}{orditkplot}(x, ...)
+\method{points}{orditkplot}(x, ...)
+\method{text}{orditkplot}(x, ...)
+\method{scores}{orditkplot}(x, display, ...)
 }
 
 \arguments{ 
@@ -29,10 +37,12 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
     and \code{pbg="transparent"}. } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
+  \item{display}{Either \code{"points"} for the location of the points, or 
+    \code{"labels"} for the location of the labels.}
   \item{\dots}{ Other arguments passed to the function. These can be
     graphical parameters (see \code{\link{par}}) used in the plot, or
     extra arguments to \code{\link{scores}}. These arguments are
-    ignored in \code{plot}. }  
+    ignored in \code{plot}, but honoured in \code{text} and \code{points}. }  
 }
 
 \details{ Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk
@@ -45,10 +55,14 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   devices into eps, pdf, png, jpeg or bmp file (not all types are
   available in all platforms), or to editable \code{\link{xfig}} file.
   Finally, the edited coordinates of labels and points can be dumped
-  to an \R object for further processin, and \code{plot.orditkplot}
+  to the \R session for further processing, and \code{plot.orditkplot}
   function can be used to display the results. For faithtfull
   replication of the plot, the graph must have similar dimensions as
-  the \code{orditkplot} canvas had originally.
+  the \code{orditkplot} canvas had originally. The \code{plot}
+  function cannot be configured, but it uses the same settings as the
+  original Tcl/Tk plot. However, \code{points} and \code{text} functions
+  are fully configurable, and unaware of the original Tcl/Tk plot
+  settings (probably you must set \code{cex} at least to get a decent plot).
 
   The produced plot will have equal aspect ratio. The width of the
   horizontal axis is fixed, but vertical axes will be scaled to needed
@@ -71,10 +85,11 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \code{mgp}, \code{ps}, \code{tcl}. These can be set with
   \code{\link{par}}, and they also will influence other plots similarly.
   
-  The \code{\link[tcltk]{tkcanvas}} text cannot be rotated,
-  and therefore vertical axis is not labelled, and \code{las}
-  \code{\link{par}}ameter will not be honoured. 
-}
+  The \code{\link[tcltk]{tkcanvas}} text cannot be rotated, and
+  therefore vertical axis is not labelled, and \code{las}
+  \code{\link{par}}ameter will not be honoured in the Tcl/Tk plot, but
+  it will be honoured in the exported \R plots and in
+  \code{plot.orditkplot}.  }
 
 \value{ Function returns nothing useful directly, but you can save the
   edited graph to a file or dump the edited positions to an \R session
@@ -101,7 +116,7 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 \dontrun{
 data(varespec)
 ord <- cca(varespec)
-orditkplot(ord)
+orditkplot(ord, mar = c(4,4,1,1)+.1, font=3)
 }
 }
 \keyword{ iplot }
