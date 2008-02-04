@@ -57,11 +57,14 @@ echo $contents; } ?>
 <li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.
 </ul>
 
+<p>
+<a href="/scm/?group_id=68"><img src="/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
+<br>
 <h2>Vegan resources</h2>
 
 <p>Here some pointers to vegan resources:
 <ul>
-<li><a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Diary notes of Jari Oksanen</a> on the vegan development.</li>
+     <li>Developer diaries: <a href="/developer/diary.php?diary_user=267">Jari Oksanen</a></li>
 <li> The old  
 <a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 
