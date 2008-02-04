@@ -58,13 +58,14 @@ echo $contents; } ?>
 </ul>
 
 <p>
-<a href="/scm/?group_id=68"><img src="/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
+<a href="http://<?php echo $domain; ?>/scm/?group_id=68">
+<img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
 <br>
 <h2>Vegan resources</h2>
 
 <p>Here some pointers to vegan resources:
 <ul>
-     <li>Developer diaries: <a href="/developer/diary.php?diary_user=267">Jari Oksanen</a></li>
+     <li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a></li>
 <li> The old  
 <a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 
