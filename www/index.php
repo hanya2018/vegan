@@ -61,6 +61,7 @@ echo $contents; } ?>
 
 <p>Here some pointers to vegan resources:
 <ul>
+<li><a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Diary notes of Jari Oksanen</a> on the vegan development.</li>
 <li> The old  
 <a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 
