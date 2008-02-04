@@ -26,20 +26,21 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \item{x}{An ordination result or any other object that
     \code{\link{scores}} can handle, or for the \code{plot} function the
     object dumped from the interactive \code{orditkplot} session.}
-  \item{display}{ Type of \code{\link{scores}} displayed. }
-  \item{choices}{ Axes displayed.}
-  \item{width}{ Width of the plot in inches; defaults to the current
+  \item{display}{Type of \code{\link{scores}} displayed. For ordination
+    scores this typically is either \code{"species"} or \code{"sites"},
+    and for \code{orditkplot} result it is either \code{"points"} or
+    \code{"labels"}.}
+  \item{choices}{Axes displayed.}
+  \item{width}{Width of the plot in inches; defaults to the current
     width of graphical device. }
   \item{xlim, ylim}{x and y limits for plots: points outside these
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
-  \item{pcol, pbg}{ Line and fill colours of points. Defaults \code{pcol="black"} 
+  \item{pcol, pbg}{Line and fill colours of points. Defaults \code{pcol="black"} 
     and \code{pbg="transparent"}. } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
-  \item{display}{Either \code{"points"} for the location of the points, or 
-    \code{"labels"} for the location of the labels.}
-  \item{\dots}{ Other arguments passed to the function. These can be
+  \item{\dots}{Other arguments passed to the function. These can be
     graphical parameters (see \code{\link{par}}) used in the plot, or
     extra arguments to \code{\link{scores}}. These arguments are
     ignored in \code{plot}, but honoured in \code{text} and \code{points}. }  
