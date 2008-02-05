@@ -4,6 +4,13 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.10-12 (Feb 3, 2008, working...)
 
+	* anova.cca: by = "margin" stops with informative error message if
+	some terms are completely aliased (used to stop with an
+	uninformative error message). Type III effects really do not make
+	sense with aliased variables.
+	
+	* calibrate.cca: does correct pivoting of aliased models.
+
 	* orditkplot: Set up all basic features, and added points, text,
 	and scores methods. Features that should be added include zooming
 	to a rectangle drawn with a mouse, and adding env variables. The
