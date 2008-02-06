@@ -61,6 +61,8 @@ echo $contents; } ?>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
 <img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
 <br>
+     <a href="http://cc.oulu.fi/~jarioksa/softa/vegan-win32-latest.zip">vegan-win32-latest.zip</a> Building of the Windows binary fails at the R-Forge for an unknown reason, but here is a binary from my web pages.
+<br>
 <h2>Vegan resources</h2>
 
 <p>Here some pointers to vegan resources:
