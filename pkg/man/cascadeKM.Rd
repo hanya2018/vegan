@@ -150,7 +150,7 @@ cIndexKM(y, x, index = "all")
   analysis. \emph{Commun. Stat.} \strong{3}: 1-27.
   
   Gower, J. C. 1966. Some distance properties of latent root and vector
-  methods used in multivariate analysis. \emph{Biometrika} \stong{53}:
+  methods used in multivariate analysis. \emph{Biometrika} \strong{53}:
   325-338.
   
   Legendre, P. & L. Legendre. 1998. \emph{Numerical ecology}, 2nd
