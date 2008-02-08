@@ -176,14 +176,13 @@
         tkdestroy(w)
         stop("argument x did not contain ordination scores")
     }
+    if (!missing(labels))
+        rownames(sco) <- labels
     if (!missing(xlim))
         sco <- sco[sco[,1] >= xlim[1] & sco[,1] <= xlim[2], , drop = FALSE]
     if (!missing(ylim))
         sco <- sco[sco[,2] >= ylim[1] & sco[,2] <= ylim[2], , drop = FALSE]
-    if (!missing(labels))
-        rownames(sco) <- labels
     labs <- rownames(sco)
-    
     ## Ranges and pretty values for axes
     if (missing(xlim))
         xlim <- range(sco[,1])
