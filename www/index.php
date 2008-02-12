@@ -61,8 +61,10 @@ echo $contents; } ?>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
 <img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
 <br>
-     <a href="http://cc.oulu.fi/~jarioksa/softa/vegan-win32-latest.zip">vegan-win32-latest.zip</a> Building of the Windows binary fails at the R-Forge for an unknown reason, but here is a binary from my web pages. You mu succeed in installing this in Windows with<br>
-     <tt>install.packages("vegan", repos="http://cc.oulu.fi/~jarioksa/")</tt><br>
+     In general, you can follow the link above to download the packages. However, the Windows build system is 
+<a href="http://r-forge.r-project.org/tracker/?func=detail&aid=105&group_id=34&atid=194">
+broken</a> at R-Forge (and there are no MacOS X binaries), and therefore I have occasional Windows and MacOS X binaries at my homepage. You can install <strong>Windows</strong> and <strong>MacOS X</strong> binaries from an R prompt using:
+     <br><strong><tt>install.packages("vegan", repos="http://cc.oulu.fi/~jarioksa")</tt></strong>
    
 <br>
 <h2>Vegan resources</h2>
