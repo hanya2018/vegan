@@ -2,7 +2,15 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.10-12 (Feb 3, 2008, working...)
+Version 1.10-13 (Feb 12, 2008, working...)
+
+	* preparing for a release and trying to close open threads.
+
+	* nestedtemp: made .NotYetImplemented
+
+Version 1.10-12 (closed Feb 12, 2008)
+
+	* nestedtemp: new try with smooth fill line.
 
 	* anova.cca: by = "margin" stops with informative error message if
 	some terms are completely aliased (used to stop with an

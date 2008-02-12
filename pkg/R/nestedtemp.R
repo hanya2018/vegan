@@ -1,6 +1,7 @@
 `nestedtemp` <-
     function(comm, ...)
 {
+    .NotYetImplemented()
     comm <- ifelse(comm > 0, 1, 0)
     rs <- rowSums(comm)
     cs <- colSums(comm)
@@ -17,7 +18,7 @@
     ## fill is found from the parent environment.
     if (fill < 1/6) {
         ## If fill < 1/6, parabola will go over the borders
-        parfun <- function(x) pmin((0.5-fill)*x, (1-x)*(0.5-fill))*n2
+        parfun <- function(x) pmin((0.5-fill)*x, (1-x)*(0.5-fill))*2
     } else {
         ## The equation below really is a parabola, but in Horner form.
         parfun <- function(x) {
@@ -44,4 +45,3 @@
     class(out) <- "nestedtemp"
     out
 }
-
