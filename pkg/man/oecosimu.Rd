@@ -37,7 +37,7 @@ commsimulator(x, method, thin=1)
   \item{nestfun}{Function to analyse nestedness. Some functions are
   provided in \pkg{vegan}, but any function can be used if it accepts the
   community as the first argument, and returns the result in item
-  \code{statistic}.}
+  \code{statistic}. See Examples for defining your own functions.}
   \item{method}{Null model method. See details.}
   \item{nsimul}{Number of simulated null communities.}
   \item{burnin}{Number of null communities discarded before proper
@@ -51,42 +51,43 @@ commsimulator(x, method, thin=1)
   \item{\dots}{Other arguments to functions.}
 }
 
-\details{
+\details{ 
   Function \code{oecosimu} is a wrapper that evaluates a nestedness
   statistic using function \code{nestfun}, and then simulates a series
   of null models using \code{commsimulator}, and evaluates the
   nestedness statistic on these null models. The \pkg{vegan} packages
-  contains some null models that are described below, and the generation
-  of null models is described towards the end of this section.
+  contains some nestedness functions that are described below, and the
+  generation of null models is described towards the end of this
+  section.
 
   Function \code{netstedchecker} gives the number of checker board
-  units, or 2x2 submatrices where both species occur once but on different
-  sites (Stone & Roberts 1990).
-  Function \code{nestedn0} implements nestedness measure N0 which is the
-  number of absences from the sites which are
-  richer than the most pauperate site species occurs (Patterson & Atmar
-  1986). 
-  Function \code{nesteddisc}
+  units, or 2x2 submatrices where both species occur once but on
+  different sites (Stone & Roberts 1990).  Function \code{nestedn0}
+  implements nestedness measure N0 which is the number of absences
+  from the sites which are richer than the most pauperate site species
+  occurs (Patterson & Atmar 1986).  Function \code{nesteddisc}
   implements discrepancy index which is the number of ones that should
-  be shifted to fill a row with ones in a table arranged
-  by species frequencies (Brualdi & Sanderson
-  1999). Function \code{nestedtemp} finds the matrix temperature which
-  is defined as the sum of \dQuote{surprises} in arranged matrix.
-  In arranged unsurprising 
+  be shifted to fill a row with ones in a table arranged by species
+  frequencies (Brualdi & Sanderson 1999). Function \code{nestedtemp}
+  finds the matrix temperature which is defined as the sum of
+  \dQuote{surprises} in arranged matrix.  In arranged unsurprising
   matrix all species within proportion given by matrix fill are in the
   upper left corner of the matrix, and the surprise of the absence or
   presences is the diagonal distance from the fill line (Atmar &
   Patterson 1993). Function \code{nestedtemp} also has a \code{plot}
   method which can display either incidences or temperatures of the
-  surprises.
+  surprises. Matrix temperature is so vaguely described in the
+  literature (Atmar & Patterson 1993) that it may be impossible to
+  reproduce the results of other implementations, and the user should
+  be cautious in interpreting the results.
 
-  In addition to functions provided in \pkg{vegan}, any function can be used
-  that takes \code{comm} as the first argument, and returns the
-  nestedness index in item \code{statistic}. Function \code{\link{chisq.test}}
-  is one such function, and examples show how to do this in general.
-  If you write a function that may be
-  useful in general, please consider submitting it to \pkg{vegan} for
-  others to enjoy (you will be credited as an author of that function).
+  In addition to these functions provided in \pkg{vegan}, any function
+  can be used that takes \code{comm} as the first argument, and
+  returns the nestedness index in item \code{statistic}. Function
+  \code{\link{chisq.test}} is one such function, and examples show how
+  to do this in general.  If you write a function that may be useful
+  in general, please consider submitting it to \pkg{vegan} for others
+  to enjoy (you will be credited as an author of that function).
 
   Function \code{commsimulator} implements null models for community
   composition. The implemented models are \code{r00} which maintains the
@@ -108,7 +109,7 @@ commsimulator(x, method, thin=1)
   swapped. This changes the matrix structure, but does not influence
   marginal sums (Gotelli & Entsminger
   2003). Method \code{swap} inspects submatrices so long that a swap
-  can be done. Miklós & Podani (2004) suggest that this may lead into
+  can be done. \enc{Miklós}{Miklos} & Podani (2004) suggest that this may lead into
   biased sequence, since some columns or rows may be more easily
   swapped, and they suggest trying a fixed number of times and
   doing zero to many swaps at one step. This method is implemented by
@@ -121,10 +122,12 @@ commsimulator(x, method, thin=1)
   frequency probably changes during swaps, but this is not taken into
   account in estimating the \code{thin}.  Both swap methods are sequential,
   and the result of the swap is used as the input of the next swap. One
-  swap still changes a matrix only little, and it may be useful to
+  swap still changes the matrix only little, and it may be useful to
   thin the results so that the statistic is only evaluated after
-  \code{thin} steps. Method \code{backtracking}
-  implements a filling method with a constraint for both row and column
+  \code{thin} steps. 
+
+  Method \code{backtracking}
+  implements a filling method with constraints both for row and column
   frequencies (Gotelli & Entsminger 2001). The matrix is first filled
   randomly using row and column frequencies as probabilities. Typically
   row and column sums are reached before all incidences are filled in.
@@ -132,7 +135,7 @@ commsimulator(x, method, thin=1)
   points are removed, and then filling is started again, and this
   backtracking is done so may times that all incidences will be filled
   into matrix. Method
-  \code{quasiswap} (Miklós & Podani 2004) implements a method where
+  \code{quasiswap} (\enc{Miklós}{Miklos} & Podani 2004) implements a method where
   matrix is first filled 
   honouring row and column totals, but with integers that may be larger than
   one. Then the method inspects random 2x2 matrices and performs a
@@ -143,16 +146,15 @@ commsimulator(x, method, thin=1)
 }
 
 \value{
-  Function \code{oecosimu} returns the result of \code{nestfun} with
-one added component called \code{oecosimu}. The \code{oecosimu}
-component contains the simulated values of the statistic (item
-\code{simulated}), the name of the \code{method}, two-sided \eqn{P} value
-and  z-value of the
-statistic. The result returned by nestedness function must contain item
-called \code{statistic}, but the other components differ among
-functions. The \code{commsimulator} returns a null model matrix or a swap of
-the input matrix.
-}
+  Function \code{oecosimu} returns the result of \code{nestfun}
+  with one added component called \code{oecosimu}. The \code{oecosimu}
+  component contains the simulated values of the statistic (item
+  \code{simulated}), the name of the \code{method}, two-sided \eqn{P}
+  value and z-value of the statistic. The result returned by
+  nestedness function must contain item called \code{statistic}, but
+  the other components differ among functions. The
+  \code{commsimulator} returns a null model matrix or a swap of the
+  input matrix.  }
 
 \references{
   Atmar, W. & Patterson, B.D. (1993). The measurement of order and
@@ -172,7 +174,7 @@ the input matrix.
   Jonsson, B.G. (2001) A null model for randomization tests of
   nestedness in species assemblages. \emph{Oecologia} 127, 309--313.
 
-  Miklós, I. & Podani, J. (2004). Randomization of presence-absence
+  \enc{Miklós}{Miklos}, I. & Podani, J. (2004). Randomization of presence-absence
   matrices: comments and new algorithms. \emph{Ecology} 85, 86--92.
   
   Patterson, B.D. & Atmar, W. (1986). Nested subsets and the structure
@@ -188,32 +190,34 @@ the input matrix.
   }
 \author{ Jari Oksanen }
 \note{
-  Functions \code{commsimulator} and \code{oecosimu} do not have default
-  \code{nestfun} nor default \code{method}, because there is no clear
-  natural choice. If you use these methods, you must be able to choose
-  your own strategy. The choice of nestedness index is difficult because
-  the functions seem to imply very different concepts of structure and
-  randomness. The choice of swapping method is also problematic. Method
-  \code{r00} has some heuristic value of being really random. However,
-  it produces null models which are different from observed communities
-  in most respects, and a \dQuote{significant} result may simply mean
-  that not all species are equally common (\code{r0} is similar with
-  this respect). It is
-  also difficult to find justification for \code{r2}. The methods
+  Functions \code{commsimulator} and \code{oecosimu} do not have
+  default \code{nestfun} nor default \code{method}, because there is
+  no clear natural choice. If you use these methods, you must be able
+  to choose your own strategy. The choice of nestedness index is
+  difficult because the functions seem to imply very different
+  concepts of structure and randomness. The choice of swapping method
+  is also problematic. Method \code{r00} has some heuristic value of
+  being really random. However, it produces null models which are
+  different from observed communities in most respects, and a
+  \dQuote{significant} result may simply mean that not all species are
+  equally common (\code{r0} is similar with this respect). It is also
+  difficult to find justification for \code{r2}. The methods
   maintaining both row and column totals only study the community
-  relations, but they can be very slow. You should evaluate timings in
-  small trials (one cycle) before launching an extensive
-  simulation. One swap is fast, but it changes data only little, and you
-  may need long \code{burnin} and strong \code{thin}ning in large
-  matrices. You should plot the simulated values to see that they are
-  more or less stationary and there is no long-term periodic
-  variation. Method \code{quasiswap} is implemented in plain R, and it
-  is very slow, and it slows down very strongly with big matrices. In
-  general, \code{backtrack} is faster and less sensitive to matrix size,
-  but it also can be very slow.
+  relations, but they can be very slow. Moreover, they regard marginal
+  totals as constraints instead of results of occurrence patterns. You
+  should evaluate timings in small trials (one cycle) before launching
+  an extensive simulation. One swap is fast, but it changes data only
+  little, and you may need long \code{burnin} and strong
+  \code{thin}ning in large matrices. You should plot the simulated
+  values to see that they are more or less stationary and there is no
+  long-term periodic variation. Method \code{quasiswap} is implemented
+  in plain R, and it is very slow, and it slows down very strongly
+  with big matrices. In general, \code{backtrack} is faster and less
+  sensitive to matrix size, but it also can be very slow.
 
-  If you wonder about the name of \code{oecosimu}, look at the References.
-}
+  If you wonder about the name of \code{oecosimu}, look at journal
+names in the References.  }
+
 \seealso{ \code{\link{r2dtable}} generates table with given marginals but
   with entries above one.  Function \code{\link[labdsv]{rndtaxa}}
   (\pkg{labdsv} package) randomizes a community table.}
@@ -225,7 +229,7 @@ mod
 plot(mod)
 ## Use the first eigenvalue of correspondence analysis as an index
 ## of structure: a model for making your own functions.
-## This is a minimal structure; fancier function give fancier results
+## This is a minimal structure; fancier functions give fancier results
 caeval <- function(x) list(statistic = decorana(x, ira=1)$evals[1])
 out <- oecosimu(sipoo, caeval, "swap", burnin=100, thin=5)
 out

@@ -32,7 +32,7 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
     \code{"labels"}.}
   \item{choices}{Axes displayed.}
   \item{width}{Width of the plot in inches; defaults to the current
-    width of graphical device. }
+    width of the graphical device. }
   \item{xlim, ylim}{x and y limits for plots: points outside these
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
@@ -47,23 +47,29 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 }
 
 \details{ Function \code{orditkplot} uses \pkg{tcltk} to draw Tcl/Tk
-  based ordination graphics with points and labels. The points are
-  fixed, but the labels can be moved with mouse to better
-  positions. The edited plot can be copied to an encapsulated
-  postscript (eps) file using standard Tcl/Tk utilities. The
-  faithfullness of this copy seems to be very system
-  dependent. Alternatively, the plot can be exported via \R standard
-  devices into eps, pdf, png, jpeg or bmp file (not all types are
-  available in all platforms), or to editable \code{\link{xfig}} file.
-  Finally, the edited coordinates of labels and points can be dumped
-  to the \R session for further processing, and \code{plot.orditkplot}
-  function can be used to display the results. For faithtfull
-  replication of the plot, the graph must have similar dimensions as
-  the \code{orditkplot} canvas had originally. The \code{plot}
-  function cannot be configured, but it uses the same settings as the
-  original Tcl/Tk plot. However, \code{points} and \code{text} functions
-  are fully configurable, and unaware of the original Tcl/Tk plot
-  settings (probably you must set \code{cex} at least to get a decent plot).
+  based ordination graphics with points and labels. The function opens
+  an editable canvas with fixed points , but the labels can be moved
+  with mouse to better positions. In addition there are buttons for
+  the following tasks: \strong{Copy to EPS} copies the current plot to
+  an encapsulated postscript (eps) file using standard Tcl/Tk
+  utilities. The faithfullness of this copy is very system
+  dependent. Button \strong{Export plot} used \code{plot.orditkplot}
+  function to redraw the plot into graphical files. Depending on the
+  system, the following graphical formats may be available: eps, pdf,
+  png, jpeg or bmp. The file type is deduced from the file suffix or
+  the selection of the file type in the dialog box. Alternatively, the
+  same dialog can be used to save the plot to an editable
+  \code{\link{xfig}} file. Button \strong{Dump to R} writes the edited
+  coordinates of labels and points to the \R session for further
+  processing, and \code{plot.orditkplot} function can be used to
+  display the results. For faithtfull replication of the plot, the
+  graph must have similar dimensions as the \code{orditkplot} canvas
+  had originally. The \code{plot} function cannot be configured, but
+  it uses the same settings as the original Tcl/Tk plot. However,
+  \code{points} and \code{text} functions are fully configurable, and
+  unaware of the original Tcl/Tk plot settings (probably you must set
+  \code{cex} at least to get a decent plot). Finally, button
+  \strong{Dismiss} closes the window.
 
   The produced plot will have equal aspect ratio. The width of the
   horizontal axis is fixed, but vertical axes will be scaled to needed
