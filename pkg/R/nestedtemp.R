@@ -1,7 +1,6 @@
 `nestedtemp` <-
     function(comm, ...)
 {
-    .NotYetImplemented()
     comm <- ifelse(comm > 0, 1, 0)
     rs <- rowSums(comm)
     cs <- colSums(comm)
@@ -26,12 +25,12 @@
             out/sqrt(2)
         }
     }
-    out <-  0.5 - parfun(xy)
+    out <-  pmin(xy, 1-xy) - parfun(xy)
     ## Filline
     x <- seq(0,1,len=21)
     xline <- parfun(x)
     smo <- list(x = x - xline, y = (1-x) - xline)
-    u <- dis/totdis - out
+    u <- (dis - out)/totdis
     u[u < 0 & comm == 1] <- 0
     u[u > 0 & comm == 0] <- 0
     u <- u^2

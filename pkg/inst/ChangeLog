@@ -2,11 +2,14 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.10-13 (Feb 12, 2008, working...)
+Version 1.10-13 (Feb 13, 2008, working...)
 
 	* preparing for a release and trying to close open threads.
 
-	* nestedtemp: made .NotYetImplemented
+	* nestedtemp: implemented smooth fill line. The kind of the fill
+	line was not specified in the original paper, but I used parabola
+	which is "as smooth as possible" in the sense that its second
+	derivative is constant. Needs checking, though.
 
 Version 1.10-12 (closed Feb 12, 2008)
 
