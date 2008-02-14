@@ -23,7 +23,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <body>
 
-<! --- R-Forge Logo --- >
+<!-- R-Forge Logo -->
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr><td>
 <a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td> </tr>
@@ -71,7 +71,7 @@ broken</a> at R-Forge (and there are no MacOS X binaries), and therefore I have 
 
 <p>Here some pointers to vegan resources:
 <ul>
-     <li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a></li>
+     <li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a>, <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=269">Gavin Simpson</a></li>
 <li> The old  
 <a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 
