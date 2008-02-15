@@ -79,6 +79,17 @@ getNumObs(object, \dots)
 }
 %\references{
 %}
+\note{
+  Currently, complete enumeration is not implemented in
+  \code{\link{permuted.index2}}. \code{permCheck} sets complete
+  enumeration in the \code{'control'} component of the returned object
+  but this is not acted upon in the permutations.
+
+  \code{permCheck} does reduce the \code{'nperm'} and \code{'maxperm'}
+  components of the returned object to the maximum number of possible
+  permutations, and \code{\link{permuted.index2}} obeys these
+  directives.
+}
 \author{Gavin Simpson}
 \seealso{\code{\link{permCheck}}.}
 
