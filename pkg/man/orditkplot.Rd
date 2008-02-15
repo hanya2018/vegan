@@ -61,8 +61,8 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   same dialog can be used to save the plot to an editable
   \code{\link{xfig}} file. Button \strong{Dump to R} writes the edited
   coordinates of labels and points to the \R session for further
-  processing, and \code{plot.orditkplot} function can be used to
-  display the results. For faithtfull replication of the plot, the
+  processing, and the \code{plot.orditkplot} function can be used to
+  display the results. For faithful replication of the plot, the
   graph must have similar dimensions as the \code{orditkplot} canvas
   had originally. The \code{plot} function cannot be configured, but
   it uses the same settings as the original Tcl/Tk plot. However,
