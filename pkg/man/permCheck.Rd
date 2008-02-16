@@ -70,7 +70,7 @@ getNumObs(object, \dots)
 \value{
   For \code{permCheck} a list containing the maximum number of
   permutations possible and an object of class
-  \code{\link{permControl}}.
+  \code{"\link{permControl}"}.
 
   For \code{numPerms}, the (numeric) number of possible permutations.
 
