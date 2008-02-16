@@ -61,11 +61,9 @@ echo $contents; } ?>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
 <img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
 <br>
-     In general, you can follow the link above to download the packages. However, the Windows build system is 
-<a href="http://r-forge.r-project.org/tracker/?func=detail&aid=105&group_id=34&atid=194">
-broken</a> at R-Forge (and there are no MacOS X binaries), and therefore I have occasional Windows and MacOS X binaries at my homepage. You can install <strong>Windows</strong> and <strong>MacOS X</strong> binaries from an R prompt using:
+	In general, you can follow the link above to download and install vegan. R-Forge does not make MacOS X binaries, but they are occasionally available through the homepage of Jari Oksanen. You can install <strong>MacOS X</strong> binaries from an R prompt using:
      <br><strong><tt>install.packages("vegan", repos="http://cc.oulu.fi/~jarioksa")</tt></strong>
-   
+	<br>Mac binaries were build in IntelMac, MacOS 10.4.11 and R 2.6.*, and they may not work in all Macs.   
 <br>
 <h2>Vegan resources</h2>
 
