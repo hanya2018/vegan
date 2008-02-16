@@ -91,7 +91,7 @@ getNumObs(object, \dots)
   directives.
 }
 \author{Gavin Simpson}
-\seealso{\code{\link{permCheck}}.}
+\seealso{\code{\link{permuted.index2}} and \code{\link{permControl}}.}
 
 \examples{
 ## use example data from ?pyrifos
