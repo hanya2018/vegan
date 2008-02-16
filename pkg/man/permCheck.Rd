@@ -135,7 +135,7 @@ permCheck(pyrifos, control = permControl(strata = ditch,
 ## permute strata
 permCheck(pyrifos, permControl(strata = ditch, type = "strata"))
 
-## this should work also for arbitrary vectors
+## this should also also for arbitrary vectors
 vec1 <- permCheck(1:100)
 vec2 <- permCheck(1:100, permControl())
 all.equal(vec1, vec2)
