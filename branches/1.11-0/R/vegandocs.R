@@ -1,5 +1,5 @@
 "vegandocs" <-
-    function (doc = c("ChangeLog", "FAQ-vegan.pdf", "intro-vegan.pdf",
+    function (doc = c("NEWS", "ChangeLog", "FAQ-vegan.pdf", "intro-vegan.pdf",
               "diversity-vegan.pdf", "decision-vegan.pdf",
               "partitioning.pdf")) 
 {

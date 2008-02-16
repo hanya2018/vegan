@@ -1,8 +1,7 @@
 											-*-Text-*-
 VEGAN RELEASE VERSIONS 
 	
-VERSION 1.11-0
-==========
+			 VEGAN VERSION 1.11-0
 
 - Based on devel version 1.10-13 (rev. 205 at R-Forge).
 
@@ -120,8 +119,7 @@ Documentation
 - new documents: FAQ, a simple introduction to ordination in vegan, a
   detailed explanation of diversity methods.
 
-OLDER VERSIONS
-===========
+			    OLDER VERSIONS
 
 Version 1.8-8 (Oct 2, 2007)
 
