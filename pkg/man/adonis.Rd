@@ -7,7 +7,8 @@
 
 \description{Analysis of variance using distance matrices --- for
   partitioning distance matrices among sources of variation and fitting
-  linear models to distance matrices.}
+  linear models (e.g., factors, polynomial regression) to distance 
+  matrices.}
 
 \usage{
 adonis(formula, data, permutations = 5, method = "bray",
@@ -15,7 +16,7 @@ adonis(formula, data, permutations = 5, method = "bray",
        contr.ordered = "contr.poly", ...)
 }
 
-\arguments{
+\arguments{  
   \item{formula}{a typical model formula such as \code{Y ~ A + B*C}, but
     where \code{Y} is either a dissimilarity object (inheriting from
     class \code{"dist"}) or data frame or a matrix; \code{A}, \code{B}, and
@@ -43,7 +44,7 @@ method as \dQuote{nonparametric manova}. Further, as its inputs are
 linear predictors, and a response matrix of an arbitrary number of
 columns (2 to millions), it is a robust alternative to both parametric
 MANOVA and to ordination methods for describing how variation is
-atributed to different experimental treatments or uncontrolled
+attributed to different experimental treatments or uncontrolled
 covariates. It is also analogous to redundancy analysis (Legendre and
 Anderson 1999).
 
