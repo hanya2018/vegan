@@ -86,7 +86,8 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
 %\references{
 %}
 \author{Gavin Simpson}
-\seealso{\code{\link{permCheck}}.}
+\seealso{\code{\link{permCheck}}, a utility function for checking
+  permutation scheme described by \code{\link{permControl}}.}
 
 \examples{
 set.seed(1234)
