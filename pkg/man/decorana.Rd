@@ -74,7 +74,7 @@ downweight(veg, fraction = 5)
   In late 1970s, correspondence analysis became the method of choice for
   ordination in vegetation science, since it seemed better able to cope 
   with non-linear species responses than principal components
-  analysis. However, even correspondence analysis can produc an arc-shaped
+  analysis. However, even correspondence analysis can produce an arc-shaped
   configuration of a single gradient. Mark Hill developed detrended
   correspondence analysis to correct two assumed `faults' in 
   correspondence analysis: curvature of straight gradients and packing
