@@ -90,8 +90,8 @@ configuring biplots.
 }
 
 \references{ 
-  Hotelling, H. 1936. Relations between two sets of variates. Biometrika
-  28: 321-377.
+  Hotelling, H. 1936. Relations between two sets of
+  variates. \emph{Biometrika} \strong{28}: 321-377.
 }
 
 \author{ Pierre Legendre, Departement de Sciences Biologiques,
