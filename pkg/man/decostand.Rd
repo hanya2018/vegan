@@ -2,7 +2,7 @@
 \alias{decostand}
 \alias{wisconsin}
 
-\title{Standardizaton Methods for Community Ecology}
+\title{Standardization Methods for Community Ecology}
 \description{
 The function provides some popular (and effective) standardization
 methods for community ecologists.
