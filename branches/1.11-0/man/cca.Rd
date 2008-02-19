@@ -194,7 +194,7 @@
   You can use \code{\link{as.mlm}} to refit ordination result as a
   multiple response linear model to find some descriptive statistics.
   Design decisions are explained in
-  \code{\link{vignette}} \file{vegan-FAQ} which also can be accessed
+  \code{\link{vignette}} \file{decision-vegan} which also can be accessed
   with \code{\link{vegandocs}}.  
 }
 
@@ -220,7 +220,7 @@ dune.Manure <- rda(dune ~ Manure, dune.env)
 plot(dune.Manure) 
 ## For further documentation:
 \dontrun{
-vegandocs("vegan-FAQ")
+vegandocs("decision")
 }
 }
 \keyword{ multivariate }
