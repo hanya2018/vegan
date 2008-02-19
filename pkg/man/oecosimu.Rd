@@ -28,7 +28,7 @@ nestedn0(comm)
 nesteddisc(comm)
 nestedtemp(comm, ...)
 \method{plot}{nestedtemp}(x, kind = c("temperature", "incidendce"),
-    col=rev(heat.colors(100)),  ...)
+    col=rev(heat.colors(100)),  names = FALSE, ...)
 commsimulator(x, method, thin=1)
 }
 
@@ -48,6 +48,7 @@ commsimulator(x, method, thin=1)
   \item{kind}{The kind of plot produced.}
   \item{x}{Matrix for \code{commsimulator} or a \code{plot} object.}
   \item{col}{Colour scheme for matrix temperatures.}
+  \item{names}{Label columns and rows in the plot using names in \code{comm}.}
   \item{\dots}{Other arguments to functions.}
 }
 

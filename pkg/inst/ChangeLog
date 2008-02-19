@@ -2,9 +2,14 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-0:
+Version 1.12-1 (Feb 19, 2008, working...)
 
-	* Made a realese branch (1.11-0) based on the the rev. 204, and
+	* nestedtemp: returns row and column coordinates, optionally
+	labels plot.
+	
+Version 1.12-0 (Feb 15, 2008)
+
+	* Made a release branch (1.11-0) based on the the rev. 204, and
 	relabelled this devel branch to 1.12-0.
 
 Version 1.10-13 (closed Feb 15, 2008)

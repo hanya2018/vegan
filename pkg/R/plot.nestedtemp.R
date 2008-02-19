@@ -1,5 +1,6 @@
 `plot.nestedtemp` <-
-    function (x, kind = c("temperature", "incidendce"), col = rev(heat.colors(100)), 
+    function (x, kind = c("temperature", "incidendce"),
+              col = rev(heat.colors(100)), names = FALSE,  
               ...) 
 {
     kind <- match.arg(kind)
@@ -9,5 +10,9 @@
     z <- t(z[nrow(z):1, ])
     image(z, axes = FALSE, col = col, ...)
     box()
-    lines(x$smooth$x, 1-x$smooth$y)
+    lines(x$smooth$x, 1 - x$smooth$y)
+    if (names) {
+        axis(3, at = seq(0,1,len=ncol(x$u)), labels=colnames(x$u), las=2, ...)
+        axis(2, at = seq(1,0,len=nrow(x$u)), labels=rownames(x$u), las=2,...)
+    }
 }

@@ -39,8 +39,8 @@
     temp <- 100*sum(u)/prod(dim(comm))/0.04145
     i <- rev(order(rs))
     j <- rev(order(cs))
-    out <- list(comm = comm[i,j], u = u[i,j], fill=fill,  statistic = temp,
-                smooth=smo)
+    out <- list(comm = comm[i,j], u = u[i,j], r = r[i], c = c[j], 
+                fill=fill,  statistic = temp, smooth=smo)
     class(out) <- "nestedtemp"
     out
 }
