@@ -4,14 +4,11 @@
 \alias{nestedchecker}
 \alias{nestedn0}
 \alias{nesteddisc}
-\alias{nestedtemp}
 \alias{commsimulator}
 \alias{print.oecosimu}
 \alias{print.nestedchecker}
 \alias{print.nestedn0}
 \alias{print.nesteddisc}
-\alias{print.nestedtemp}
-\alias{plot.nestedtemp}
 
 \title{ Nestedness and Null Models for Islands or Patches }
 \description{
@@ -26,9 +23,6 @@ oecosimu(comm, nestfun, method, nsimul = 99, burnin = 0, thin = 1, ...)
 nestedchecker(comm)
 nestedn0(comm)
 nesteddisc(comm)
-nestedtemp(comm, ...)
-\method{plot}{nestedtemp}(x, kind = c("temperature", "incidendce"),
-    col=rev(heat.colors(100)),  ...)
 commsimulator(x, method, thin=1)
 }
 
@@ -45,9 +39,7 @@ commsimulator(x, method, thin=1)
   \item{thin}{Number of discarded null communities between two
   evaluations of nestedness statistic in sequential methods
   \code{"swap"} and \code{"tswap"}.}
-  \item{kind}{The kind of plot produced.}
-  \item{x}{Matrix for \code{commsimulator} or a \code{plot} object.}
-  \item{col}{Colour scheme for matrix temperatures.}
+  \item{x}{Matrix for \code{commsimulator}.}
   \item{\dots}{Other arguments to functions.}
 }
 
@@ -68,18 +60,7 @@ commsimulator(x, method, thin=1)
   occurs (Patterson & Atmar 1986).  Function \code{nesteddisc}
   implements discrepancy index which is the number of ones that should
   be shifted to fill a row with ones in a table arranged by species
-  frequencies (Brualdi & Sanderson 1999). Function \code{nestedtemp}
-  finds the matrix temperature which is defined as the sum of
-  \dQuote{surprises} in arranged matrix.  In arranged unsurprising
-  matrix all species within proportion given by matrix fill are in the
-  upper left corner of the matrix, and the surprise of the absence or
-  presences is the diagonal distance from the fill line (Atmar &
-  Patterson 1993). Function \code{nestedtemp} also has a \code{plot}
-  method which can display either incidences or temperatures of the
-  surprises. Matrix temperature is so vaguely described in the
-  literature (Atmar & Patterson 1993) that it may be impossible to
-  reproduce the results of other implementations, and the user should
-  be cautious in interpreting the results.
+  frequencies (Brualdi & Sanderson 1999).
 
   In addition to these functions provided in \pkg{vegan}, any function
   can be used that takes \code{comm} as the first argument, and
@@ -157,10 +138,6 @@ commsimulator(x, method, thin=1)
   input matrix.  }
 
 \references{
-  Atmar, W. & Patterson, B.D. (1993). The measurement of order and
-  disorder in the distribution of species in fragmented
-  habitat. \emph{Oecologia} 96, 373--382.
-
   Brualdi, R.A. & Sanderson, J.G. (1999). Nested species subsets, gaps,
   and discrepancy. \emph{Oecologia} 119, 256--264.
 
@@ -224,9 +201,6 @@ names in the References.  }
 \examples{
 data(sipoo)
 nestedchecker(sipoo)
-mod <- oecosimu(sipoo, nestedtemp, "r00")
-mod
-plot(mod)
 ## Use the first eigenvalue of correspondence analysis as an index
 ## of structure: a model for making your own functions.
 ## This is a minimal structure; fancier functions give fancier results

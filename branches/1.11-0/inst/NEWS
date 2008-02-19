@@ -27,9 +27,8 @@ NEW FUNCTIONS
   r1, r2, c0, swap, trial swap, backtracking, quasiswap). The
   nestedness can be analysed with functions like nestedchecker (number
   of checkerboard units), nestedn0 (measure N0), nesteddisc
-  (discrepancy), and nestedtemp (matrix temperature), but users can
-  supply their own functions or even use some standard R functions
-  such as chisq.test.
+  (discrepancy), but users can supply their own functions or even use
+  some standard R functions such as chisq.test.
 
 - ordiresids: similar diagnostic plots as in plot.lm for constrained
   ordination: Residuals ~ Fitted, sqrt(abs(Residuals)) ~ Fitted, and
