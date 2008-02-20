@@ -2,124 +2,137 @@
 
 			VEGAN RELEASE VERSIONS 
 	
-			     VEGAN 1.11-0
+		    CHANGE IN VEGAN VERSION 1.11-0
 
-- Based on devel version 1.10-13 (rev. 205 at R-Forge).
+GENERAL
 
-- Gavin Simpson joined the vegan team.
+    - Based on devel version 1.10-13 (rev. 205 at R-Forge).
 
-- Suggests now 'tcltk' (for orditkplot).
+    - Gavin Simpson joined the vegan team.
+
+    - Suggests now 'tcltk' (for orditkplot).
 
 NEW FUNCTIONS
 
-- betadisper: new functions for Marti Anderson's analysis of
-   homogeneity of multivariate dispersions.
+    - anova.cca can gained a new support function to analyse marginal
+      effects of individual terms (which are similar to Type III
+      effects). Defined with argument 'by = "margin"'.
 
-- biplot.rda: biplot function for PCA run with rda. Arrows are used
-  instead of points.
+    - betadisper: new functions for Marti Anderson's analysis of
+      homogeneity of multivariate dispersions.
 
-- CCorA: Canonical correlation analysis with a robust algorithm, with
-  permutation test and plot function.
+    - biplot.rda: biplot function for PCA run with rda. Arrows are
+      used instead of points.
 
-- oecosimu: functions to analyse nestedness of communities (such as on
-  islands or patches). Function oecosimu is a general wrapper, and
-  commsimulator generates null-communities of various types (r00, r0,
-  r1, r2, c0, swap, trial swap, backtracking, quasiswap). The
-  nestedness can be analysed with functions like nestedchecker (number
-  of checkerboard units), nestedn0 (measure N0), nesteddisc
-  (discrepancy), but users can supply their own functions or even use
-  some standard R functions such as chisq.test.
+    - CCorA: Canonical correlation analysis with a robust algorithm,
+      with permutation test and plot function.
 
-- ordiresids: similar diagnostic plots as in plot.lm for constrained
-  ordination: Residuals ~ Fitted, sqrt(abs(Residuals)) ~ Fitted, and
-  qqmath(~ Residuals) using Lattice graphics.
+    - oecosimu: functions to analyse nestedness of communities (such
+      as on islands or patches). Function oecosimu is a general
+      wrapper, and commsimulator generates null-communities of various
+      types (r00, r0, r1, r2, c0, swap, trial swap, backtracking,
+      quasiswap). The nestedness can be analysed with functions like
+      nestedchecker (number of checkerboard units), nestedn0 (measure
+      N0), nesteddisc (discrepancy), but users can supply their own
+      functions or even use some standard R functions such as
+      chisq.test.
 
-- orditkplot: interactive and editable plotting function. Function
-  displays one set of points (species, sites) using both points and
-  labels (text). The points are fixed, but labels can be dragged to
-  better positions with mouse. The edited plots can be saved as EPS,
-  exported to various graphical formats (EPS, PDF, PNG, JPEG, BMP,
-  XFIG depending on the system) or dumped back to the R session for
-  plotting and further processing.
+    - ordiresids: similar diagnostic plots as in plot.lm for
+      constrained ordination: Residuals ~ Fitted, sqrt(abs(Residuals))
+      ~ Fitted, and qqmath(~ Residuals) using Lattice graphics.
 
-- ordixyplot: a set of functions for Lattice graphics of ordination
-  results. Includes ordixyplot for 2D graphics, ordisplom for pairs
-  plots, and ordicloud for 3D graphics. All can be subsetted and
-  formatted in the usual Lattice way.
+    - orditkplot: interactive and editable plotting function. Function
+      displays one set of points (species, sites) using both points
+      and labels (text). The points are fixed, but labels can be
+      dragged to better positions with mouse. The edited plots can be
+      saved as EPS, exported to various graphical formats (EPS, PDF,
+      PNG, JPEG, BMP, XFIG depending on the system) or dumped back to
+      the R session for plotting and further processing.
 
-- permuted.index2: New version of permuted.index() that now allows
-  restricted permutations. Can produce permutations for time-series or
-  line transects and for spatial grids. These can also be nested
-  within 'strata'. permuted.series() and permuted.grid() are the
-  relevant workhorse functions. Permutation options are set by new
-  function permControl(). Currently used only in betadisper, but we
-  plan to migrate vegan functions to permuted.index2() in the devel
-  version, and will eventually replace the current permuted.index().
-  With support function permCheck for checking permutation schemes.
+    - ordixyplot: a set of functions for Lattice graphics of
+      ordination results. Includes ordixyplot for 2D graphics,
+      ordisplom for pairs plots, and ordicloud for 3D graphics. All
+      can be subsetted and formatted in the usual Lattice way.
+
+    - permuted.index2: New version of permuted.index() that now allows
+      restricted permutations. Can produce permutations for
+      time-series or line transects and for spatial grids. These can
+      also be nested within 'strata'. permuted.series() and
+      permuted.grid() are the relevant workhorse
+      functions. Permutation options are set by new function
+      permControl(). Currently used only in betadisper, but we plan to
+      migrate vegan functions to permuted.index2() in the devel
+      version, and will eventually replace the current
+      permuted.index().  With support function permCheck for checking
+      permutation schemes.
 
 NEW DATA SETS
 
-- sipoo: birds in the Sipoo archipelago (Finland, too close to Helsinki).
+    - sipoo: birds in the Sipoo archipelago (Finland, too close to
+      Helsinki).
 
 NEW FEATURES AND FIXES
 
-- adonis: accepts any 'dist' object as input.
+    - adonis: accepts any 'dist' object as input.
 
-- as.mlm.cca, as.mlm.rda use now correct names for variables in
-  aliased models. The data were pivoted correctly in R, but the labels
-  were not.
+    - as.mlm.cca, as.mlm.rda use now correct names for variables in
+      aliased models. The data were pivoted correctly in R, but the
+      labels were not.
 
-- anova.cca can now analyse marginal effects of individual terms
-  (which are similar to Type III effects). Defined with argument by =
-  "margin".
+    - anova.cca assesses now P value as (hits+1)/(tries+1).
 
-- anova.cca assesses now P value as (hits+1)/(tries+1).
+    - anova.cca: anova(..., by = "axis") failed when fitted model had
+      terms like poly(x,2) or log(x).
 
-- anova.cca: anova(..., by = "axis") failed when fitted model had
-  terms like poly(x,2) or log(x).
+    - bgdispersal uses now a more powerful statistic for the McNemar
+      test (in terms of Type 1 error rate).
 
-- bgdispersal uses now a more powerful statistic for the McNemar test
-  (in terms of Type 1 error rate).
+    - calibrate.cca does correct pivoting in aliased models.
 
-- calibrate.cca does correct pivoting in aliased models.
+    - capscale: negative scaling in plot works similarly as in rda.
 
-- capscale: negative scaling in plot works similarly as in rda.
+    - decorana does not crash R when called with NULL row data, such
+      as decorana(dune[FALSE,]). Method predict(..., type="sites")
+      works correctly with downweighted analysis.
 
-- decorana does not crash R when called with NULL row data, such as
-  decorana(dune[FALSE,]). Method predict(..., type="sites") works
-  correctly with downweighted analysis.
+    - fitted.cca, fitted.rda gained argument type = "working" to get
+      the fitted values and residuals used internally in calculation
+      (in cca() these are weigthed and Chi-square standardized
+      values).
 
-- fitted.cca, fitted.rda gained argument type = "working" to get the
-  fitted values and residuals used internally in calculation (in cca()
-  these are weigthed and Chi-square standardized values).
+    - isomap checks that input data are dissimilarities or can be
+      changed into dissimilarities without warnings.
 
-- isomap checks that input data are dissimilarities or can be changed
-  into dissimilarities without warnings.
+    - metaMDS gains argument wascores (defaults TRUE) to suppress
+      calculation of species scores.
 
-- metaMDS gains argument wascores (defaults TRUE) to suppress
-  calculation of species scores.
+    - orditorp now handles "..." more cleanly.
 
-- orditorp now handles "..." more cleanly.
+    - scores.cca, scores.rda accept display = c("species", "sites").
 
-- scores.cca, scores.rda accept display = c("species", "sites").
+    - summary.prc honours argument 'axis'.
 
-- summary.prc honours argument 'axis'.
+    - taxa2dist issues now a warning if called with 'check = FALSE'
+      and some distances == 0, typically meaning that basal taxa
+      (species) were not coded.
 
-- taxa2dist issues now a warning if called with 'check = FALSE' and
-  some distances == 0, typically meaning that basal taxa (species)
-  were not coded.
+    - varpart failed if there were unused levels in factors.
 
-- varpart failed if there were unused levels in factors.
-
-- wascores returns now NA for missing (all zero) species instead of
-  failing.
+    - wascores returns now NA for missing (all zero) species instead
+      of failing.
 
 DOCUMENTS
 
-- new documents: FAQ, a simple introduction to ordination in vegan, a
-  detailed explanation of diversity methods. New formatting.
+    - new documents: FAQ, a simple introduction to ordination in
+      vegan, a detailed explanation of diversity methods. New
+      formatting.
 
-			    OLDER VERSIONS
+    - Added these NEWS.
+
+
+
+
+			 OLDER VEGAN VERSIONS
 
 Version 1.8-8 (Oct 2, 2007)
 

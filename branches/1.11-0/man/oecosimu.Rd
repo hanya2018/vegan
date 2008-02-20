@@ -11,13 +11,16 @@
 \alias{print.nesteddisc}
 
 \title{ Nestedness and Null Models for Islands or Patches }
+
 \description{
-  Communities are regarded as nested if they all could be subsets of the
-  same community. In general, species poor communities should be subsets
-  of species rich communities, and rare species only should occur on
-  species rich communities. Null models generate random communities with
-  different criteria to study the significance of nestedness.
+  Patches or local communities are regarded as nested if they all could
+  be subsets of the same community. In general, species poor communities
+  should be subsets of species rich communities, and rare species only
+  should occur on species rich communities. Null models generate random
+  communities with different criteria to study the significance of
+  nestedness.
 }
+
 \usage{
 oecosimu(comm, nestfun, method, nsimul = 99, burnin = 0, thin = 1, ...)
 nestedchecker(comm)
@@ -43,10 +46,10 @@ commsimulator(x, method, thin=1)
   \item{\dots}{Other arguments to functions.}
 }
 
-\details{ 
+\details{
   Function \code{oecosimu} is a wrapper that evaluates a nestedness
-  statistic using function \code{nestfun}, and then simulates a series
-  of null models using \code{commsimulator}, and evaluates the
+  statistic using function given by \code{nestfun}, and then simulates a
+  series of null models using \code{commsimulator}, and evaluates the
   nestedness statistic on these null models. The \pkg{vegan} packages
   contains some nestedness functions that are described below, and the
   generation of null models is described towards the end of this
@@ -65,9 +68,9 @@ commsimulator(x, method, thin=1)
   In addition to these functions provided in \pkg{vegan}, any function
   can be used that takes \code{comm} as the first argument, and
   returns the nestedness index in item \code{statistic}. Function
-  \code{\link{chisq.test}} is one such function, and examples show how
+  \code{\link{chisq.test}} is such a function, and examples show how
   to do this in general.  If you write a function that may be useful
-  in general, please consider submitting it to \pkg{vegan} for others
+  to others, please consider submitting it to \pkg{vegan} for others
   to enjoy (you will be credited as an author of that function).
 
   Function \code{commsimulator} implements null models for community
@@ -187,7 +190,7 @@ commsimulator(x, method, thin=1)
   little, and you may need long \code{burnin} and strong
   \code{thin}ning in large matrices. You should plot the simulated
   values to see that they are more or less stationary and there is no
-  long-term periodic variation. Method \code{quasiswap} is implemented
+  trend. Method \code{quasiswap} is implemented
   in plain R, and it is very slow, and it slows down very strongly
   with big matrices. In general, \code{backtrack} is faster and less
   sensitive to matrix size, but it also can be very slow.
