@@ -3,12 +3,12 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-0 (Released Feb 20, 2008)
+Version 1.11-0 (Released Feb 20, 2008)
 
 	* Made a realese branch (1.11-0) based on the the rev. 204, and
-	relabelled this devel branch to 1.12-0.
+	relabelled the devel branch to 1.12-0.
 
-	* Removed nestedtemp and associated function: there was an
+	* Removed nestedtemp and associated functions: there was an
 	implementation error to be fixed in the trunk.
 
 	* Added a NEWS file for user visible changes, and updated

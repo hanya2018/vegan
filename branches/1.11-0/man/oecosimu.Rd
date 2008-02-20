@@ -15,8 +15,8 @@
 \description{
   Patches or local communities are regarded as nested if they all could
   be subsets of the same community. In general, species poor communities
-  should be subsets of species rich communities, and rare species only
-  should occur on species rich communities. Null models generate random
+  should be subsets of species rich communities, and rare species should
+  only occur in species rich communities. Null models generate random
   communities with different criteria to study the significance of
   nestedness.
 }
@@ -55,7 +55,7 @@ commsimulator(x, method, thin=1)
   generation of null models is described towards the end of this
   section.
 
-  Function \code{netstedchecker} gives the number of checker board
+  Function \code{netstedchecker} gives the number of checkerboard
   units, or 2x2 submatrices where both species occur once but on
   different sites (Stone & Roberts 1990).  Function \code{nestedn0}
   implements nestedness measure N0 which is the number of absences
@@ -83,7 +83,7 @@ commsimulator(x, method, thin=1)
   frequencies as probabilities, and \code{r2} uses squared column
   sums. Methods \code{r1} and \code{r2} try to simulate original species
   frequencies, but they are not strictly constrained. All these methods
-  are surveyed by Wright et al. (1998). Method \code{c0} maintains
+  are reviewed by Wright et al. (1998). Method \code{c0} maintains
   species frequencies, but does not honour site (row) frequencies (Jonsson
   2001).
 
