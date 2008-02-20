@@ -14,7 +14,7 @@ GENERAL
 
 NEW FUNCTIONS
 
-    - anova.cca can gained a new support function to analyse marginal
+    - anova.cca gained a new support function to analyse marginal
       effects of individual terms (which are similar to Type III
       effects). Defined with argument 'by = "margin"'.
 
