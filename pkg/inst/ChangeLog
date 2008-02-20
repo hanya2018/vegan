@@ -4,8 +4,11 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.12-1 (Feb 19, 2008, working...)
 
-	* nestedtemp: returns row and column coordinates, optionally
-	labels plot.
+	* nestedtemp: Detected an implementation error and made
+	.NotYetImplemented().  Returns row and column coordinates,
+	optionally labels plot.
+
+	* merged last doc fixes from branches/1.11-0/ after release.
 	
 Version 1.12-0 (Feb 15, 2008)
 

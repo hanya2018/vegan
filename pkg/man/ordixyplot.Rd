@@ -29,8 +29,8 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   \item{data}{ Optional data to amend ordination results. The ordination
     results are found from \code{x}, but you may give here data for other
     variables needed in plots. Typically these are environmental data.}
-  \item{formula}{ Formula to define the plots. This is optional in
-    \code{ordisplom}, but must be given in other functions. The
+  \item{formula}{ Formula to define the plots. A default formula will be
+    used if this is omitted. The
     ordination axes must be called by the same names as in the
     ordination results (and these names vary among methods). In
     \code{ordisplom}, special character \code{.} refers to the
@@ -60,7 +60,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   function so that these graphs are extremely configurable. See
   \code{\link[lattice]{Lattice}} and \code{\link[lattice]{xyplot}},
     \code{\link[lattice]{splom}} and \code{\link[lattice]{cloud}} for
-  details, usage and opportunities.
+  details, usage and possibilities.
 
   The argument \code{x} must always be an ordination result. The scores
   are extracted with \pkg{vegan} function \code{\link{scores}} so that
@@ -78,7 +78,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   The ordination scores are found from \code{x}, and \code{data} is
   optional. The \code{data} should contain other variables than
   ordination scores to be used in plots. Typically, they are
-  environmental variables used, such as factors to define panels or plot
+  environmental variables (typically factors) to define panels or plot
   symbols.
 
   The proper work is done by the panel function. The layout can be
@@ -102,10 +102,7 @@ ordicloud(x, data = NULL, formula, display = "sites", choices = 1:3,
   \code{"trellis"}.   
 }
 \author{Jari Oksanen }
-\note{
-  These are proof-of-the-concept functions that provide only a skeleton
-  at the moment. Contributions are welcome.
-}
+ 
 \seealso{
   \code{\link[lattice]{Lattice}},
   \code{\link[lattice]{xyplot}},
