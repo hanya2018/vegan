@@ -60,11 +60,7 @@ echo $contents; } ?>
 <p>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
 <img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
-<br>
-	In general, you can follow the link above to download and install vegan. R-Forge does not make MacOS X binaries, but they are occasionally available through the homepage of Jari Oksanen. You can install <strong>MacOS X</strong> binaries from an R prompt using:
-     <br><strong><tt>install.packages("vegan", repos="http://cc.oulu.fi/~jarioksa")</tt></strong>
-	<br>Mac binaries were build in IntelMac, MacOS 10.4.11 and R 2.6.*, and they may not work in all Macs.   
-<br>
+
 <h2>Vegan resources</h2>
 
 <p>Here some pointers to vegan resources:
