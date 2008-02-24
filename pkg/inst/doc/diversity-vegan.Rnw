@@ -366,7 +366,7 @@ for each site. It is curious that log-normal model rarely is the
 choice, although it generally is regarded as the canonical model, in
 particular in data sets like Barro Colorado tropical forests.
 
-\section{Species accumulation and species pool}
+\section{Species accumulation and beta diversity}
 
 Species accumulation models and species pool models study collections
 of sites, and their species richness, or try to estimate the number of
@@ -419,6 +419,100 @@ plot(sac, ci.type="polygon", ci.col="yellow")
 \label{fig:sac}
 \end{SCfigure}
 
+\subsection{Beta diversity}
+
+Whittaker divided diversity into various components. The best known
+are diversity in one spot that he called alpha diversity, and the
+diversity along gradients that he called beta diversity. The basic
+diversity indices are indices of alpha diversity. Beta diversity
+should be studied with respect to gradients, but almost everybody
+understand that as a measure of general heterogeneity: how many more
+species do you have in a collection of sites compared to an average
+site. 
+
+The best known index of beta diversity is based on the ratio of total
+number of species in a collection of sites ($S$) and the average
+richness per one site ($\bar \alpha$):
+\begin{equation}
+  \label{eq:beta}
+  \beta = S/\bar \alpha - 1
+\end{equation}
+Substraction of one means that $\beta = 0$ when there are no excess
+species or no heterogeneity between sites. For this index, no specific
+functions are needed, but this index can be easily found with the help
+of \texttt{vegan} function \texttt{specnumber}:
+<<>>=
+ncol(BCI)/mean(specnumber(BCI)) - 1
+@ 
+
+The index of eq. \ref{eq:beta} is problematic because $S$ increases
+with the number of sites even when sites are all subsets of the same
+community.  Whittaker noticed this, and suggested the index to be
+found from pairwise comparison of sites.  If the numbers of species in
+two sites are $A$ and $B$, and the number of species shared between
+these two sites is $J$, then $\bar \alpha = (A+B)/2$ and $S = A+B-J$.
+Index \ref{eq:beta} can be expressed as:
+\begin{equation}
+  \label{eq:betabray}
+  \beta = \frac{A+B-J}{(A+B)/2} - 1 = \frac{A+B-2J}{A+B}
+\end{equation}
+This is the S{\o}rensen index of dissimilarity, and it can be found
+for all sites using \texttt{vegan} function \texttt{vegdist} with
+binary data:
+<<>>=
+beta <- vegdist(BCI, binary=TRUE)
+mean(beta)
+@ 
+
+There are many other definitions of beta diversity in addition to
+eq. \ref{eq:beta}, and many of these reduce to well known
+dissimilarity indices.  All commonly used indices can be found using
+\texttt{designdist} function which allows defining your own
+dissimilarity measures. One of the more interesting indices is based
+on the Arrhenius species--area model 
+\begin{equation}
+  \label{eq:arrhenius}
+  \hat S = c X^z
+\end{equation}
+where $X$ is the area (size) of the patch or site, and $c$ and $z$ are
+parameters. Parameter $c$ is uninteresting, but $z$ gives the
+steepness of the species area curve and is a measure of beta
+diversity. In islands,  $z$ is typically about $0.3$. This kind of
+islands can be regarded as subsets of the same community, indicating
+that we really should talk about gradient differences if $z > 0.3$. We
+can find the value of $z$ for a pair of plots using function
+\texttt{designdist}: 
+<<>>=
+z <- designdist(BCI, "(log(A+B-J)-log(A+B)+log(2))/log(2)")
+quantile(z)
+@ 
+The size $X$ and parameter $c$ cancel out, and the index gives the
+estimate $z$ for any pair of sites. 
+
+Function \texttt{betadisper} can be used to analyse beta diversities
+with respect to classes or factors.  There is no such classification
+available for the Barro Colorado Island data, and the example studies
+beta diversities in the management classes of the dune meadows
+(Fig. \ref{fig:betadisper}): 
+<<>>=
+data(dune)
+data(dune.env)
+z <- designdist(dune, "(log(A+B-J)-log(A+B)+log(2))/log(2)")
+quantile(z)
+mod <- with(dune.env, betadisper(z, Management))
+mod
+@
+\begin{SCfigure}
+<<fig=true,echo=false>>=
+boxplot(mod)
+@
+\caption{Box plots of beta diversity measured as the average steepness
+  ($z$) of the species area curve in the Arrhenius model $S = cX^z$ in
+  Management classes of dune meadows.}
+\label{fig:betadisper}
+\end{SCfigure}
+
+\section{Species pool}
 \subsection{Number of unseen species}
 
 Species accumulation models indicate that not all species were seen in
