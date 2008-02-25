@@ -1,7 +1,7 @@
 `nestedtemp` <-
     function(comm, ...)
 {
-    .NotYetImplemented()
+    #.NotYetImplemented()
     comm <- ifelse(comm > 0, 1, 0)
     rs <- rowSums(comm)
     cs <- colSums(comm)
