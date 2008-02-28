@@ -6,6 +6,9 @@ Version 1.12-1 (Feb 25, 2008, working...)
 
 	* biplot.rda: gained argument col to select colours for sites and
 	species. 
+
+	* bstick.princomp: used a wrong number of sticks (PCs). Reported
+	by Guy Yollin. 
 	
 	* nestedtemp:  Returns row and column coordinates,
 	optionally labels plot.
