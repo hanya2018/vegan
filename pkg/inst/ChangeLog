@@ -2,7 +2,24 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-1 (Feb 25, 2008, working...)
+Version 1.12-2 (Mar 2, 2008, working...)
+
+	* nestedtemp: Rodriguez-Girones & Santamaria (J. Biogeogr. 33,
+	924-935; 2006) have had a look inside the original temperature
+	calculator code and give a more explicit description of the
+	method. Following their paper, I implemented an iterative
+	procedure to alternately pack columns and rows for ones and
+	zeros. The fill line is still a parabola, but this seems to be
+	very similar to the R-G & S fill line with fills 0.2...0.8 and I
+	don't hurry with this. There still are differences in many aspects
+	of implementation. The iterative procedure gives slightly
+	different results between runs, but here tests: Rocky mountain
+	mammals 3.87 (A&P 3.81, was 3.59 in 1.12-1), Baja
+	birds (Bajabs.txt) 10.17 (A&P 7.25, was 7.75), Queen Charlotte
+	birds 14.78 (A&P 15.87, was 14.51). Some results are indeed more
+	different than they used to be...
+	
+Version 1.12-1 (closed Mar 2, 2008)
 
 	* biplot.rda: gained argument col to select colours for sites and
 	species. 

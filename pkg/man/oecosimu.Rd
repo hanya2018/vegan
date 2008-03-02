@@ -78,12 +78,16 @@ commsimulator(x, method, thin=1)
   matrix all species within proportion given by matrix fill are in the
   upper left corner of the matrix, and the surprise of the absence or
   presences is the diagonal distance from the fill line (Atmar &
-  Patterson 1993). Function \code{nestedtemp} also has a \code{plot}
-  method which can display either incidences or temperatures of the
-  surprises. Matrix temperature is so vaguely described in the
-  literature (Atmar & Patterson 1993) that it may be impossible to
-  reproduce the results of other implementations, and the user should
-  be cautious in interpreting the results.
+  Patterson 1993). Function tries to pack species and sites to a
+  minimal temperature (Rodriguez-Girones & Santamaria 2006), but this
+  is an iterative procedure, and the temperatures usually vary among
+  runs.  Function \code{nestedtemp} also has a \code{plot} method
+  which can display either incidences or temperatures of the
+  surprises. Matrix temperature was rather vaguely described (Atmar &
+  Patterson 1993), but Rodriguez-Girones & Santamaria (2006) are more
+  explicit and their description is used here. However, the results
+  probably differ from other implementations, and users should be
+  cautious in interpreting the results.
 
   In addition to these functions provided in \pkg{vegan}, any function
   can be used that takes \code{comm} as the first argument, and
@@ -185,6 +189,10 @@ commsimulator(x, method, thin=1)
   of insular mammalian faunas and archipelagos. \emph{Biol. J. Linnean
     Soc.} 28, 65--82.
 
+  Rodriguez-Girones & Santamaria (2006). A new algorithm to calculate
+  the nestedness temperature of presence-absence
+  matrices. \emph{J. Biogeogr.} 33, 924--935.
+
   Stone, L. & Roberts, A. (1990). The checkerboard score and species
   distributions. \emph{Oecologia} 85, 74--79.
 
@@ -228,9 +236,6 @@ names in the References.  }
 \examples{
 data(sipoo)
 nestedchecker(sipoo)
-mod <- oecosimu(sipoo, nestedtemp, "r00")
-mod
-plot(mod)
 ## Use the first eigenvalue of correspondence analysis as an index
 ## of structure: a model for making your own functions.
 ## This is a minimal structure; fancier functions give fancier results

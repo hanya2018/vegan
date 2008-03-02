@@ -1,12 +1,45 @@
 `nestedtemp` <-
     function(comm, ...)
 {
-    #.NotYetImplemented()
+    ## J Biogeogr 33, 924-935 (2006) says that Atmar & Patterson try
+    ## to pack presences and absence to minimal matrix temperature,
+    ## and the following routines try to reproduce the (partly verbal)
+    ## description. Index s should pack ones, and index t should pack
+    ## zeros, and the final ordering should be "a compromise".
+    colpack <- function(x, rr)
+    {
+        ind <- matrix(rep(rr, ncol(x)), nrow=nrow(x))
+        s <- rank(-colSums((x*ind)^2), ties="aver")
+        t <- rank(-colSums((nrow(x) - (1-x)*ind + 1)^2), ties="aver")
+        st <- rank(s+t, ties="random")
+        st
+    }
+    rowpack <- function(x, cr)
+    {
+        ind <- matrix(rep(cr, each=nrow(x)), nrow=nrow(x))
+        s <- rank(-rowSums((x*ind)^2), ties="aver")
+        t <- rank(-rowSums((ncol(x) - (1-x)*ind + 1)^2), ties="aver")
+        st <- rank(s+t, ties="random")
+        st
+    }
     comm <- ifelse(comm > 0, 1, 0)
-    rs <- rowSums(comm)
-    cs <- colSums(comm)
-    r <- (rank(-rs, ties="aver") - 0.5)/(nrow(comm))
-    c <- (rank(-cs, ties="aver") - 0.5)/(ncol(comm))
+    ## Start with columns, expect if nrow > ncol
+    if (ncol(comm) >= nrow(comm)) {
+        i <- rank(-rowSums(comm), ties="average")
+    } else {
+        j <- rank(-colSums(comm), ties="average")
+        i <- rowpack(comm, j)
+    }
+    ## Improve eight times
+    for (k in 1:8) {
+        j <- colpack(comm, i)
+        i <- rowpack(comm, j)
+    }
+    if (ncol(comm) < nrow(comm))
+        j <- colpack(comm, i)
+    comm <- comm[order(i), order(j)]
+    r <- ppoints(nrow(comm), a=0.5)
+    c <- ppoints(ncol(comm), a=0.5)
     dis <- outer(r, c, pmin)
     totdis <- 1 - abs(outer(r, c, "-"))
     fill <- sum(comm)/prod(dim(comm))
@@ -38,10 +71,9 @@
     colnames(u) <- colnames(comm)
     rownames(u) <- rownames(comm)
     temp <- 100*sum(u)/prod(dim(comm))/0.04145
-    i <- rev(order(rs))
-    j <- rev(order(cs))
-    out <- list(comm = comm[i,j], u = u[i,j], r = r[i], c = c[j], 
+    out <- list(comm = comm, u = u, r = r, c = c, 
                 fill=fill,  statistic = temp, smooth=smo)
     class(out) <- "nestedtemp"
     out
 }
+
