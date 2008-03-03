@@ -64,28 +64,29 @@ commsimulator(x, method, thin=1)
   generation of null models is described towards the end of this
   section.
 
-  Function \code{netstedchecker} gives the number of checkerboard
-  units, or 2x2 submatrices where both species occur once but on
-  different sites (Stone & Roberts 1990).  Function \code{nestedn0}
-  implements nestedness measure N0 which is the number of absences
-  from the sites which are richer than the most pauperate site species
-  occurs (Patterson & Atmar 1986).  Function \code{nesteddisc}
-  implements discrepancy index which is the number of ones that should
-  be shifted to fill a row with ones in a table arranged by species
-  frequencies (Brualdi & Sanderson 1999). Function \code{nestedtemp}
-  finds the matrix temperature which is defined as the sum of
-  \dQuote{surprises} in arranged matrix.  In arranged unsurprising
-  matrix all species within proportion given by matrix fill are in the
-  upper left corner of the matrix, and the surprise of the absence or
-  presences is the diagonal distance from the fill line (Atmar &
-  Patterson 1993). Function tries to pack species and sites to a
-  minimal temperature (Rodriguez-Girones & Santamaria 2006), but this
-  is an iterative procedure, and the temperatures usually vary among
-  runs.  Function \code{nestedtemp} also has a \code{plot} method
-  which can display either incidences or temperatures of the
-  surprises. Matrix temperature was rather vaguely described (Atmar &
-  Patterson 1993), but Rodriguez-Girones & Santamaria (2006) are more
-  explicit and their description is used here. However, the results
+  Function \code{netstedchecker} gives the number of checkerboard units,
+  or 2x2 submatrices where both species occur once but on different
+  sites (Stone & Roberts 1990).  Function \code{nestedn0} implements
+  nestedness measure N0 which is the number of absences from the sites
+  which are richer than the most pauperate site species occurs
+  (Patterson & Atmar 1986).  Function \code{nesteddisc} implements
+  discrepancy index which is the number of ones that should be shifted
+  to fill a row with ones in a table arranged by species frequencies
+  (Brualdi & Sanderson 1999). Function \code{nestedtemp} finds the
+  matrix temperature which is defined as the sum of \dQuote{surprises}
+  in arranged matrix.  In arranged unsurprising matrix all species
+  within proportion given by matrix fill are in the upper left corner of
+  the matrix, and the surprise of the absence or presences is the
+  diagonal distance from the fill line (Atmar & Patterson
+  1993). Function tries to pack species and sites to a minimal
+  temperature (\enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria
+  2006), but this is an iterative procedure, and the temperatures
+  usually vary among runs.  Function \code{nestedtemp} also has a
+  \code{plot} method which can display either incidences or temperatures
+  of the surprises. Matrix temperature was rather vaguely described
+  (Atmar & Patterson 1993), but
+  \enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria (2006) are
+  more explicit and their description is used here. However, the results
   probably differ from other implementations, and users should be
   cautious in interpreting the results.
 
@@ -189,8 +190,8 @@ commsimulator(x, method, thin=1)
   of insular mammalian faunas and archipelagos. \emph{Biol. J. Linnean
     Soc.} 28, 65--82.
 
-  Rodriguez-Girones & Santamaria (2006). A new algorithm to calculate
-  the nestedness temperature of presence-absence
+  \enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria (2006). A new
+  algorithm to calculate the nestedness temperature of presence-absence
   matrices. \emph{J. Biogeogr.} 33, 924--935.
 
   Stone, L. & Roberts, A. (1990). The checkerboard score and species
