@@ -9,16 +9,16 @@
     colpack <- function(x, rr)
     {
         ind <- matrix(rep(rr, ncol(x)), nrow=nrow(x))
-        s <- rank(-colSums((x*ind)^2), ties="aver")
-        t <- rank(-colSums((nrow(x) - (1-x)*ind + 1)^2), ties="aver")
+        s <- -colSums((x*ind)^2)
+        t <- -colSums((nrow(x) - (1-x)*ind + 1)^2)
         st <- rank(s+t, ties="random")
         st
     }
     rowpack <- function(x, cr)
     {
         ind <- matrix(rep(cr, each=nrow(x)), nrow=nrow(x))
-        s <- rank(-rowSums((x*ind)^2), ties="aver")
-        t <- rank(-rowSums((ncol(x) - (1-x)*ind + 1)^2), ties="aver")
+        s <- -rowSums((x*ind)^2)
+        t <- -rowSums((ncol(x) - (1-x)*ind + 1)^2)
         st <- rank(s+t, ties="random")
         st
     }
@@ -40,30 +40,28 @@
     comm <- comm[order(i), order(j)]
     r <- ppoints(nrow(comm), a=0.5)
     c <- ppoints(ncol(comm), a=0.5)
-    dis <- outer(r, c, pmin)
+    dis <- matrix(rep(r, ncol(comm)), nrow=nrow(comm))
     totdis <- 1 - abs(outer(r, c, "-"))
     fill <- sum(comm)/prod(dim(comm))
-    ## Move each point to a diagonal, xy will be the x-coordinate
-    xy <- (outer(r, c, "+") - 1)/2
-    xy <- sweep(-xy, 1, r, "+")
-    ## Fill line as a parabola against the diagonal. The argument is
-    ## 0..1 (x-coordinate) instead of diagonal value 0..sqrt(2).
-    ## fill is found from the parent environment.
-    if (fill < 1/6) {
-        ## If fill < 1/6, parabola will go over the borders
-        parfun <- function(x) pmin((0.5-fill)*x, (1-x)*(0.5-fill))*2
-    } else {
-        ## The equation below really is a parabola, but in Horner form.
-        parfun <- function(x) {
-            out <- 3*(0.5-fill)*sqrt(2)*x*(1-x)
-            out/sqrt(2)
-        }
-    }
-    out <-  pmin(xy, 1-xy) - parfun(xy)
+    ## Fill line as defined in J Biogeogr by solving an integral of
+    ## the fill function
+    fillfun <- function(x, p) 1 - (1-(1-x)^p)^(1/p)
+    intfun <- function(p, fill)
+        integrate(fillfun, lower=0, upper=1, p=p)$value - fill
+    getp <- function(fill) uniroot(intfun, c(0,20), fill=fill)$root
+    p <- getp(fill)
+    ## row coordinates of the fill line for all matrix entries
+    out <- matrix(0, nrow=length(r), ncol=length(c))
+    for (i in 1:length(r))
+        for (j in 1:length(c)) {
+            a <- c[j] - r[i]
+            out[i,j] <- uniroot(function(x, ...) fillfun(x, p) - a -x,
+                                c(0,1), p = p)$root
+            }
     ## Filline
-    x <- seq(0,1,len=21)
-    xline <- parfun(x)
-    smo <- list(x = x - xline, y = (1-x) - xline)
+    x <- seq(0,1,len=51)
+    xline <- fillfun(x, p)
+    smo <- list(x = x, y = xline)
     u <- (dis - out)/totdis
     u[u < 0 & comm == 1] <- 0
     u[u > 0 & comm == 0] <- 0
