@@ -48,8 +48,7 @@
     fillfun <- function(x, p) 1 - (1-(1-x)^p)^(1/p)
     intfun <- function(p, fill)
         integrate(fillfun, lower=0, upper=1, p=p)$value - fill
-    getp <- function(fill) uniroot(intfun, c(0,20), fill=fill)$root
-    p <- getp(fill)
+    p <- uniroot(intfun, c(0,20), fill=fill)$root
     ## row coordinates of the fill line for all matrix entries
     out <- matrix(0, nrow=length(r), ncol=length(c))
     for (i in 1:length(r))

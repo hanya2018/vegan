@@ -190,9 +190,9 @@ commsimulator(x, method, thin=1)
   of insular mammalian faunas and archipelagos. \emph{Biol. J. Linnean
     Soc.} 28, 65--82.
 
-  \enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria (2006). A new
-  algorithm to calculate the nestedness temperature of presence-absence
-  matrices. \emph{J. Biogeogr.} 33, 924--935.
+  \enc{Rodríguez-Gironés}{Rodriguez-Girones}, M.A.  & Santamaria, L.
+  (2006). A new algorithm to calculate the nestedness temperature of
+  presence-absence matrices. \emph{J. Biogeogr.} 33, 924--935.
 
   Stone, L. & Roberts, A. (1990). The checkerboard score and species
   distributions. \emph{Oecologia} 85, 74--79.
