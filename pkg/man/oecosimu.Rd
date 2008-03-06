@@ -78,7 +78,7 @@ commsimulator(x, method, thin=1)
   within proportion given by matrix fill are in the upper left corner of
   the matrix, and the surprise of the absence or presences is the
   diagonal distance from the fill line (Atmar & Patterson
-  1993). Function tries to pack species and sites to a minimal
+  1993). Function tries to pack species and sites to a low
   temperature (\enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria
   2006), but this is an iterative procedure, and the temperatures
   usually vary among runs.  Function \code{nestedtemp} also has a
@@ -88,7 +88,10 @@ commsimulator(x, method, thin=1)
   \enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria (2006) are
   more explicit and their description is used here. However, the results
   probably differ from other implementations, and users should be
-  cautious in interpreting the results.
+  cautious in interpreting the results. The details of calculations
+  are explained in the \code{\link{vignette}} \emph{Design decisions
+  and implementation} that you can read using functions
+  \code{\link{vignette}} or \code{\link{vegandocs}}. 
 
   In addition to these functions provided in \pkg{vegan}, any function
   can be used that takes \code{comm} as the first argument, and

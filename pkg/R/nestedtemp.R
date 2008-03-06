@@ -67,8 +67,10 @@
     u <- u^2
     colnames(u) <- colnames(comm)
     rownames(u) <- rownames(comm)
+    names(r) <- rownames(comm)
+    names(c) <- colnames(comm)
     temp <- 100*sum(u)/prod(dim(comm))/0.04145
-    out <- list(comm = comm, u = u, r = r, c = c, 
+    out <- list(comm = comm, u = u, r = r, c = c, p = p,
                 fill=fill,  statistic = temp, smooth=smo)
     class(out) <- "nestedtemp"
     out

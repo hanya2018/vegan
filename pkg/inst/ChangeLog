@@ -27,6 +27,9 @@ Version 1.12-2 (Mar 2, 2008, working...)
 	with these test results: Bajaball 6.33, Bajabl 14.43, Bajabn
 	5.98, Bajabo 11.18, Bajabs 10.13. Smaller change is that packing
 	is based on indices s and t directly instead of their ranks.
+
+	* vignettes: added discussion on nestedtemp() in "Design
+	decisions and implementation".
 	
 Version 1.12-1 (closed Mar 2, 2008)
 
