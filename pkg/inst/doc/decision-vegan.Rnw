@@ -77,7 +77,7 @@ arrows(x,y, r, f(r, mod$p), lwd=4)
   outside the fill line or absences within the fill line.}
 \end{SCfigure}
 The function can be implemented in many ways following the general
-principles.  Rodr{\'i}guez-Girond{\'e}z and Santamaria \cite{RodGir06}
+principles.  Rodr{\'i}guez-Girond{\'e}s and Santamaria \cite{RodGir06}
 have seen the original code and reveal more details of calculations,
 and their explanation is the basis of the implementation in
 \texttt{vegan}.  However, there are still some open issues, and
@@ -87,7 +87,7 @@ the same general principles. I try to give main computation details in
 this documents --- all details can be seen in the source code of
 \texttt{nestedtemp}.
 
-\begin{enumerate}
+\begin{itemize}
 \item Species and sites are put into unit square \citep{RodGir06}. The
   coordinates for $n$ item will be $(k-0.5)/n$ for $k=1 \ldots n$, so
   that there are no points in the corners or the margins of the unit
@@ -138,9 +138,52 @@ this documents --- all details can be seen in the source code of
     found using function \texttt{uniroot}. The difference of this
     intersection and the row coordinate gives the argument $d$ of matrix
     temperature (Fig. \ref{fig:nestedtemp}).
-  \item In other software, ``duplicate'' species occurring on every
+  \item In other software, ``duplicated'' species occurring on every
     site are removed, as well as empty sites and species after
     reordering \cite{RodGir06}. This is not done in \texttt{vegan}.
+\end{itemize}
+
+\subsection{Backtracking}
+
+Gotelli and Entsminger's seminal paper \cite{GotelliEnt01} on filling
+algorithms is somewhat confusing: it explicitly deals with ``knight's
+tour'' which is quite a different problem than the one we face with
+null models.  The chess piece ``knight''\footnote{``Knight'' is
+  ``Springer'' in German which is very appropriate as Springer was the
+  publisher of the paper on ``knight't tour''} has a track of history:
+a piece in a certain position could only have entered from some
+candidate squares. The filling of incidence matrix no such a history:
+if we know that the item last added was in certain row and column, we
+have no information to guess which of the filled items was entered
+previously. A consequence of dealing with a different problem is that
+\citet{GotelliEnt01} does not give many hints on implementing a fill
+algorithm as a community null model.
+
+The backtracking is implemented in two stage: filling and
+backtracking.
+\begin{enumerate}
+  \item The matrix is filled in the order given by the marginal
+    probabilities. In this way the matrix will look similar to the
+    final matrix at all stages of filling. Equal filling probabilities
+    were not used since that was ineffective and produced strange fill
+    patterns: the rows and columns with one or a couple of presences
+    were filled first, and the process was cornered to columns and
+    rows with many presences. As a consequence, the the process tried
+    harder to fill that corner, and the result was a more tighlty
+    packed quadratic fill pattern than with other methods.
+  \item The filling stage stops when no new points can be added
+    without exceeding row or column totals. ``Backtracking'' means
+    removing random points and seeing if this allows adding new points
+    to the plot. No record of history is kept (and there is no reason
+    to keep a record of history), but random points are removed and
+    filled again. The number of removed points increases from one to
+    four points. New configuration is kept if it is at least as good
+    as the previous one, and the number of removed points is reduced
+    back to one if the new configuration is better than the old one.
+    Because there is no record of history, this does not sound like a
+    backtracking, but it still fits the general definition of
+    backtracking: ``try something, and if it fails, try something
+    else'' \cite{Sedgewick90}.
 \end{enumerate}
 
 
