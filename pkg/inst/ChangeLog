@@ -2,7 +2,12 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-2 (Mar 2, 2008, working...)
+Version 1.2-3 (Mar 7, 2008)
+
+	* isomap: added dynamic, spinnable 3D graphics using rgl
+	(rgl.isomap). 
+	
+Version 1.12-2 (closed Mar 7, 2008)
 
 	* nestedtemp: Rodriguez-Girones & Santamaria (J. Biogeogr. 33,
 	924-935; 2006) have had a look inside the original temperature
