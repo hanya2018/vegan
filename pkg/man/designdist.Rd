@@ -62,7 +62,8 @@ designdist(x, method = "(A+B-2*J)/(A+B)",
   used to implement many other indices, amongst them, most of those
   described in Legendre & Legendre (1998). It can also be used to
   implement all indices of beta diversity described in Koleff et
-  al. (2003).
+  al. (2003), but there also is a specific function
+  \code{\link{betadiver}} for the purpose.
 
   If you want to implement binary dissimilarities based on the 2x2
   contingency table notation, then \eqn{a =} \code{J}, \eqn{b =}
@@ -88,7 +89,7 @@ designdist(x, method = "(A+B-2*J)/(A+B)",
   function  using compiled code, it is better to use the canned
   alternative.
 }
-\seealso{ \code{\link{vegdist}}, \code{\link{dist}}. }
+\seealso{ \code{\link{vegdist}}, \code{\link{betadiver}}, \code{\link{dist}}. }
 \examples{
 ## Arrhenius dissimilarity: the value of z in the species-area model
 ## S = c*A^z when combining two sites of equal areas, where S is the

@@ -32,10 +32,11 @@ permDisper(object, control = permControl(nperm = 999))
 
 \method{boxplot}{betadisper}(x, ylab = "Distance to centroid", ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{d}{a distance structure such as that returned by
-    \code{\link[stats]{dist}} or \code{\link{vegdist}}.}
+  \item{d}{a distance structure such as that returned by 
+    \code{\link[stats]{dist}}, \code{link{betadiver}} or 
+    \code{\link{vegdist}}.}
   \item{group}{vector describing the group structure, usually a factor
     or an object that can be coerced to a factor using
     \code{\link[base]{as.factor}}.}
@@ -90,7 +91,8 @@ permDisper(object, control = permControl(nperm = 999))
   and \code{boxplot} methods.
 
   One additional use of these functions is in assessing beta diversity
-  (Anderson \emph{et al} 2006).
+  (Anderson \emph{et al} 2006). Function \code{\link{betadiver}}
+  provides some popular dissimilarity measures for this purpose.
 }
 \value{
   The \code{anova} method returns an object of class \code{"anova"}
@@ -137,7 +139,7 @@ permDisper(object, control = permControl(nperm = 999))
 }
 \author{Gavin L. Simpson}
 \seealso{\code{\link[stats]{anova.lm}}, \code{\link{scores}},
-    \code{\link[graphics]{boxplot}}}
+    \code{\link[graphics]{boxplot}}, \code{\link{betadiver}}.}
 \examples{
 data(varespec)
 
