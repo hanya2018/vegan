@@ -2,11 +2,22 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.2-3 (Mar 8, 2008, working...)
+Version 1.12-4 (opened Mar 9, 2008)
+	
+	* permDisper: Added pairwise comparisons of group dispersions 
+	via a classical t test and via permutation test, accessed via
+	new argument 'pairwise = TRUE'. 'permDisper' is now documented
+	seperately from 'betadisper'.
+
+	* TukeyHSD.betadisper: A method for 'TukeyHSD' to calculate
+	Tukey's Honest Significant Differences for the grouping factor
+	in 'betadisper'.
+	
+Version 1.12-3 (closed Mar 9, 2008)
 
 	* betadiver: a new function that implements all indices of beta
 	diversity reviewed by Koleff et al. (J. Anim. Ecol., 72, 367-382;
-	2003), with a plot function to produce triangular plots. 
+	2003), with a plot function to produce triangular plots.
 	
 	* isomap: added dynamic, spinnable 3D graphics using rgl
 	(rgl.isomap). 

@@ -1,12 +1,10 @@
 \name{betadisper}
 \alias{betadisper}
-\alias{permDisper}
 \alias{scores.betadisper}
 \alias{anova.betadisper}
 \alias{plot.betadisper}
 \alias{boxplot.betadisper}
 \alias{print.betadisper}
-\alias{print.permDisper}
 \title{Multivariate homogeneity of groups dispersions (variances)}
 \description{
   Implements Marti Anderson's PERMDISP2 procedure for the analysis of
@@ -21,8 +19,6 @@
 betadisper(d, group, type = c("centroid", "median"))
 
 \method{anova}{betadisper}(object, \dots)
-
-permDisper(object, control = permControl(nperm = 999))
 
 \method{scores}{betadisper}(x, display = c("sites", "centroids"),
        choices = c(1,2), \dots)
@@ -42,13 +38,10 @@ permDisper(object, control = permControl(nperm = 999))
     \code{\link[base]{as.factor}}.}
   \item{type}{the type of analysis to perform. Only \code{type =
       "centroid"} is currently supported.}
-  \item{object, x}{an object of class \code{"betadisper"}, the result of a
-    call to \code{betadisper}.}
-  \item{control}{a list of control values for the permutations
-    to replace the default values returned by the function
-    \code{\link{permControl}}.}
   \item{display}{character; partial match to access scores for
     \code{"sites"} or \code{"species"}.}
+  \item{object, x}{an object of class \code{"betadisper"}, the result of a
+    call to \code{betadisper}.}
   \item{choices, axes}{the principal coordinate axes wanted.}
   \item{hull}{logical; should the convex hull for each group be plotted?}
   \item{cex, ylab, xlab, main, sub}{graphical parameters. For details,
@@ -83,9 +76,15 @@ permDisper(object, control = permControl(nperm = 999))
   To test if one or more groups is more variable than the others, ANOVA
   of the distances to group centroids can be performed and parametric
   theory used to interpret the significance of F. An alternative is to
-  use a permutation test. \code{permDisper} permutes model residuals to
-  generate a permutation distribution of F under the Null hypothesis of
-  no difference in dispersion between groups.
+  use a permutation test. \code{\link{permDisper}} permutes model
+  residuals to generate a permutation distribution of F under the Null
+  hypothesis of no difference in dispersion between groups.
+
+  Pairwise comprisons of group mean dispersions can also be performed
+  using \code{\link{permDisper}}. An alternative to the classical
+  comparison of group dispersions, is to calculate Tukey's Honest
+  Significant Differences between groups, via
+  \code{\link{TukeyHSD.betadisper}}.
 
   The results of the analysis can be visualised using the \code{plot}
   and \code{boxplot} methods.
@@ -97,11 +96,6 @@ permDisper(object, control = permControl(nperm = 999))
 \value{
   The \code{anova} method returns an object of class \code{"anova"}
   inheriting from class \code{"data.frame"}.
-
-  \code{permDisper} returns an object of class \code{"permDisper"}, a list
-  with components \code{tab}, the ANOVA table which is an object
-  inheriting from class \code{"data.frame"}, and \code{control}, the
-  result of a call to \code{\link{permControl}}.. 
 
   The \code{scores} method returns a list with one or both of the
   components \code{"sites"} and \code{"centroids"}.
@@ -138,8 +132,10 @@ permDisper(object, control = permControl(nperm = 999))
   \strong{9(6)}, 683--693.
 }
 \author{Gavin L. Simpson}
-\seealso{\code{\link[stats]{anova.lm}}, \code{\link{scores}},
-    \code{\link[graphics]{boxplot}}, \code{\link{betadiver}}.}
+\seealso{\code{\link{permDisper}}, \code{\link[stats]{anova.lm}},
+  \code{\link{scores}}, \code{\link[graphics]{boxplot}},
+  \code{\link{TukeyHSD.betadisper}}. Further measure of beta diversity
+  can be found in \code{\link{betadiver}}.}
 \examples{
 data(varespec)
 
@@ -157,7 +153,11 @@ mod
 anova(mod)
 
 ## Permutation test for F
-permDisper(mod)
+permDisper(mod, pairwise = TRUE)
+
+## Tukey's Honest Significant Differences
+(mod.HSD <- TukeyHSD(mod))
+plot(mod.HSD)
 
 ## Plot the groups and distances to centroids on the
 ## first two PCoA axes
