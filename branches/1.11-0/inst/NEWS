@@ -1,8 +1,16 @@
 -*-Text-*-
 
 			VEGAN RELEASE VERSIONS 
+
+		   CHANGES IN VEGAN VERSION 1.11-1
+
+    - bstick.princomp: works now.
+ 
+    - diversity.Rnw: proof reading & documentation of taxonomic
+      diversity and nestedness
+
 	
-		    CHANGE IN VEGAN VERSION 1.11-0
+		   CHANGES IN VEGAN VERSION 1.11-0
 
 GENERAL
 

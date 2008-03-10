@@ -3,8 +3,12 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.11-1 (Feb 22, 2008, working...)
+Version 1.11-1 (March 10, 2008)
 
+	* diversity-vegan.Rnw: merged revision 243 and 244
+	
+	* biplot.princomp: bugfix revision 247
+	
 Version 1.11-0 (Released Feb 20, 2008)
 
 	* Made a realese branch (1.11-0) based on the the rev. 204, and
