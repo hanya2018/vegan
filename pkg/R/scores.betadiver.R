@@ -1,11 +1,15 @@
 `scores.betadiver` <-
-    function(x, ...)
+    function(x, triangular = TRUE,  ...)
 {
-    tot <- x$a + x$b + x$c
-    a <- x$a/tot
-    c <- x$c/tot
-    y <- sqrt(0.75)*a
-    x <- c + a/2
-    cbind(x, y)
+    if (triangular) {
+        tot <- x$a + x$b + x$c
+        a <- x$a/tot
+        c <- x$c/tot
+        y <- sqrt(0.75)*a
+        x <- c + a/2
+        out <- cbind(x, y)
+    } else {
+        out <- sapply(x, cbind)
+    }
+    out
 }
-

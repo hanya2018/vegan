@@ -15,7 +15,7 @@
 \usage{
 betadiver(x, index = NA, order = FALSE, help = FALSE, ...)
 \method{plot}{betadiver}(x, ...)
-\method{scores}{betadiver}(x, ...)
+\method{scores}{betadiver}(x, triangular = TRUE, ...)
 }
 
 \arguments{
@@ -28,7 +28,9 @@ betadiver(x, index = NA, order = FALSE, help = FALSE, ...)
   influence the configuration in the triangular plot and non-symmetric
   indices. }
   \item{help}{Show the numbers, subscript names and the defining
-  equations of the indices and exit.}
+    equations of the indices and exit.}
+  \item{triangular}{Return scores suitable for triangular plotting of
+  proportions. If \code{FALSE}, returns a 3-column matrix of raw counts.}
   \item{\dots}{ Other arguments to functions. }
 }
 
