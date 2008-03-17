@@ -45,10 +45,10 @@ betadiver(x, index = NA, order = FALSE, help = FALSE, ...)
   denote the number of species shared between two sites as \eqn{a} and
   the numbers of unique species (not shared) as \eqn{b} and \eqn{c},
   then \eqn{S = a + b + c} and \eqn{\alpha = (2 a + b + c)/2} so that
-  \eqn{\beta_w = (b+c)/(2 a + b + c)}. This is the Sorensen
+  \eqn{\beta_w = (b+c)/(2 a + b + c)}. This is the \enc{Sørensen}{Sorensen}
   dissimilarity as defined in \pkg{vegan} function
   \code{\link{vegdist}} with argument \code{binary  = TRUE}. Many
-  other indices also are dissimilarity indices. 
+  other indices are dissimilarity indices as well. 
 
   Function \code{betadiver} finds all indices reviewed by Koleff et
   al. (2003). All these indices could be found with function
@@ -58,23 +58,24 @@ betadiver(x, index = NA, order = FALSE, help = FALSE, ...)
   functions such as \code{\link{betadisper}}, \code{\link{adonis}} or
   \code{\link{mantel}}. 
 
-  The indices are directly taken from Table 1 of Koleff et
-  al. (2003). The function can be selected either by the index number
-  or the subscript name used by Koleff et al. (2003). The numbers,
-  names and defining equations can be seen using \code{betadiver(help
-  = TRUE)}. In all cases where there are two alternative forms, the
-  one with the term \eqn{-1} is used. There are several duplicate
-  indices, and the number of distinct alternatives is much lower than
-  24 formally provided. The formulations used in functions differ
-  occasionally from those in Koleff et al. (2003), but they are still
-  mathematically equivalent. With \code{index = NA}, no index
-  is calculated, but instead an object of class \code{betadiver} is
-  returned. This is a list of elements \code{a}, \code{b} and
-  \code{c}. Function \code{plot} can be used to display the
-  proportions of these elements in triangular plot as suggested by
-  Koleff et al. (2003), and \code{scores} extracts the triangular
-  coordinates. Function \code{plot} returns invisibly the triangular
-  coordinates.  }
+  The indices are directly taken from Table 1 of Koleff et al. (2003),
+  and they can be selected either by the index number or the subscript
+  name used by Koleff et al. The numbers, names and defining equations
+  can be seen using \code{betadiver(help = TRUE)}. In all cases where
+  there are two alternative forms, the one with the term \eqn{-1} is
+  used. There are several duplicate indices, and the number of distinct
+  alternatives is much lower than 24 formally provided. The formulations
+  used in functions differ occasionally from those in Koleff et
+  al. (2003), but they are still mathematically equivalent. With
+  \code{index = NA}, no index is calculated, but instead an object of
+  class \code{betadiver} is returned. This is a list of elements
+  \code{a}, \code{b} and \code{c}. Function \code{plot} can be used to
+  display the proportions of these elements in triangular plot as
+  suggested by Koleff et al. (2003), and \code{scores} extracts the
+  triangular coordinates or the raw scores. Function \code{plot} returns
+  invisibly the triangular coordinates as an \code{"\link{ordiplot}"}
+  object. 
+}
 
 \value{ With \code{index = NA}, the function returns an object of
   class \code{"betadisper"} with elements \code{a}, \code{b}, and
@@ -88,7 +89,8 @@ betadiver(x, index = NA, order = FALSE, help = FALSE, ...)
   returns a \code{"dist"} object, some indices are similarities and
   cannot be used as such in place of dissimilarities, but that is a
   severe user error. Functions 10 (\code{"j"}) and 11 (\code{"sor"})
-  are two such similarity indices.  }
+  are two such similarity indices.
+}
 
 \references{
 Koleff, P., Gaston, K.J. and Lennon, J.J. (2003) Measuring beta
