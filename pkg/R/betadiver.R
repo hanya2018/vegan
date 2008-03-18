@@ -20,7 +20,7 @@
                  )
     if (help) {
         for (i in 1:length(beta))
-            cat(i, dQuote(names(beta[i])),"=", beta[[i]], "\n")
+            cat(i, " \"", names(beta[i]),"\" = ", beta[[i]], "\n", sep="")
         return(invisible(NULL))
     }
     x <- ifelse(x > 0, 1, 0)
@@ -44,4 +44,3 @@
     attr(out, "call") <- match.call()
     out
 }
-
