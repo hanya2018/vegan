@@ -5,6 +5,13 @@
 		   CHANGES IN VEGAN VERSION 1.11-1
 
     - bstick.princomp: works now.
+
+    - numPerms: was returning incorrect number of permutations
+      when type = "strata" selected.
+
+    - permuted.index2: was permuting samples within levels of strata
+      as well as permuting the levels themselves if type = "strata"
+      selected.
  
     - diversity.Rnw: proof reading & documentation of taxonomic
       diversity and nestedness
