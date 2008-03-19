@@ -12,6 +12,14 @@ Version 1.12-4 (opened Mar 9, 2008)
 	* TukeyHSD.betadisper: A method for 'TukeyHSD' to calculate
 	Tukey's Honest Significant Differences for the grouping factor
 	in 'betadisper'.
+
+	* numPerms: Was incorrectly calculating the number of permutations
+	when permuting levels of strata was performed.
+
+	* permuted.index2: When permuting levels of 'strata'
+	(type = "strata"), permuted.index2 was shuffling both the levels 
+	of strata *and* shuffling the samples within levels. The latter 
+	was incorrect and is now fixed.
 	
 Version 1.12-3 (closed Mar 9, 2008)
 
