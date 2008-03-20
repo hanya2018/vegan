@@ -3,7 +3,7 @@
 @setfilename FAQ-vegan.info
 @settitle vegan FAQ
 @setchapternewpage on
-@set FAQ_YEAR 2007
+@set FAQ_YEAR 2008
 @afourpaper
 @c %**end of header
 
@@ -21,7 +21,7 @@ License. To view a copy of this license, visit
 Creative Commons, 543 Howard Street, 5th Floor, San Francisco,
 California, 94105, USA.
 
-Copyright @copyright{} 2007 Jari Oksanen
+Copyright @copyright{} 2008 Jari Oksanen
 @end quotation
 @end copying
 
@@ -138,7 +138,6 @@ is needed by @code{ordiplot3d}
 
 @item Package @code{rgl}
 is needed by @code{ordirgl}
-and @code{rgl.isomap}
 
 @item Package @code{tcltk}
 is needed by @code{orditkplot}

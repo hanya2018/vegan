@@ -2,7 +2,16 @@
 
 			VEGAN RELEASE VERSIONS 
 
-		   CHANGES IN VEGAN VERSION 1.11-1
+		   CHANGES IN VEGAN VERSION 1.11-2
+
+GENERAL
+
+    - minor bug fixes and documentation updates from the devel trunk.
+
+    - version 1.11-1 was made but never released to CRAN, and this is
+      the first minor release of the 1.11 series.
+
+FIXES AND UPDATES
 
     - bstick.princomp: works now.
 
@@ -13,8 +22,9 @@
       as well as permuting the levels themselves if type = "strata"
       selected.
  
-    - diversity.Rnw: proof reading & documentation of taxonomic
-      diversity and nestedness
+    - Documentation: diversity-vegan gains discussion on taxonomic
+      diversity and using designdist for analysing beta diversity.
+      Proof-reading and updates in diversity-vegan and FAQ-vegan.
 
 	
 		   CHANGES IN VEGAN VERSION 1.11-0
