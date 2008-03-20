@@ -8,14 +8,19 @@
 \alias{getNumObs.default}
 \alias{getNumObs.integer}
 \alias{getNumObs.numeric}
+\alias{allPerms}
+\alias{print.allPerms}
+\alias{summary.allPerms}
+\alias{print.summary.allPerms}
 
-\title{Number of possible permutations and checking of permutation schemes}
+\title{Utility functions for permutation schemes}
 \description{
   \code{permCheck} provides checking of permutation schemes for
   validity. \code{numPerms} calculates the maximum number of
   permutations possible under the current permutation
-  scheme. \code{getNumObs} is a utility function to return the number of
-  observations for a range of R and ordination objects.
+  scheme. \code{allPerms} enumerates all possible permutations for the
+  given scheme. \code{getNumObs} is a utility function to return the
+  number of observations for a range of R and ordination objects.
 }
 \usage{
 permCheck(object, control = permControl())
@@ -23,6 +28,11 @@ permCheck(object, control = permControl())
 \method{summary}{permCheck}(object, \dots)
 
 numPerms(object, control = permControl())
+
+allPerms(n, control = permControl(), max = 9999,
+         observed = FALSE)
+
+\method{summary}{allPerms}(object, \dots)
 
 getNumObs(object, \dots)
 
@@ -41,11 +51,17 @@ getNumObs(object, \dots)
   \item{control}{a list of control values describing properties of the
     permutation design, as returned by a call to
     \code{\link{permControl}}.}
+  \item{n}{the number of observations.}
+  \item{max}{the maximum number of permutations, below which complete
+    enumeration will be attempted. See Details.}
+  \item{observed}{logical, should the observed ordering of samples be
+    returned as part of the complete enumeration? Default is
+    \code{FALSE} to facilitate usage in higher level functions.}
   \item{\dots}{arguments to other methods.}
 }
 \details{
-  \code{permCheck} and \code{numPerms} are utility functions for working
-  with the new permutation schemes available in
+  \code{permCheck}, \code{allPerms} and \code{numPerms} are utility
+  functions for working with the new permutation schemes available in
   \code{\link{permuted.index2}}.
 
   \code{permCheck} is used to check the current permutation schemes
@@ -66,6 +82,23 @@ getNumObs(object, \dots)
   than \code{control$minperm}, it is better to enumerate all possible
   permutations, and as such complete enumeration of all permutations is
   turned  on (\code{control$complete} is set to \code{TRUE}).
+
+  Function \code{allPerms} enumerates all possible permutations for the
+  number of observations and the selected permutation scheme. It has
+  \code{\link{print}} and \code{\link{summary}} methods. \code{allPerms}
+  returns a matrix containing all possible permutations, possibly
+  containing the observed ordering (if argument \code{observed} is
+  \code{TRUE}). The rows of this matrix are the various permutations and
+  the columns reflect the number of samples.
+
+  With free permutation designs, and restricted permutation schemes with
+  large numbers of observations, there are a potentially huge number of
+  possible permutations of the samples. It would be inefficient, not to
+  mention incredibly time consuming, to enumerate them all. Storing all
+  possible permutations would also become problematic in such cases. To
+  control this and guard against trying to evaluate too large a number
+  of permutations, if the number of possible permutations is larger than
+  \code{max}, \code{allPerms} exits with an error.
 }
 \value{
   For \code{permCheck} a list containing the maximum number of
@@ -79,17 +112,17 @@ getNumObs(object, \dots)
 }
 %\references{
 %}
-\note{
-  Currently, complete enumeration is not implemented in
-  \code{\link{permuted.index2}}. \code{permCheck} sets complete
-  enumeration in the \code{control} component of the returned object
-  but this is not acted upon in the permutations.
-
-  \code{permCheck} does reduce the \code{nperm} and \code{maxperm}
-  components of the returned object to the maximum number of possible
-  permutations, and \code{\link{permuted.index2}} obeys these
-  directives.
-}
+%\note{
+%  Currently, complete enumeration is not implemented in
+%  \code{\link{permuted.index2}}. \code{permCheck} sets complete
+%  enumeration in the \code{control} component of the returned object
+%  but this is not acted upon in the permutations.
+%
+%  \code{permCheck} does reduce the \code{nperm} and \code{maxperm}
+%  components of the returned object to the maximum number of possible
+%  permutations, and \code{\link{permuted.index2}} obeys these
+%  directives.
+%}
 \author{Gavin Simpson}
 \seealso{\code{\link{permuted.index2}} and \code{\link{permControl}}.}
 
@@ -144,6 +177,22 @@ all.equal(100, vec3$n)
 vec4 <- permCheck(1:100, permControl(type = "series", mirror = TRUE))
 all.equal(vec4$n, 200)
 
+## enumerate all possible permutations
+fac <- gl(3,6)
+ctrl <- permControl(type = "grid", mirror = FALSE, strata = fac,
+                    constant = TRUE, nrow = 3, ncol = 2)
+numPerms(1:18, control = ctrl)
+(tmp <- allPerms(18, control = ctrl, observed = TRUE))
+(tmp2 <- allPerms(18, control = ctrl))
+## turn on mirroring
+ctrl$mirror <- TRUE
+numPerms(1:18, control = ctrl)
+(tmp3 <- allPerms(18, control = ctrl, observed = TRUE))
+(tmp4 <- allPerms(18, control = ctrl))
+## prints out details of the permutation scheme as
+## well as the matrix of permutations
+summary(tmp)
+summary(tmp2)
 }
 \keyword{ utilities }
 \keyword{ design }

@@ -1,0 +1,172 @@
+`allPerms` <- function(n, control = permControl(), max = 9999,
+                       observed = FALSE) {
+    ## in-line functions
+    `all.free` <- function(n, v = 1:n) {
+	if( n == 1 ) {
+            matrix(v, 1, 1)
+        } else {
+            X <- NULL
+            for(i in 1:n)
+                X <- rbind(X, cbind(v[i],
+                                    Recall(n-1, v[-i])))
+            X
+        }
+    }
+    `all.series` <- function(n, control) {
+        v <- seq_len(n)
+        nperms <- numPerms(v, control = control)
+	X <- matrix(nrow = nperms, ncol = n)
+	for(i in v) {
+            X[i,] <- seq(i, length = n)%%n + 1
+	}
+        ## if mirroring, rev the cols of X[v,]
+        if(control$mirror)
+            X[(n+1):(2*n),] <- X[v, rev(v)]
+	X
+    }
+    `all.grid` <- function(n, control) {
+        v <- seq_len(n)
+        nperms <- numPerms(v, control)
+        nr <- control$nrow
+        nc <- control$ncol
+	X <- matrix(nrow = nperms, ncol = n)
+        idx <- 1
+        ## ncol == 2 is special case
+        if(control$ncol == 2) {
+            X <- all.series(n, permControl(type = "series",
+                                           mirror = control$mirror,
+                                           constant = control$constant)
+                            )
+        } else {
+            for(i in seq_len(nr)) {
+                for(j in seq_len(nc)) {
+                    ir <- seq(i, length = nr)%%nr
+                    ic <- seq(j, length = nc)%%nc
+                    ## block 1 - no reversals
+                    X[idx, ] <- rep(ic, each = nr) * nr +
+                        rep(ir, len = nr * nc) + 1
+                    if(control$mirror) {
+                        ## block 2 - rev rows but not columns
+                        X[idx + n, ] <- rep(ic, each = nr) * nr +
+                            rep(rev(ir), len = nr * nc) + 1
+                        ## block 3 - rev columns but not rows
+                        X[idx + (2*n), ] <- rep(rev(ic), each = nr) *
+                            nr + rep(ir, len = nr * nc) + 1
+                    }
+                    idx <- idx + 1
+                }
+            }
+            if(control$mirror) {
+                ## rev columns and rows
+                ## no calculations, just rev cols of block 1
+                v <- seq_len(n)
+                X[((3*n)+1):(4*n), ] <- X[v, rev(v)]
+            }
+        }
+        X
+    }
+    `all.strata` <- function(n, control) {#, nperms) {
+        v <- seq_len(n)
+        nperms <- numPerms(v, control)
+        lev <- length(levels(control$strata))
+        X <- matrix(nrow = nperms, ncol = length(control$strata))
+        perms <- all.free(lev)
+        sp <- split(v, control$strata)
+        for(i in seq_len(nrow(perms)))
+            X[i,] <- unname(do.call(c, sp[perms[i,]]))
+        X
+    }
+    ## recursive fun for perms within strata
+    bar <- function(mat, n) {
+        if(n == 1)
+            mat
+        else
+            mat <- rbind(mat, Recall(mat, n-1))
+        mat
+    }
+    ## start
+    v <- seq_len(n)
+    ## check permutation scheme and update control
+    pcheck <- permCheck(v, control = control)
+    control <- pcheck$control
+    ## get max number of permutations
+    ## originally had:
+    ##nperms <- numPerms(v, control = control)
+    ## but pcheck contains 'n', the result of call to numPerms
+    nperms <- pcheck$n
+    ## sanity check - don't let this run away to infinity
+    ## esp with type = "free"
+    if(nperms > max)
+        stop("Number of possible permutations too big (> 'max')")
+    type <- control$type
+    if(type != "strata" && !is.null(control$strata)) {
+        ## permuting within blocks
+        if(control$constant) {
+            ## same permutation in each block
+            v <- seq_len(n)
+            pg <- unique(table(control$strata))
+            control.wi <- permControl(type = control$type,
+                                      mirror = control$mirror,
+                                      nrow = control$nrow,
+                                      ncol = control$ncol)
+            nperm <- numPerms(v, control)
+            ord <- switch(control$type,
+                          free = all.free(pg),
+                          series = all.series(pg, control = control.wi),
+                          grid = all.grid(pg, control = control.wi))
+            perm.wi <- nrow(ord)
+            sp <- split(v, control$strata)
+            res <- matrix(nrow = nperm, ncol = n)
+            for(i in seq_len(perm.wi))
+                res[i,] <- sapply(sp, function(x) x[ord[i,]])
+        } else {
+            ## different permutations within blocks
+            ng <- length(levels(control$strata))
+            pg <- length(control$strata) / ng
+            control.wi <- permControl(type = control$type,
+                                      mirror = control$mirror,
+                                      nrow = control$nrow,
+                                      ncol = control$ncol)
+            ord <- switch(control$type,
+                          free = all.free(pg),
+                          series = all.series(pg, control = control.wi),
+                          grid = all.grid(pg, control = control.wi)
+                          )
+            perm.wi <- nrow(ord)
+            add <- seq(from = 0, by = pg, length.out = ng)
+            res <- vector(mode = "list", length = ng)
+            a <- 1
+            b <- nperms / perm.wi
+            for(i in seq_len(ng)) {
+                res[[i]] <- matrix(rep(bar(ord+add[i], a), each = b),
+                                   ncol = pg)
+                a <- a*perm.wi
+                b <- b/perm.wi
+            }
+            res <- do.call(cbind, res)
+        }
+    } else {
+        ## no blocks
+        res <- switch(type,
+                      free = all.free(n),
+                      series = all.series(n, control=control),
+                      grid = all.grid(n, control=control),
+                      strata = all.strata(n, control=control)
+                      )
+    }
+    ## some times storage.mode of res is numeric, sometimes
+    ## it is integer, set to "integer" for comparisons using
+    ## identical to match the observed ordering
+    storage.mode(res) <- "integer"
+    if(!observed) {
+        obs.row <- apply(res, 1, function(x, v) {identical(x, v)}, v)
+        res <- res[!obs.row, ]
+        ## reduce the number of permutations to get rid of the
+        ## observed ordering
+        control$nperm <- control$nperm - 1
+    }
+    class(res) <- "allPerms"
+    attr(res, "control") <- control
+    attr(res, "observed") <- observed
+    return(res)
+}

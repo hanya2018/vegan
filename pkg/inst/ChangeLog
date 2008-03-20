@@ -2,7 +2,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-4 (opened Mar 9, 2008)
+Version 1.12-5 (opened Mar 20, 2008)
+
+	* allPerms: New function to enumerate all possible permutations
+	for a given permutation scheme and number of samples. Has 'print'
+	and 'summary' methods
+	
+Version 1.12-4 (closed Mar 20, 2008)
 	
 	* permDisper: Added pairwise comparisons of group dispersions 
 	via a classical t test and via permutation test, accessed via
