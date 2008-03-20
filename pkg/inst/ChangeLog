@@ -14,7 +14,9 @@ Version 1.12-4 (opened Mar 9, 2008)
 	in 'betadisper'.
 
 	* numPerms: Was incorrectly calculating the number of permutations
-	when permuting levels of strata was performed.
+	when permuting levels of strata was performed. numPerms was also
+	incorrectly reporting too many permutations in the particular
+	case of type="grid" and mirror=TRUE with ncol=2.
 
 	* permuted.index2: When permuting levels of 'strata'
 	(type = "strata"), permuted.index2 was shuffling both the levels 

@@ -21,8 +21,12 @@
             exp(lfactorial(nobs))
     } else if(control$type %in% c("series","grid")) {
         multi <- 2
-        if(control$type == "grid")
-            multi <- 4
+        if(control$type == "grid") {
+            if(control$ncol == 2)
+                multi <- 2
+            else
+                multi <- 4
+        }
         if(use.strata) {
             if(control$mirror) {
                 if(control$constant)
