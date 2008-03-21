@@ -105,6 +105,14 @@ getNumObs(object, \dots)
   permutations possible and an object of class
   \code{"\link{permControl}"}.
 
+  For \code{allPerms}, and object of class \code{"allPerms"}, a matrix
+  whose rows are the set of all possible permutations for the supplies
+  number of observations and permutation scheme selected. The matrix has
+  two additional attributes \code{control} and
+  \code{observed}. Attribute \code{control} contains the argument
+  \code{control} (possibly updated via \code{permCheck}). Attribute 
+  \code{observed} contains argument \code{observed}.
+
   For \code{numPerms}, the (numeric) number of possible permutations.
 
   For \code{getNumObs}, the (numeric) number of observations in
@@ -178,17 +186,17 @@ vec4 <- permCheck(1:100, permControl(type = "series", mirror = TRUE))
 all.equal(vec4$n, 200)
 
 ## enumerate all possible permutations
-fac <- gl(3,6)
+fac <- gl(2,6)
 ctrl <- permControl(type = "grid", mirror = FALSE, strata = fac,
                     constant = TRUE, nrow = 3, ncol = 2)
-numPerms(1:18, control = ctrl)
-(tmp <- allPerms(18, control = ctrl, observed = TRUE))
-(tmp2 <- allPerms(18, control = ctrl))
+numPerms(1:12, control = ctrl)
+(tmp <- allPerms(12, control = ctrl, observed = TRUE))
+(tmp2 <- allPerms(12, control = ctrl))
 ## turn on mirroring
 ctrl$mirror <- TRUE
-numPerms(1:18, control = ctrl)
-(tmp3 <- allPerms(18, control = ctrl, observed = TRUE))
-(tmp4 <- allPerms(18, control = ctrl))
+numPerms(1:12, control = ctrl)
+(tmp3 <- allPerms(12, control = ctrl, observed = TRUE))
+(tmp4 <- allPerms(12, control = ctrl))
 ## prints out details of the permutation scheme as
 ## well as the matrix of permutations
 summary(tmp)
