@@ -1,5 +1,8 @@
 `numPerms` <- function(object, control = permControl())
 {
+    ## expand object if a numeric or integer vector of length 1
+    if((is.numeric(object) || is.integer(object)) && (length(object) == 1))
+         object <- seq_len(object)
     ## number of observations in data
     nobs <- getNumObs(object)
     ## are strata present?

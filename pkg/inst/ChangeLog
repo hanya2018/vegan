@@ -6,7 +6,14 @@ Version 1.12-5 (opened Mar 20, 2008)
 
 	* allPerms: New function to enumerate all possible permutations
 	for a given permutation scheme and number of samples. Has 'print'
-	and 'summary' methods
+	and 'summary' methods.
+
+	* numPerms: Now accepts a numeric or integer vector of length 1
+	as the first argument 'object'. If supplied it is expanded to
+	seq(from = 1, to = object). This change allows you to state the
+	number of observations rather than pass an object from which the 
+	number of observations is deduced. Updated and clarified 
+	documentation in this regard.
 	
 Version 1.12-4 (closed Mar 20, 2008)
 	

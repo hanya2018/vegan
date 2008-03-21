@@ -44,10 +44,13 @@ getNumObs(object, \dots)
 }
 
 \arguments{
-  \item{object}{an R object. Specifically, any object handled by
-    \code{\link{scores}}, data frames, matrices, and numeric and
-    integer  vectors. For \code{\link{summary.permCheck}} an object of
-    class \code{"permCheck"}.}
+  \item{object}{an R object. Specifically, for \code{getNumObs} any
+    object handled by \code{\link{scores}}, data frames, matrices, and
+    numeric and integer  vectors. See Details for a complete
+    description, especially for \code{numPerms}. For
+    \code{\link{summary.permCheck}} an object of class
+    \code{"permCheck"}. For \code{\link{summary.allPerms}} an object of
+    class \code{"allPerms"}.} 
   \item{control}{a list of control values describing properties of the
     permutation design, as returned by a call to
     \code{\link{permControl}}.}
@@ -83,6 +86,16 @@ getNumObs(object, \dots)
   permutations, and as such complete enumeration of all permutations is
   turned  on (\code{control$complete} is set to \code{TRUE}).
 
+  Function \code{numPerms} returns the number of permutations for the
+  passed \code{object} and the selected permutation
+  scheme. \code{object} can be one of a data frame, matrix, an object
+  for which a scores method exists, or a numeric or integer vector. In
+  the case of a numeric or integer vector, a vector of length 1 can be
+  used and it will be expanded to a vector of length \code{object}
+  (i.e., \code{1:object}) before computing the number of
+  permutations. As such, \code{object} can be the number of observations
+  not just the object containing the observations.
+
   Function \code{allPerms} enumerates all possible permutations for the
   number of observations and the selected permutation scheme. It has
   \code{\link{print}} and \code{\link{summary}} methods. \code{allPerms}
@@ -99,6 +112,12 @@ getNumObs(object, \dots)
   control this and guard against trying to evaluate too large a number
   of permutations, if the number of possible permutations is larger than
   \code{max}, \code{allPerms} exits with an error.
+
+  Function \code{getNumObs} is a simple generic function to return the
+  number of observations in a range of R objects. The default method
+  will work for any object for which a \code{\link{scores}} method
+  exists. This includes matrices and data frames, as well as specific
+  methods for numeric or integer vectors.
 }
 \value{
   For \code{permCheck} a list containing the maximum number of
