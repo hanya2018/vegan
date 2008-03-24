@@ -24,6 +24,7 @@
         if (!old.wa)
             comm <- eval.parent(parse(text=attr(dis, "commname")))
         wa <- wascores(points, comm, expand = expand)
+        attr(wa, "old.wa") <- old.wa
     }
     else
         wa <- NA
