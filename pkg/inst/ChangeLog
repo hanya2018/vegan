@@ -2,7 +2,20 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-5 (opened Mar 20, 2008)
+Version 1.12-6 (opened Mar 24, 2008)
+
+	* metaMDS: WA scores for species are now based on the same
+	transformations and standardization (like wisconsin(sqrt())) as
+	the dissimilarities. They used to be based on the original data
+	even when the data were transformed for the ordination. The change
+	is minimal: data are evaluated similarly as in metaMDSdist if
+	wascores are requested. An alternative would have been to split
+	data manipulation function into an independent function from
+	metaMDSdist, but I try this first. For compatibility reasons, the
+	previous behaviour can be re-established using argument old.wa =
+	TRUE.
+	
+Version 1.12-5 (closed Mar 24, 2008)
 
 	* plot.procrustes: could fail if compared configurations were
 	numerically identical.
