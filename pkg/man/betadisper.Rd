@@ -5,6 +5,8 @@
 \alias{plot.betadisper}
 \alias{boxplot.betadisper}
 \alias{print.betadisper}
+\alias{TukeyHSD.betadisper}
+
 \title{Multivariate homogeneity of groups dispersions (variances)}
 \description{
   Implements Marti Anderson's PERMDISP2 procedure for the analysis of
@@ -13,7 +15,14 @@
   homogeneity of variances. Non-euclidean distances between objects and
   group centroids are handled by reducing the original distances to
   principal coordinates. This procedure has latterly been used as a
-  means of assessing beta diversity.
+  means of assessing beta diversity. There are \code{anova},
+  \code{scores}, \code{plot} and \code{boxplot} methods.
+
+  \code{TukeyHSD.betadisper} creates a set of confidence intervals on
+  the differences between the mean distance-to-centroid of the levels of
+  the grouping factor with the specified family-wise probability of
+  coverage.  The intervals are based on the Studentized range statistic,
+  Tukey's 'Honest Significant Difference' method.
 }
 \usage{
 betadisper(d, group, type = c("centroid", "median"))
@@ -27,6 +36,9 @@ betadisper(d, group, type = c("centroid", "median"))
      ylab, xlab, main, sub, \dots)
 
 \method{boxplot}{betadisper}(x, ylab = "Distance to centroid", ...)
+
+\method{TukeyHSD}{betadisper}(x, which = "group", ordered = FALSE,
+         conf.level = 0.95, \ldots)
 }
 
 \arguments{
@@ -46,7 +58,14 @@ betadisper(d, group, type = c("centroid", "median"))
   \item{hull}{logical; should the convex hull for each group be plotted?}
   \item{cex, ylab, xlab, main, sub}{graphical parameters. For details,
     see \code{\link{plot.default}}.}
-  \item{\dots}{arguments, including graphical parameters, passed to
+  \item{which}{A character vector listing terms in the fitted model for
+    which the intervals should be calculated. Defaults to the grouping
+    factor.}
+  \item{ordered}{Logical; see \code{\link{TukeyHSD}}.}
+  \item{conf.level}{A numeric value between zero and one giving the
+    family-wise confidence level to use.}
+  \item{\dots}{arguments, including graphical parameters (for
+    \code{plot.betadisper} and \code{boxplot.betadisper}), passed to
     other methods.}
 }
 \details{
@@ -84,7 +103,11 @@ betadisper(d, group, type = c("centroid", "median"))
   using \code{\link{permutest.betadisper}}. An alternative to the classical
   comparison of group dispersions, is to calculate Tukey's Honest
   Significant Differences between groups, via
-  \code{\link{TukeyHSD.betadisper}}.
+  \code{TukeyHSD.betadisper}. This is a simple wrapper to
+  \code{\link{TukeyHSD.aov}}. The user is directed to read the help file
+  for \code{\link{TukeyHSD}} before using this function. In particular,
+  note the statement about using the function with 
+  unbalanced designs.
 
   The results of the analysis can be visualised using the \code{plot}
   and \code{boxplot} methods.
@@ -107,6 +130,9 @@ betadisper(d, group, type = c("centroid", "median"))
 
   The \code{boxplot} function invisibly returns a list whose components
   are documented in \code{\link[graphics]{boxplot}}.
+
+  \code{TukeyHSD.betadisper} returns a list. See \code{\link{TukeyHSD}}
+  for further details.
 
   \code{betadisper} returns a list of class \code{"betadisper"} with the
   following components:
@@ -134,7 +160,7 @@ betadisper(d, group, type = c("centroid", "median"))
 \author{Gavin L. Simpson}
 \seealso{\code{\link{permutest.betadisper}}, \code{\link[stats]{anova.lm}},
   \code{\link{scores}}, \code{\link[graphics]{boxplot}},
-  \code{\link{TukeyHSD.betadisper}}. Further measure of beta diversity
+  \code{\link{TukeyHSD}}. Further measure of beta diversity
   can be found in \code{\link{betadiver}}.}
 \examples{
 data(varespec)

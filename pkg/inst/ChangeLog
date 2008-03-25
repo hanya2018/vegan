@@ -9,6 +9,8 @@ Version 1.12-7 (opened Mar 25, 2008)
 
 	* permDisper: This function has been renamed to permutest.betadisper
 	and documentation updated.
+
+	* TukeyHSD.betadisper: Function is now documented with betadisper.
 	
 Version 1.12-6 (closed Mar 25, 2008)
 
