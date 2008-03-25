@@ -15,6 +15,8 @@
         if((control$type == "strata" && same.n > 1) ||
            (control$constant == TRUE && same.n > 1))
             stop("All levels of strata must have same number of samples for chosen scheme")
+        if(control$type == "grid" && same.n > 1)
+            stop("Unbalanced grid designs are not supported")
     }
     ## calculate number of possible permutations
     num.pos <- if(control$type == "free") {
@@ -29,18 +31,31 @@
                 multi <- 2
             else
                 multi <- 4
+        } else {
+            if(nobs == 2)
+                multi <- 1
         }
         if(use.strata) {
-            if(control$mirror) {
-                if(control$constant)
-                    multi * unique(tab.strata)
-                else
+            if(same.n > 1) {
+                multi <- rep(2, length = length(tab.strata))
+                multi[which(tab.strata == 2)] <- 1
+                if(control$mirror) {
                     prod(multi * tab.strata)
-            } else {
-                if(control$constant)
-                    unique(tab.strata)
-                else
+                } else {
                     prod(tab.strata)
+                }
+            } else {
+                if(control$mirror) {
+                    if(control$constant)
+                        multi * unique(tab.strata)
+                    else
+                        prod(multi * tab.strata)
+                } else {
+                    if(control$constant)
+                        unique(tab.strata)
+                    else
+                        prod(tab.strata)
+                }
             }
         } else {
             if(control$mirror)

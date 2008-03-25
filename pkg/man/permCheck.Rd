@@ -139,17 +139,35 @@ getNumObs(object, \dots)
 }
 %\references{
 %}
-%\note{
-%  Currently, complete enumeration is not implemented in
-%  \code{\link{permuted.index2}}. \code{permCheck} sets complete
-%  enumeration in the \code{control} component of the returned object
-%  but this is not acted upon in the permutations.
-%
-%  \code{permCheck} does reduce the \code{nperm} and \code{maxperm}
-%  components of the returned object to the maximum number of possible
-%  permutations, and \code{\link{permuted.index2}} obeys these
-%  directives.
-%}
+\note{
+  In general, mirroring \code{"series"} or \code{"grid"} designs doubles
+  or quadruples, respectively,the number of permutations without
+  mirroring (within levels of strata if present). This is \strong{not}
+  true in two special cases:
+  \enumerate{
+    \item In \code{"grid"} designs where the number of columns is equal
+    to 2, and
+    \item In \code{"series"} designs where the number of observations in
+    a series is equal to 2.
+  }
+
+  For example, with 2 observations there are 2 permutations for
+  \code{"series"} designs:
+  \enumerate{
+    \item 1-2, and
+    \item 2-1.
+  }
+  If these two permutations were mirrored, we would have:
+  \enumerate{
+    \item 2-1, and
+    \item 1-2.
+  }
+  It is immediately clear that this is the same set of permutations
+  without mirroring (if one reorders the rows). A similar situation
+  arises in \code{"grid"} designs where the number of \strong{columns}
+  per \emph{grid} is equal to 2. Note that the number of rows per
+  \emph{grid} is not a factor.
+}
 \author{Gavin Simpson}
 \seealso{\code{\link{permuted.index2}} and \code{\link{permControl}}.}
 
@@ -220,6 +238,15 @@ numPerms(1:12, control = ctrl)
 ## well as the matrix of permutations
 summary(tmp)
 summary(tmp2)
+
+## different numbers of observations per level of strata
+fac <- factor(rep(1:3, times = c(3,2,2)))
+## free permutations in levels of strata
+numPerms(7, permControl(type = "free", strata = fac))
+allPerms(7, permControl(type = "free", strata = fac))
+## series permutations in levels of strata
+numPerms(7, permControl(type = "series", strata = fac))
+allPerms(7, permControl(type = "series", strata = fac))
 }
 \keyword{ utilities }
 \keyword{ design }
