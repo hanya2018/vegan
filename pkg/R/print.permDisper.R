@@ -1,5 +1,5 @@
-`print.permDisper` <- function(x, digits = max(getOption("digits") - 2, 3),
-                             ...)
+`print.permutest.betadisper` <- function(x, digits = max(getOption("digits") - 2, 3),
+                                         ...)
 {
     ## uses code from stats:::print.anova by R Core Development Team
     cat("\n")

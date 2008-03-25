@@ -76,12 +76,12 @@ betadisper(d, group, type = c("centroid", "median"))
   To test if one or more groups is more variable than the others, ANOVA
   of the distances to group centroids can be performed and parametric
   theory used to interpret the significance of F. An alternative is to
-  use a permutation test. \code{\link{permDisper}} permutes model
+  use a permutation test. \code{\link{permutest.betadisper}} permutes model
   residuals to generate a permutation distribution of F under the Null
   hypothesis of no difference in dispersion between groups.
 
   Pairwise comprisons of group mean dispersions can also be performed
-  using \code{\link{permDisper}}. An alternative to the classical
+  using \code{\link{permutest.betadisper}}. An alternative to the classical
   comparison of group dispersions, is to calculate Tukey's Honest
   Significant Differences between groups, via
   \code{\link{TukeyHSD.betadisper}}.
@@ -132,7 +132,7 @@ betadisper(d, group, type = c("centroid", "median"))
   \strong{9(6)}, 683--693.
 }
 \author{Gavin L. Simpson}
-\seealso{\code{\link{permDisper}}, \code{\link[stats]{anova.lm}},
+\seealso{\code{\link{permutest.betadisper}}, \code{\link[stats]{anova.lm}},
   \code{\link{scores}}, \code{\link[graphics]{boxplot}},
   \code{\link{TukeyHSD.betadisper}}. Further measure of beta diversity
   can be found in \code{\link{betadiver}}.}
@@ -153,7 +153,7 @@ mod
 anova(mod)
 
 ## Permutation test for F
-permDisper(mod, pairwise = TRUE)
+permutest(mod, pairwise = TRUE)
 
 ## Tukey's Honest Significant Differences
 (mod.HSD <- TukeyHSD(mod))

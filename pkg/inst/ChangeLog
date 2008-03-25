@@ -2,7 +2,15 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-6 (opened Mar 24, 2008)
+Version 1.12-7 (opened Mar 25, 2008)
+
+	* permutest: Now a generic function. permutest.cca is now the
+	'cca' method.
+
+	* permDisper: This function has been renamed to permutest.betadisper
+	and documentation updated.
+	
+Version 1.12-6 (closed Mar 25, 2008)
 
 	* metaMDS: WA scores for species are now based on the same
 	transformations and standardization (like wisconsin(sqrt())) as

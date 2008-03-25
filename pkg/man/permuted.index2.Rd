@@ -79,9 +79,9 @@ permControl(strata = NULL, nperm = 199, complete = FALSE,
 }
 \note{
   \code{permuted.index2} is currently used in one Vegan function;
-  \code{\link{permDisper}}. Over time, the other functions that
-  currently use the older \code{\link{permuted.index}} will be updated
-  to use \code{permuted.index2}.
+  \code{\link{permutest.betadisper}}. Over time, the other functions
+  that currently use the older \code{\link{permuted.index}} will be
+  updated to use \code{permuted.index2}.
 }
 %\references{
 %}

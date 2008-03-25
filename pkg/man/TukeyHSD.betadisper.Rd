@@ -32,11 +32,12 @@
   unbalanced designs.
 }
 \author{
-  Douglas Bates
+  Gavin L. Simpson
 }
 \seealso{
-  \code{\link{betadisper}}, \code{\link{permDisper}},
-  \code{\link{aov}}.
+  \code{\link{betadisper}}, \code{\link{permutest.betadisper}},
+  \code{\link{aov}}. The fitting function itself is
+  \code{\link{TukeyHSD}}.
 }
 \examples{
 ## continue the example from ?betadisper

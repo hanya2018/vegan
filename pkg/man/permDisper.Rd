@@ -1,6 +1,6 @@
-\name{permDisper}
-\alias{permDisper}
-\alias{print.permDisper}
+\name{permutest.betadisper}
+\alias{permutest.betadisper}
+\alias{print.permutest.betadisper}
 \title{Permutation test of ultivariate homogeneity of groups dispersions
   (variances)}
 \description{
@@ -9,24 +9,26 @@
   \code{\link{betadisper}}.
 }
 \usage{
-permDisper(object, pairwise = FALSE, control = permControl(nperm = 999))
+\method{permutest}{betadisper}(x, pairwise = FALSE,
+         control = permControl(nperm = 999), \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{object}{an object of class \code{"betadisper"}, the result of a
+  \item{x}{an object of class \code{"betadisper"}, the result of a
     call to \code{betadisper}.}
   \item{pairwise}{logical; perform pairwise comparisons of group means?}
   \item{control}{a list of control values for the permutations
     to replace the default values returned by the function
-    \code{\link{permControl}}.}
+    \code{\link{permControl}}}
+  \item{\dots}{Arguments passed to other methods.}
 }
 \details{
   To test if one or more groups is more variable than the others, ANOVA
   of the distances to group centroids can be performed and parametric
   theory used to interpret the significance of F. An alternative is to
-  use a permutation test. \code{permDisper} permutes model residuals to
-  generate a permutation distribution of F under the Null hypothesis of
-  no difference in dispersion between groups.
+  use a permutation test. \code{permutest.betadisper} permutes model
+  residuals to generate a permutation distribution of F under the Null
+  hypothesis of no difference in dispersion between groups.
 
   Pairwise comprisons of group mean dispersions can be performed by
   setting argument \code{pairwise} to \code{TRUE}. A classicial t test
@@ -37,8 +39,8 @@ permDisper(object, pairwise = FALSE, control = permControl(nperm = 999))
   between groups, via \code{\link{TukeyHSD.betadisper}}.
 }
 \value{
-  \code{permDisper} returns a list of class \code{"permDisper"} with the
-  following components:
+  \code{permutest.betadisper} returns a list of class
+  \code{"permutest.betadisper"} with the following components:
 
   \item{tab}{the ANOVA table which is an object inheriting from class
     \code{"data.frame"}.}
@@ -78,7 +80,7 @@ mod
 anova(mod)
 
 ## Permutation test for F
-permDisper(mod, pairwise = TRUE)
+permutest(mod, pairwise = TRUE)
 
 ## Tukey's Honest Significant Differences
 (mod.HSD <- TukeyHSD(mod))
