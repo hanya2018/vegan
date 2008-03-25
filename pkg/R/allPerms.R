@@ -20,7 +20,8 @@
             X[i,] <- seq(i, length = n)%%n + 1
 	}
         ## if mirroring, rev the cols of X[v,]
-        if(control$mirror)
+        ## but only if n > 2
+        if(control$mirror && (nperms > 2))
             X[(n+1):(2*n),] <- X[v, rev(v)]
 	X
     }
@@ -109,41 +110,74 @@
                                       mirror = control$mirror,
                                       nrow = control$nrow,
                                       ncol = control$ncol)
-            nperm <- numPerms(v, control)
+            nperms <- numPerms(v, control)
             ord <- switch(control$type,
                           free = all.free(pg),
                           series = all.series(pg, control = control.wi),
                           grid = all.grid(pg, control = control.wi))
             perm.wi <- nrow(ord)
             sp <- split(v, control$strata)
-            res <- matrix(nrow = nperm, ncol = n)
+            res <- matrix(nrow = nperms, ncol = n)
             for(i in seq_len(perm.wi))
                 res[i,] <- sapply(sp, function(x) x[ord[i,]])
         } else {
             ## different permutations within blocks
-            ng <- length(levels(control$strata))
-            pg <- length(control$strata) / ng
-            control.wi <- permControl(type = control$type,
-                                      mirror = control$mirror,
-                                      nrow = control$nrow,
-                                      ncol = control$ncol)
-            ord <- switch(control$type,
-                          free = all.free(pg),
-                          series = all.series(pg, control = control.wi),
-                          grid = all.grid(pg, control = control.wi)
-                          )
-            perm.wi <- nrow(ord)
-            add <- seq(from = 0, by = pg, length.out = ng)
-            res <- vector(mode = "list", length = ng)
-            a <- 1
-            b <- nperms / perm.wi
-            for(i in seq_len(ng)) {
-                res[[i]] <- matrix(rep(bar(ord+add[i], a), each = b),
-                                   ncol = pg)
-                a <- a*perm.wi
-                b <- b/perm.wi
+            tab <- table(control$strata)
+            ng <- length(tab)
+            pg <- unique(tab)
+            if(length(pg) > 1) {
+                ## different number of observations per level of strata
+                if(control$type == "grid")
+                    ## FIXME: this should not be needed once all checks are
+                    ## in place in permCheck()
+                    stop("Unbalanced grid designs are not supported")
+                control.wi <- permControl(type = control$type,
+                                          mirror = control$mirror)
+                sp <- split(v, control$strata)
+                res <- vector(mode = "list", length = ng)
+                add <- c(0, cumsum(tab)[1:(ng-1)])
+                for(j in seq(along = tab)) {
+                    ord <- switch(control.wi$type,
+                                  free = all.free(tab[j]),
+                                  series = all.series(tab[j],
+                                  control=control.wi))
+                    perm.wi <- nrow(ord)
+                    if(j == 1) {
+                        a <- 1
+                        b <- nperms / perm.wi
+                    } else {
+                        b <- b/perm.wi
+                        a <- nperms / (b*perm.wi)
+                    }
+                    res[[j]] <- matrix(rep(bar(ord+add[j], a),
+                                           each = b),
+                                       ncol = tab[j])
+                }
+                res <- do.call(cbind, res)
+            } else {
+                ## same number of observations per level of strata
+                control.wi <- permControl(type = control$type,
+                                          mirror = control$mirror,
+                                          nrow = control$nrow,
+                                          ncol = control$ncol)
+                ord <- switch(control$type,
+                              free = all.free(pg),
+                              series = all.series(pg, control = control.wi),
+                              grid = all.grid(pg, control = control.wi)
+                              )
+                perm.wi <- nrow(ord)
+                add <- seq(from = 0, by = pg, length.out = ng)
+                res <- vector(mode = "list", length = ng)
+                a <- 1
+                b <- nperms / perm.wi
+                for(i in seq_len(ng)) {
+                    res[[i]] <- matrix(rep(bar(ord+add[i], a), each = b),
+                                       ncol = pg)
+                    a <- a*perm.wi
+                    b <- b/perm.wi
+                }
+                res <- do.call(cbind, res)
             }
-            res <- do.call(cbind, res)
         }
     } else {
         ## no blocks
