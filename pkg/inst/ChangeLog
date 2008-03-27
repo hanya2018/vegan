@@ -4,6 +4,16 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.12-7 (opened Mar 25, 2008)
 
+	* screeplot: functions return now invisibly the xy.coords of
+	bars or points for eigenvalues. They used to return
+	invisibly the input data ('x'). Concerns screeplot methods for
+	'decorana', 'cca', 'princomp' and 'prcomp' objects in vegan.
+	
+	* varpart4: result could be wrong if 'varpart' was bypassed and
+	'varpart4' was called directly, because 'Y' was not centred before
+	calculating sum of squares in 'varpart4' ('varpart2' and
+	'varpart3' were OK). Reported by Guillaume Blanchet, Uni Alberta.
+	
 	* permutest: Now a generic function. permutest.cca is now the
 	'cca' method.
 
