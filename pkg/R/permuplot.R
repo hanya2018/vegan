@@ -32,21 +32,38 @@
                  lim[2] + (lim.range * inset))
         return(res)
     }
-    use.strata <- !is.null(control$strata)
-    if(use.strata) {
+    ## check that n and length of strata are equal
+    if( use.strata <- !is.null(control$strata) ) {
         tab <- table(control$strata)
+        if(!identical(as.integer(sum(tab)), as.integer(n)))
+            stop("'n' and length of 'strata' don't match.")
+    }
+    ## check the control design
+    control <- permCheck(n, control = control)$control
+    if(use.strata) {
         n.grp <- length(tab)
         opar <- par(no.readonly=TRUE, mar=c(2,2,2,1)+0.1,
                     mfrow = n2mfrow(n.grp),
                     oma=c(2.1,0,3.1,0))
         on.exit(par(opar))
-        xy <- switch(control$type,
-                     free = lapply(tab, xy.free),
-                     series = lapply(tab, xy.series),
-                     grid = lapply(tab, function(x) {
-                         xy.grid(control$ncol, control$nrow)
-                     }),
-                     stop("Unsupport permutation 'type'"))
+        ## if free and constant, only need one set of random coords
+        xy <- if(control$constant && control$type == "free") {
+            ## needs to be a list for the main loop below
+            xy <- xy.free(unique(tab))
+            res <- vector("list", length = length(tab))
+            for(i in seq_along(res)) {
+                res[[i]] <- xy
+            }
+            res
+        } else {
+            switch(control$type,
+                   free = lapply(tab, xy.free),
+                   series = lapply(tab, xy.series),
+                   grid = lapply(tab, function(x) {
+                       xy.grid(control$ncol, control$nrow)
+                   }),
+                   stop("Unsupport permutation 'type'"))
+        }
         perms <- permuted.index2(n, control = control)
         perms <- tapply(perms, control$strata, function(x) x)
         if(is.null(main))
