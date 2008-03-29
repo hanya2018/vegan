@@ -12,6 +12,7 @@
 \alias{print.allPerms}
 \alias{summary.allPerms}
 \alias{print.summary.allPerms}
+\alias{permuplot}
 
 \title{Utility functions for permutation schemes}
 \description{
@@ -20,7 +21,9 @@
   permutations possible under the current permutation
   scheme. \code{allPerms} enumerates all possible permutations for the
   given scheme. \code{getNumObs} is a utility function to return the
-  number of observations for a range of R and ordination objects.
+  number of observations for a range of R and ordination
+  objects. \code{permuplot} produces a graphical representation of the
+  selected permutation design.
 }
 \usage{
 permCheck(object, control = permControl())
@@ -41,6 +44,10 @@ getNumObs(object, \dots)
 \method{getNumObs}{numeric}(object, \dots)
 
 \method{getNumObs}{integer}(object, \dots)
+
+permuplot(n, control = permControl(), col = par("col"),
+          hcol = "red", xlim = NULL, ylim = NULL, inset = 0.1,
+          main = NULL, sub = NULL, ann = par("ann"), \dots)
 }
 
 \arguments{
@@ -60,12 +67,20 @@ getNumObs(object, \dots)
   \item{observed}{logical, should the observed ordering of samples be
     returned as part of the complete enumeration? Default is
     \code{FALSE} to facilitate usage in higher level functions.}
-  \item{\dots}{arguments to other methods.}
+  \item{col, xlim, ylim, main, sub, ann}{Graphical parameters.}
+  \item{hcol}{Colour to use for highlighting observations.}
+  \item{inset}{Proportion of range of x and y coordinates to add to the
+    plot x and y limits. Used to create a bit of extra space around the
+    margin of each plot.}
+  \item{\dots}{arguments to other methods. For \code{permuplot}
+    graphical parameters can be passed to plotting functions, though
+    note that not all parameters will be accepted gracefully at the
+    moment.}
 }
 \details{
-  \code{permCheck}, \code{allPerms} and \code{numPerms} are utility
-  functions for working with the new permutation schemes available in
-  \code{\link{permuted.index2}}.
+  \code{permCheck}, \code{allPerms}, \code{numPerms} and
+  \code{permuplot} are utility functions for working with the new
+  permutation schemes available in \code{\link{permuted.index2}}.
 
   \code{permCheck} is used to check the current permutation schemes
   against the object to which it will be applied. It calculates the
@@ -118,6 +133,23 @@ getNumObs(object, \dots)
   will work for any object for which a \code{\link{scores}} method
   exists. This includes matrices and data frames, as well as specific
   methods for numeric or integer vectors.
+
+  \code{permuplot} is a graphical utility function, which produces a
+  graphical representation of a permutation design. It takes the number
+  of observations and an object returned by \code{\link{permControl}} as
+  arguments and produces a plot on the currently active device. If
+  strata are present in the design, the plotting region is split into
+  sufficient plotting regions (one for each stratum), and the design in
+  each stratum plotted.
+
+  Free permutation designs are represented by plotting the observation
+  number at random x and y coordinates. Series designs (time series or
+  line transects) are represented by plotting the observation numbers
+  comprising the series in a circle and the start of the permuted series
+  is highlighted using colour \code{hcol}. Grid designs are drawn on a
+  regular grid and the top left observation in the original grid is
+  highlighted using colour \code{hcol}. Note the ordering used is R's
+  standard ordering for matrices - columns are filled first.
 }
 \value{
   For \code{permCheck} a list containing the maximum number of
@@ -136,6 +168,8 @@ getNumObs(object, \dots)
 
   For \code{getNumObs}, the (numeric) number of observations in
   \code{object}.
+
+  For \code{permuplot}, a plot on the currently active device.
 }
 %\references{
 %}
@@ -166,7 +200,7 @@ getNumObs(object, \dots)
   without mirroring (if one reorders the rows). A similar situation
   arises in \code{"grid"} designs where the number of \strong{columns}
   per \emph{grid} is equal to 2. Note that the number of rows per
-  \emph{grid} is not a factor.
+  \emph{grid} is not an issue here.
 }
 \author{Gavin Simpson}
 \seealso{\code{\link{permuted.index2}} and \code{\link{permControl}}.}
@@ -247,7 +281,64 @@ allPerms(7, permControl(type = "free", strata = fac))
 ## series permutations in levels of strata
 numPerms(7, permControl(type = "series", strata = fac))
 allPerms(7, permControl(type = "series", strata = fac))
+
+## Tests for permuplot
+n <- 25
+## standard permutation designs
+permuplot(n, permControl(type = "free"))
+permuplot(n, permControl(type = "series"))
+permuplot(n, permControl(type = "grid", nrow = 5, ncol = 5))
+
+## restricted perms with mirroring
+permuplot(n, permControl(type = "series", mirror = TRUE))
+permuplot(n, permControl(type = "grid", nrow = 5, ncol = 5,
+                             mirror = TRUE))
+
+## perms within strata
+fac <- gl(6, 20)
+control <- permControl(type = "free", strata = fac)
+permuplot(120, control = control, cex = 0.8)
+control <- permControl(type = "series", strata = fac)
+permuplot(120, control = control, cex = 0.8)
+fac <- gl(6, 25)
+control <- permControl(type = "grid", strata = fac,
+                       nrow = 5, ncol = 5)
+permuplot(150, control = control, cex = 0.8)
+
+## perms within strata with mirroring
+fac <- gl(6, 20)
+control <- permControl(type = "series", strata = fac,
+                       mirror = TRUE)
+permuplot(120, control = control, cex = 0.8)
+fac <- gl(6, 25)
+control <- permControl(type = "grid", strata = fac,
+                       nrow = 5, ncol = 5, mirror = TRUE)
+permuplot(150, control = control, cex = 0.8)
+
+## same perms within strata
+fac <- gl(6, 20)
+control <- permControl(type = "free", strata = fac,
+                       constant = TRUE)
+permuplot(120, control = control, cex = 0.8)
+control <- permControl(type = "series", strata = fac,
+                       constant = TRUE)
+permuplot(120, control = control, cex = 0.8)
+fac <- gl(6, 25)
+control <- permControl(type = "grid", strata = fac,
+                       nrow = 5, ncol = 5, constant = TRUE)
+permuplot(150, control = control, cex = 0.8)
+
+## same perms within strata with mirroring
+fac <- gl(6, 20)
+control <- permControl(type = "series", strata = fac,
+                       mirror = TRUE, constant = TRUE)
+permuplot(120, control = control, cex = 0.8)
+fac <- gl(6, 25)
+control <- permControl(type = "grid", strata = fac,
+                       nrow = 5, ncol = 5, mirror = TRUE,
+                       constant = TRUE)
+permuplot(150, control = control, cex = 0.8)
 }
 \keyword{ utilities }
 \keyword{ design }
-
+\keyword{ methods }

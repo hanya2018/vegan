@@ -4,6 +4,11 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.12-7 (opened Mar 25, 2008)
 
+	* permuplot: New function, produces a graphical representation
+	of a permutation design given a number of observations and a
+	object returned by permControl(). The function handles all the
+	permutation designs currently handled by permuted.index2().
+
 	* permuted.index2: was not returning correct sample indices
 	for grid designs within strata. Also,was not consitently 
 	mirroring series and grid designs when 'constant = TRUE' (i.e. 
