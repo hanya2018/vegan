@@ -15,6 +15,13 @@ Version 1.12-7 (opened Mar 25, 2008)
 	mirroring was not applied the same way within each level of 
 	strata).
 
+	* permCheck: Now includes several sanity checks for balance
+	in permutation designs ('grid' & 'strata') and when using
+	same permutation in each level of 'strata' (constant = TRUE).
+	Also works if object is a (numeric or integer) vector of length 
+	1, by expanding it to seq(from = 1, to = object). This is now
+	in-line with the way numPerms works.
+
 	* screeplot: functions return now invisibly the xy.coords of
 	bars or points for eigenvalues. They used to return
 	invisibly the input data ('x'). Concerns screeplot methods for
