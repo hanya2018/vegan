@@ -66,11 +66,11 @@
                                   FALSE, NULL))],
                                   "series" = permuted.series(gr,
                                   mirror = control$mirror, start = start),
-                                  "grid" = permuted.grid(nrow = control$nrow,
+                                  "grid" = gr[permuted.grid(nrow = control$nrow,
                                   ncol = control$ncol,
                                   mirror = control$mirror,
                                   start.row = start.row,
-                                  start.col = start.col)
+                                  start.col = start.col)]
                                   )
             }
         }
