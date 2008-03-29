@@ -5,7 +5,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 Version 1.12-7 (opened Mar 25, 2008)
 
 	* permuted.index2: was not returning correct sample indices
-	for grid designs within strata.
+	for grid designs within strata. Also,was not consitently 
+	mirroring series and grid designs when 'constant = TRUE' (i.e. 
+	mirroring was not applied the same way within each level of 
+	strata).
 
 	* screeplot: functions return now invisibly the xy.coords of
 	bars or points for eigenvalues. They used to return
