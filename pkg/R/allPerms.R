@@ -78,17 +78,24 @@
         X
     }
     ## recursive fun for perms within strata
+    ##bar <- function(mat, n) {
+    ##    if(n == 1)
+    ##        mat
+    ##    else
+    ##        mat <- rbind(mat, Recall(mat, n-1))
+    ##    mat
+    ##}
+    ## replacement for recursive function above
     bar <- function(mat, n) {
-        if(n == 1)
-            mat
-        else
-            mat <- rbind(mat, Recall(mat, n-1))
-        mat
+        res <- vector(mode = "list", length = n)
+        for(i in seq_len(n))
+            res[[i]] <- mat
+        do.call(rbind, res)
     }
     ## start
     v <- seq_len(n)
     ## check permutation scheme and update control
-    pcheck <- permCheck(v, control = control)
+    pcheck <- permCheck(v, control = control, make.all = FALSE)
     control <- pcheck$control
     ## get max number of permutations
     ## originally had:

@@ -26,7 +26,7 @@
   selected permutation design.
 }
 \usage{
-permCheck(object, control = permControl())
+permCheck(object, control = permControl(), make.all = TRUE)
 
 \method{summary}{permCheck}(object, \dots)
 
@@ -61,6 +61,9 @@ permuplot(n, control = permControl(), col = par("col"),
   \item{control}{a list of control values describing properties of the
     permutation design, as returned by a call to
     \code{\link{permControl}}.}
+  \item{make.all}{logical; should \code{permCheck} generate all
+    possible permutations? Useful if want to check permutation design
+    but not produce the matrix of all permutations.}
   \item{n}{the number of observations.}
   \item{max}{the maximum number of permutations, below which complete
     enumeration will be attempted. See Details.}
