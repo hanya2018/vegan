@@ -2,7 +2,14 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-7 (opened Mar 25, 2008)
+Version 1.12-8 (opened Mar 30, 2008)
+
+	* permute: New high-level untility function for facilitating
+	the production of permutation tests using the new permutation
+	designs allowed by permuted.index2(). An example of the new
+	API is shown in ?permute
+	
+Version 1.12-7 (closed Mar 30, 2008)
 
 	* permuplot: New function, produces a graphical representation
 	of a permutation design given a number of observations and a
