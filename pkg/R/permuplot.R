@@ -53,9 +53,9 @@
         if(control$type == "strata") {
             ## expand shade, col
             if(identical(length(col), 1))
-                col <- rep(col, n.gr)
+                col <- rep(col, n.grp)
             if(identical(length(shade), 1))
-                shade <- rep(shade, n.gr)
+                shade <- rep(shade, n.grp)
             ord <- sample(names(tab))
             if(is.null(xlim))
                 xlim <- c(0,1)
