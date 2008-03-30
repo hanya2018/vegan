@@ -7,7 +7,10 @@ Version 1.12-8 (opened Mar 30, 2008)
 	* permute: New high-level untility function for facilitating
 	the production of permutation tests using the new permutation
 	designs allowed by permuted.index2(). An example of the new
-	API is shown in ?permute
+	API is shown in ?permute.
+
+	* permutest.betadisper: Pairwise t test function made more
+	computationally stable.
 	
 Version 1.12-7 (closed Mar 30, 2008)
 

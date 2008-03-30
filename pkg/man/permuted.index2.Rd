@@ -152,8 +152,9 @@ pt.test <- function(x, group, control) {
     t.statistic <- function(x, y) {
         m <- length(x)
         n <- length(y)
-        xbar <- sum(x) / m
-        ybar <- sum(y) / n
+        ## means and variances, but for speed
+        xbar <- .Internal(mean(x))
+        ybar <- .Internal(mean(y))
         xvar <- .Internal(cov(x, NULL, 1, FALSE))
         yvar <- .Internal(cov(y, NULL, 1, FALSE))
         pooled <- sqrt(((m-1)*xvar + (n-1)*yvar) / (m+n-2))
