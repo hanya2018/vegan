@@ -1,10 +1,12 @@
 `permuplot` <- function(n, control = permControl(),
                         col = par("col"),
                         hcol = "red",
+                        shade = "lightgrey",
                         xlim=NULL, ylim=NULL,
                         inset = 0.1,
                         main=NULL, sub=NULL,
                         ann = par("ann"),
+                        cex = par("cex"),
                         ...) {
     xy.series <- function(n) {
         angle <- seq(0, 2*pi, length = n+1)[-(n+1)]
@@ -46,50 +48,85 @@
                     mfrow = n2mfrow(n.grp),
                     oma=c(2.1,0,3.1,0))
         on.exit(par(opar))
-        ## if free and constant, only need one set of random coords
-        xy <- if(control$constant && control$type == "free") {
-            ## needs to be a list for the main loop below
-            xy <- xy.free(unique(tab))
-            res <- vector("list", length = length(tab))
-            for(i in seq_along(res)) {
-                res[[i]] <- xy
-            }
-            res
-        } else {
-            switch(control$type,
-                   free = lapply(tab, xy.free),
-                   series = lapply(tab, xy.series),
-                   grid = lapply(tab, function(x) {
-                       xy.grid(control$ncol, control$nrow)
-                   }),
-                   stop("Unsupport permutation 'type'"))
-        }
-        perms <- permuted.index2(n, control = control)
-        perms <- tapply(perms, control$strata, function(x) x)
-        if(is.null(main))
-            main <- paste("Stratum:", names(tab))
-        for(i in seq_along(xy)) {
+        ## if permuting strata, only need to draw the sub-plots
+        ## in a different order
+        if(control$type == "strata") {
+            ## expand shade, col
+            if(identical(length(col), 1))
+                col <- rep(col, n.gr)
+            if(identical(length(shade), 1))
+                shade <- rep(shade, n.gr)
+            ord <- sample(names(tab))
             if(is.null(xlim))
-                xlim <- axis.limits(xy[[i]]$x, inset)
+                xlim <- c(0,1)
             if(is.null(ylim))
-                ylim <- axis.limits(xy[[i]]$y, inset)
-            plot.new()
-            plot.window(xlim, ylim, asp = 1, ...)
-            cols <- switch(control$type,
-                           free = rep(col, tab[i]),
-                           series = c(hcol, rep(col, tab[i]-1)),
-                           grid = {cols <- rep(col, tab[i])
-                                   cols[which.min(perms[[i]])] <-
-                                       hcol
-                                   cols})
-            text(xy[[i]]$x, xy[[i]]$y, labels = perms[[i]],
-                 col = cols, ...)
-            if(ann) {
-                title(main = main[i],  ...)
-                title(sub = paste("n in stratum:", tab[i]),
-                      line = 0.5, ...)
+                ylim <- c(0,1)
+            xy <- xy.coords(0.5, 0.5)
+            string <- paste("Stratum:\n", ord)
+            names(string) <- ord
+            strh <- max(strheight(string, cex = cex))
+            strw <- max(strwidth(string, cex = cex))
+            box.coords <- xy.coords(rep(c(0.5-strw, 0.5+strw), each = 2),
+                                    c(0.5-strh, 0.5+strh,
+                                      0.5+strh, 0.5-strh))
+            for(i in ord) {
+                plot.new()
+                plot.window(xlim, ylim, asp = 1, ...)
+                polygon(box.coords, col = shade, border = hcol, ...)
+                text(xy$x, xy$y, labels = string[i],
+                     col = col, cex = cex, ...)
+                box()
+                #if(ann) {
+                #    title(main = paste("Original order:",
+                #          which(ord == i)))
+                #}
             }
-            box()
+        } else {
+            ## if free and constant, only need one set of random coords
+            xy <- if(control$constant && control$type == "free") {
+                ## needs to be a list for the main loop below
+                xy <- xy.free(unique(tab))
+                res <- vector("list", length = length(tab))
+                for(i in seq_along(res)) {
+                    res[[i]] <- xy
+                }
+                res
+            } else {
+                switch(control$type,
+                       free = lapply(tab, xy.free),
+                       series = lapply(tab, xy.series),
+                       grid = lapply(tab, function(x) {
+                           xy.grid(control$ncol, control$nrow)
+                       }),
+                       stop("Unsupport permutation 'type'"))
+            }
+            perms <- permuted.index2(n, control = control)
+            perms <- tapply(perms, control$strata, function(x) x)
+            if(is.null(main))
+                main <- paste("Stratum:", names(tab))
+            for(i in seq_along(xy)) {
+                if(is.null(xlim))
+                    xlim <- axis.limits(xy[[i]]$x, inset)
+                if(is.null(ylim))
+                    ylim <- axis.limits(xy[[i]]$y, inset)
+                plot.new()
+                plot.window(xlim, ylim, asp = 1, ...)
+                cols <- switch(control$type,
+                               free = rep(col, tab[i]),
+                               series = c(hcol, rep(col, tab[i]-1)),
+                               grid = {cols <- rep(col, tab[i])
+                                       cols[which.min(perms[[i]])] <-
+                                           hcol
+                                       cols})
+                text(xy[[i]]$x, xy[[i]]$y, labels = perms[[i]],
+                     col = cols, ...)
+                if(ann) {
+                    title(main = main[i],  ...)
+                    title(sub = paste("n in stratum:", tab[i]),
+                          line = 0.5, ...)
+                }
+                box()
+            }
         }
         if(ann) {
             sub <- paste(paste("n: ", n, ";", sep = ""),

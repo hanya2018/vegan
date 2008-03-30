@@ -46,8 +46,9 @@ getNumObs(object, \dots)
 \method{getNumObs}{integer}(object, \dots)
 
 permuplot(n, control = permControl(), col = par("col"),
-          hcol = "red", xlim = NULL, ylim = NULL, inset = 0.1,
-          main = NULL, sub = NULL, ann = par("ann"), \dots)
+          hcol = "red", shade = "lightgrey", xlim = NULL, ylim = NULL,
+          inset = 0.1, main = NULL, sub = NULL, ann = par("ann"),
+          cex = par("cex"), \dots)
 }
 
 \arguments{
@@ -70,8 +71,11 @@ permuplot(n, control = permControl(), col = par("col"),
   \item{observed}{logical, should the observed ordering of samples be
     returned as part of the complete enumeration? Default is
     \code{FALSE} to facilitate usage in higher level functions.}
-  \item{col, xlim, ylim, main, sub, ann}{Graphical parameters.}
-  \item{hcol}{Colour to use for highlighting observations.}
+  \item{col, xlim, ylim, main, sub, ann, cex}{Graphical parameters.}
+  \item{hcol}{Colour to use for highlighting observations and the border
+    colour of the polygons drawn when \code{type = "strata"}.}
+  \item{shade}{The polygon shading colour (passed to argument \code{col}
+    of function \code{\link{polygon}}) when \code{type = "strata"}.}
   \item{inset}{Proportion of range of x and y coordinates to add to the
     plot x and y limits. Used to create a bit of extra space around the
     margin of each plot.}
@@ -341,6 +345,10 @@ control <- permControl(type = "grid", strata = fac,
                        nrow = 5, ncol = 5, mirror = TRUE,
                        constant = TRUE)
 permuplot(150, control = control, cex = 0.8)
+
+## permute strata
+fac <- factor(rep(1:6, each = 20), labels = paste("Ditch", 1:6))
+permuplot(length(fac), permControl(strata = fac, type = "strata"))
 }
 \keyword{ utilities }
 \keyword{ design }
