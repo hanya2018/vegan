@@ -2,7 +2,15 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-8 (opened Mar 30, 2008)
+Version 1.12-9 (opened April 6, 2008)
+
+	* ordiArrowMul: added function 'ordiArrowMul' to improve automatic
+	scaling of biplot arrows (in plot.cca, text.cca, points.cca) and
+	fitted vectors (in plot.envfit). Reversed axes 'xlim=c(1,-1)' work
+	now, and shifted origin 'at = c(1,1)' taken into account in
+	plot.envfit. 
+	
+Version 1.12-8 (closed April 6, 2008)
 
 	* permute: New high-level untility function for facilitating
 	the production of permutation tests using the new permutation
