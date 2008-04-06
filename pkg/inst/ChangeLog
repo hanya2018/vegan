@@ -10,6 +10,10 @@ Version 1.12-9 (opened April 6, 2008)
 	now, and shifted origin 'at = c(1,1)' taken into account in
 	plot.envfit. 
 
+	* plot.cca: scaling used for biplot arrows is returned as an
+	attribute to the 'biplot' item in the 'ordiplot' object (but this
+	attribute is not used for anything useful yet).
+
 	* summary.cca: contributions of eigenvalues accumulated for
 	constrained and unconstrained axes, and separately (new) for
 	constrained axes. 
