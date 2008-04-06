@@ -66,7 +66,7 @@
         }
         X
     }
-    `all.strata` <- function(n, control) {#, nperms) {
+    `all.strata` <- function(n, control) {
         v <- seq_len(n)
         nperms <- numPerms(v, control)
         lev <- length(levels(control$strata))
@@ -77,14 +77,6 @@
             X[i,] <- unname(do.call(c, sp[perms[i,]]))
         X
     }
-    ## recursive fun for perms within strata
-    ##bar <- function(mat, n) {
-    ##    if(n == 1)
-    ##        mat
-    ##    else
-    ##        mat <- rbind(mat, Recall(mat, n-1))
-    ##    mat
-    ##}
     ## replacement for recursive function above
     bar <- function(mat, n) {
         res <- vector(mode = "list", length = n)
@@ -109,6 +101,10 @@
     type <- control$type
     if(type != "strata" && !is.null(control$strata)) {
         ## permuting within blocks
+        ## FIXME: allperms expects samples to be arranged
+        ## in order of fac, i.e. all level 1, followed by
+        ## all level 2 - fix to allow them to be in any order:
+        ## see permuted.index2 for how to do this
         if(control$constant) {
             ## same permutation in each block
             v <- seq_len(n)
