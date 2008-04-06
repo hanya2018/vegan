@@ -9,6 +9,10 @@ Version 1.12-9 (opened April 6, 2008)
 	fitted vectors (in plot.envfit). Reversed axes 'xlim=c(1,-1)' work
 	now, and shifted origin 'at = c(1,1)' taken into account in
 	plot.envfit. 
+
+	* summary.cca: contributions of eigenvalues accumulated for
+	constrained and unconstrained axes, and separately (new) for
+	constrained axes. 
 	
 Version 1.12-8 (closed April 6, 2008)
 
