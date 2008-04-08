@@ -85,7 +85,12 @@
         do.call(rbind, res)
     }
     ## start
-    v <- seq_len(n)
+    v <- n
+    ## expand n if a numeric or integer vector of length 1
+    if((is.numeric(n) || is.integer(n)) && (length(n) == 1))
+         v <- seq_len(n)
+    ## number of observations in data
+    n <- getNumObs(v)
     ## check permutation scheme and update control
     pcheck <- permCheck(v, control = control, make.all = FALSE)
     control <- pcheck$control
@@ -107,7 +112,7 @@
         ## see permuted.index2 for how to do this
         if(control$constant) {
             ## same permutation in each block
-            v <- seq_len(n)
+            #v <- seq_len(n)
             pg <- unique(table(control$strata))
             control.wi <- permControl(type = control$type,
                                       mirror = control$mirror,

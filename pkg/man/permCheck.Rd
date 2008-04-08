@@ -65,7 +65,8 @@ permuplot(n, control = permControl(), col = par("col"),
   \item{make.all}{logical; should \code{permCheck} generate all
     possible permutations? Useful if want to check permutation design
     but not produce the matrix of all permutations.}
-  \item{n}{the number of observations.}
+  \item{n}{the number of observations or an 'object' from which the
+    number of observations can be determined via \code{getNumObs}.}
   \item{max}{the maximum number of permutations, below which complete
     enumeration will be attempted. See Details.}
   \item{observed}{logical, should the observed ordering of samples be
@@ -288,6 +289,10 @@ allPerms(7, permControl(type = "free", strata = fac))
 ## series permutations in levels of strata
 numPerms(7, permControl(type = "series", strata = fac))
 allPerms(7, permControl(type = "series", strata = fac))
+
+## allPerms can work with a vector
+vec <- c(3,4,5)
+allPerms(vec)
 
 ## Tests for permuplot
 n <- 25
