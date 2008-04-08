@@ -11,7 +11,9 @@ Version 1.11-3 (April 8, 2008)
 	* anova.cca: merged Rev 288 (no. perms could exceed perm.max)
 
 	* plot.procrustes: merged Rev 278 (fails with two identical
-	configs). 
+	configs).
+
+	* diversity.Rnw: merged Rev 301 (portable spelling R\'{e}nyi). 
 	
 Version 1.11-2 (March 20, 2008)
 
