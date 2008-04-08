@@ -2,6 +2,27 @@
 
 			VEGAN RELEASE VERSIONS 
 
+		   CHANGES IN VEGAN VERSION 1.11-3
+
+GENERAL
+
+    - Bug fixes from Rev. 305 on http://r-forge.r-project.org/.
+
+FIXES
+
+    - anova.cca: number of permutations could exceed perm.max.
+
+    - plot.cca, plot.envfit and associates: automatic scaling of
+      biplot arrows and fitted vectors was wrong when axes were
+      reversed (like 'xlim = c(1,-1)') or the origin was shifted in
+      plot.envfit (like 'at = c(1,1)'). Added internal function
+      'ordiArrowMul'.
+
+    - plot.procrustes: failed if two configurations were identical.
+
+    - varpart4: sum of squares was wrong if called directly instead of
+      being called via varpart(). Reported by Guillaume Blanchet.
+
 		   CHANGES IN VEGAN VERSION 1.11-2
 
 GENERAL

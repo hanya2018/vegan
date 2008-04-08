@@ -2,6 +2,17 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
+Version 1.11-3 (April 8, 2008)
+
+	* ordiArrowMul & associates: merged Rev 302 (scaling of arrows). 
+
+	* varpart4: merged Rev 289 (wrong sum of squares).
+
+	* anova.cca: merged Rev 288 (no. perms could exceed perm.max)
+
+	* plot.procrustes: merged Rev 278 (fails with two identical
+	configs). 
+	
 Version 1.11-2 (March 20, 2008)
 
         * numPerms: bugfix revision 265
