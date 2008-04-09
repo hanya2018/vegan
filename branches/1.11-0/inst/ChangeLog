@@ -14,6 +14,11 @@ Version 1.11-3 (April 8, 2008)
 	configs).
 
 	* diversity.Rnw: merged Rev 301 (portable spelling R\'{e}nyi). 
+
+	* permuted.index2 & associates: merged Rev 274 (allPerms support
+	functions), Rev 283 (numPerms fix), Rev 292 (permuted.index2 fix),
+	Rev. 295 (permControl fix), Rev 298 (added permuplot), and Rev 308
+	(allPerms fix and permCheck.Rd update). 
 	
 Version 1.11-2 (March 20, 2008)
 
