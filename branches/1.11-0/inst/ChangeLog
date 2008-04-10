@@ -2,6 +2,10 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
+Version 1.11-4 (Opened April 10th, 2008)
+
+    * adonis: merged Rev 312 (not dropping unused factor levels)
+
 Version 1.11-3 (April 8, 2008)
 
 	* ordiArrowMul & associates: merged Rev 302 (scaling of arrows). 
