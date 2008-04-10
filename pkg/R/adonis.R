@@ -10,7 +10,7 @@
     lhs <- formula[[2]]
     lhs <- eval(lhs, data, parent.frame()) # to force evaluation 
     formula[[2]] <- NULL                # to remove the lhs
-    rhs.frame <- model.frame(formula, data) # to get the data frame of rhs
+    rhs.frame <- model.frame(formula, data, drop.unused.levels = TRUE) # to get the data frame of rhs
     op.c <- options()$contrasts
     options( contrasts=c(contr.unordered, contr.ordered) )
     rhs <- model.matrix(formula, rhs.frame) # and finally the model.matrix

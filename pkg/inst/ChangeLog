@@ -21,6 +21,10 @@ Version 1.12-9 (opened April 6, 2008)
 	* allPerms: Now accepts a vector from which number of observations 
 	can be deduced. This was the intended behaviour but allPerms failed
 	in such cases.
+
+	* adonis: Was not dropping empty levels of factors, which was 
+	leading to incorrect results (d.f. was inflated). Reported by
+	Tyler Smith.
 	
 Version 1.12-8 (closed April 6, 2008)
 
