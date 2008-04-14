@@ -16,9 +16,13 @@
     rhs <- model.matrix(formula, rhs.frame) # and finally the model.matrix
     options(contrasts=op.c)
     grps <- attr(rhs, "assign")
+    qrhs <- qr(rhs)
+    ## Take care of aliased variables and pivoting in rhs
+    rhs <- rhs[, qrhs$pivot, drop=FALSE]
+    rhs <- rhs[, 1:qrhs$rank, drop=FALSE]
+    grps <- grps[qrhs$pivot][1:qrhs$rank]
     u.grps <- unique(grps)
-    nterms <- max(u.grps)
-    
+    nterms <- length(u.grps) - 1
     H.s <- lapply(2:length(u.grps),
                   function(j) {Xj <- rhs[, grps %in% u.grps[1:j] ]
                                qrX <- qr(Xj, tol=1e-7)
@@ -41,8 +45,8 @@
     SS.Exp.each <- c(SS.Exp.comb - c(0,SS.Exp.comb[-nterms]) )
     SS.Res <- sum(diag( ( G %*% (I-H.s[[nterms]]) )))
     df.Exp <- sapply(u.grps[-1], function(i) sum(grps==i) )
-    df.Res <- n - dim(rhs)[2]
-    beta <-  qr.coef( qr(rhs), as.matrix(lhs) )
+    df.Res <- n - qrhs$rank
+    beta <-  qr.coef(qrhs, as.matrix(lhs) )
     colnames(beta) <- colnames(lhs)
     F.Mod <- (SS.Exp.each/df.Exp) / (SS.Res/df.Res)
 
@@ -75,7 +79,7 @@
                       F.Model = c(F.Mod, NA,NA),
                       R2 = SumsOfSqs/SumsOfSqs[length(SumsOfSqs)],
                       P = c(rowSums(t(f.perms) > F.Mod)/permutations, NA, NA))
-    rownames(tab) <- c(attr(attr(rhs.frame, "terms"), "term.labels"),
+    rownames(tab) <- c(attr(attr(rhs.frame, "terms"), "term.labels")[u.grps],
                        "Residuals", "Total")
     colnames(tab)[ncol(tab)] <- "Pr(>F)"
     out <- list(aov.tab = tab, call = match.call(), 

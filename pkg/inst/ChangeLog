@@ -2,7 +2,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-9 (opened April 6, 2008)
+Version 1.12-10 (opened April 13, 2008)
+
+	* adonis: the fix for the unused factor levels (r312) revealed
+	that adonis did not handle properly aliased variables and
+	pivoting. Results need checking.
+	
+Version 1.12-9 (closed April 13, 2008)
 
 	* ordiArrowMul: added function 'ordiArrowMul' to improve automatic
 	scaling of biplot arrows (in plot.cca, text.cca, points.cca) and
@@ -22,8 +28,8 @@ Version 1.12-9 (opened April 6, 2008)
 	can be deduced. This was the intended behaviour but allPerms failed
 	in such cases.
 
-	* adonis: Was not dropping empty levels of factors, which was 
-	leading to incorrect results (d.f. was inflated). Reported by
+	* adonis: Was not dropping empty levels of factors, which was
+	leading to incorrect results (d.f. was inflated).  Reported by
 	Tyler Smith.
 	
 Version 1.12-8 (closed April 6, 2008)
