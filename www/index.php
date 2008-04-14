@@ -45,16 +45,16 @@ echo $contents; } ?>
 <h2>What is in vegan?</h2>
 
 <p>Vegan contains many popular tools used in community ecology. The following list is not exhaustive, but lists only some popular tools:
-<ul>
 
-<li><strong>Diversity analysis:</strong> Shannon, Simpson, Fisher indices, Rényi diversities and Hill numbers.
-<li><strong>Species abundance models:</strong> Fisher and Preston models, species abundance distributions.
-<li><strong>Analysis of species richness:</strong> species accumulation curves, extrapolated richness.
-<li><strong>Ordination:</strong> support and meta functions for NMDS, redundancy analysis, constrained correspondence analysis, constrained analysis of proximities (all three with partial analysis), 
-<li><strong>Support functions for ordination:</strong> dissimilarity indices, extended dissimilarities, Procrustes analysis, ordination diagnostics, permutation tests.
-<li><strong>Ordination and environment:</strong> vector fitting, centroid fitting and smooth surface fitting, adding species scores as weighted averages, adding convex hull, SD ellipses, arrows etc. to ordination.
-<li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.
-<li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.
+<ul>
+<li><strong>Diversity analysis:</strong> Shannon, Simpson, Fisher indices, Rényi diversities and Hill numbers.</li>
+<li><strong>Species abundance models:</strong> Fisher and Preston models, species abundance distributions.</li>
+<li><strong>Analysis of species richness:</strong> species accumulation curves, extrapolated richness.</li>
+<li><strong>Ordination:</strong> support and meta functions for NMDS, redundancy analysis, constrained correspondence analysis, constrained analysis of proximities (all three with partial analysis), </li>
+<li><strong>Support functions for ordination:</strong> dissimilarity indices, extended dissimilarities, Procrustes analysis, ordination diagnostics, permutation tests.</li>
+<li><strong>Ordination and environment:</strong> vector fitting, centroid fitting and smooth surface fitting, adding species scores as weighted averages, adding convex hull, SD ellipses, arrows etc. to ordination.</li>
+<li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.</li>
+<li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.</li>
 </ul>
 
 <p>
