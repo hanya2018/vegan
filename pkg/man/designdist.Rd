@@ -14,7 +14,8 @@
 }
 \usage{
 designdist(x, method = "(A+B-2*J)/(A+B)",
-           terms = c("binary", "quadratic", "minimum"), name)
+           terms = c("binary", "quadratic", "minimum"), 
+           abcd = FALSE, name)
 }
 
 \arguments{
@@ -32,6 +33,10 @@ designdist(x, method = "(A+B-2*J)/(A+B)",
       sum(y)}, and \code{"binary"} terms are either of these after transforming
     data into binary form (shared number of species, and number of
     species for each row). }
+  \item{abcd}{Use 2x2 contingency table notation for binary data:
+  \eqn{a} is the number of shared species, \eqn{b} and \eqn{c} are the
+  numbers of species occurring only one of the sites but not in both,
+  and \eqn{d} is the number of species that occur on neither of the sites.}
   \item{name}{The name you want to use for your index. The default is to
     combine the \code{method} equation and \code{terms} argument.}
 }
@@ -66,10 +71,12 @@ designdist(x, method = "(A+B-2*J)/(A+B)",
   \code{\link{betadiver}} for the purpose.
 
   If you want to implement binary dissimilarities based on the 2x2
-  contingency table notation, then \eqn{a =} \code{J}, \eqn{b =}
-  \code{A-J}, \eqn{c =} \code{B-J}, \eqn{d =} \code{P-A-B+J}, \eqn{b+c
-    =} \code{A+B-2*J}, and \eqn{a+b+c =} \code{A+B-J}.
+  contingency table notation, you can set \code{abcd = TRUE}. In this
+  notation \code{a = J}, \code{b = A-J}, \code{c = B-J}, \code{d =
+  P-A-B+J}. This notation is often used instead fo the more more
+  tangible default notation for reasons that are opaque to me. 
 }
+
 \value{
   \code{designdist} returns an object of class \code{\link{dist}}.
 }

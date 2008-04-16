@@ -7,6 +7,10 @@ Version 1.12-10 (opened April 13, 2008)
 	* adonis: the fix for the unused factor levels (r312) revealed
 	that adonis did not handle properly aliased variables and
 	pivoting. Results need checking.
+
+	* designdist: gained argument 'abcd = FALSE' to use the 2x2
+	contingency table notation instead of the more tangible default
+	notation. 
 	
 Version 1.12-9 (closed April 13, 2008)
 
