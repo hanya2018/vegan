@@ -56,10 +56,12 @@ echo $contents; } ?>
 <li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.</li>
 <li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.</li>
 </ul>
+</p>
 
 <p>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
-<img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0"></a>
+<img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0" /></a>
+</p>
 
 <h2>Vegan resources</h2>
 
@@ -78,8 +80,8 @@ echo $contents; } ?>
 <li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
 
 </ul>
-
-<hr>
+</p>
+<hr />
 
 $Date$
 
