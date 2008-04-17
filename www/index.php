@@ -45,7 +45,7 @@ echo $contents; } ?>
 <h2>What is in vegan?</h2>
 
 <p>Vegan contains many popular tools used in community ecology. The following list is not exhaustive, but lists only some popular tools:
-
+</p>
 <ul>
 <li><strong>Diversity analysis:</strong> Shannon, Simpson, Fisher indices, Rényi diversities and Hill numbers.</li>
 <li><strong>Species abundance models:</strong> Fisher and Preston models, species abundance distributions.</li>
@@ -56,16 +56,13 @@ echo $contents; } ?>
 <li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.</li>
 <li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.</li>
 </ul>
-</p>
-
 <p>
 <a href="http://<?php echo $domain; ?>/scm/?group_id=68">
 <img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0" /></a>
 </p>
 
 <h2>Vegan resources</h2>
-
-<p>Here some pointers to vegan resources:
+<p>Here some pointers to vegan resources:</p>
 <ul>
      <li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a>, <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=269">Gavin Simpson</a></li>
 <li> The old  
@@ -80,7 +77,6 @@ echo $contents; } ?>
 <li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
 
 </ul>
-</p>
 <hr />
 
 $Date$
