@@ -37,22 +37,23 @@
     I <- diag(n)
     ones <- matrix(1,nrow=n)
     A <- -(dmat)/2
-
     G <- -.5 * dmat %*% (I - ones%*%t(ones)/n)
-    
     SS.Exp.comb <- sapply(H.s, function(hat) sum( diag(G %*% hat) ) )
-    
     SS.Exp.each <- c(SS.Exp.comb - c(0,SS.Exp.comb[-nterms]) )
-    SS.Res <- sum(diag( ( G %*% (I-H.s[[nterms]]) )))
+    H.snterm <- H.s[[nterms]]
+    if (length(H.s) > 1)
+        for (i in length(H.s):2)
+            H.s[[i]] <- H.s[[i]] - H.s[[i-1]]
+    SS.Res <- sum(diag( ( G %*% (I-H.snterm))))
     df.Exp <- sapply(u.grps[-1], function(i) sum(grps==i) )
     df.Res <- n - qrhs$rank
     beta <-  qr.coef(qrhs, as.matrix(lhs) )
     colnames(beta) <- colnames(lhs)
     F.Mod <- (SS.Exp.each/df.Exp) / (SS.Res/df.Res)
 
-    f.test <- function(H, G, I, df.Exp, df.Res){
+    f.test <- function(H, G, I, df.Exp, df.Res, H.snterm){
         (sum( diag(G %*% H) )/df.Exp) /
-            ( sum(diag( G %*% (I-H) ))/df.Res) }
+            ( sum(diag( G %*% (I-H.snterm) ))/df.Res) }
     
     SS.perms <- function(H, G, I){
         c(SS.Exp.p = sum( diag(G%*%H) ),
@@ -69,7 +70,7 @@
     ## SS.s <- sapply(G.p, function(Gs) { SS.perms(H, Gs, I) } )
     f.perms <- sapply(1:nterms, function(i) {
         sapply(1:permutations, function(j) {
-            f.test(H.s[[i]], G.p[[j]], I, df.Exp[i], df.Res)
+            f.test(H.s[[i]], G.p[[j]], I, df.Exp[i], df.Res, H.snterm)
         } )
     })
     SumsOfSqs = c(SS.Exp.each, SS.Res, sum(SS.Exp.each) + SS.Res)

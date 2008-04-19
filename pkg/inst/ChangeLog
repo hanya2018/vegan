@@ -2,7 +2,16 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-10 (opened April 13, 2008)
+Version 1.12-11 (opened April 19, 2009)
+
+	* adonis: permutation tests fixed. The permutation statistics were
+	wrongly calculated. The results will now be different than in
+	older version, including the example(adonis). Basically, the
+	reported statitistic used SS improvement compared to the residual
+	of the complete model, but permutations used SS accumulation
+	compared to the residual after the current model.
+	
+Version 1.12-10 (closed April 19, 2008)
 
 	* adonis: the fix for the unused factor levels (r312) revealed
 	that adonis did not handle properly aliased variables and
