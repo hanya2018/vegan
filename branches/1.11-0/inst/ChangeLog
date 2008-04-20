@@ -2,9 +2,11 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.11-4 (Opened April 10th, 2008)
+Version 1.11-4 (Opened April 10, 2008)
 
-    * adonis: merged Rev 312 (not dropping unused factor levels)
+	* adonis: merged Rev 312 (not dropping unused factor levels), Rev
+	315 (wrong df in deficit rank models), Rev 320 (wrong statistics
+	in permutations: a critical bug). 
 
 Version 1.11-3 (April 8, 2008)
 
