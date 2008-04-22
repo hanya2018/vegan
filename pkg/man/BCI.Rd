@@ -36,7 +36,7 @@
 }
 \seealso{\code{\link[BiodiversityR]{BCI.env}} in \pkg{BiodiversityR}
   package for environmental data  (coordinates are given below in the
-  \code{examples})}.  
+  \code{examples}).}  
 \examples{
 data(BCI)
 ## UTM Coordinates (in metres)
