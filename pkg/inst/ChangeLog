@@ -15,6 +15,12 @@ Version 1.12-11 (opened April 19, 2009)
 	accumulated individuals with method = "rarefaction". A user
 	request. 
 
+	* rarefy: accepts now a vector of sample sizes, and then returns a
+	matrix with a column for each sample size. If also 'se = TRUE',
+	returns two rows for each case, one for rarefied richness, and
+	after than one for its standard error. This was a recurrent user
+	request. 
+
 	* zzz: vegan got package startup message.
 	
 Version 1.12-10 (closed April 19, 2008)
