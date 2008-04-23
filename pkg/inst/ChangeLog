@@ -2,7 +2,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-11 (opened April 19, 2009)
+Version 1.12-12 (opened April 23, 2008)
+
+	* adonis: added calculation of coefficients both for the species
+	(when data matrix was given) and for sites (both with the data
+	matrices and dissimilarities). 
+
+Version 1.12-11 (closed April 23, 2008)
 
 	* adonis: permutation tests fixed. The permutation statistics were
 	wrongly calculated. The results will now be different than in
