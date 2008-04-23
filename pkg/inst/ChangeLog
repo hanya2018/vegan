@@ -10,6 +10,12 @@ Version 1.12-11 (opened April 19, 2009)
 	reported statitistic used SS improvement compared to the residual
 	of the complete model, but permutations used SS accumulation
 	compared to the residual after the current model.
+
+	* specaccum: returns item "individuals" or the average number of
+	accumulated individuals with method = "rarefaction". A user
+	request. 
+
+	* zzz: vegan got package startup message.
 	
 Version 1.12-10 (closed April 19, 2008)
 
