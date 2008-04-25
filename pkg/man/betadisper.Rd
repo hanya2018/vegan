@@ -92,6 +92,15 @@ betadisper(d, group, type = c("centroid", "median"))
   negative Eigenvalues are produced, we must correct for these imaginary
   distances.
 
+  The distance to its centroid of a point is \eqn{z_{ij}^c =
+  \sqrt{\Delta^2(u_{ij}^+,c_i^+) - \Delta^2(u_{ij}^-,c_i^-)}}, i.e. the
+  real distance minus the imaginary distance. If the imaginary part is
+  greater in magnitude than the real part, then we would take the square
+  root of a negative value, resulting in NaN. From vegan 1.12-12
+  \code{betadisper} takes the absolute value of the real distance minus
+  the imaginary distance, and then takes the square root. This is
+  in line with the behaviour of Marti Anderson's PERMDISP2 programme.
+
   To test if one or more groups is more variable than the others, ANOVA
   of the distances to group centroids can be performed and parametric
   theory used to interpret the significance of F. An alternative is to

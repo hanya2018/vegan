@@ -33,7 +33,7 @@
         dist.neg <- 0
     }
     ## zij are the distances of each point to its group centroid
-    zij <- sqrt(dist.pos - dist.neg)
+    zij <- sqrt(abs(dist.pos - dist.neg))
     ## add in correct labels
     colnames(vectors) <- colnames(centroids) <- names(eig) <-
         paste("PCoA", 1:n, sep = "")
