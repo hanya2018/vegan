@@ -79,6 +79,22 @@ permDisper(object, control = permControl(nperm = 999))
   negative Eigenvalues are produced, we must correct for these imaginary
   distances.
 
+  The distance to its centroid of a point is \deqn{z_{ij}^c =
+  \sqrt{\Delta^2(u_{ij}^+, c_i^+) - \Delta^2(u_{ij}^-, c_i^-)},}{z[ij]^c
+  = sqrt(Delta^2(u[ij]^+, c[i]^+) - Delta^2(u[ij]^-, c[i]^-)),} where
+  \eqn{\Delta^2}{Delta^2} is the squared Euclidean distance between
+  \eqn{u_{ij}}{u[ij]}, the principal coordinate for the \eqn{j^{th}}{jth}
+  point in the \eqn{i^{th}}{ith} group, and \eqn{c_i}{c[i]}, the
+  coordinate of the centroid for the \eqn{i^{th}}{ith} group. The
+  super-scripted \eqn{+} and \eqn{-} indicate the real and imaginary
+  parts respectively. This is equation (3) in Anderson (2006). If the
+  imaginary part is greater in magnitude than the real part, then we
+  would be taking the square root of a negative value, resulting in
+  NaN. From \pkg{vegan} 1.12-12 \code{betadisper} takes the absolute
+  value of the real distance minus the imaginary distance, before
+  computing the square root. This is in line with the behaviour of Marti
+  Anderson's PERMDISP2 programme. 
+  
   To test if one or more groups is more variable than the others, ANOVA
   of the distances to group centroids can be performed and parametric
   theory used to interpret the significance of F. An alternative is to
