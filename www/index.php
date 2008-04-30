@@ -79,7 +79,9 @@ echo $contents; } ?>
 </ul>
 <hr />
 
+<p>
 $Date$
+</p>
 
 </body>
 </html>
