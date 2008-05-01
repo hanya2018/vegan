@@ -160,7 +160,7 @@
                pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
                png = png(file=fname, width=pixdim[1], height=pixdim[2]),
                jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2],
-                     quality = 100),
+                     quality = 100), 
                bmp = bmp(file=fname, width=pixdim[1], height=pixdim[2]),
                fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
         plot.orditkplot(xy)
@@ -289,6 +289,7 @@
         id[[lab]] <- i
     }
     ## Plotting and Moving
+    ## Select label
     pDown <- function(x, y) {
         x <- as.numeric(x)
         y <- as.numeric(y)
@@ -302,6 +303,7 @@
         .lastX <<- x
         .lastY <<- y
     }
+    ## Move label
     pMove <- function(x, y) {
         x <- as.numeric(x)
         y <- as.numeric(y)
@@ -315,6 +317,26 @@
                          .pX, .pY, fill="red")
         tkaddtag(can, "ptr", "withtag", conn)
     }
+    ## Edit label
+    pEdit <- function() {
+        tkdtag(can, "selected")
+        tkaddtag(can, "selected", "withtag", "current")
+        tkitemraise(can, "current")
+        click <- tkfind(can, "withtag", "current")
+        txt <- tclVar(labtext[[click]])
+        i <- as.numeric(id[[click]])
+        tt <- tktoplevel()
+        labEd <- tkentry(tt, width=20, textvariable=txt)
+        tkgrid(tklabel(tt, text = "Edit label"))
+        tkgrid(labEd, pady="5m", padx="5m")
+        isDone <- function() {
+            txt <- tclvalue(txt)
+            tkitemconfigure(can, click, text = txt)
+            rownames(sco)[i] <<- txt
+            tkdestroy(tt)
+        }
+        tkbind(labEd, "<Return>", isDone)
+    }   
     ## Dummy location of the mouse
     .lastX <- 0
     .lastY <- 0
@@ -328,6 +350,6 @@
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
-    
+    tkitembind(can, "label", "<Double-Button-1>", pEdit) 
     tkbind(can, "<B1-Motion>", pMove)
 }

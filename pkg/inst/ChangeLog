@@ -2,7 +2,11 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-12 (opened April 23, 2008)
+Version 1.12-13 (opened May 1, 2008)
+
+	* orditkplot: labels can be edited with double clicking.
+	
+Version 1.12-12 (closed May 1, 2008)
 
 	* adonis: added calculation of coefficients both for the species
 	(when data matrix was given) and for sites (both with the data
