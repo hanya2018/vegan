@@ -4,7 +4,8 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.12-13 (opened May 1, 2008)
 
-	* orditkplot: labels can be edited with double clicking.
+	* orditkplot: labels can be edited with double clicking, and
+	shift-mouse allows zooming into smaller are in the plot.
 	
 Version 1.12-12 (closed May 1, 2008)
 

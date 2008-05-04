@@ -50,7 +50,10 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   Tcl/Tk based ordination graphics with points and labels. The function
   opens an editable canvas with fixed points, but the labels can be
   \strong{dragged with mouse} to better positions. The label can be
-  edited with \strong{double clicking} a label.  In addition there are buttons
+  edited with \strong{double clicking} a label.  
+  \strong{Shift-mousebutton} allows zooming into the plot.
+
+  In addition there are buttons
   for the following tasks: \strong{Copy to EPS} copies the current plot
   to an encapsulated postscript (eps) file using standard Tcl/Tk
   utilities. The faithfullness of this copy is system dependent. Button

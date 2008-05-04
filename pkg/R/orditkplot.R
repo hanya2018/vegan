@@ -213,6 +213,7 @@
         y <- (xy0[2] - row[2]) * yincr + mar[3]
         c(x,y)
     }
+    ## User coordinates of an item
     xy2usr <- function(item) {
         xy <- as.numeric(tkcoords(can, item))
         x <- xy[1] 
@@ -220,6 +221,13 @@
         x <- xrange[1] + (x - mar[2])/xincr 
         y <- yrange[2] - (y - mar[3])/yincr 
         c(x,y)
+    }
+    ## Canvas x or y to user coordinates
+    x2usr <- function(xcan) {
+        xrange[1] + (xcan - mar[2])/xincr
+    }
+    y2usr <- function(ycan) {
+        yrange[2] - (ycan - mar[3])/yincr
     }
     ## Equal aspect ratio
     height <- round((diff(yrange)/diff(xrange)) * xusr)
@@ -311,6 +319,7 @@
         tkdelete(can, "ptr")
         .lastX <<- x
         .lastY <<- y
+        ## xadj,yadj: adjust for canvas scrolling
         xadj <- as.numeric(tkcanvasx(can, 0))
         yadj <- as.numeric(tkcanvasy(can, 0))
         conn <- tkcreate(can, "line", .lastX + xadj, .lastY+yadj,
@@ -336,7 +345,36 @@
             tkdestroy(tt)
         }
         tkbind(labEd, "<Return>", isDone)
-    }   
+    }
+    ## Zooming: draw rectangle and take its user coordinates
+    ## Rectangle: first corner
+    pRect0 <- function(x, y) {
+        x <- as.numeric(x)
+        y <- as.numeric(y)
+        ## yadj here and below adjusts for canvas scrolling
+        yadj <- as.numeric(tkcanvasy(can, 0))
+        .pX <<- x
+        .pY <<- y + yadj
+    }
+    ## Grow rectangle
+    pRect <- function(x, y) {
+        x <- as.numeric(x)
+        y <- as.numeric(y)
+        tkdelete(can, "box")
+        yadj <- as.numeric(tkcanvasy(can, 0))
+        .lastX <<- x
+        .lastY <<- y + yadj
+        rect <- tkcreate(can, "rectangle", .pX, .pY, .lastX, .lastY,
+                         outline="blue")
+        tkaddtag(can, "box", "withtag", rect)
+    }
+    ## Redraw ordiktplot with new xlim and ylim
+    ## FIXME: zooming does not pass "..." arguments
+    pZoom <- function() {
+        xlim <- sort(c(x2usr(.pX), x2usr(.lastX)))
+        ylim <- sort(c(y2usr(.pY), y2usr(.lastY)))
+        orditkplot(x, xlim = xlim, ylim = ylim, ...)
+    }
     ## Dummy location of the mouse
     .lastX <- 0
     .lastY <- 0
@@ -352,4 +390,7 @@
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
     tkitembind(can, "label", "<Double-Button-1>", pEdit) 
     tkbind(can, "<B1-Motion>", pMove)
+    tkbind(can, "<Shift-Button-1>", pRect0)
+    tkbind(can, "<Shift-B1-Motion>", pRect)
+    tkbind(can, "<Shift-ButtonRelease>", pZoom)
 }
