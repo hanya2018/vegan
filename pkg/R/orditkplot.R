@@ -1,3 +1,6 @@
+###
+### Editable Tcl/Tk plot for ordination
+###
 `orditkplot` <-
     function(x, display = "species", choices = 1:2, width, xlim, ylim,
              tcex=0.8, pcol, pbg, pcex = 0.7,
@@ -6,6 +9,11 @@
     if (!capabilities("tcltk"))
         stop("Your R has no capability for Tcl/Tk")
     require(tcltk) || stop("requires package tcltk")
+
+############################
+### Check and sanitize input
+###########################
+    
     ## Graphical parameters and constants, and save some for later plotting
     p <- par()
     sparnam <- c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
@@ -57,12 +65,22 @@
     fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
     fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
+
+############################
+### Initialize Tcl/Tk Window
+############################
+
     ## toplevel
     w <- tktoplevel()
     tktitle(w) <- deparse(match.call())
     ## Max dim of windows (depends on screen)
     YSCR <- as.numeric(tkwinfo("screenheight", w)) - 150
     XSCR <- as.numeric(tkwinfo("screenwidth", w))
+
+################################
+### Buttons and button functions
+################################
+
     ## Buttons
     buts <- tkframe(w)
     ## Copy current canvas to EPS using the standard Tcl/Tk utility
@@ -156,17 +174,22 @@
         pixdim <- round(xy$dim*PPI*p2p)
         switch(ftype,
                eps = postscript(file=fname, width=xy$dim[1], height=xy$dim[2],
-                     paper="special", horizontal = FALSE),
+               paper="special", horizontal = FALSE),
                pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
                png = png(file=fname, width=pixdim[1], height=pixdim[2]),
                jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2],
-                     quality = 100), 
+               quality = 100), 
                bmp = bmp(file=fname, width=pixdim[1], height=pixdim[2]),
                fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
         plot.orditkplot(xy)
         dev.off()
     }
     export <- tkbutton(buts, text="Export plot", command=devDump)
+
+##########
+### Canvas
+##########
+    
     ## Make canvas
     sco <- try(scores(x, display=display, choices = choices, ...),
                silent = TRUE)
@@ -296,6 +319,11 @@
         labtext[[lab]] <- labs[i]
         id[[lab]] <- i
     }
+
+##############################
+### Mouse operations on canvas
+##############################
+    
     ## Plotting and Moving
     ## Select label
     pDown <- function(x, y) {
@@ -380,7 +408,8 @@
     .lastY <- 0
     .pX <- 0
     .pY <- 0
-    ## Highlight a label when mouse moves in
+    ## Mouse bindings:
+    ## Moving a labels
     tkitembind(can, "label", "<Any-Enter>",
                function() tkitemconfigure(can, "current", fill="red"))
     tkitembind(can, "label", "<Any-Leave>",
@@ -388,9 +417,15 @@
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
-    tkitembind(can, "label", "<Double-Button-1>", pEdit) 
     tkbind(can, "<B1-Motion>", pMove)
+    ## Edit labels
+    tkitembind(can, "label", "<Double-Button-1>", pEdit) 
+    ## Zoom (with one-button mouse)
     tkbind(can, "<Shift-Button-1>", pRect0)
     tkbind(can, "<Shift-B1-Motion>", pRect)
     tkbind(can, "<Shift-ButtonRelease>", pZoom)
+    ## Zoom (with right button)
+    tkbind(can, "<Button-3>", pRect0)
+    tkbind(can, "<B3-Motion>", pRect)
+    tkbind(can, "<ButtonRelease-3>", pZoom)
 }
