@@ -1,6 +1,6 @@
 `capscale` <-
     function (formula, data, distance = "euclidean", comm = NULL, 
-              add = FALSE, ...) 
+              add = FALSE, dfun = vegdist, metaMDSdist = FALSE, ...) 
 {
     if (!inherits(formula, "formula")) 
         stop("Needs a model formula")
@@ -15,7 +15,13 @@
     X <- eval(X, environment(formula))
     if (!inherits(X, "dist")) {
         comm <- X
-        X <- vegdist(X, method = distance)
+        dfun <- match.fun(dfun)
+        if (metaMDSdist) {
+            X <- metaMDSdist(comm, distance = distance, zerodist = "ignore",
+                             distfun = dfun, ...)
+        } else {
+            X <- dfun(X, distance)
+        }
     }
     inertia <- attr(X, "method")
     if (is.null(inertia))

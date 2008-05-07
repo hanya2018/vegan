@@ -2,7 +2,21 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-13 (opened May 1, 2008)
+Version 1.12-14 (opened May 7, 2008)
+
+	* capscale: accepts now other dissimilarity function than vegdist,
+	and optionally uses metaMDSdist to manipulate dissimilarities
+	similarly as metaMDS. This provides now a one-shot unconstrained
+	principal coordinates analysis ("metaPCoA"), optionally with
+	extended (flexible shortest path) dissimilarities. Incidentally
+	this also implements a "new" possibly unpublished ordination
+	method: extended distance based redundancy analysis.
+
+	* metaMDSdist: argument 'add' gained new alternative "ignore" to
+	do nothing with zero distances. This can only and should be used
+	with metric scaling (cmdscale(), capscale()). 
+	
+Version 1.12-13 (closed May 7, 2008)
 
 	* orditkplot: labels can be edited with double clicking, and
 	shift-mouse allows zooming into smaller are in the plot.

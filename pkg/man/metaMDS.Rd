@@ -87,7 +87,7 @@ metaMDSredist(object, ...)
  \item{commname}{The name of \code{comm}: should not be given if the
    function is called directly.}
  \item{zerodist}{Handling of zero dissimilarities: either \code{"fail"}
-   or \code{"add"} a small positive value.}
+   or \code{"add"} a small positive value, or \code{"ignore"}.}
  \item{distfun}{Dissimilarity function. Any function returning a
    \code{dist} object and accepting argument \code{method} can be used
    (but some extra arguments may cause name conflicts).}
