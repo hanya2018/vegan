@@ -1,0 +1,119 @@
+\encoding{UTF-8}
+\name{MOStest}
+\alias{MOStest}
+\alias{print.MOStest}
+\alias{plot.MOStest}
+
+
+\title{ Mitchell-Olds \& Shaw Test for the Location of Quadratic Extreme }
+\description{
+  Mitchell-Olds & Shaw test concerns the location of the highest (hump)
+  or lowest (pit) value of a quadratic curve at given points. Typically,
+  it is used to study whether the quadratic hump or pit is located
+  within a studied interval. The current test is generalized so that it
+  applies generalized linear models (\code{\link{glm}}) with link
+  function instead of simple quadratic curve.
+}
+\usage{
+MOStest(x, y, interval, ...)
+\method{plot}{MOStest}(x, which = c(1,2,3,6), ...)
+}
+
+\arguments{
+  \item{x}{The independent variable. }
+  \item{y}{The dependent variable. }
+  \item{interval}{The two points at which the test statistic is
+    evaluated. If missing, the estremes of \code{x} are used. }
+  \item{which}{Subset of plots produced. Values \code{which=1} and
+    \code{2} define plots specific to \code{MOStest} (see Details), and
+    larger values select a graphs of \code{\link{plot.lm}} (minus 2). }
+  \item{\dots}{ Other variables passed to functions. Function
+    \code{mitchell.olds.test} passes these to \code{\link{glm}} so that
+    these can include \code{\link{family}}. The other functions pass
+    these to underlying graphical functions. }
+}
+\details{
+  The function fits a quadratic curve with given \code{\link{family}}
+  and link function. The origin of \code{x} is shifted to the values
+  given in \code{interval} (defaults to the extremes of \code{x}), and
+  the quadratic model is refitted. If the optimum is is located at the
+  shifted zero, the first degree coefficient of the polynomial will be
+  zero. The test statistic is the value of the first degree coefficient
+  with its significance (Mitchell-Olds & Shaw 1987).
+
+  The test is often presented as a general test for the location of the
+  hump, but it really is dependent on the quadratic fitted curve. If the
+  hump is of different form than quadratic, the test may be
+  insignificant.
+
+  Because of strong assumptions in the test, you should use the support
+  functions to inspect the fit. Function \code{plot(..., which=1)}
+  displays the data points, fitted quadratic model, and its approximate
+  95\% confidence intervals (2 times SE). Function \code{plot} with
+  \code{which = 2)} (requires \code{\link[ellipse]{ellipse.glm}} in
+  package \pkg{ellipse}) displays the approximate confidence interval of
+  the polynomial coefficients, together with two lines indicating the
+  combinations of the coefficients that produce the evaluated points of
+  \code{x}. Moreover, the cross-hair shows the approximate confidence
+  intervals (2 times SE) for the polynomial coefficients ignoring their
+  correlations. Higher values of \code{which} produce corresponding
+  graphs from \code{\link{plot.lm}}. That is, you must add 2 to the
+  value of \code{which} in \code{\link{plot.lm}}.
+
+  The test is typically used in assessing the significance of diversity
+  hump against productivity gradient (Mittelbach et al. 2001). It also
+  can be used for the location of the pit (deepest points) instead of
+  the Tokeshi test.
+
+  The method is basically similar as the one suggested by Oksanen et
+  al. (2001) for assessing the confidence intervals of the Gaussian
+  response function.
+}
+\value{
+  The function is based on \code{\link{glm}}, and it returns the result
+  of object of \code{glm} amended with the result of the test. The new
+  items in the \code{MOStest} are: 
+  \item{isHump }{\code{TRUE} if the response is a
+    hump.}
+  \item{isBracketed}{\code{TRUE} if the hump or the pit is bracketed by
+    the evaluated points.} 
+  \item{hump}{Sorted vector of location of the hump or the pit and the
+    points where the test was evaluated.}
+  \item{coefficients}{Table of test statistics and their signficances.}
+}
+\references{
+Mitchell-Olds, T. & Shaw, R.G. 1987. Regression analysis of natural
+selection: statistical inference and biological
+interpretation. \emph{Evolution} 41, 1149--1161.
+
+Mittelbach, G.C. Steiner, C.F., Scheiner, S.M., Gross, K.L., Reynolds,
+H.L., Waide, R.B., Willig, R.M., Dodson, S.I. & Gough, L. 2001. What is
+the observed richness between species richness and productivity?
+\emph{Ecology} 82: 2381--2396.
+
+Oksanen, J., Läärä, E., Tolonen, K. & Warner, B.G. 2001. Confidence
+intervals for the optimum in the Gaussian response
+function. \emph{Ecology} 82, 1191--1197.
+}
+\author{Jari Oksanen }
+
+\seealso{The nointeraction model can be fitted with \code{\link{humpfit}}. }
+\examples{
+## The Al-Mufti data analysed in humpfit():
+mass <- c(140,230,310,310,400,510,610,670,860,900,1050,1160,1900,2480)
+spno <- c(1,  4,  3,  9, 18, 30, 20, 14,  3,  2,  3,  2,  5,  2)
+mod <- MOStest(mass, spno)
+## Insignificant
+mod
+## ... but inadequate shape of the curve
+op <- par(mfrow=c(2,2), mar=c(4,4,1,1)+.1)
+plot(mod)
+## Looks rather like log-link with Poisson error and logarithmic biomass
+mod <- MOStest(log(mass), spno, family=quasipoisson)
+mod
+plot(mod)
+par(op)
+}
+
+\keyword{ models }
+\keyword{ regression }
