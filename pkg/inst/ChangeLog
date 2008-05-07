@@ -4,6 +4,11 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.12-14 (opened May 7, 2008)
 
+	* mso: added Helene Wagner's mso function for direct multi-scale
+	ordination with constrained ordination or spatial partioning of
+	'cca' and 'rda' results (Ecology 85, 342-351; 2004). Thanks to
+	Helene Wagner for allowing the inclusion of the code.
+
 	* MOStest: new function to implement Mitchell-Olds & Shaw test for
 	the location of quadratic extreme in a defined interval.
 
