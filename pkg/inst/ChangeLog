@@ -23,6 +23,9 @@ Version 1.12-14 (opened May 7, 2008)
 	* metaMDSdist: argument 'add' gained new alternative "ignore" to
 	do nothing with zero distances. This can only and should be used
 	with metric scaling (cmdscale(), capscale()). 
+
+	* ordispantree: removed after being deprecated and defunct for a
+	long time. Use lines.spantree instead.
 	
 Version 1.12-13 (closed May 7, 2008)
 
