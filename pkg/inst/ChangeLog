@@ -2,12 +2,22 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.12-14 (opened May 7, 2008)
+Version 1.12-15 (opened May 9, 2008)
+
+	* capscale: prints info on possible metaMDS transformations, and
+	uses metaMDSdist transformed data for getting species scores
+	(similarly as metaMDS recently does).
+
+	* ordiTerminfo: does not give superfluos warnings if constrained
+	ordination called without constraints and without data=, like
+	capscale(x ~ 1).
+
+Version 1.12-14 (closed May 9, 2008)
 
 	* mso: added Helene Wagner's mso function for direct multi-scale
-	ordination with constrained ordination or spatial partioning of
-	'cca' and 'rda' results (Ecology 85, 342-351; 2004). Thanks to
-	Helene Wagner for allowing the inclusion of the code.
+	ordination or spatial partioning of 'cca' and 'rda'
+	results (Ecology 85, 342-351; 2004). Thanks to Helene Wagner for
+	allowing the inclusion of the code.
 
 	* MOStest: new function to implement Mitchell-Olds & Shaw test for
 	the location of quadratic extreme in a defined interval.
