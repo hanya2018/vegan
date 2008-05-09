@@ -1,7 +1,10 @@
 "ordihull" <-
-    function (ord, groups, display = "sites", draw = c("lines", "polygon"), 
-              show.groups, ...) 
+    function (ord, groups, display = "sites", draw = c("lines", "polygon"),
+              show.groups, ...)
 {
+    localLines <- function(..., shrink, origin, scaling, triangular) lines(...)
+    localPolygon <- function(..., shrink, origin, scaling, triangular)
+        polygon(...)
     draw <- match.arg(draw)
     pts <- scores(ord, display = display, ...)
     if (!missing(show.groups)) {
@@ -17,9 +20,9 @@
             X <- pts[gr, ]
             hpts <- chull(X)
             hpts <- c(hpts, hpts[1])
-            if (draw == "lines") 
-                lines(X[hpts, ], ...)
-            else polygon(X[hpts, ], ...)
+            if (draw == "lines")
+                localLines(X[hpts, ], ...)
+            else localPolygon(X[hpts,], ...)
         }
     }
     invisible()

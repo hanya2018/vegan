@@ -1,10 +1,12 @@
 "ordisegments" <-
-    function (ord, groups, levels, replicates, display = "sites", 
-              show.groups, ...) 
+    function (ord, groups, levels, replicates, display = "sites",
+              show.groups, ...)
 {
+    localSegments <- function(..., shrink, origin, scaling, triangular)
+        segments(...)
     pts <- scores(ord, display = display, ...)
     npoints <- nrow(pts)
-    if (missing(groups)) 
+    if (missing(groups))
         groups <- gl(levels, replicates, npoints)
     if (!missing(show.groups)) {
         take <- groups %in% show.groups
@@ -19,7 +21,7 @@
             X <- pts[gr, , drop = FALSE]
             X0 <- X[-nrow(X), , drop = FALSE]
             X1 <- X[-1, , drop = FALSE]
-            segments(X0[, 1], X0[, 2], X1[, 1], X1[, 2], ...)
+            localSegments(X0[, 1], X0[, 2], X1[, 1], X1[, 2], ...)
         }
     }
     invisible()

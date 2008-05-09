@@ -1,7 +1,9 @@
 "ordispider" <-
-    function (ord, groups, display = "sites", w = weights(ord, display), 
-              show.groups, ...) 
+    function (ord, groups, display = "sites", w = weights(ord, display),
+              show.groups, ...)
 {
+    localSegments <- function(..., shrink, origin, scaling, triangular)
+        segments(...)
     if (inherits(ord, "cca") && missing(groups)) {
         lc <- scores(ord, display = "lc", ...)
         wa <- scores(ord, display = "wa", ...)
@@ -10,9 +12,9 @@
     }
     pts <- scores(ord, display = display, ...)
     w <- eval(w)
-    if (length(w) == 1) 
+    if (length(w) == 1)
         w <- rep(1, nrow(pts))
-    if (is.null(w)) 
+    if (is.null(w))
         w <- rep(1, nrow(pts))
     if (!missing(show.groups)) {
         take <- groups %in% show.groups
@@ -28,7 +30,7 @@
             X <- pts[gr, ]
             W <- w[gr]
             ave <- apply(X, 2, weighted.mean, w = W)
-            segments(ave[1], ave[2], X[, 1], X[, 2], ...)
+            localSegments(ave[1], ave[2], X[, 1], X[, 2], ...)
         }
     }
     invisible()
