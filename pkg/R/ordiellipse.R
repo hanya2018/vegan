@@ -3,9 +3,6 @@
               conf, draw = c("lines", "polygon"), w = weights(ord, display),
               show.groups, ...)
 {
-    localLines <- function(..., shrink, origin, scaling, triangular) lines(...)
-    localPolygon <- function(..., shrink, origin, scaling, triangular)
-        polygon(...)
     if (!require(ellipse))
         stop("Requires package `ellipse' (from CRAN)")
     kind <- match.arg(kind)
@@ -36,12 +33,13 @@
                 t <- 1
             else t <- sqrt(qchisq(conf, 2))
             if (draw == "lines")
-                localLines(ellipse(mat$cov, centre = mat$center, t = t),
-                      ...)
+                ordiArgAbsorber(ellipse(mat$cov, centre = mat$center, t = t),
+                      FUN = lines, ...)
             else {
                 xy <- ellipse(mat$cov, center = mat$center, t = t)
-                localPolygon(xy[, 1] + mat$center[1], xy[, 2] + mat$center[2],
-                        ...)
+                ordiArgAbsorber(xy[, 1] + mat$center[1],
+                                xy[, 2] + mat$center[2],
+                                FUN = polygon, ...)
             }
         }
     }

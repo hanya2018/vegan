@@ -2,8 +2,6 @@
     function (ord, groups, display = "sites", w = weights(ord, display),
               show.groups, ...)
 {
-    localSegments <- function(..., shrink, origin, scaling, triangular)
-        segments(...)
     if (inherits(ord, "cca") && missing(groups)) {
         lc <- scores(ord, display = "lc", ...)
         wa <- scores(ord, display = "wa", ...)
@@ -30,7 +28,8 @@
             X <- pts[gr, ]
             W <- w[gr]
             ave <- apply(X, 2, weighted.mean, w = W)
-            localSegments(ave[1], ave[2], X[, 1], X[, 2], ...)
+            ordiArgAbsorber(ave[1], ave[2], X[, 1], X[, 2],
+                            FUN = segments, ...)
         }
     }
     invisible()

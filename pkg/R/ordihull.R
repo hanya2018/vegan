@@ -2,9 +2,6 @@
     function (ord, groups, display = "sites", draw = c("lines", "polygon"),
               show.groups, ...)
 {
-    localLines <- function(..., shrink, origin, scaling, triangular) lines(...)
-    localPolygon <- function(..., shrink, origin, scaling, triangular)
-        polygon(...)
     draw <- match.arg(draw)
     pts <- scores(ord, display = display, ...)
     if (!missing(show.groups)) {
@@ -21,8 +18,8 @@
             hpts <- chull(X)
             hpts <- c(hpts, hpts[1])
             if (draw == "lines")
-                localLines(X[hpts, ], ...)
-            else localPolygon(X[hpts,], ...)
+                ordiArgAbsorber(X[hpts, ], FUN = lines, ...)
+            else ordiArgAbsorber(X[hpts,], FUN = polygon, ...)
         }
     }
     invisible()

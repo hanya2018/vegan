@@ -2,10 +2,6 @@
     function (ord, groups, levels, replicates, display = "sites",
               show.groups, startmark, ...)
 {
-    localArrows <- function(..., shrink, origin, scaling, triangular)
-        arrows(...)
-    localSegments <- function(..., shrink, origin, scaling, triangular)
-        segments(...)
     pts <- scores(ord, display = display, ...)
     npoints <- nrow(pts)
     if (missing(groups))
@@ -27,10 +23,10 @@
             if (!missing(startmark))
                 points(X0[1,1], X0[1,2], pch=startmark, ...)
             if (nseg > 1)
-                localSegments(X0[-nseg,1], X0[-nseg,2], X1[-nseg,1],
-                              X1[-nseg,2], ...)
-            localArrows(X0[nseg, 1], X0[nseg, 2], X1[nseg, 1], X1[nseg, 2],
-                        ...)
+                ordiArgAbsorber(X0[-nseg,1], X0[-nseg,2], X1[-nseg,1],
+                                X1[-nseg,2], FUN = segments, ...)
+            ordiArgAbsorber(X0[nseg, 1], X0[nseg, 2], X1[nseg, 1], X1[nseg, 2],
+                            FUN = arrows, ...)
         }
     }
     invisible()

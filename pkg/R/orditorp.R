@@ -7,15 +7,6 @@
         pcex <- cex
     if (missing(pcol))
         pcol <- col
-    ## currently need to extract three arguments from '...'
-    ## i) scaling, ii) origin, iii) shrink, iv) triangular
-    ## define local functions as per plot.default
-    ## arguments after '...' in local functions are dropped and not passed on
-    ##
-    ## For future, if new scores methods accept extra arguments, add their
-    ## names to the local functions below.
-    localPoints <- function(..., shrink, origin, scaling, triangular) points(...)
-    localText <- function(..., shrink, origin, scaling, triangular) text(...)
     x <- scores(x, display = display, choices = choices, ...)
     if (missing(labels))
         labels <- rownames(x)
@@ -45,15 +36,15 @@
             pcex <- (pcex[ord])[!tt]
         if (length(pcol) > 1)
             pcol <- (pcol[ord])[!tt]
-        localPoints(x[!tt, , drop = FALSE], pch = pch, cex = pcex,
-                    col = pcol, ...)
+        ordiArgAbsorber(x[!tt, , drop = FALSE], pch = pch, cex = pcex,
+                        col = pcol, FUN = points, ...)
     }
     if (length(cex) > 1)
         cex <- (cex[ord])[tt]
     if (length(col) > 1)
         col <- (col[ord])[tt]
-    localText(x[tt, , drop = FALSE], labels[tt], cex = cex, col = col,
-              ...)
+    ordiArgAbsorber(x[tt, , drop = FALSE], labels[tt], cex = cex, col = col,
+                    FUN = text, ...)
     names(tt) <- labels
     tt <- tt[order(ord)]
     invisible(tt)

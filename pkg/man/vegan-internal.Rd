@@ -6,6 +6,7 @@
 \alias{ordiTerminfo}
 \alias{pasteCall}
 \alias{ordiArrowMul}
+\alias{ordiArgAbsorber}
 \title{Internal vegan functions}
 
 \description{
@@ -16,6 +17,7 @@ ordiGetData(call, env)
 ordiParseFormula(formula, data, xlev = NULL)
 ordiTerminfo(d, data)
 ordiArrowMul(x, at = c(0,0), fill = 0.75)
+ordiArgAbsorber(..., shrink, origin, scaling, triangular, FUN)
 centroids.cca(x, mf, wt)
 permuted.index(n, strata)
 pasteCall(call, prefix = "Call:")

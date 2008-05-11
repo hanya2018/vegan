@@ -2,8 +2,6 @@
     function (ord, groups, levels, replicates, display = "sites",
               show.groups, ...)
 {
-    localSegments <- function(..., shrink, origin, scaling, triangular)
-        segments(...)
     pts <- scores(ord, display = display, ...)
     npoints <- nrow(pts)
     if (missing(groups))
@@ -21,7 +19,8 @@
             X <- pts[gr, , drop = FALSE]
             X0 <- X[-nrow(X), , drop = FALSE]
             X1 <- X[-1, , drop = FALSE]
-            localSegments(X0[, 1], X0[, 2], X1[, 1], X1[, 2], ...)
+            ordiArgAbsorber(X0[, 1], X0[, 2], X1[, 1], X1[, 2],
+                            FUN = segments, ...)
         }
     }
     invisible()
