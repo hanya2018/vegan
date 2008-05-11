@@ -17,6 +17,16 @@ Version 1.12-15 (opened May 9, 2008)
 	arguments without issuing an warning. These warnings were harmless
 	but it is neater to stop them happening in the first place.
 
+	* MOStest: added fieller.MOStest for approximate confidence
+	intervals of the location of the hump or pit. The method is based
+	on Fieller's theorem following ter Braak & Looman (Vegatatio 65,
+	3-11; 1986) and based on the code from the ESA Ecological Archives
+	accompanying Oksanen et al. (Ecology 82, 1191-1197; 2001) and
+	published in package optgrad
+	(http://www.esapubs.org/archive/ecol/E082/015/default.htm).  The
+	optgrad package also has profile method, but it is not yet
+	implemented. 
+
 Version 1.12-14 (closed May 9, 2008)
 
 	* mso: added Helene Wagner's mso function for direct multi-scale

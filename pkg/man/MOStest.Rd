@@ -3,6 +3,7 @@
 \alias{MOStest}
 \alias{print.MOStest}
 \alias{plot.MOStest}
+\alias{fieller.MOStest}
 
 
 \title{ Mitchell-Olds \& Shaw Test for the Location of Quadratic Extreme }
@@ -17,16 +18,19 @@
 \usage{
 MOStest(x, y, interval, ...)
 \method{plot}{MOStest}(x, which = c(1,2,3,6), ...)
+fieller.MOStest(object, level = 0.95)
 }
 
 \arguments{
-  \item{x}{The independent variable. }
+  \item{x}{The independent variable or plotting object in \code{plot}. }
   \item{y}{The dependent variable. }
   \item{interval}{The two points at which the test statistic is
     evaluated. If missing, the estremes of \code{x} are used. }
   \item{which}{Subset of plots produced. Values \code{which=1} and
     \code{2} define plots specific to \code{MOStest} (see Details), and
-    larger values select a graphs of \code{\link{plot.lm}} (minus 2). }
+    larger values select a graphs of \code{\link{plot.lm}} (minus2). }
+  \item{object}{A result object from \code{MOStest}.}
+  \item{level}{The confidence level required.}
   \item{\dots}{ Other variables passed to functions. Function
     \code{mitchell.olds.test} passes these to \code{\link{glm}} so that
     these can include \code{\link{family}}. The other functions pass
@@ -60,6 +64,12 @@ MOStest(x, y, interval, ...)
   graphs from \code{\link{plot.lm}}. That is, you must add 2 to the
   value of \code{which} in \code{\link{plot.lm}}.
 
+  Function \code{fieller.MOStest} approximates the confidence limits
+  of the location of the extreme point (hump or pit) using Fieller's
+  theorem following ter Braak & Looman (1986). The test is based on
+  quasideviance except if the \code{\link{family}} is \code{poisson}
+  or \code{binomial}.
+
   The test is typically used in assessing the significance of diversity
   hump against productivity gradient (Mittelbach et al. 2001). It also
   can be used for the location of the pit (deepest points) instead of
@@ -89,13 +99,26 @@ interpretation. \emph{Evolution} 41, 1149--1161.
 Mittelbach, G.C. Steiner, C.F., Scheiner, S.M., Gross, K.L., Reynolds,
 H.L., Waide, R.B., Willig, R.M., Dodson, S.I. & Gough, L. 2001. What is
 the observed richness between species richness and productivity?
-\emph{Ecology} 82: 2381--2396.
+\emph{Ecology} 82, 2381--2396.
 
 Oksanen, J., Läärä, E., Tolonen, K. & Warner, B.G. 2001. Confidence
 intervals for the optimum in the Gaussian response
 function. \emph{Ecology} 82, 1191--1197.
+
+ter Braak, C.J.F & Looman, C.W.N 1986. Weighted averaging, logistic
+regression and the Gaussian response model. \emph{Vegetatio} 65,
+3--11. 
 }
 \author{Jari Oksanen }
+
+\note{ 
+Function \code{fieller.MOStest} is based on package \pkg{optgrad} in
+the Ecological Archives
+(\url{http://www.esapubs.org/archive/ecol/E082/015/default.htm})
+accompanying Oksanen et al. (2001). The Ecological Archive package
+\pkg{optgrad} also contains profile deviance method for the location
+of the hump or pit, but it is not (yet) implemented in \pkg{vegan}. 
+}
 
 \seealso{The nointeraction model can be fitted with \code{\link{humpfit}}. }
 \examples{
@@ -113,6 +136,8 @@ mod <- MOStest(log(mass), spno, family=quasipoisson)
 mod
 plot(mod)
 par(op)
+## Infinite confidence limits (NA)
+fieller.MOStest(mod)
 }
 
 \keyword{ models }
