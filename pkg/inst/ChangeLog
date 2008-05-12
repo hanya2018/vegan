@@ -21,12 +21,12 @@ Version 1.12-15 (opened May 9, 2008)
 	* MOStest: added fieller.MOStest for approximate confidence
 	intervals of the location of the hump or pit. The method is based
 	on Fieller's theorem following ter Braak & Looman (Vegatatio 65,
-	3-11; 1986) and based on the code from the ESA Ecological Archives
-	accompanying Oksanen et al. (Ecology 82, 1191-1197; 2001) and
-	published in package optgrad
-	(http://www.esapubs.org/archive/ecol/E082/015/default.htm).  The
-	optgrad package also has profile method, but it is not yet
-	implemented. 
+	3-11; 1986) and profile based condifence limits following Oksanen
+	et al. (Ecology 82, 1191-1197; 2001).  Both are based on the code
+	from the ESA Ecological Archives accompanying Oksanen et
+	al. (Ecology 82, 1191-1197; 2001) and published in package optgrad
+	(http://www.esapubs.org/archive/ecol/E082/015/default.htm), but
+	profile methods heavily borrow from the MASS package.
 
 Version 1.12-14 (closed May 9, 2008)
 

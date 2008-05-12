@@ -4,7 +4,8 @@
 \alias{print.MOStest}
 \alias{plot.MOStest}
 \alias{fieller.MOStest}
-
+\alias{profile.MOStest}
+\alias{confint.MOStest}
 
 \title{ Mitchell-Olds \& Shaw Test for the Location of Quadratic Extreme }
 \description{
@@ -19,6 +20,8 @@
 MOStest(x, y, interval, ...)
 \method{plot}{MOStest}(x, which = c(1,2,3,6), ...)
 fieller.MOStest(object, level = 0.95)
+\method{profile}{MOStest}(fitted, alpha = 0.01, maxsteps = 10, del = zmax/5, ...)
+\method{confint}{MOStest}(object, parm = 1, level = 0.95, ...)
 }
 
 \arguments{
@@ -29,8 +32,12 @@ fieller.MOStest(object, level = 0.95)
   \item{which}{Subset of plots produced. Values \code{which=1} and
     \code{2} define plots specific to \code{MOStest} (see Details), and
     larger values select a graphs of \code{\link{plot.lm}} (minus2). }
-  \item{object}{A result object from \code{MOStest}.}
+  \item{object, fitted}{A result object from \code{MOStest}.}
   \item{level}{The confidence level required.}
+  \item{alpha}{Maximum significance level allowed.}
+  \item{maxsteps}{Maximum number of steps in the profile.}
+  \item{del}{A step length parameter for the profile (see code).}
+  \item{parm}{Ignored.}
   \item{\dots}{ Other variables passed to functions. Function
     \code{mitchell.olds.test} passes these to \code{\link{glm}} so that
     these can include \code{\link{family}}. The other functions pass
@@ -68,7 +75,9 @@ fieller.MOStest(object, level = 0.95)
   of the location of the extreme point (hump or pit) using Fieller's
   theorem following ter Braak & Looman (1986). The test is based on
   quasideviance except if the \code{\link{family}} is \code{poisson}
-  or \code{binomial}.
+  or \code{binomial}. Function \code{profile} evaluates the profile
+  deviance of the fitted model, and \code{confint} finds the profile
+  based confidence limits following Oksanen et al. (2001).
 
   The test is typically used in assessing the significance of diversity
   hump against productivity gradient (Mittelbach et al. 2001). It also
@@ -117,7 +126,10 @@ the Ecological Archives
 (\url{http://www.esapubs.org/archive/ecol/E082/015/default.htm})
 accompanying Oksanen et al. (2001). The Ecological Archive package
 \pkg{optgrad} also contains profile deviance method for the location
-of the hump or pit, but it is not (yet) implemented in \pkg{vegan}. 
+of the hump or pit, but the current implementation of \code{profile}
+and \code{confint} rather follow the example of
+\code{\link[MASS]{profile.glm}} and \code{\link[MASS]{confint.glm}} in
+the \pkg{MASS} package.
 }
 
 \seealso{The nointeraction model can be fitted with \code{\link{humpfit}}. }
@@ -138,6 +150,9 @@ plot(mod)
 par(op)
 ## Infinite confidence limits (NA)
 fieller.MOStest(mod)
+## Finite limits with the profile
+confint(mod)
+plot(profile(mod))
 }
 
 \keyword{ models }
