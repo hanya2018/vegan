@@ -4,7 +4,7 @@
     smodel <- summary(object$mod)
     var <- smodel$cov.scaled
     fam <- family(object$mod)
-    od <- summary(object$mod)$dispersion
+    od <- smodel$dispersion
     k <- coef(object$mod)
     b2 <- -2 * k[3]
     u <- -k[2]/2/k[3]
