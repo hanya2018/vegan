@@ -4,10 +4,7 @@
     smodel <- summary(object$mod)
     var <- smodel$cov.scaled
     fam <- family(object$mod)
-    if (fam$family %in% c("poisson", "binomial"))
-        od <- 1
-    else
-        od <- deviance(object$mod)/df.residual(object$mod)
+    od <- summary(object$mod)$dispersion
     k <- coef(object$mod)
     b2 <- -2 * k[3]
     u <- -k[2]/2/k[3]
@@ -26,7 +23,7 @@
         x <- u - g * vvar/uvar
         f <- z/b2
         s <- sqrt(wvar - 2 * u * vvar + u^2 * uvar - g * (wvar - 
-                                                              vvar^2/uvar))
+                                                          vvar^2/uvar))
         limits[1] <- (x - f * s)/(1 - g)
         limits[2] <- (x + f * s)/(1 - g)
     }
