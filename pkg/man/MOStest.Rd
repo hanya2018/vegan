@@ -14,7 +14,14 @@
   it is used to study whether the quadratic hump or pit is located
   within a studied interval. The current test is generalized so that it
   applies generalized linear models (\code{\link{glm}}) with link
-  function instead of simple quadratic curve.
+  function instead of simple quadratic curve.  The test was popularized
+  in ecology for the analysis of humped species richness patterns
+  (Mittelbach et al. 2001), but it is more general. With logarithmic
+  link function, the quadratic response defines the Gaussian response
+  model of ecological gradients (ter Braak & Looman 1986), and the test
+  can be used for inspecting the location of Gaussian optimum within a
+  given range of the gradient. It can also be used to replace Tokeshi's
+  test of \dQuote{bimodal} species frequency distribution. 
 }
 \usage{
 MOStest(x, y, interval, ...)
@@ -43,14 +50,22 @@ fieller.MOStest(object, level = 0.95)
     these can include \code{\link{family}}. The other functions pass
     these to underlying graphical functions. }
 }
+
 \details{
-  The function fits a quadratic curve with given \code{\link{family}}
-  and link function. The origin of \code{x} is shifted to the values
-  given in \code{interval} (defaults to the extremes of \code{x}), and
-  the quadratic model is refitted. If the optimum is is located at the
-  shifted zero, the first degree coefficient of the polynomial will be
-  zero. The test statistic is the value of the first degree coefficient
-  with its significance (Mitchell-Olds & Shaw 1987).
+
+  The function fits a quadratic curve \eqn{\mu = b_0 + b_1 x + b_2 x^2}
+  with given \code{\link{family}} and link function.  If \eqn{b_2 < 0},
+  this defines a unimodal curve with highest point at
+  \eqn{u = -b_2/(2 b_3)} (ter Braak & Looman 1986). If \eqn{b_2 > 0},
+  the parabola has a minimum at \eqn{u} and the response is sometimes
+  called \dQuote{bimodal}.  The null hypothesis is that the extreme
+  point \eqn{u} is located within interval given by points \eqn{p_1} and
+  \eqn{p_2}. If the extreme point \eqn{u} is exactly at \eqn{p_1}, then
+  \eqn{b_1 = 0} on shifted axis \eqn{x - p_1}.  In the test, origin of
+  \code{x} is shifted to the values \eqn{p_1} and \eqn{p_2}, and the
+  test statistic is the value of the first degree coefficient with its
+  significance as estimated by the \code{\link{summary.glm}}
+  function(Mitchell-Olds & Shaw 1987). 
 
   The test is often presented as a general test for the location of the
   hump, but it really is dependent on the quadratic fitted curve. If the
@@ -61,7 +76,7 @@ fieller.MOStest(object, level = 0.95)
   functions to inspect the fit. Function \code{plot(..., which=1)}
   displays the data points, fitted quadratic model, and its approximate
   95\% confidence intervals (2 times SE). Function \code{plot} with
-  \code{which = 2)} (requires \code{\link[ellipse]{ellipse.glm}} in
+  \code{which = 2} (requires \code{\link[ellipse]{ellipse.glm}} in
   package \pkg{ellipse}) displays the approximate confidence interval of
   the polynomial coefficients, together with two lines indicating the
   combinations of the coefficients that produce the evaluated points of
@@ -82,12 +97,11 @@ fieller.MOStest(object, level = 0.95)
   The test is typically used in assessing the significance of diversity
   hump against productivity gradient (Mittelbach et al. 2001). It also
   can be used for the location of the pit (deepest points) instead of
-  the Tokeshi test.
-
-  The method is basically similar as the one suggested by Oksanen et
-  al. (2001) for assessing the confidence intervals of the Gaussian
-  response function.
+  the Tokeshi test. Further, it can be used to test the location of the
+  the Gaussian optimum in ecological gradient analysis (ter Braak &
+  Looman 1986, Oksanen et al. 2001).
 }
+
 \value{
   The function is based on \code{\link{glm}}, and it returns the result
   of object of \code{glm} amended with the result of the test. The new
@@ -100,6 +114,7 @@ fieller.MOStest(object, level = 0.95)
     points where the test was evaluated.}
   \item{coefficients}{Table of test statistics and their signficances.}
 }
+
 \references{
 Mitchell-Olds, T. & Shaw, R.G. 1987. Regression analysis of natural
 selection: statistical inference and biological
