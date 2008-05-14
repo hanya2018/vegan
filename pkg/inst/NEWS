@@ -1,8 +1,86 @@
 -*-Text-*-
 
-			VEGAN RELEASE VERSIONS 
+		      VEGAN DEVELOPMENT VERSIONS
+		      ==========================
 
-CHANGES IN VEGAN VERSION 1.11-4
+GENERAL
+
+    - User visible changes in the development version to be 1.13-0.
+
+NEW FUNCTIONS
+
+    - betadiver: beta diversity functions as reviewed by Patricia
+      Koleff et al.  (J. Anim. Ecol., 72, 367-382; 2003), with a plot
+      function to produce triangular plots.
+
+    - MOStest: Mitchell-Olds--Shaw test (quadratic extreme in an
+      interval). The test was suggested for analysis humped species
+      richness patterns, but function implements a generalized test,
+      which also can be used for analysing location the Gaussian
+      optimum in gradient analysis. Moreover, it also can be used to
+      replace Tokeshi's test for bimodal species frequency
+      patterns.  The confidence limits for the location of the optimum
+      can be estimated with Fieller theorem or from profile deviance.
+
+    - mso: Helene Wagner's multiscale ordination or spatial
+      partitioning of cca and rda. This is taken from the Ecological
+      Archives with minimal edition with the permission of Helene
+      Wagner.
+
+    - nestedtemp: matrix temperature method for oecosimu following
+      Rodriguez-Girones & Santamaria (J. Biogeogr. 33, 924-935; 2006),
+      but still without iterative optimization of row and column
+      ordering.
+
+    - TukeyHSD.betadisper: pairwise comparisons for betadisper.
+
+NEW FEATURES AND FIXES
+
+    - adonis: returns both species and site scores.
+
+    - betadisper: was not calculating distance to centroid correctly
+      for observations where the imaginary distance to centroid was
+      greater than the real distance. Now takes the absolute value of
+      the combined distance before taking the square root. This is
+      in-line with Marti Anderson's PERMDISP2.
+
+    - BCI: example has spatial coordinates of plots.
+
+    - biplot.rda: argument for arrow col.
+
+    - capscale: accepts other distance functions than vegdist, and can
+      use metaMDSdist for extended dissimilarites & "metaPCoA".
+
+    - designdist: accepts 2x2 contingency table notation with a, b, c,
+      and d.
+
+    - metaMDS: transforms data like with distances for species WA.
+
+    - orditkplot: allows editing labels and zooming.
+
+    - permDisper: renamed to permutest.betadisper.
+
+    - permutest: now a generic function, currently with methods
+        'cca' and 'permDisper'.
+
+    - rarefy: accepts vectors of sample sizes.
+
+    - rgl.isomap: dynamic rgl plots for isomap.
+
+    - screeplot.cca etc: return invisibly xycoords.
+
+    - specaccum: returns numbers of individuals with method = "rarefaction".
+
+    - summary.cca: returns more statistics on "variance explained by axes".
+
+    - zzz: vegan got startup message.
+
+
+			VEGAN RELEASE VERSIONS
+			======================
+ 
+
+		   CHANGES IN VEGAN VERSION 1.11-4
 
     - A critical bug fix in adonis: there was a critical bug in adonis
       code, and inconsistent statistics were used in permutations so
