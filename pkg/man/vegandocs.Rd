@@ -7,8 +7,9 @@
   defined in \code{\link{options}}.
 }
 \usage{
-vegandocs(doc = c("ChangeLog", "FAQ-vegan.pdf", "intro-vegan.pdf",
-    "diversity-vegan.pdf", "decision-vegan.pdf", "partitioning.pdf"))
+vegandocs(doc = c("NEWS", "ChangeLog", "FAQ-vegan.pdf",
+    "intro-vegan.pdf", "diversity-vegan.pdf", "decision-vegan.pdf",
+    "partitioning.pdf"))
 }
 
 \arguments{
