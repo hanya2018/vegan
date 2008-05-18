@@ -21,8 +21,10 @@
         ci <- ellipse(x$mod, which=c(2,3))
         plot(ci, type="l", lwd=2, xlim=range(ci[,1],0), ylim=range(ci[,2],0), ...)
         abline(h=0, lty=2, ...)
-        abline(0, -1/2/x$hump["min"], ...)
-        abline(0, -1/2/x$hump["max"], ...)
+        par <- x$hump[c("min", "max")]
+        par[par==0] <- sqrt(.Machine$double.eps)
+        abline(0, -1/2/par[1], ...)
+        abline(0, -1/2/par[2], ...)
         k <- coef(summary(x$mod))[2:3, 1:2]
         segments(k[1,1] - k[1,2]*2, k[2,1], k[1,1]+k[1,2]*2, k[2,1], lty=3)
         segments(k[1,1], k[2,1]-k[2,2]*2, k[1,1], k[2,1]+k[2,2]*2, lty=3)
