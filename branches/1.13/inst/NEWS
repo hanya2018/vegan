@@ -5,22 +5,14 @@
 
 GENERAL
 
-    - User visible changes in the development version to be 1.13-0.
+    - User visible changes in the development version to be 1.13-0
+      (rev354). 
 
 NEW FUNCTIONS
 
     - betadiver: beta diversity functions as reviewed by Patricia
       Koleff et al.  (J. Anim. Ecol., 72, 367-382; 2003), with a plot
       function to produce triangular plots.
-
-    - MOStest: Mitchell-Olds--Shaw test (quadratic extreme in an
-      interval). The test was suggested for analysis humped species
-      richness patterns, but function implements a generalized test,
-      which also can be used for analysing location the Gaussian
-      optimum in gradient analysis. Moreover, it also can be used to
-      replace Tokeshi's test for bimodal species frequency
-      patterns.  The confidence limits for the location of the optimum
-      can be estimated with Fieller theorem or from profile deviance.
 
     - mso: Helene Wagner's multiscale ordination or spatial
       partitioning of cca and rda. This is taken from the Ecological

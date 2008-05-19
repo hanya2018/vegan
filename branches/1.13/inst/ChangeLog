@@ -3,6 +3,11 @@ $Date$
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.13-0 (opened May 14, 2008) 
+
+	* Branched version 1.12-15 (rev 354) for a new release.
+
+	* MOStest: removed from the release version. It seemed to work
+	correctly, but strangely: needs more research.
 	
 Version 1.12-15 (closed May 14, 2008)
 
