@@ -1,12 +1,12 @@
 -*-Text-*-
 
-		      VEGAN DEVELOPMENT VERSIONS
-		      ==========================
+			VEGAN RELEASE VERSIONS 
+		       	======================
 
 GENERAL
 
-    - User visible changes in the development version to be 1.13-0
-      (rev354). 
+    - Based on development version 1.12-15 (revision 354 at
+      http://vegan.r-forge.r-project.org) 
 
 NEW FUNCTIONS
 
@@ -43,17 +43,17 @@ NEW FEATURES AND FIXES
     - capscale: accepts other distance functions than vegdist, and can
       use metaMDSdist for extended dissimilarites & "metaPCoA".
 
-    - designdist: accepts 2x2 contingency table notation with a, b, c,
+    - designdist: knows 2x2 contingency table notation with a, b, c,
       and d.
 
     - metaMDS: transforms data like with distances for species WA.
 
-    - orditkplot: allows editing labels and zooming.
+    - orditkplot: allows editing labels and zooming into plot.
 
     - permDisper: renamed to permutest.betadisper.
 
     - permutest: now a generic function, currently with methods
-        'cca' and 'permDisper'.
+      'cca' and 'permDisper'.
 
     - rarefy: accepts vectors of sample sizes.
 
@@ -67,10 +67,6 @@ NEW FEATURES AND FIXES
 
     - zzz: vegan got startup message.
 
-
-			VEGAN RELEASE VERSIONS
-			======================
- 
 
 		   CHANGES IN VEGAN VERSION 1.11-4
 
