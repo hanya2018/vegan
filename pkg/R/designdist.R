@@ -5,7 +5,7 @@
 {
     terms <- match.arg(terms)
     if (abcd && terms != "binary")
-        warning("abcd = TRUE and terms are not 'binary':\nresults may be meaingless")
+        warning("abcd = TRUE and terms are not 'binary':\nresults may be meaningless")
     x <- as.matrix(x)
     N <- nrow(x)
     P <- ncol(x)
@@ -36,4 +36,3 @@
     else attr(dis, "method") <- name
     dis
 }
-
