@@ -2,6 +2,11 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
+Version 1.13-1 (opened May 22, 2008)
+
+	* merged r365: workaround to failure of weights.default in R 2.7.0
+	when object had no weights.
+	
 Version 1.13-0 (released May 21, 2008) 
 
 	* Branched version 1.12-15 (rev 354) for a new release.

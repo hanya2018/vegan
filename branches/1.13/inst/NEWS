@@ -3,6 +3,20 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+		       CHANGES IN VEGAN 1.13-1
+
+    - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
+      factorfit and vectorfit could fails with non-vegan ordination
+      objects in R 2.7.2 whose weights.default function gave error if
+      object had no weights (used to return NULL in R 2.6.2 and
+      earlier). 
+
+    - intersetcor and inertcomp now check that input really is from
+      constrained ordination instead of giving obscure error
+      messages. 
+
+		       CHANGES IN VEGAN 1.13-0
+
 GENERAL
 
     - Based on development version 1.12-15 (revision 354 at
