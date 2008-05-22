@@ -2,7 +2,25 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-0 (opened May 14, 2008)
+Version 1.14-1 (opened May 22, 2008)
+
+	* weights failed in several ordination utilities, because
+	weights.default in R 2.7.0 (stats) could not cope with objects
+	that do not have weights. R 2.6.2 still returned NULL for those
+	objects, but now weights.default gives an error. As a workaround
+	several vegan functions define internally 
+	       weights.default <- function(object, ...) NULL 
+	to get back the old behaviour. Concerns orglspider, ordicluster,
+	ordispider, ordiellipse, ordisurf, factorfit, vectorfit.
+
+	* inertcomp and intersetcor only work with objects inheriting from
+	"cca", but they did not check that the object was of the correct
+	type and so could end up with calling weights.default or give
+	obscure error messages. 
+	
+Version 1.14-0 (closed May 21, 2008)
+
+	* The base of the release version 1.13-0.
 
 Version 1.12-15 (closed May 14, 2008)
 

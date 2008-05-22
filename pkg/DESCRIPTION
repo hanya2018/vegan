@@ -1,7 +1,7 @@
 Package: vegan
 Title: Community Ecology Package
-Version: 1.14-0
-Date: May 15, 2008
+Version: 1.14-1
+Date: May 22, 2008
 Author: Jari Oksanen, Roeland Kindt, Pierre Legendre, Bob O'Hara, Gavin L. Simpson, 
   M. Henry H. Stevens  
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
