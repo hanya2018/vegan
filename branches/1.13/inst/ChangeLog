@@ -6,6 +6,9 @@ Version 1.13-1 (opened May 22, 2008)
 
 	* merged r365: workaround to failure of weights.default in R 2.7.0
 	when object had no weights.
+
+	* merged r369: fixes bug in calculation of pair-wise permutation
+	p-values for some circumstances in 'permutest.betadisper'.
 	
 Version 1.13-0 (released May 21, 2008) 
 
