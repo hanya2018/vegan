@@ -16,7 +16,10 @@ Version 1.14-1 (opened May 22, 2008)
 	* inertcomp and intersetcor only work with objects inheriting from
 	"cca", but they did not check that the object was of the correct
 	type and so could end up with calling weights.default or give
-	obscure error messages. 
+	obscure error messages.
+
+	* permutest.betadisper: Could give the wrong pair-wise permutation
+	p-values. Reported by Daniel O'Shea.
 	
 Version 1.14-0 (closed May 21, 2008)
 
