@@ -4,9 +4,8 @@ mso <- function (object.cca, object.xy, grain = 1, round.up = FALSE,
     object <- object.cca
     xy <- object.xy
     N <- nrow(object$CA$Xbar)
-    if (class(object) == "rda") 
+    if (inherits(object, "rda")) 
         N <- 1
-    require(vegan)
     Dist <- dist(xy)
     object$grain <- grain
     if (round.up) 
