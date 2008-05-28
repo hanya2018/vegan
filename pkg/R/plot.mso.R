@@ -14,7 +14,11 @@
         b <- ncol(vario) - 3
         label <- c("", "", "", "Total variance", "Explained plus residual", 
                    "Residual variance", "Explained variance", "Conditioned variance")
-        par(omi = c(0.5, 0.5, 0, 0))
+        ## You should not change par, or at least you must put
+        ## back the old values when exiting:
+        ## op <- par(omi = c(0.5, 0.5, 0, 0))
+        ## on.exit(par(op))
+        ##par(omi = c(0.5, 0.5, 0, 0))
         if (is.numeric(object$CCA$rank)) {
             if (!explained) 
                 b <- b - 1
