@@ -4,6 +4,8 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-1 (opened May 22, 2008)
 
+	* plot.mso: passes extra arguments (...) to graphical functions.
+
 	* mite.xy: new data set with spatial coordinates for the Oribatid
 	mite data. From Pierre Legendre's web page.
 
