@@ -2,7 +2,14 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-1 (opened May 22, 2008)
+Version 1.14-2 (opened May 29, 2008)
+
+	* Helene Wagner joined the vegan team.
+
+	* mso: plot.mso renamed to msoplot so that plot.cca also works,
+	and the example uses now Oribatid mite data set.
+	
+Version 1.14-1 (closed May 29, 2008)
 
 	* plot.mso: passes extra arguments (...) to graphical functions.
 
