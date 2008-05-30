@@ -11,6 +11,8 @@ mso <- function (object.cca, object.xy, grain = 1, round.up = FALSE,
     if (round.up) 
         H <- ceiling(Dist/grain) * grain
     else H <- round(Dist/grain) * grain
+    hmax <- round((max(Dist)/2)/grain) *grain
+	  H[H > hmax] <- max(H)
     object$H <- H
     H <- as.vector(H)
     Dist <- sapply(split(Dist, H), mean)
