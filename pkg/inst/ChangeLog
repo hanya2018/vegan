@@ -4,13 +4,16 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-2 (opened May 29, 2008)
 
-      * mso: automatically collapses distance classes larger than half 
-	the maximum distance into a single distance class.
-
 	* Helene Wagner joined the vegan team.
+
+	* mso: automatically collapses distance classes larger than half
+	the maximum distance into a single distance class.
 
 	* mso: plot.mso renamed to msoplot so that plot.cca also works,
 	and the example uses now Oribatid mite data set.
+
+	* lines.spantree: did not pass graphical arguments to lines
+	(broken in 1.12-15).
 	
 Version 1.14-1 (closed May 29, 2008)
 
