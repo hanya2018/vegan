@@ -13,7 +13,10 @@
 
     - intersetcor and inertcomp now check that input really is from
       constrained ordination instead of giving obscure error
-      messages. 
+      messages.
+
+    - lines.spantree knows again graphical arguments such as 'col',
+      'lty'.  
 
 		       CHANGES IN VEGAN 1.13-0
 

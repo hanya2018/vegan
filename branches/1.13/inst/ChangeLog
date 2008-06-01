@@ -9,6 +9,8 @@ Version 1.13-1 (opened May 22, 2008)
 
 	* merged r369: fixes bug in calculation of pair-wise permutation
 	p-values for some circumstances in 'permutest.betadisper'.
+
+	* merged r381: passes ... to 'lines' in 'lines.spantree'.
 	
 Version 1.13-0 (released May 21, 2008) 
 
