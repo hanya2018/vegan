@@ -14,6 +14,13 @@ Version 1.14-2 (opened May 29, 2008)
 
 	* lines.spantree: did not pass graphical arguments to lines
 	(broken in 1.12-15).
+
+	* ade2vegancca: a new function which tries to change an ade4:::cca
+	object to vegan:::cca object (and manages partially). This is used
+	internally in print.cca, scores.cca and summary.cca so that vegan
+	can display some information from ade4:::cca (with a warning).
+	Since scores.cca works for ade4, so do plot, orditkplot etc which
+	rely on scores.
 	
 Version 1.14-1 (closed May 29, 2008)
 
