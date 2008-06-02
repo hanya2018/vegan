@@ -1,6 +1,6 @@
 \name{mso}
 \alias{mso}
-\alias{plot.mso}
+\alias{msoplot}
 
 \title{ Functions for performing and displaying a spatial partitioning
 of cca or rda results}
@@ -14,7 +14,7 @@ of cca or rda results}
 
 \usage{
 mso(object.cca, object.xy, grain = 1, round.up = FALSE, permutations = FALSE)
-\method{plot}{mso}(x, alpha = 0.05, explained = FALSE, ...)
+msoplot(x, alpha = 0.05, explained = FALSE, ...)
 }
 \arguments{
   \item{object.cca}{ An object of class cca, created by the \code{\link{cca}} or
@@ -110,7 +110,6 @@ Example.cca$vario
 ## Correspondence analysis (ca):
 Example.ca <- mso(cca(X), tmat)
 msoplot(Example.ca)
-
 
 ## Unconstrained ordination with test for autocorrelation
 ## using oribatid mite data set as in Wagner (2004)
