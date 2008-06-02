@@ -1,3 +1,4 @@
+
 `ade2vegancca` <-
     function(object)
 {
@@ -14,7 +15,7 @@
                 QR = NA,
                 envcentre = NA,
                 Xbar = NA)
-    CCA$wa <- sweep(CCA$wa.eig, 2, sqrt(object$eig[1:nf]), "*")
+    CCA$wa <- sweep(CCA$wa.eig, 2, 1/sqrt(object$eig[1:nf]), "*")
     out <- list(call = object$call,
                 grand.total = NA,
                 rowsum = object$lw,
