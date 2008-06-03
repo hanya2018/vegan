@@ -10,7 +10,10 @@ Version 1.14-2 (opened May 29, 2008)
 	the maximum distance into a single distance class.
 
 	* mso: plot.mso renamed to msoplot so that plot.cca also works,
-	and the example uses now Oribatid mite data set.
+	and the example uses now Oribatid mite data set. 
+
+	* mso: gained a print method that also shows the variogram
+	(Helene, please check this!), and mso knows about its own call. 
 
 	* lines.spantree: did not pass graphical arguments to lines
 	(broken in 1.12-15).

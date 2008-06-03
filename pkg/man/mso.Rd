@@ -1,5 +1,6 @@
 \name{mso}
 \alias{mso}
+\alias{print.mso}
 \alias{msoplot}
 
 \title{ Functions for performing and displaying a spatial partitioning

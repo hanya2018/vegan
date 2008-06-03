@@ -1,6 +1,11 @@
-mso <- function (object.cca, object.xy, grain = 1, round.up = FALSE,
-                 permutations = FALSE) 
+`mso` <-
+    function (object.cca, object.xy, grain = 1, round.up = FALSE,
+              permutations = FALSE) 
 {
+    if (inherits(object.cca, "mso")) {
+        rm <- which(class(object.cca) == "mso")
+        class(object.cca) <- class(object.cca)[-rm]
+    }
     object <- object.cca
     xy <- object.xy
     N <- nrow(object$CA$Xbar)
@@ -12,7 +17,7 @@ mso <- function (object.cca, object.xy, grain = 1, round.up = FALSE,
         H <- ceiling(Dist/grain) * grain
     else H <- round(Dist/grain) * grain
     hmax <- round((max(Dist)/2)/grain) *grain
-	  H[H > hmax] <- max(H)
+    H[H > hmax] <- max(H)
     object$H <- H
     H <- as.vector(H)
     Dist <- sapply(split(Dist, H), mean)
@@ -72,6 +77,8 @@ mso <- function (object.cca, object.xy, grain = 1, round.up = FALSE,
         object$vario$CA.signif <- apply((perm >= matrix(statistic, 
                                          nrow(perm), ncol(perm)))/permutations, 1, sum)
     }
+    object$call <- match.call()
     class(object) <- c("mso", class(object))
     object
 }
+
