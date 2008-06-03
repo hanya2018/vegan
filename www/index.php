@@ -40,7 +40,7 @@ while (!feof($handle)) {
 }
 fclose($handle);
 echo $contents; } ?>
-
+</p>
 <!-- end of project description -->
 <h2>What is in vegan?</h2>
 
@@ -67,8 +67,6 @@ echo $contents; } ?>
 	<li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a>, <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=269">Gavin Simpson</a>,
  <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=459">Peter Solymos</a>
 </li>
-<li> The old  
-<a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 
 <li>The project <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>summary page</strong></a> at R-Forge. </li>
 
@@ -78,6 +76,8 @@ echo $contents; } ?>
 
 <li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
 
+<li> The old  
+<a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 </ul>
 <hr />
 
