@@ -121,14 +121,14 @@ data(mite.xy)
 mite.cca <- cca(log(mite + 1))
 mite.cca <- mso(mite.cca, mite.xy, grain =  1, permutations = 100)
 msoplot(mite.cca)
-mite.cca$vario
+mite.cca
 
 ## Constrained ordination with test for residual autocorrelation
 ## and scale-invariance of species-environment relationships
 mite.cca <- cca(log(mite + 1) ~ SubsDens + WatrCont + Substrate + Shrub + Topo, mite.env)
 mite.cca <- mso(mite.cca, mite.xy, permutations = 100)
 msoplot(mite.cca)
-mite.cca$vario
+mite.cca
 }
 \keyword{ spatial }
 \keyword{ multivariate }
