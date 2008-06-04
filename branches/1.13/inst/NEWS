@@ -23,7 +23,7 @@
 
     - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
       factorfit and vectorfit could fail with non-vegan ordination
-      objects in R 2.7.2 whose weights.default function gave error if
+      objects in R 2.7.0 whose weights.default function gave error if
       object had no weights (used to return NULL in R 2.6.2 and
       earlier).
 
