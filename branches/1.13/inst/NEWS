@@ -5,18 +5,30 @@
 
 		       CHANGES IN VEGAN 1.13-1
 
+    - Helene Wagner joined the vegan team.
+
+    - intersetcor and inertcomp now check that input really is from
+      constrained ordination instead of giving obscure error messages.
+
+    - lines.spantree knows again graphical arguments such as 'col',
+      'lty'.
+
+    - mite.xy: new data set on the spatial coordinates of sample sites
+      of Oribatid mites.
+
+    - mso: plot.mso replaced with msoplot, and plot function now
+      displays the ordination scatter plot. Function msoplot collapses
+      distances larger than half of the maximum distance into a single
+      distance class. Default output shows the variogram printout of
+
     - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
       factorfit and vectorfit could fail with non-vegan ordination
       objects in R 2.7.2 whose weights.default function gave error if
       object had no weights (used to return NULL in R 2.6.2 and
-      earlier). 
+      earlier).
 
-    - intersetcor and inertcomp now check that input really is from
-      constrained ordination instead of giving obscure error
-      messages.
+    - taxa2dist: has a "method" name for distances.
 
-    - lines.spantree knows again graphical arguments such as 'col',
-      'lty'.  
 
 		       CHANGES IN VEGAN 1.13-0
 
