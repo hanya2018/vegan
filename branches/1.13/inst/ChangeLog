@@ -1,9 +1,14 @@
+
 $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.13-1 (opened May 22, 2008)
 
+	* merged 371: mite.xy data.
+
+	* merged 368: method name to taxa2dist
+	
 	* merged r365: workaround to failure of weights.default in R 2.7.0
 	when object had no weights.
 
