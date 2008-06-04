@@ -19,7 +19,7 @@
     - mso: plot.mso replaced with msoplot, and plot function now
       displays the ordination scatter plot. Function msoplot collapses
       distances larger than half of the maximum distance into a single
-      distance class. Default output shows the variogram printout of
+      distance class. Default output shows the variogram printout.
 
     - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
       factorfit and vectorfit could fail with non-vegan ordination
