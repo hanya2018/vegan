@@ -2,7 +2,15 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-2 (opened May 29, 2008)
+Version 1.14-3 (opened June 5, 2008)
+
+	* rda, cca, capscale: obviously do not handle correctly cases
+	where the rank of constraints + conditions is higher than the rank
+	of the dependent (community) data. Now issues a warning in
+	'print'. This is an ancient problem, but surfaced recently in
+	several places.
+	
+Version 1.14-2 (closed June 5, 2008)
 
 	* Helene Wagner joined the vegan team.
 
