@@ -5,6 +5,8 @@
         warning("this is an ade4 object which vegan cannot handle")
         x <- ade2vegancca(x)
     }
+    if (x$CCA$rank < x$CCA$QR$rank)
+        warning("rank of constraints higher than the rank of dependent data\nvegan may not handle this -- wait for a bug fix release", call. = FALSE)
     cat("\nCall:\n")
     cat(deparse(x$call), "\n\n")
     chi <- rbind(x$tot.chi, x$pCCA$tot.chi, x$CCA$tot.chi, x$CA$tot.chi)
@@ -37,3 +39,4 @@
     cat("\n")
     invisible(x)
 }
+
