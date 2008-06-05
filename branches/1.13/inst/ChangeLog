@@ -5,6 +5,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.13-1 (opened May 22, 2008)
 
+	* merged r396: cca/rda/capscale print issues a warning when rank
+	of constraints+conditions < rank of dependent data, because vegan
+	cannot handle these cases properly.
+
 	* merged mso revisions since r372: now similar as in devel branch
 	at r389. 
 

@@ -7,6 +7,12 @@
 
     - Helene Wagner joined the vegan team.
 
+    - cca, rda, capscale issue a warning when the rank of the
+      constraints + condition is lower than the rank of the depedent
+      (community) data, because vegan is not prepared to handle these
+      cases properly. This is an ancient issue, but surfaced recently.
+      A real fix is expected in next releases.
+
     - intersetcor and inertcomp now check that input really is from
       constrained ordination instead of giving obscure error messages.
 
