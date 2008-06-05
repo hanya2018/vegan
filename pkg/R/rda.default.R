@@ -1,4 +1,4 @@
-"rda.default" <-
+`rda.default` <-
     function (X, Y, Z, scale = FALSE, ...) 
 {
     ZERO <- 1e-04
@@ -33,9 +33,14 @@
         if (is.null(pCCA)) 
             rank <- Q$rank
         else rank <- Q$rank - pCCA$rank
+        ## qrank saves the rank of the constraints
+        qrank <- rank
         Y <- qr.fitted(Q, Xbar)
         sol <- svd(Y)
+        ## it can happen that rank < qrank
         rank <- min(rank, sum(sol$d > ZERO))
+        if (rank < Q$rank)
+            warning("rank of QR decomposition > rank of svd: trouble ahead")
         sol$d <- sol$d/sqrt(NR)
         ax.names <- paste("RDA", 1:length(sol$d), sep = "")
         colnames(sol$u) <- ax.names
@@ -57,7 +62,7 @@
             oo <- Q$pivot
             if (!is.null(pCCA$rank)) 
                 oo <- oo[-(1:pCCA$rank)] - ncol(Z.r)
-            oo <- oo[1:rank]
+            oo <- oo[1:qrank]
             if (length(oo) < ncol(Y.r)) 
                 CCA$alias <- colnames(Y.r)[-oo]
             CCA$biplot <- cor(Y.r[, oo, drop = FALSE], sol$u[, 
@@ -105,3 +110,4 @@
     class(sol) <- c("rda", "cca")
     sol
 }
+

@@ -9,6 +9,11 @@ Version 1.14-3 (opened June 5, 2008)
 	of the dependent (community) data. Now issues a warning in
 	'print'. This is an ancient problem, but surfaced recently in
 	several places.
+
+	* rda, cca, capscale: constraints are not aliased any more if
+	their rank is higher than the rank of the community data.  Because
+	cca objects are handled by many other functions, this may cause
+	trouble in surprising places and the change is unstabilizing.
 	
 Version 1.14-2 (closed June 5, 2008)
 
