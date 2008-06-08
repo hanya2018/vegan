@@ -5,12 +5,8 @@
         warning("this is an ade4 object which vegan cannot handle")
         x <- ade2vegancca(x)
     }
-    if (!is.null(x$CCA)) {
-        qrank <- x$CCA$QR$rank
-        if (!is.null(x$pCCA))
-            qrank <- qrank - x$pCCA$rank
-        if (x$CCA$rank < qrank)
-            warning("rank of constraints higher than the rank of dependent data\nvegan may not handle this -- wait for a bug fix release", call. = FALSE)
+    if (!is.null(x$CCA) && x$CCA$rank < x$CCA$qrank) {
+        warning("rank of constraints higher than the rank of dependent data\nvegan may not handle this -- wait for a bug fix release", call. = FALSE)
     }
     cat("\nCall:\n")
     cat(deparse(x$call), "\n\n")
