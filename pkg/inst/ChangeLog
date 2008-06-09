@@ -15,11 +15,14 @@ Version 1.14-3 (opened June 5, 2008)
 	cca objects are handled by many other functions, this may cause
 	trouble in surprising places and the change is unstabilizing.
 
-	* rda.default, cca.default: return now both 'rank' for the
-	ordination, and 'qrank' or the rank of the constrainst. This means
-	following changes in functions using ranks:
+	* rda.default, cca.default: vegan naively used only the rank of
+	the ordination, but indeed, there are three cases of ranks
+	(returned as rank): rank of the ordination or number of axes, rank
+	of the constraints after conditions (now returned as qrank), rank
+	of conditions + constraints (returned in QR$rank). The following
+	changes were made if necessary to cca/rda support functions: 
 
-	* alias.cca: qrank
+	* alias.cca: QR$rank
 	* anova.ccabyaxis: OK 
 	* bstick.cca: OK 
 	* calibrate.cca: stop with error if qrank > rank
@@ -27,7 +30,7 @@ Version 1.14-3 (opened June 5, 2008)
 	* mso: OK (HW confirms)
 	* msoplot: OK (HW cofirms)
 	* permutest.cca: qrank, also fixes anova.ccabyterm
-	* predict.cca/rda: qrank with type = "lc"
+	* predict.cca/rda: QR$rank with type = "lc" & newdata
 	* summary.cca/rda: OK
 	* scores.cca/rda: OK
 	
