@@ -22,7 +22,7 @@ permatfull(m, fixedmar = "both", reg = NULL, hab = NULL, mtype = "count", times 
 permatswap(m, reg = NULL, hab = NULL, mtype = "count", method = "swap", times = 100, burnin = 10000, thin = 1000)
 swapcount(m, thin = 1)
 \method{plot}{permat}(x, ...)
-\method{summary}{permat}(x, digits = 2, ...)
+\method{summary}{permat}(object, digits = 2, ...)
 }
 \arguments{
   \item{m}{a community data matrix with plots (samples) as rows and species (taxa) as columns.}
@@ -34,7 +34,7 @@ swapcount(m, thin = 1)
   \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available using the function \code{\link{swapcount}}.}
   \item{burnin}{number of null communities discarded before proper analysis in sequential \code{"swap", "tswap"} methods.}
   \item{thin}{number of discarded permuted matrices between two evaluations in sequential \code{"swap", "tswap"} methods.}
-  \item{x}{object of class 'permat'}
+  \item{x, object}{object of class \code{"permat"}}
   \item{digits}{number of digits used for rounding.}
   \item{\dots}{other arguments passed to methods.}
 } 

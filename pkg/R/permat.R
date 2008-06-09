@@ -131,8 +131,9 @@ function(x, digits=3, ...)
 
 ## S3 summary method for permat
 `summary.permat` <-
-function(x, digits=2, ...)
+function(object, digits=2, ...)
 {
+    x <- object
     n <- attr(x, "times")
     if (attr(x, "ptype") != "sar" & !is.null(x$specs$reg) | !is.null(x$specs$hab))
         restr <- TRUE else restr <- FALSE
