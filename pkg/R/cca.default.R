@@ -56,8 +56,6 @@
         sol <- svd(Y)
         ## rank of svd can be < qrank
         rank <- min(rank, sum(sol$d > ZERO))
-        if (rank < qrank)
-            warning("rank of QR decomposition > rank of svd: trouble ahead")
         ax.names <- paste("CCA", 1:length(sol$d), sep = "")
         colnames(sol$u) <- ax.names
         colnames(sol$v) <- ax.names

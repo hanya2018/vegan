@@ -39,8 +39,6 @@
         sol <- svd(Y)
         ## it can happen that rank < qrank
         rank <- min(rank, sum(sol$d > ZERO))
-        if (rank < qrank)
-            warning("rank of QR decomposition > rank of svd: trouble ahead")
         sol$d <- sol$d/sqrt(NR)
         ax.names <- paste("RDA", 1:length(sol$d), sep = "")
         colnames(sol$u) <- ax.names
