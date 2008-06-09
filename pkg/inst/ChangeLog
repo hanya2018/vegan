@@ -9,6 +9,8 @@ Version 1.14-4 (opened June 9, 2008)
         under diferent constraints (preserving row/columnsums, 
         or incidence pattern), with print, plot and summary methods.
         (submitted by PS)
+
+	* adonis: speed-up and doc updates.
         
 Version 1.14-3 (closed June 9, 2008)
 

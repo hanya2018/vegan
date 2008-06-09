@@ -5,6 +5,8 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.13-1 (opened May 22, 2008)
 
+	* adonis: speed-up and doc updates.
+
 	* merged r400:405 -- should fix rank problems in cca/rda.
 
 	* merged r396: cca/rda/capscale print issues a warning when rank

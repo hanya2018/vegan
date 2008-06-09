@@ -39,6 +39,8 @@ FIXES FOR HANDLING RANKS IN CONSTRAINED ORDINATION
 
 OTHER FIXES
 
+    - adonis: faster and improved documentation.
+
     - intersetcor and inertcomp now check that input really is from
       constrained ordination instead of giving obscure error messages.
 
