@@ -35,7 +35,7 @@ swapcount(m, thin = 1)
 \details{
 Unrestricted and restricted permutations: if both \code{reg} and \code{hab} are \code{NULL}, functions perform unrestricted permutations. If either of the two is given, it is used as is for restricted permutations. If both are given, interaction is used for restricted permutations.
 
-Constraints on row/col, dill, sum
+Constraints on row/colum sums, matrix fill, total sum and sums within strata can be chacked by the \code{summary} method.
 }
 \value{
 Functions \code{permatfull} and \code{permatswap} return an object of class 'permat'.
@@ -44,7 +44,7 @@ Functions \code{permatfull} and \code{permatswap} return an object of class 'per
   \item{perm}{a list of permuted matrices with length \code{times}.}
   \item{specs}{a list of other specifications (variable in length, depending on the function used): \code{reg}, \code{hab}, \code{burnin}, \code{thin}.}
 
-\code{summary.permat} returns a list invisibly containing mean Bray-Curtis dissimilarities calculated pairvise among original and permuted matrices, and 
+\code{summary.permat} returns a list invisibly containing mean Bray-Curtis dissimilarities calculated pairvise among original and permuted matrices, and check results of the constraints.
 }
 \note{
 Swap methods can be very slow for large matrices.

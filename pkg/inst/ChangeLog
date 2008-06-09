@@ -2,7 +2,9 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-3 (opened June 5, 2008)
+Version 1.14-4 (opened June p, 2008)
+
+Version 1.14-3 (closed June p, 2008)
 
         * permatfull, permatswap and swapcount: functions to generate 
         unrestricted and restricted null model community data matrices
