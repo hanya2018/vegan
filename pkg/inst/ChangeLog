@@ -4,23 +4,19 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-3 (opened June 5, 2008)
 
-	* rda, cca, capscale: obviously do not handle correctly cases
-	where the rank of constraints + conditions is higher than the rank
-	of the dependent (community) data. Now issues a warning in
-	'print'. This is an ancient problem, but surfaced recently in
-	several places.
-
-	* rda, cca, capscale: constraints are not aliased any more if
-	their rank is higher than the rank of the community data.  Because
-	cca objects are handled by many other functions, this may cause
-	trouble in surprising places and the change is unstabilizing.
-
-	* rda.default, cca.default: vegan naively used only the rank of
-	the ordination, but indeed, there are three cases of ranks
-	(returned as rank): rank of the ordination or number of axes, rank
-	of the constraints after conditions (now returned as qrank), rank
-	of conditions + constraints (returned in QR$rank). The following
-	changes were made if necessary to cca/rda support functions: 
+        * rda.default, cca.default: vegan naively used only the rank of
+        the ordination, but indeed, there are three cases of ranks: rank
+        of the ordination or number of axes (returned as rank like
+        before), rank of the constraints after conditions (now returned as
+        qrank), rank of conditions + constraints (returned in QR$rank).
+        When only 'rank' was used, vegan for instance aliased terms beyond
+        rank of ordination axes, extractAIC did not get df right when
+        going beyond rank of ordination, anova(..., by="t") gave zero df
+        for constraints beyond rank of ordination, and calibrate.cca
+        ignored those extra variables (now stops). In addition predict.cca
+        and predict.rda(..., type="lc", newdata=somedata) gave wrong
+        results in partial model.  The following changes were made if
+        necessary to cca/rda support functions:
 
 	* alias.cca: QR$rank
 	* anova.ccabyaxis: OK 
