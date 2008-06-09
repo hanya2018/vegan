@@ -4,6 +4,12 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-3 (opened June 5, 2008)
 
+        * permatfull, permatswap and swapcount: functions to generate 
+        unrestricted and restricted null model community data matrices
+        under diferent constraints (preserving row/columnsums, 
+        or incidence pattern), with print, plot and summary methods.
+        (submitted by PS)
+        
         * rda.default, cca.default: vegan naively used only the rank of
         the ordination, but indeed, there are three cases of ranks: rank
         of the ordination or number of axes (returned as rank like
