@@ -63,6 +63,7 @@
             CCA$biplot <- cor(Y.r[, oo, drop = FALSE], sol$u[, 
                                         1:rank, drop = FALSE])
             CCA$rank <- rank
+            CCA$qrank <- qrank
             CCA$tot.chi <- sum(CCA$eig)
             CCA$QR <- Q
             CCA$envcentre <- attr(Y.r, "scaled:center")
