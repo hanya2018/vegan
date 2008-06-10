@@ -3,7 +3,7 @@ Title: Community Ecology Package
 Version: 1.14-4
 Date: June 9, 2008
 Author: Jari Oksanen, Roeland Kindt, Pierre Legendre, Bob O'Hara, Gavin L. Simpson, 
-  M. Henry H. Stevens, Helene Wagner, Peter Solymos  
+   Peter Solymos, M. Henry H. Stevens, Helene Wagner  
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Suggests: MASS, mgcv, lattice, cluster, scatterplot3d, rgl, ellipse,
   tcltk 
