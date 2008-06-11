@@ -58,7 +58,7 @@ OTHER FIXES
     - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
       factorfit and vectorfit could fail with non-vegan ordination
       objects in R 2.7.0 whose weights.default function gave error if
-      object had no weights (work in R 2.6.2 and earlier).
+      object had no weights (these worked in R 2.6.2 and earlier).
 
     - taxa2dist: has a "method" name for distances.
 
