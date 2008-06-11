@@ -7,7 +7,8 @@ Version 1.13-1 (released June 11, 2008)
 
 	* adonis: speed-up and doc updates.
 
-	* merged r400:405 -- should fix rank problems in cca/rda.
+	* merged r400:405 -- should fix rank problems in cca/rda (canccels
+	r396). 
 
 	* merged r396: cca/rda/capscale print issues a warning when rank
 	of constraints+conditions < rank of dependent data, because vegan
