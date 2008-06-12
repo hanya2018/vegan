@@ -83,9 +83,9 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
     if (count) for (k in 1:burnin) temp <- swapcount(temp)
         else for (k in 1:burnin) temp <- commsimulator(temp, method=method)
     for (i in 1:times)
-        if (count) perm[[i]][id,] <- swapcount(temp)
+        if (count) perm[[i]][id,] <- swapcount(temp, thin=thin)
         else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
-        }
+        temp <- perm[[i]][id,]}
     specs <- list(reg=reg, hab=hab, burnin=burnin, thin=thin)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
@@ -142,7 +142,8 @@ function(object, digits=2, ...)
         if (is.null(x$specs$reg) & !is.null(x$specs$hab)) int <- x$specs$hab
         if (!is.null(x$specs$reg) & !is.null(x$specs$hab))
             int <- interaction(x$specs$reg, x$specs$hab, drop=TRUE)
-        ssum <- numeric(n)}
+	nlev <- length(unique(int))        
+	ssum <- numeric(n)}
     bray <- psum <- pfill <- vrow <- vcol <- numeric(n)
     for (i in 1:n) {
         bray[i] <- sum(abs(x$orig-x$perm[[i]]))/sum(x$orig+x$perm[[i]])
