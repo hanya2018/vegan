@@ -148,10 +148,10 @@ function(object, digits=2, ...)
         bray[i] <- sum(abs(x$orig-x$perm[[i]]))/sum(x$orig+x$perm[[i]])
         psum[i] <- sum(x$orig) == sum(x$perm[[i]])
         pfill[i] <- sum(x$orig > 0) == sum(x$perm[[i]] > 0)
-        vrow[i] <- sum(rowSums(x$orig)) == sum(rowSums(x$perm[[i]]))
-        vcol[i] <- sum(colSums(x$orig)) == sum(colSums(x$perm[[i]]))
-        if (restr) ssum[i] <- sum(rowSums(aggregate(x$orig,list(int),sum)[,-1]) ==
-            rowSums(aggregate(x$perm[[i]],list(int),sum)[,-1])) == nlev
+        vrow[i] <- sum(rowSums(x$orig) == rowSums(x$perm[[i]])) == nrow(x$orig)
+        vcol[i] <- sum(colSums(x$orig) == colSums(x$perm[[i]])) == ncol(x$orig)
+        if (restr) ssum[i] <- {sum(rowSums(aggregate(x$orig,list(int),sum)[,-1]) ==
+            rowSums(aggregate(x$perm[[i]],list(int),sum)[,-1])) == nlev}
         }
     strsum <- if (restr) sum(ssum)/n else NA
     outv <- c(sum=sum(psum)/n, fill=sum(pfill)/n, rowsums=sum(vrow)/n, colsums=sum(vcol)/n, strsum=strsum)
