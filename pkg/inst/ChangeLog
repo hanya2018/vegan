@@ -18,6 +18,16 @@ Version 1.14-5 (opened June 16, 2008)
 	* summary.cca: prints 'capscale' like 'rda' (used to have some
 	'cca' style output, like calling site scores "weighted averages"
 	instead of "weigthed sums").
+
+	* permutest.cca: estimates now residual df as number-of-rows -
+	rank-of-constraints-and-conditions - 1 so that df and pseudo-F are
+	equal to those reported by lm() for single response variables in
+	rda. anova(..., by = "ax") needs rethinking though: it only had
+	one df.  Because the test was based on permutation and order
+	statistics the change of df does not change the significances:
+	the observed pseudo-F and permuted pseudo-F's are influenced
+	similarly by the change of df, and order statistic does not
+	change. 
 	
 Version 1.14-4 (closed June 12, 2008)
 
