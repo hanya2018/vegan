@@ -2,7 +2,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-4 (opened June 9, 2008)
+Version 1.14-5 (opened June 16, 2008)
+
+	* scores.rda: scaling = 0 returns now unmodified scores from the
+	object (like documented) without multiplying by the scaling
+	constant. 
+	
+Version 1.14-4 (closed June 12, 2008)
 
         * permatfull, permatswap and swapcount: functions to generate 
         unrestricted and restricted null model community data matrices
