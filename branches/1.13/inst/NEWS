@@ -3,6 +3,13 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+		       CHANGES IN VEGAN 1.13-2
+
+    - summary of capscale identical to the summary of rda.
+
+    - scores of rda and capscale with scaling = 0 really return the
+      unmodified scores.	
+
 		       CHANGES IN VEGAN 1.13-1
 
 GENERAL

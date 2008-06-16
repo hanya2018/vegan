@@ -3,6 +3,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
+Version 1.13-2 (opened June 16, 2008)
+
+	* merged r425: scores.rda scaling=0 really returns unmodified
+	scores like documented.
+
+	* merged r427: summary for capscale result similar as for rda.
+
 Version 1.13-1 (released June 11, 2008)
 
 	* adonis: speed-up and doc updates.

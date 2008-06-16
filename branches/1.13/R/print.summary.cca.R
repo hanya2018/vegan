@@ -8,9 +8,9 @@
     }
     cat("\nCall:\n")
     cat(deparse(x$call), "\n")
-    statnam <- if (x$method == "rda") 
-        "sums"
-    else "averages"
+    statnam <- if (x$method == "cca") 
+        "averages"
+    else "sums"
     cat("\nPartitioning of ", x$inertia, ":\n", sep = "")
     out <- c(Total = x$tot.chi, Conditioned = x$partial.chi, 
              Constrained = x$constr.chi, Unconstrained = x$unconst.chi)
@@ -52,7 +52,7 @@
     if (x$scaling < 0) {
         if (x$method == "cca") 
             cat("* Hill scaling performed on both scores\n")
-        if (x$method == "rda") 
+        else 
             cat("* Species scores divided by species standard deviations\n")
         cat("  so that they no longer are biplot scores\n")
     }
@@ -79,4 +79,3 @@
     cat("\n")
     invisible(x)
 }
-
