@@ -9,7 +9,15 @@ Version 1.14-5 (opened June 16, 2008)
 	constant. Gains argument 'const' for user-settable general scaling
 	constant of the scores. The default 'const' is found internally to
 	giv a biplot scaling so that species and site scores together
-	approximate the original data.
+	approximate the original data. The value of 'const' is returned as
+	an attribute of 'scores'.
+
+	* summary.cca: prints the value of general scaling constant used
+	in 'rda' or 'capscale'.
+
+	* summary.cca: prints 'capscale' like 'rda' (used to have some
+	'cca' style output, like calling site scores "weighted averages"
+	instead of "weigthed sums").
 	
 Version 1.14-4 (closed June 12, 2008)
 

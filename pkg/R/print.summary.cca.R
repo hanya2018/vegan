@@ -56,6 +56,10 @@
             cat("* Species scores divided by species standard deviations\n")
         cat("  so that they no longer are biplot scores\n")
     }
+    if (x$method != "cca") {
+        cat("* General scaling constant of scores: ",
+            attr(x, "const"), "\n")
+    }
     if (!is.null(x$species)) {
         cat("\n\nSpecies scores\n\n")
         hcat(x$species, head=head, tail=tail, digits = digits, ...)
