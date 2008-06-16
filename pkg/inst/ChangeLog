@@ -6,7 +6,10 @@ Version 1.14-5 (opened June 16, 2008)
 
 	* scores.rda: scaling = 0 returns now unmodified scores from the
 	object (like documented) without multiplying by the scaling
-	constant. 
+	constant. Gains argument 'const' for user-settable general scaling
+	constant of the scores. The default 'const' is found internally to
+	giv a biplot scaling so that species and site scores together
+	approximate the original data.
 	
 Version 1.14-4 (closed June 12, 2008)
 
