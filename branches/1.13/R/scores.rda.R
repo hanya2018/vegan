@@ -80,6 +80,7 @@
     }  
     if (length(sol) == 1) 
         sol <- sol[[1]]
+    attr(sol, "const") <- const
     return(sol)
 }
 
