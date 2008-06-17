@@ -5,6 +5,8 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.13-2 (opened June 16, 2008)
 
+	* merged 430: fix residual df in permutest.cca/anova.cca.
+
 	* merged 428: scores.rda returns and summary.cca prints scaling
 	constant in rda/capscale.
 
