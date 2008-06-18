@@ -28,6 +28,9 @@ Version 1.14-5 (opened June 16, 2008)
 	the observed pseudo-F and permuted pseudo-F's are influenced
 	similarly by the change of df, and order statistic does not
 	change. 
+
+	* varpart: long formulae were cut off in printoutwith a cryptic
+	warning. 
 	
 Version 1.14-4 (closed June 12, 2008)
 
