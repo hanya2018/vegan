@@ -116,6 +116,9 @@ commsimulator(x, method, thin=1)
   2001).
 
   The other methods maintain both row and column frequencies.
+  Methods \code{swap} and \code{tswap} implement sequential methods,
+  where the matrix is changed only little in one step, but the changed
+  matrix is used as an input if the next step.
   Methods \code{swap} and \code{tswap} inspect random 2x2 submatrices
   and if they are checkerboard units, the order of columns is
   swapped. This changes the matrix structure, but does not influence
@@ -132,12 +135,25 @@ commsimulator(x, method, thin=1)
   and uses that ratio to thin the results, so that on average one swap
   will be found per step of \code{tswap}.  However, the checkerboard
   frequency probably changes during swaps, but this is not taken into
-  account in estimating the \code{thin}.  Both swap methods are sequential,
-  and the result of the swap is used as the input of the next swap. One
-  swap still changes the matrix only little, and it may be useful to
+  account in estimating the \code{thin}.  One swap still changes the
+  matrix only little, and it may be useful to 
   thin the results so that the statistic is only evaluated after
   \code{thin} steps. 
 
+  Methods \code{quasiswap} and \code{backtracking} are not sequential,
+  but each call produces a matrix that is independent of previous
+  matrices, and has the same marginal totals as the original data. The
+  recommended method is \code{quasiswap} which is much faster because
+  it is implemented in C. Method \code{bactkracking} is provided for
+  comparison, but it is so slow that it may be dropped from future
+  releases of \pkg{vegan} (or also implemented in C).
+  Method \code{quasiswap} (\enc{Miklós}{Miklos} & Podani 2004)
+  implements a method where matrix is first filled 
+  honouring row and column totals, but with integers that may be larger than
+  one. Then the method inspects random 2x2 matrices and performs a
+  quasiswap on them. Quasiswap is similar to ordinary swap, but it also
+  can reduce numbers above one to ones maintaining marginal
+  totals.
   Method \code{backtracking}
   implements a filling method with constraints both for row and column
   frequencies (Gotelli & Entsminger 2001). The matrix is first filled
@@ -146,14 +162,7 @@ commsimulator(x, method, thin=1)
   After that begins \dQuote{backtracking}, where some of the
   points are removed, and then filling is started again, and this
   backtracking is done so may times that all incidences will be filled
-  into matrix. Method
-  \code{quasiswap} (\enc{Miklós}{Miklos} & Podani 2004) implements a method where
-  matrix is first filled 
-  honouring row and column totals, but with integers that may be larger than
-  one. Then the method inspects random 2x2 matrices and performs a
-  quasiswap on them. Quasiswap is similar to ordinary swap, but it also
-  can reduce numbers above one to ones maintaining marginal
-  totals. The \code{quasiswap} method is not sequential, but it produces
+  into matrix. The \code{quasiswap} method is not sequential, but it produces
   a random incidence matrix with given marginal totals. 
 }
 
@@ -240,6 +249,11 @@ names in the References.  }
 \examples{
 data(sipoo)
 nestedchecker(sipoo)
+## Matrix temperature
+out <- oecosimu(sipoo, nestedtemp, "r00")
+out
+plot(out)
+plot(out, kind="incid")
 ## Use the first eigenvalue of correspondence analysis as an index
 ## of structure: a model for making your own functions.
 ## This is a minimal structure; fancier functions give fancier results

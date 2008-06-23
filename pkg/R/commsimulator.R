@@ -53,22 +53,9 @@ function (x, method, thin = 1)
         out <- x
     } else if (method == "quasiswap") {
         out <- r2dtable(1, rowSums(x), colSums(x))[[1]]
-        swp <- matrix(c(-1,1,1,-1), nrow=2)
-        bad <- sum(out*out) - sum(out)
-        iter <- 0
-        while (bad > 0) {
-            i <- .Internal(sample(nr, 2, FALSE, NULL))
-            j <- .Internal(sample(nc, 2, FALSE, NULL))
-            z <- out[i,j]
-            if(z[1,1] > 0 && z[2,2] > 0 && sum(-swp*z) >= 2 ) {
-                out[i,j] <- z + swp
-                bad <- bad - 2*(sum(-swp*z)-2)
-            }
-            if(z[1,2] > 0 && z[2,1] > 0 && sum(swp*z) >= 2 ) {
-                out[i,j] <- z - swp
-                bad <- bad - 2*(sum(swp*z)-2)
-            }
-        }
+        out <- .C("quasiswap", m = as.integer(out), as.integer(nrow(x)),
+                  as.integer(ncol(x)), PACKAGE = "vegan")$m
+        dim(out) <- dim(x)
         out
     }
     else if (method == "backtrack") {

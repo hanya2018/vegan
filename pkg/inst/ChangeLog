@@ -2,7 +2,17 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-5 (opened June 16, 2008)
+Version 1.14-6 (opened June 23, 2008)
+
+	* commsimulator: "quasiswap" written in C and *much* faster
+	now. Times are for MacBook Intel 1.86 GHz and 100 matrices:
+	"sipoo" from 7 min to 4 sec, "BCI" from 2+ hrs to 45
+	sec. Actually, quasiswap is now much faster than ordinary swap
+	which also should be written in C. "Backtracking" is so much more
+	complicated code that it could probably never reach "quasiswap"
+	even if written in C, and it may be dropped in the future. 
+	
+Version 1.14-5 (closed June 19, 2008)
 
 	* scores.rda: scaling = 0 returns now unmodified scores from the
 	object (like documented) without multiplying by the scaling
