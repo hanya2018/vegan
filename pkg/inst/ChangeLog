@@ -11,6 +11,11 @@ Version 1.14-6 (opened June 23, 2008)
 	which also should be written in C. "Backtracking" is so much more
 	complicated code that it could probably never reach "quasiswap"
 	even if written in C, and it may be dropped in the future. 
+
+	* commsimulator: "swap" and "tswap" written in C, and clearly
+	faster now. In MacBook, 100 swaps with "sipoo" went from 8 sec to
+	0.5 sec, and thinning hardly influenced timing (it used to
+	thin-fold times).
 	
 Version 1.14-5 (closed June 19, 2008)
 

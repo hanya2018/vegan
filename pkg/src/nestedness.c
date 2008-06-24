@@ -82,5 +82,79 @@ void quasiswap(int *m, int *nr, int *nc)
     PutRNGstate();
 }
 
+/* Trial swap: try 'thin' times and swap when you can. This gives zero
+ * to many swaps for one call.
+ */
+
+void trialswap(int *m, int *nr, int *nc, int *thin)
+{
+
+    int i, a, b, c, d, row[2], col[2];
+
+    GetRNGstate();
+
+    for (i=0; i < *thin; i ++) {
+	i2rand(row, (*nr) - 1);
+	i2rand(col, (*nc) - 1);
+	a = INDX(row[0], col[0], *nr);
+	b = INDX(row[0], col[1], *nr);
+	c = INDX(row[1], col[0], *nr);
+	d = INDX(row[1], col[1], *nr);
+	if (m[a] == 1 && m[d] == 1 && m[b] == 0 & m[c] == 0) {
+	    m[a] = 0;
+	    m[d] = 0;
+	    m[b] = 1;
+	    m[c] = 1;
+	} else if (m[c] == 1 && m[b] == 1 && m[d] == 0 &&
+		   m[a] == 0) {
+	    m[a] = 1;
+	    m[d] = 1;
+	    m[b] = 0;
+	    m[c] = 0;
+	}
+    }
+
+    PutRNGstate();
+}
+
+/* Ordinary swap: swap if you can, stop after you swapped, or repeat
+ * thin times. The data matrix 'm' must be binary: this is not
+ * checked.
+ */
+
+void swap(int *m, int *nr, int *nc, int *thin)
+{
+
+    int i, a, b, c, d, row[2], col[2];
+
+    GetRNGstate();
+
+    for (i=0; i < *thin; i ++) {
+	for(;;) {
+	    i2rand(row, (*nr) - 1);
+	    i2rand(col, (*nc) - 1);
+	    a = INDX(row[0], col[0], *nr);
+	    b = INDX(row[0], col[1], *nr);
+	    c = INDX(row[1], col[0], *nr);
+	    d = INDX(row[1], col[1], *nr);
+	    if (m[a] == 1 && m[d] == 1 && m[b] == 0 & m[c] == 0) {
+		m[a] = 0;
+		m[d] = 0;
+		m[b] = 1;
+		m[c] = 1;
+		break;
+	    } else if (m[c] == 1 && m[b] == 1 && m[d] == 0 &&
+		       m[a] == 0) {
+		m[a] = 1;
+		m[d] = 1;
+		m[b] = 0;
+		m[c] = 0;
+		break;
+	    }
+	}
+    }
+    PutRNGstate();
+}
+
 #undef IRAND
 #undef INDX

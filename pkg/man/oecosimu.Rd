@@ -248,9 +248,8 @@ names in the References.  }
   (\pkg{labdsv} package) randomizes a community table.}
 \examples{
 data(sipoo)
-nestedchecker(sipoo)
 ## Matrix temperature
-out <- oecosimu(sipoo, nestedtemp, "r00")
+out <- nestedtemp(sipoo)
 out
 plot(out)
 plot(out, kind="incid")
@@ -258,7 +257,7 @@ plot(out, kind="incid")
 ## of structure: a model for making your own functions.
 ## This is a minimal structure; fancier functions give fancier results
 caeval <- function(x) list(statistic = decorana(x, ira=1)$evals[1])
-out <- oecosimu(sipoo, caeval, "swap", burnin=100, thin=5)
+out <- oecosimu(sipoo, caeval, "swap", burnin=100, thin=10)
 out
 ## Inspect the swap sequence
 plot(out$oecosimu$simulated, type="l")
