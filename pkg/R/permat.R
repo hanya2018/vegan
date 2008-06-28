@@ -3,16 +3,16 @@
 function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
 {
     mtype <- match.arg(mtype, c("prab", "count"))
-    count <- if (mtype == "count") TRUE else FALSE
+    count <- mtype == "count"
     fixedmar <- match.arg(fixedmar, c("none", "rows", "columns", "both"))
     m <- as.matrix(m)
     n.row <- nrow(m)
     n.col <- ncol(m)
     if (mtype == "prab") m <- matrix(as.numeric(m > 0), n.row, n.col)
-    if (is.null(reg) & is.null(hab)) str <- as.factor(rep(1, n.row))
-    if (!is.null(reg) & is.null(hab)) str <- as.factor(reg)
-    if (is.null(reg) & !is.null(hab)) str <- as.factor(hab)
-    if (!is.null(reg) & !is.null(hab)) str <- interaction(reg, hab, drop=TRUE)
+    if (is.null(reg) && is.null(hab)) str <- as.factor(rep(1, n.row))
+    if (!is.null(reg) && is.null(hab)) str <- as.factor(reg)
+    if (is.null(reg) && !is.null(hab)) str <- as.factor(hab)
+    if (!is.null(reg) && !is.null(hab)) str <- interaction(reg, hab, drop=TRUE)
     levels(str) <- 1:length(unique(str))
     str <- as.numeric(str)
     nstr <- length(unique(str))
@@ -55,19 +55,19 @@ function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
 function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin = 10000, thin = 1000)
 {
     mtype <- match.arg(mtype, c("prab", "count"))
-    count <- if (mtype == "count") TRUE else FALSE
+    count <- mtype == "count"
     if (count) {
-        method <- match.arg(method, "swap")
-        } else {method <- match.arg(method, c("swap", "tswap", "backtrack"))}
+        method <- match.arg(method, c("swap", "Cswap"))
+    } else {method <- match.arg(method, c("swap", "tswap"))}
 
     m <- as.matrix(m)
     n.row <- nrow(m)
     n.col <- ncol(m)
     if (mtype == "prab") m <- matrix(as.numeric(m > 0), n.row, n.col)
-    if (is.null(reg) & is.null(hab)) str <- as.factor(rep(1, n.row))
-    if (!is.null(reg) & is.null(hab)) str <- as.factor(reg)
-    if (is.null(reg) & !is.null(hab)) str <- as.factor(hab)
-    if (!is.null(reg) & !is.null(hab)) str <- interaction(reg, hab, drop=TRUE)
+    if (is.null(reg) && is.null(hab)) str <- as.factor(rep(1, n.row))
+    if (!is.null(reg) && is.null(hab)) str <- as.factor(reg)
+    if (is.null(reg) && !is.null(hab)) str <- as.factor(hab)
+    if (!is.null(reg) && !is.null(hab)) str <- interaction(reg, hab, drop=TRUE)
     levels(str) <- 1:length(unique(str))
     str <- as.numeric(str)
     nstr <- length(unique(str))
@@ -78,14 +78,30 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
         perm[[i]] <- matrix(0, n.row, n.col)
 
     for (j in 1:nstr) {
-    id <- which(str == j)
-    temp <- m[id,]
-    if (count) for (k in 1:burnin) temp <- swapcount(temp)
-        else for (k in 1:burnin) temp <- commsimulator(temp, method=method)
-    for (i in 1:times)
-        if (count) perm[[i]][id,] <- swapcount(temp, thin=thin)
-        else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
-        temp <- perm[[i]][id,]}
+        id <- which(str == j)
+        temp <- m[id,]
+        if (count)
+            for (k in 1:burnin)
+                temp <- switch(method,
+                               swap = swapcount(temp),
+                               Cswap = .C("swapcount", m = as.double(temp),
+                               as.integer(n.row), as.integer(n.col),
+                               as.integer(1))$m)
+        else
+            for (k in 1:burnin)
+                temp <- commsimulator(temp, method=method)
+        for (i in 1:times) {
+            if (count)
+                perm[[i]][id,] <- switch(method,
+                                         swap = swapcount(temp, thin=thin),
+                                         Cswap = .C("swapcount",
+                                         m = as.double(temp),
+                                         as.integer(n.row),
+                                         as.integer(n.col),
+                                         as.integer(thin))$m)                               else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
+            temp <- perm[[i]][id,]
+        }
+    }
     specs <- list(reg=reg, hab=hab, burnin=burnin, thin=thin)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
@@ -135,12 +151,12 @@ function(object, digits=2, ...)
 {
     x <- object
     n <- attr(x, "times")
-    if (attr(x, "ptype") != "sar" & !is.null(x$specs$reg) | !is.null(x$specs$hab))
+    if (attr(x, "ptype") != "sar" && !is.null(x$specs$reg) || !is.null(x$specs$hab))
         restr <- TRUE else restr <- FALSE
     if (restr) {
-        if (!is.null(x$specs$reg) & is.null(x$specs$hab)) int <- x$specs$reg
-        if (is.null(x$specs$reg) & !is.null(x$specs$hab)) int <- x$specs$hab
-        if (!is.null(x$specs$reg) & !is.null(x$specs$hab))
+        if (!is.null(x$specs$reg) && is.null(x$specs$hab)) int <- x$specs$reg
+        if (is.null(x$specs$reg) && !is.null(x$specs$hab)) int <- x$specs$hab
+        if (!is.null(x$specs$reg) && !is.null(x$specs$hab))
             int <- interaction(x$specs$reg, x$specs$hab, drop=TRUE)
 	nlev <- length(unique(int))        
 	ssum <- numeric(n)}

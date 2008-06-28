@@ -1,8 +1,9 @@
 #include <R.h>
+#include <Rmath.h>
 
 /* Utility functions */
 
-/* Random integer */
+/* Random integer 0..imax */
 
 #define IRAND(imax) (int) (((double) (imax + 1)) * unif_rand())
 
@@ -143,8 +144,8 @@ void swap(int *m, int *nr, int *nc, int *thin)
 		m[b] = 1;
 		m[c] = 1;
 		break;
-	    } else if (m[c] == 1 && m[b] == 1 && m[d] == 0 &&
-		       m[a] == 0) {
+	    } 
+	    if (m[c] == 1 && m[b] == 1 && m[d] == 0 && m[a] == 0) {
 		m[a] = 1;
 		m[d] = 1;
 		m[b] = 0;
@@ -153,6 +154,95 @@ void swap(int *m, int *nr, int *nc, int *thin)
 	    }
 	}
     }
+    PutRNGstate();
+}
+
+
+/* 'swapcount' is a C translation of Peter Solymos's R code. It is
+ * similar to 'swap', but can swap > 1 values and so works for
+ * quantitative (count) data.
+ */
+
+
+/* 'isDiag' is a utility function for 'swapcount' to find the largest
+ * value that can be swapped and whether in diagonal or antidiagonal
+ * way. The input is a 2x2 submatrix 'sm'.
+*/
+
+double isDiag(double *sm)
+{
+    int i, sX;
+    double choose[2];
+
+    /* sX: number of non-zero cells */
+    for (i = 0, sX = 0; i++; i < 4)
+	    if (sm[i] > 0)
+		    sX++;
+
+    /* Smallest diagonal and antidiagonal element */
+    choose[0] = (sm[1] < sm[2]) ? sm[1] : sm[2];
+    choose[1] = (sm[0] < sm[3]) ? -sm[0] : -sm[3]; 
+
+    if (sX == 4) {
+        /* Either choose could be returned, but RNG is not needed,
+	 * because sm already is in random order, and we always return
+	 * choose[0] */
+	    return choose[0];
+    } 
+    if ((sm[0] == 0 && sm[1] > 0 && sm[2] > 0 && sm[3] == 0) ||
+	(sm[0] == 0 && sm[1] > 0 && sm[2] > 0 && sm[3] > 0) ||
+	(sm[0] > 0 && sm[1] > 0 && sm[2] > 0 && sm[3] == 0))
+	    return choose[0];
+    if ((sm[0] > 0 && sm[1] == 0 && sm[2] == 0 && sm[3] > 0) ||
+	(sm[0] > 0 && sm[1] == 0 && sm[2] > 0 && sm[3] > 0) ||
+	(sm[0] > 0 && sm[1] > 0 && sm[2] == 0 && sm[3] > 0))
+	    return choose[1];
+    if (sX < 2 ||
+	(sm[0] == 0 && sm[1] == 0 && sm[2] > 0 && sm[3] > 0) ||
+	(sm[0] > 0 && sm[1] > 0 && sm[2] == 0 && sm[3] == 0) ||
+	(sm[0] == 0 && sm[1] > 0 && sm[2] == 0 && sm[3] > 0) ||
+	(sm[0] > 0 && sm[1] == 0 && sm[2] > 0 && sm[3] == 0))
+	    return 0;                                              
+}
+
+void swapcount(double *m, int *nr, int *nc, int *thin)
+{
+    int row[2], col[2], k, ij[4], changed, oldn, newn, 
+	pm[4] = {1, -1, -1, 1} ;
+    double sm[4], ev;
+
+    GetRNGstate();
+
+    changed = 0;
+    while (changed < *thin) {
+	/* Select a random 2x2 matrix*/
+	i2rand(row, *nr - 1);
+	i2rand(col, *nc - 1);
+	ij[0] = INDX(row[0], col[0], *nr);
+	ij[1] = INDX(row[1], col[0], *nr);
+	ij[2] = INDX(row[0], col[1], *nr);
+	ij[3] = INDX(row[1], col[1], *nr);
+	for (k = 0; k < 4; k ++)
+	    sm[k] = m[ij[k]];
+	/* The largest value that can be swapped */
+	ev = isDiag(sm);
+	if (ev != 0) {
+	    /* Check that the fill doesn't change*/
+	    for (k = 0, oldn = 0, newn = 0; k < 4; k++) {
+		if(sm[k] > 0)
+		    oldn++;
+		if (sm[k] + pm[k]*ev > 0)
+		    newn++;
+	    }
+	    /* Swap */
+	    if (oldn == newn) {
+		for (k = 0; k < 4; k++)
+		    m[ij[k]] += pm[k]*ev;
+		changed++;
+	    }
+	}
+    }
+
     PutRNGstate();
 }
 
