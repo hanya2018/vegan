@@ -15,6 +15,9 @@ Version 1.13-2 (opened June 16, 2008)
 
 	* merged r427: summary for capscale result similar as for rda.
 
+	* r437 simultaneously with pkg/: oecosimu p/a transforms data also
+	for the original statistic.
+
 Version 1.13-1 (released June 11, 2008)
 
 	* adonis: speed-up and doc updates.

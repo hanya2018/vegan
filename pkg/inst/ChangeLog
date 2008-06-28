@@ -16,6 +16,9 @@ Version 1.14-6 (opened June 23, 2008)
 	faster now. In MacBook, 100 swaps with "sipoo" went from 8 sec to
 	0.5 sec, and thinning hardly influenced timing (it used to
 	thin-fold times).
+
+	* oecosimu: takes care that original statistic is found from
+	binary data.
 	
 Version 1.14-5 (closed June 19, 2008)
 

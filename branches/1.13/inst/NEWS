@@ -15,6 +15,9 @@
       permutation, and this change does not influence the order
       statistic used in permutations.
 
+   - oecosimu: always estimates the original statistic with binary
+     data even when user supplies quantitative data.
+
     - rda (and capscale) use internal scaling constant so that the
       returned site and species scores with scalings 1, 2 or 3
       together provide a biplot approximation of the original
