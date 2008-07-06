@@ -547,13 +547,22 @@ graph. (Here and below  @code{...} means other arguments you want
 to give to your @code{plot} command.)
 
 @item Use points, and add labels to desired points using @code{identify}
-for ordination graphics, if you do not need to see all labels.  
+for ordination graphics, if you do not need to see all labels. 
+
+@item Add labels using function @code{ordilabel} which uses
+non-transparent background to the text. The labels still shadow each
+other, but the uppermost labels are readable. Argument @code{priority}
+will help in displaying the most interesting labels. 
 
 @item Use @code{orditorp} function that uses labels only if these can be
 added to a graph without overwriting other labels, and points otherwise,
 if you do not need to see all labels. You must first create an empty
 plot using  @code{plot(..., type="n")}, and then add labels or points
 with @code{orditorp}.  
+
+@item Use @code{ordipointlabel} which uses points and text labels to the
+points, and tries to optimize the location of the text to minimize the
+overlap. 
 
 @item Use interactive @code{orditkplot} function that lets you drag
 labels of points to better positions if you need to see all labels. Only

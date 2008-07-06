@@ -4,6 +4,15 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-7 (opened July 5, 2008)
 
+	* ordilabel: new function for cluttered ordination plots -- text
+	is written on a non-transparent label. Similar to s.label()
+	function in ade4.
+
+	* ordipointlabel: new function for cluttered ordination plots --
+	points are in fixed positions, but their text label is located to
+	avoid overlap. The optimization is based on optim(..., method =
+	"SANN"). Similar to pointLabel function in maptools.
+
 	* permutations: permuted.index2 and associated functions now allow
 	for restricted permutations of strata (i.e. restricted shuffling
 	of the blocks). This changes the acceptable 'type' options and adds
@@ -11,6 +20,7 @@ Version 1.14-7 (opened July 5, 2008)
 	and what is permuted.
 
 Version 1.14-6 (closed July 5, 2008)
+
 
 	* permatswap (nestedness.c): translated Peter Solymos's
 	swapcount.R to C. This is still experimental code, and the user
