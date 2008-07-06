@@ -86,7 +86,7 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
                                swap = swapcount(temp),
                                Cswap = .C("swapcount", m = as.double(temp),
                                as.integer(n.row), as.integer(n.col),
-                               as.integer(1))$m)
+                               as.integer(1), PACKAGE = "vegan")$m)
         else
             for (k in 1:burnin)
                 temp <- commsimulator(temp, method=method)
@@ -98,7 +98,8 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
                                          m = as.double(temp),
                                          as.integer(n.row),
                                          as.integer(n.col),
-                                         as.integer(thin))$m)                               else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
+                                         as.integer(thin),
+                                         PACKAGE = "vegan")$m)                               else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
             temp <- perm[[i]][id,]
         }
     }
