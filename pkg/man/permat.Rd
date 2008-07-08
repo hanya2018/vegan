@@ -4,7 +4,7 @@
 \alias{plot.permat}
 \alias{print.permat}
 \alias{summary.permat}
-\alias{swapcount}
+\alias{print.summary.permat}
 
 \title{Matrix Permutation Algorithms or Presence-Absence and Count Data}
 
@@ -20,9 +20,9 @@ several tests can be applied on the same set of random matrices.  }
 \usage{
 permatfull(m, fixedmar = "both", reg = NULL, hab = NULL, mtype = "count", times = 100)
 permatswap(m, reg = NULL, hab = NULL, mtype = "count", method = "swap", times = 100, burnin = 10000, thin = 1000)
-swapcount(m, thin = 1)
 \method{plot}{permat}(x, ...)
-\method{summary}{permat}(object, digits = 2, ...)
+\method{summary}{permat}(object, ...)
+\method{print}{summary.permat}(x, digits = 2, ...)
 }
 \arguments{
   \item{m}{a community data matrix with plots (samples) as rows and species (taxa) as columns.}
@@ -31,7 +31,7 @@ swapcount(m, thin = 1)
   \item{hab}{numeric vector or factor with length same as \code{nrow(m)} for grouping rows within strata (habitat classes) for restricted permutations. Unique values or levels are used.}
   \item{mtype}{matrix data type, either \code{"count"} for count data, or \code{"prab"} for presence-absence data.}
   \item{times}{number of permuted matrices.}
-  \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available using the function \code{\link{swapcount}}.}
+  \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available.}
   \item{burnin}{number of null communities discarded before proper analysis in sequential \code{"swap", "tswap"} methods.}
   \item{thin}{number of discarded permuted matrices between two evaluations in sequential \code{"swap", "tswap"} methods.}
   \item{x, object}{object of class \code{"permat"}}
@@ -39,7 +39,8 @@ swapcount(m, thin = 1)
   \item{\dots}{other arguments passed to methods.}
 } 
 
-\details{ Unrestricted and restricted permutations: if both
+\details{
+Unrestricted and restricted permutations: if both
 \code{reg} and \code{hab} are \code{NULL}, functions perform
 unrestricted permutations. If either of the two is given, it is used
 as is for restricted permutations. If both are given, interaction is
@@ -59,14 +60,10 @@ Functions \code{permatfull} and \code{permatswap} return an object of class \cod
 Bray-Curtis dissimilarities calculated pairvise among original and
 permuted matrices, and check results of the constraints.  }
 
-\note{
-Swap methods can be very slow for large matrices.
-}
-
 \references{ Original references are given on help pages of the
 functions used internally, listed in section 'See Also'.  }
 
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}}
+\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}; Jari Oksanen translated the original swap algorithm for count data into C}
 
 \seealso{
 \code{\link{commsimulator}}, \code{\link{r2dtable}}, \code{\link{sample}}
@@ -79,11 +76,6 @@ m <- matrix(c(
    0,0,1,2,0,3,
    0,0,0,1,4,3
    ), 4, 6, byrow=TRUE)
-## The swap algorithm for count data (1 step):
-a <- swapcount(m)
-a
-## Identity of swapped cells:
-a != m
 ## Using the swap algorithm to create a 
 ## list of permuted matrices, where
 ## row/columns sums and matrix fill are preserved:
@@ -96,7 +88,7 @@ x2 <- permatfull(m)
 summary(x2)
 plot(x2)
 ## Unrestricted permutation of presence-absence type
-## retaining neither row/columns sums nor not matrix fill:
+## not retaining row/columns sums:
 x3 <- permatfull(m, "none", mtype="prab")
 x3$orig  ## note: original matrix is binarized!
 summary(x3)

@@ -4,7 +4,12 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-7 (opened July 5, 2008)
 
-	* ordilabel: new function for cluttered ordination plots -- text
+	* permat.R, swapcount.R: summary method was modified according to
+    standard R ways, ylab argument was deleted from plot method.
+    The R version of swapcount was deleted and replaced by the C
+    version. Help file was modified accordingly.
+
+    * ordilabel: new function for cluttered ordination plots -- text
 	is written on a non-transparent label. Similar to s.label()
 	function in ade4.
 

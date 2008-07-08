@@ -2,6 +2,8 @@
 `permatfull` <-
 function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
 {
+    if (!identical(all.equal(m, round(m)), TRUE))
+       stop("function accepts only integers (counts)")
     mtype <- match.arg(mtype, c("prab", "count"))
     count <- mtype == "count"
     fixedmar <- match.arg(fixedmar, c("none", "rows", "columns", "both"))
@@ -31,7 +33,7 @@ function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
             for (i in 1:times)
                 if (count) perm[[i]][id,] <- apply(m[id,], 2, sample)
                 else perm[[i]][id,] <- commsimulator(m[id,], method="r0")
-        if (fixedmar == "cols")
+        if (fixedmar == "columns")
             for (i in 1:times)
                 if (count) perm[[i]][id,] <- t(apply(m[id,], 1, sample))
                 else perm[[i]][id,] <- commsimulator(m[id,], method="c0")
@@ -54,10 +56,12 @@ function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
 `permatswap` <-
 function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin = 10000, thin = 1000)
 {
+    if (!identical(all.equal(m, round(m)), TRUE))
+       stop("function accepts only integers (counts)")
     mtype <- match.arg(mtype, c("prab", "count"))
     count <- mtype == "count"
     if (count) {
-        method <- match.arg(method, c("swap", "Cswap"))
+        method <- match.arg(method, "swap")
     } else {method <- match.arg(method, c("swap", "tswap"))}
 
     m <- as.matrix(m)
@@ -82,24 +86,21 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
         temp <- m[id,]
         if (count)
             for (k in 1:burnin)
-                temp <- switch(method,
-                               swap = swapcount(temp),
-                               Cswap = .C("swapcount", m = as.double(temp),
-                               as.integer(n.row), as.integer(n.col),
-                               as.integer(1), PACKAGE = "vegan")$m)
+                temp <- .C("swapcount", m = as.double(temp),
+                        as.integer(n.row), as.integer(n.col),
+                        as.integer(1), PACKAGE = "vegan")$m
         else
             for (k in 1:burnin)
                 temp <- commsimulator(temp, method=method)
         for (i in 1:times) {
             if (count)
-                perm[[i]][id,] <- switch(method,
-                                         swap = swapcount(temp, thin=thin),
-                                         Cswap = .C("swapcount",
-                                         m = as.double(temp),
-                                         as.integer(n.row),
-                                         as.integer(n.col),
-                                         as.integer(thin),
-                                         PACKAGE = "vegan")$m)                               else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
+                perm[[i]][id,] <- .C("swapcount",
+                                  m = as.double(temp),
+                                  as.integer(n.row),
+                                  as.integer(n.col),
+                                  as.integer(thin),
+                                  PACKAGE = "vegan")$m
+	    else perm[[i]][id,] <- commsimulator(temp, method=method, thin=thin)
             temp <- perm[[i]][id,]
         }
     }
@@ -120,8 +121,7 @@ function(x, ...)
     n <- attr(x, "times")
     bray <- numeric(n)
     for (i in 1:n) bray[i] <- sum(abs(x$orig-x$perm[[i]]))/sum(x$orig+x$perm[[i]])
-    plot(bray,type="n",ylim=c(0,1),ylab="Bray-Curtis dissimilarity",xlab="Runs", ...)
-    for (i in c(0.4, 0.6)) abline(i,0, lty=2, col="grey")
+    plot(bray,type="n",ylab="Bray-Curtis dissimilarity",xlab="Runs", ...)
     lines(bray,col="red")
     lines(lowess(bray),col="blue",lty=2)
     title(sub=paste("(mean = ", substitute(z, list(z=round(mean(bray),3))), 
@@ -143,12 +143,12 @@ function(x, digits=3, ...)
     cat("\n\nMatrix dimensions:", nrow(x$orig), "rows,", ncol(x$orig), "columns")
     cat("\nSum of original matrix:", sum(x$orig))
     cat("\nFill of original matrix:", round(sum(x$orig>0)/(nrow(x$orig)*ncol(x$orig)),digits))
-    cat("\nNumber of permuted matrices:", length(x$perm),"\n")
+    cat("\nNumber of permuted matrices:", attr(x, "times"),"\n")
 }
 
 ## S3 summary method for permat
 `summary.permat` <-
-function(object, digits=2, ...)
+function(object, ...)
 {
     x <- object
     n <- attr(x, "times")
@@ -172,8 +172,21 @@ function(object, digits=2, ...)
             rowSums(aggregate(x$perm[[i]],list(int),sum)[,-1])) == nlev}
         }
     strsum <- if (restr) sum(ssum)/n else NA
-    outv <- c(sum=sum(psum)/n, fill=sum(pfill)/n, rowsums=sum(vrow)/n, colsums=sum(vcol)/n, strsum=strsum)
+    test <- c(sum=sum(psum)/n, fill=sum(pfill)/n, rowsums=sum(vrow)/n, colsums=sum(vcol)/n, strsum=strsum)
+    x$perm <- NULL
+    out <- list(x=x, bray=bray, test=test, restr=restr)
+    class(out) <- c("summary.permat", "list")
+    return(out)
+}
 
+## S3 print method for summary.permat
+`print.summary.permat` <-
+function(x, digits=2, ...)
+{
+    bray <- x$bray
+    restr <- x$restr
+    test <- x$test
+    x <- x$x
     cat("Summary of object of class 'permat'\n\nCall: ")
     print(x$call)
     cat("Matrix type:", attr(x, "mtype"), "\nPermutation type:", attr(x, "ptype"))
@@ -181,16 +194,13 @@ function(object, digits=2, ...)
     cat("\n\nMatrix dimensions:", nrow(x$orig), "rows,", ncol(x$orig), "columns")
     cat("\nSum of original matrix:", sum(x$orig))
     cat("\nFill of original matrix:", round(sum(x$orig>0)/(nrow(x$orig)*ncol(x$orig)),digits))
-    cat("\nNumber of permuted matrices:", length(x$perm),"\n")
-
-    cat("\nMatrix sums retained:", round(100*outv[1], digits), "%")
-    cat("\nMatrix fill retained:", round(100*outv[2], digits), "%")
-    cat("\nRow sums retained:   ", round(100*outv[3], digits), "%")
-    cat("\nColumn sums retained:", round(100*outv[4], digits), "%")
-    if (restr) cat("\nSums within strata retained:", round(100*outv[5], digits), "%")
+    cat("\nNumber of permuted matrices:", attr(x, "times"),"\n")
+    cat("\nMatrix sums retained:", round(100*test[1], digits), "%")
+    cat("\nMatrix fill retained:", round(100*test[2], digits), "%")
+    cat("\nRow sums retained:   ", round(100*test[3], digits), "%")
+    cat("\nColumn sums retained:", round(100*test[4], digits), "%")
+    if (restr) cat("\nSums within strata retained:", round(100*test[5], digits), "%")
     cat("\n\nBray-Curtis dissimilarities among original and permuted matrices:\n")
     print(summary(bray))
-    out <- list(bray=bray, restr=outv)
-    class(out) <- c("summary.permat", "list")
-    invisible(out)
+invisible(NULL)
 }
