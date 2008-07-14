@@ -37,7 +37,8 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
   \item{pcol, pbg}{Line and fill colours of points. Defaults \code{pcol="black"} 
-    and \code{pbg="transparent"}. } 
+    and \code{pbg="transparent"}. Argument \code{pch} has an effect
+    only in filled plotting characters \code{pch = 21} to \code{25}.  } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
   \item{\dots}{Other arguments passed to the function. These can be
@@ -101,7 +102,8 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   parameters can be given on the command line, and they will be passed
   to the function without influencing other graphical devices in \R.
   At the moment, the
-  following graphical parameters are honoured: \code{bg}, \code{cex},
+  following graphical parameters are honoured: 
+  \code{pch} \code{bg},  \code{cex},
   \code{cex.axis}, \code{cex.lab}, \code{col} (for labels),
   \code{col.axis}, \code{col.lab}, \code{family} (for font faces),
   \code{fg}, \code{font}, \code{font.axis}, \code{font.lab},
@@ -130,7 +132,9 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \code{\link[tcltk]{tcltk-package}}. 
 
 }
-\seealso{ \code{\link{ordiplot}}, \code{\link{plot.cca}},
+\seealso{ Function \code{\link{ordipointlabel}} is an automatic
+  procedure with similar goals of avoiding overplotting. 	   
+  See \code{\link{ordiplot}}, \code{\link{plot.cca}},
   \code{\link{ordirgl}} and \code{\link{orditorp}} for alternative
   ordination plots, and \code{\link{scores}} for extracting ordination
   scores.  }

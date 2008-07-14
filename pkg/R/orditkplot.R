@@ -18,14 +18,19 @@
     p <- par()
     sparnam <- c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
                  "family", "fg", "font", "font.axis", "font.lab", "lheight",
-                 "lwd", "mar", "mex", "mgp", "ps", "tcl", "las")
+                 "lwd", "mar", "mex", "mgp", "pch", "ps", "tcl", "las")
     ## Get par given in the command line and put them to p
     dots <- match.call(expand.dots = FALSE)$...
     if (length(dots) > 0) {
         dots <- dots[names(dots) %in% sparnam]
         ## eval() or mar=c(4,4,1,1) will be a call, not numeric
         dots <- lapply(dots, function(x) if (is.call(x)) eval(x) else x)
-        p <- check.options(new = dots, name.opt = "p", envir = environment())
+        ## pch can be character or integer: needs override.attributes
+        oride <- logical(length(dots))
+        if ("pch" %in% names(dots))
+            oride[which(names(dots) == "pch")] <- TRUE
+        p <- check.options(new = dots, name.opt = "p", envir = environment(),
+                           override.check = oride)
     }
     savepar <- p[sparnam]
     PPI <- 72                                         # Points per Inch
@@ -65,6 +70,71 @@
     fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
     fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
+    ## Imitate R plotting symbols pch
+    SQ <- sqrt(2)     # Scaling factor for plot
+    Point <- function(x, y, pch, col, fill) {
+        switch(as.character(pch),
+               "plus" = {tkcreate(can, "line", x-diam, y, x+diam, y,
+                                  fill=col)
+                         tkcreate(can, "line", x, y+diam, x, y-diam,
+                                  fill = col)},
+               "0" = Point(x, y, 22, col, fill = ""),
+               "1" = Point(x, y, 21, col, fill = ""),
+               "2" = Point(x, y, 24, col, fill = ""),
+               "3" = {tkcreate(can, "line",
+                               x, y+SQ*diam, x, y-SQ*diam, fill=col)
+                      tkcreate(can, "line",
+                               x+SQ*diam, y, x-SQ*diam, y, fill=col)},
+               "4" = {tkcreate(can, "line",
+                               x-diam, y-diam, x+diam, y+diam, fill=col)
+                      tkcreate(can, "line",
+                               x-diam, y+diam, x+diam, y-diam, fill=col)},
+               "5" = Point(x, y, 23, col, fill = ""),
+               "6" = Point(x, y, 25, col, fill = ""),
+               "7" = {Point(x, y, 4, col, fill)
+                      Point(x, y, 0, col, fill)},
+               "8" = {Point(x, y, 3, col, fill)
+                      Point(x, y, 4, col, fill)},
+               "9" = {Point(x, y, 3, col, fill)
+                      Point(x, y, 5, col, fill)},
+               "10" = {Point(x, y, "plus", col, fill)
+                       Point(x, y, 1, col, fill)},
+               "11" = {Point(x, y, 2, col, fill)
+                       Point(x, y, 6, col, fill)},
+               "12" = {Point(x, y, "plus", col, fill)
+                       Point(x, y, 0, col, fill)},
+               "13" = {Point(x, y, 4, col, fill)
+                       Point(x, y, 1, col, fill)},
+               "14" = {tkcreate(can, "line", x-diam, y-diam, x, y+diam,
+                                fill = col)
+                       tkcreate(can, "line", x+diam, y-diam, x, y+diam,
+                                fill = col)
+                       Point(x, y, 0, col, fill)},
+               "15" = Point(x, y, 22, col = col, fill = col),
+               "16" = Point(x, y, 21, col = col, fill = col),
+               "17" = Point(x, y, 24, col = col, fill = col),
+               "18" = tkcreate(can, "polygon", x, y+diam,
+               x+diam, y, x, y-diam, x-diam, y,
+               outline = col, fill = col),               
+               "19" = Point(x, y, 21, col = col, fill = col),
+               "20" = tkcreate(can, "oval", x-diam/2, y-diam/2,
+               x+diam/2, y+diam/2, outline = col, fill = col),
+               "21" = tkcreate(can, "oval", x-diam, y-diam,
+               x+diam, y+diam, outline = col, fill = fill),
+               "22" = tkcreate(can, "rectangle", x-diam, y-diam,
+               x+diam, y+diam, outline = col, fill = fill),
+               "23" = tkcreate(can, "polygon", x, y+SQ*diam,
+               x+SQ*diam, y, x, y-SQ*diam, x-SQ*diam, y,
+               outline = col, fill = fill),
+               "24" = tkcreate(can, "polygon", x, y-SQ*diam,
+               x+4/3*diam, y+SQ/3*diam, x-4/3*diam, y+SQ/3*diam,
+               outline = col, fill = fill),
+               "25" = tkcreate(can, "polygon", x, y+SQ*diam,
+               x+4/3*diam, y-SQ/3*diam, x-4/3*diam, y-SQ/3*diam,
+               outline = col, fill = fill),
+               tkcreate(can, "text",
+                        x, y, text = as.character(pch), fill = col))
+    }
 
 ############################
 ### Initialize Tcl/Tk Window
@@ -308,9 +378,7 @@
     id <- tclArray()          # index
     for (i in 1:nrow(sco)) {
         xy <- usr2xy(sco[i,])
-        item <- tkcreate(can, "oval", xy[1]-diam, xy[2]-diam,
-                         xy[1]+diam,  xy[2]+diam, 
-                         width=1, outline=pcol, fill=pbg)
+        item <- Point(xy[1], xy[2], pch = p$pch, col = pcol, fill = pbg)
         lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
                         fill = p$col, font=fnt)
         tkaddtag(can, "point", "withtag", item)
