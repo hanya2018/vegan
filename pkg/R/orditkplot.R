@@ -127,10 +127,10 @@
                x+SQ*diam, y, x, y-SQ*diam, x-SQ*diam, y,
                outline = col, fill = fill),
                "24" = tkcreate(can, "polygon", x, y-SQ*diam,
-               x+4/3*diam, y+SQ/3*diam, x-4/3*diam, y+SQ/3*diam,
+               x+sqrt(6)/2*diam, y+SQ/2*diam, x-sqrt(6)/2*diam, y+SQ/2*diam,
                outline = col, fill = fill),
                "25" = tkcreate(can, "polygon", x, y+SQ*diam,
-               x+4/3*diam, y-SQ/3*diam, x-4/3*diam, y-SQ/3*diam,
+               x+sqrt(6)/2*diam, y-SQ/2*diam, x-sqrt(6)/2*diam, y-SQ/2*diam,
                outline = col, fill = fill),
                tkcreate(can, "text",
                         x, y, text = as.character(pch), fill = col))
