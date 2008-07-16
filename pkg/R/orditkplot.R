@@ -20,7 +20,11 @@
                  "family", "fg", "font", "font.axis", "font.lab", "lheight",
                  "lwd", "mar", "mex", "mgp", "pch", "ps", "tcl", "las")
     ## Get par given in the command line and put them to p
-    dots <- match.call(expand.dots = FALSE)$...
+    if (inherits(x, "orditkplot")) {
+        dots <- x$par
+    } else {
+        dots <- match.call(expand.dots = FALSE)$...
+    }
     if (length(dots) > 0) {
         dots <- dots[names(dots) %in% sparnam]
         ## eval() or mar=c(4,4,1,1) will be a call, not numeric
@@ -29,7 +33,8 @@
         oride <- logical(length(dots))
         if ("pch" %in% names(dots))
             oride[which(names(dots) == "pch")] <- TRUE
-        p <- check.options(new = dots, name.opt = "p", envir = environment(),
+        p <- check.options(new = dots, name.opt = "p",
+                           envir = environment(),
                            override.check = oride)
     }
     savepar <- p[sparnam]
@@ -271,11 +276,25 @@
     }
     if (!missing(labels))
         rownames(sco) <- labels
+    ## Recycle graphical parameters in plots
+    nr <- nrow(sco)
+    ##pcol <- rep(pcol, length=nr)
+    ##pbg <- rep(pbg, length=nr)
+    ##p$col <- rep(p$col, length=nr)
+    ##p$pch <- rep(p$pch, length=nr)
+    ##fnt <- rep(fnt, length=nr)
+    ## Select only items within xlim, ylim
+    take <- rep(TRUE, nr)
     if (!missing(xlim))
-        sco <- sco[sco[,1] >= xlim[1] & sco[,1] <= xlim[2], , drop = FALSE]
+        take <- take & sco[,1] >= xlim[1] & sco[,1] <= xlim[2]
     if (!missing(ylim))
-        sco <- sco[sco[,2] >= ylim[1] & sco[,2] <= ylim[2], , drop = FALSE]
+        take <- take & sco[,2] >= ylim[1] & sco[,2] <= ylim[2]
+    sco <- sco[take,, drop=FALSE]
     labs <- rownames(sco)
+    ##pcol <- pcol[take]
+    ##pbg <- pbg[take]
+    ##p$col <- p$col[take]
+    ##p$pch <- p$pch[take]
     ## Ranges and pretty values for axes
     if (missing(xlim))
         xlim <- range(sco[,1])
@@ -372,13 +391,24 @@
                  text=as.character(tmp[i]), fill = p$col.axis, font=fnt.axis)
     }
     ## Points and labels
-    laboff <- round(p2p * p$ps/2 + diam + 1)
+
+    ## The following 'inherits' works with ordipointlabel, but not
+    ## with zooming
+    if (inherits(x, "orditkplot")) {
+        lsco <- scores(x, "labels")
+        laboff <- 0
+        lsco <- lsco[rownames(sco),]
+    } else {
+        lsco <- sco
+        laboff <- round(p2p * p$ps/2 + diam + 1)
+    }
     pola <- tclArray()        # points
     labtext <- tclArray()     # text
     id <- tclArray()          # index
     for (i in 1:nrow(sco)) {
         xy <- usr2xy(sco[i,])
         item <- Point(xy[1], xy[2], pch = p$pch, col = pcol, fill = pbg)
+        xy <- usr2xy(lsco[i,])
         lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
                         fill = p$col, font=fnt)
         tkaddtag(can, "point", "withtag", item)
@@ -393,6 +423,18 @@
 ##############################
     
     ## Plotting and Moving
+    ## Mouse moves to a label
+    pEnter <- function() {
+        tkdelete(can, "box")
+        hbox <- tkcreate(can, "rectangle", tkbbox(can, "current"),
+                         outline = "red", fill = "yellow")
+        tkaddtag(can, "box", "withtag", hbox)
+        tkitemraise(can, "current")
+    }
+    ## Mouse leaves a label
+    pLeave <- function() {
+        tkdelete(can, "box")
+    }
     ## Select label
     pDown <- function(x, y) {
         x <- as.numeric(x)
@@ -413,11 +455,15 @@
         y <- as.numeric(y)
         tkmove(can, "selected", x - .lastX, y - .lastY)
         tkdelete(can, "ptr")
+        tkdelete(can, "box")
         .lastX <<- x
         .lastY <<- y
         ## xadj,yadj: adjust for canvas scrolling
         xadj <- as.numeric(tkcanvasx(can, 0))
         yadj <- as.numeric(tkcanvasy(can, 0))
+        hbox <- tkcreate(can, "rectangle", tkbbox(can, "selected"),
+                         outline = "red")
+        tkaddtag(can, "box", "withtag", hbox)
         conn <- tkcreate(can, "line", .lastX + xadj, .lastY+yadj,
                          .pX, .pY, fill="red")
         tkaddtag(can, "ptr", "withtag", conn)
@@ -465,11 +511,16 @@
         tkaddtag(can, "box", "withtag", rect)
     }
     ## Redraw ordiktplot with new xlim and ylim
-    ## FIXME: zooming does not pass "..." arguments
     pZoom <- function() {
-        xlim <- sort(c(x2usr(.pX), x2usr(.lastX)))
-        ylim <- sort(c(y2usr(.pY), y2usr(.lastY)))
-        orditkplot(x, xlim = xlim, ylim = ylim, ...)
+        nxlim <- sort(c(x2usr(.pX), x2usr(.lastX)))
+        nylim <- sort(c(y2usr(.pY), y2usr(.lastY)))
+        xy <- ordDump()
+        ## Move labels closer to points in zoom
+        ## FIXME: Doesn't do a perfect job
+        mul <- abs(diff(nxlim)/diff(xlim))
+        xy$labels <- xy$points + (xy$labels - xy$points)*mul
+        orditkplot(ordDump(), xlim = nxlim, ylim = nylim, tcex = tcex,
+                   pcol = pcol, pcex = pcex)
     }
     ## Dummy location of the mouse
     .lastX <- 0
@@ -478,10 +529,8 @@
     .pY <- 0
     ## Mouse bindings:
     ## Moving a labels
-    tkitembind(can, "label", "<Any-Enter>",
-               function() tkitemconfigure(can, "current", fill="red"))
-    tkitembind(can, "label", "<Any-Leave>",
-               function() tkitemconfigure(can, "current", fill=p$col))
+    tkitembind(can, "label", "<Any-Enter>", pEnter)
+    tkitembind(can, "label", "<Any-Leave>", pLeave)
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})

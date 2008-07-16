@@ -4,7 +4,9 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-7 (opened July 5, 2008)
 
-	* orditkplot: imitates now plotting character (argument pch).
+	* orditkplot: imitates now plotting character (argument
+	pch). Zooming maintains graphical parameters (such as mar). Label
+	selection shown by a rectangle, since label may already be red.
 	
 	* permat.R, swapcount.R: summary method was modified according to
 	standard R ways, ylab argument was deleted from plot method.  The
