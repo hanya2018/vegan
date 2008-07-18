@@ -423,7 +423,7 @@
 ##############################
     
     ## Plotting and Moving
-    ## Mouse moves to a label
+    ## Mouse enters a label
     pEnter <- function() {
         tkdelete(can, "box")
         hbox <- tkcreate(can, "rectangle", tkbbox(can, "current"),
@@ -528,13 +528,13 @@
     .pX <- 0
     .pY <- 0
     ## Mouse bindings:
-    ## Moving a labels
+    ## Moving a label
     tkitembind(can, "label", "<Any-Enter>", pEnter)
     tkitembind(can, "label", "<Any-Leave>", pLeave)
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
-    tkbind(can, "<B1-Motion>", pMove)
+    tkitembind(can, "label", "<B1-Motion>", pMove)
     ## Edit labels
     tkitembind(can, "label", "<Double-Button-1>", pEdit) 
     ## Zoom (with one-button mouse)
