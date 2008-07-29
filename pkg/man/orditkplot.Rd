@@ -15,7 +15,7 @@
 }
 \usage{
 orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim, 
-   tcex = 0.8, pcol, pbg, pcex = 0.7, labels,  ...)
+   tcex = 0.8, tcol, pch = 1,  pcol, pbg, pcex = 0.7, labels,  ...)
 \method{plot}{orditkplot}(x, ...)
 \method{points}{orditkplot}(x, ...)
 \method{text}{orditkplot}(x, ...)
@@ -37,8 +37,9 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
   \item{tcol}{Colour of text labels.}
-  \item{pcol, pbg}{Line and fill colours of points. Defaults \code{pcol="black"} 
-    and \code{pbg="transparent"}. Argument \code{pch} has an effect
+  \item{pch, pcol, pbg}{Point type and outline and fill colours. 
+    Defaults \code{pcol="black"}  and \code{pbg="transparent"}. 
+   Argument \code{pbg} has an effect
     only in filled plotting characters \code{pch = 21} to \code{25}.  } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
