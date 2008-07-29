@@ -83,11 +83,13 @@
     text(lab, labels=labels, col = col, cex = cex, font = font,  ...)
     pl <- list(points = xy)
     pl$labels <- lab
-    pl$pch <- pch
-    pl$cex <- cex
+    args <- list(tcex = cex, tcol = col, pch = pch, pcol = col,
+                 pbg = NA, pcex = cex)
+    pl$args <- args
+    pl$par <- par(no.readonly = TRUE)
     pl$font <- font
     attr(pl, "optim") <- sol
-    class(pl) <- c("ordipointlabel", class(pl))
+    class(pl) <- c("ordipointlabel", "orditkplot", class(pl))
     invisible(pl)
 }
 

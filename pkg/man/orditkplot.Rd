@@ -36,6 +36,7 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \item{xlim, ylim}{x and y limits for plots: points outside these
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
+  \item{tcol}{Colour of text labels.}
   \item{pcol, pbg}{Line and fill colours of points. Defaults \code{pcol="black"} 
     and \code{pbg="transparent"}. Argument \code{pch} has an effect
     only in filled plotting characters \code{pch = 21} to \code{25}.  } 

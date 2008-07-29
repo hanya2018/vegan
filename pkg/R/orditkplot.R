@@ -3,7 +3,7 @@
 ###
 `orditkplot` <-
     function(x, display = "species", choices = 1:2, width, xlim, ylim,
-             tcex=0.8, pcol, pbg, pcex = 0.7,
+             tcex=0.8, tcol, pch = 1, pcol, pbg, pcex = 0.7,
              labels,  ...)
 {
     if (!capabilities("tcltk"))
@@ -18,10 +18,12 @@
     p <- par()
     sparnam <- c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
                  "family", "fg", "font", "font.axis", "font.lab", "lheight",
-                 "lwd", "mar", "mex", "mgp", "pch", "ps", "tcl", "las")
+                 "lwd", "mar", "mex", "mgp", "ps", "tcl", "las")
     ## Get par given in the command line and put them to p
     if (inherits(x, "orditkplot")) {
         dots <- x$par
+        for (arg in names(x$args))
+            assign(arg, unlist(x$args[arg]))
     } else {
         dots <- match.call(expand.dots = FALSE)$...
     }
@@ -29,13 +31,8 @@
         dots <- dots[names(dots) %in% sparnam]
         ## eval() or mar=c(4,4,1,1) will be a call, not numeric
         dots <- lapply(dots, function(x) if (is.call(x)) eval(x) else x)
-        ## pch can be character or integer: needs override.attributes
-        oride <- logical(length(dots))
-        if ("pch" %in% names(dots))
-            oride[which(names(dots) == "pch")] <- TRUE
         p <- check.options(new = dots, name.opt = "p",
-                           envir = environment(),
-                           override.check = oride)
+                           envir = environment())
     }
     savepar <- p[sparnam]
     PPI <- 72                                         # Points per Inch
@@ -45,12 +42,10 @@
     diam <- round(pcex * DIAM * p2p, 1)
     ## Sanitize colours
     sanecol <- function(x) {
-        if (is.na(x))
-            x <- ""
-        else if (is.numeric(x))
+        if (is.numeric(x))
             x <- palette()[x]
-        else if (x == "transparent")
-            x <- ""
+        x <- gsub("transparent", "", x)
+        x[is.na(x)] <- ""
         x
     } 
     p$bg <- sanecol(p$bg)
@@ -58,13 +53,16 @@
     p$col <- sanecol(p$col)
     p$col.axis <- sanecol(p$col.axis)
     p$col.lab <- sanecol(p$col.lab)
-    ## Point colours
+    ## Point and label colours
     if (missing(pcol))
         pcol <- p$col
     if (missing(pbg))
         pbg <- "transparent"
+    if (missing(tcol))
+        tcol <- p$col
     pcol <- sanecol(pcol)
     pbg <- sanecol(pbg)
+    tcol <- sanecol(tcol)
     ## Define fonts
     idx <- match(p$family, c("","serif","sans","mono"))
     if (!is.na(idx))
@@ -72,20 +70,24 @@
     saneslant <- function(x) {
         list("roman", "bold", "italic", c("bold", "italic"))[[x]]
     }
-    fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
+    ## fnt must be done later, since family, font and size can be
+    ## vectors and slant can be of length 1 or 2
+    ## fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
+    labfam <- p$family
+    labsize <- round(p$ps * p$cex * tcex)
     fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
     ## Imitate R plotting symbols pch
     SQ <- sqrt(2)     # Scaling factor for plot
-    Point <- function(x, y, pch, col, fill) {
+    Point <- function(x, y, pch, col, fill, diam) {
         switch(as.character(pch),
                "plus" = {tkcreate(can, "line", x-diam, y, x+diam, y,
                                   fill=col)
                          tkcreate(can, "line", x, y+diam, x, y-diam,
                                   fill = col)},
-               "0" = Point(x, y, 22, col, fill = ""),
-               "1" = Point(x, y, 21, col, fill = ""),
-               "2" = Point(x, y, 24, col, fill = ""),
+               "0" = Point(x, y, 22, col, fill = "", diam),
+               "1" = Point(x, y, 21, col, fill = "", diam),
+               "2" = Point(x, y, 24, col, fill = "", diam),
                "3" = {tkcreate(can, "line",
                                x, y+SQ*diam, x, y-SQ*diam, fill=col)
                       tkcreate(can, "line",
@@ -94,34 +96,34 @@
                                x-diam, y-diam, x+diam, y+diam, fill=col)
                       tkcreate(can, "line",
                                x-diam, y+diam, x+diam, y-diam, fill=col)},
-               "5" = Point(x, y, 23, col, fill = ""),
-               "6" = Point(x, y, 25, col, fill = ""),
-               "7" = {Point(x, y, 4, col, fill)
-                      Point(x, y, 0, col, fill)},
-               "8" = {Point(x, y, 3, col, fill)
-                      Point(x, y, 4, col, fill)},
-               "9" = {Point(x, y, 3, col, fill)
-                      Point(x, y, 5, col, fill)},
-               "10" = {Point(x, y, "plus", col, fill)
-                       Point(x, y, 1, col, fill)},
-               "11" = {Point(x, y, 2, col, fill)
-                       Point(x, y, 6, col, fill)},
-               "12" = {Point(x, y, "plus", col, fill)
-                       Point(x, y, 0, col, fill)},
-               "13" = {Point(x, y, 4, col, fill)
-                       Point(x, y, 1, col, fill)},
+               "5" = Point(x, y, 23, col, fill = "", diam),
+               "6" = Point(x, y, 25, col, fill = "", diam),
+               "7" = {Point(x, y, 4, col, fill, diam)
+                      Point(x, y, 0, col, fill, diam)},
+               "8" = {Point(x, y, 3, col, fill, diam)
+                      Point(x, y, 4, col, fill, diam)},
+               "9" = {Point(x, y, 3, col, fill, diam)
+                      Point(x, y, 5, col, fill, diam)},
+               "10" = {Point(x, y, "plus", col, fill, diam)
+                       Point(x, y, 1, col, fill, diam)},
+               "11" = {Point(x, y, 2, col, fill, diam)
+                       Point(x, y, 6, col, fill, diam)},
+               "12" = {Point(x, y, "plus", col, fill, diam)
+                       Point(x, y, 0, col, fill, diam)},
+               "13" = {Point(x, y, 4, col, fill, diam)
+                       Point(x, y, 1, col, fill, diam)},
                "14" = {tkcreate(can, "line", x-diam, y-diam, x, y+diam,
                                 fill = col)
                        tkcreate(can, "line", x+diam, y-diam, x, y+diam,
                                 fill = col)
-                       Point(x, y, 0, col, fill)},
-               "15" = Point(x, y, 22, col = col, fill = col),
-               "16" = Point(x, y, 21, col = col, fill = col),
-               "17" = Point(x, y, 24, col = col, fill = col),
+                       Point(x, y, 0, col, fill, diam)},
+               "15" = Point(x, y, 22, col = col, fill = col, diam),
+               "16" = Point(x, y, 21, col = col, fill = col, diam),
+               "17" = Point(x, y, 24, col = col, fill = col, diam),
                "18" = tkcreate(can, "polygon", x, y+diam,
                x+diam, y, x, y-diam, x-diam, y,
                outline = col, fill = col),               
-               "19" = Point(x, y, 21, col = col, fill = col),
+               "19" = Point(x, y, 21, col = col, fill = col, diam),
                "20" = tkcreate(can, "oval", x-diam/2, y-diam/2,
                x+diam/2, y+diam/2, outline = col, fill = col),
                "21" = tkcreate(can, "oval", x-diam, y-diam,
@@ -137,8 +139,12 @@
                "25" = tkcreate(can, "polygon", x, y+SQ*diam,
                x+sqrt(6)/2*diam, y-SQ/2*diam, x-sqrt(6)/2*diam, y-SQ/2*diam,
                outline = col, fill = fill),
-               tkcreate(can, "text",
-                        x, y, text = as.character(pch), fill = col))
+               "o" = Point(x, y, 1, col, fill, diam),
+               ## default: text with dummy location of the label
+               {tkcreate(can, "text",
+                        x, y, text = as.character(pch), fill = col)
+                Point(x, y, 21, col="", fill="", diam)}
+                )
     }
 
 ############################
@@ -173,12 +179,19 @@
             xy[as.numeric(tclvalue(id[[nm]])),] <- xy2usr(nm)
         }
         curdim <- round(c(width, height) /PPI/p2p, 2)
-        if (pbg == "")
-            pbg <- "transparent"
-        if (pcol == "")
-            pcol <- "transparent"
-        args <- list(tcex = tcex, pcol = pcol, pbg = pbg, pcex = pcex,
-                     xlim = xlim, ylim = ylim)
+        ## Sanitize colours for R plot
+        pbg[pbg == ""]  <- "transparent"
+        pcol[pcol == ""] <- "transparent"
+        ## Reduce vector args if all entries are constant
+        argcollapse <- function(x)
+            if (length(unique(x)) == 1) x[1] else x
+        pch <- argcollapse(pch)
+        pcol <- argcollapse(pcol)
+        pbg <- argcollapse(pbg)
+        tcol <- argcollapse(tcol)
+        ## Save
+        args <- list(tcex = tcex, tcol = tcol, pch = pch, pcol = pcol,
+                     pbg = pbg, pcex = pcex, xlim = xlim, ylim = ylim)
         xy <- list(labels = xy, points = sco, par = savepar, args = args,
                    dim = curdim)
         class(xy) <- "orditkplot"
@@ -278,11 +291,14 @@
         rownames(sco) <- labels
     ## Recycle graphical parameters in plots
     nr <- nrow(sco)
-    ##pcol <- rep(pcol, length=nr)
-    ##pbg <- rep(pbg, length=nr)
-    ##p$col <- rep(p$col, length=nr)
-    ##p$pch <- rep(p$pch, length=nr)
-    ##fnt <- rep(fnt, length=nr)
+    pcol <- rep(pcol, length=nr)
+    pbg <- rep(pbg, length=nr)
+    pch <- rep(pch, length=nr)
+    tcol <- rep(tcol, length=nr)
+    diam <- rep(diam, length=nr)
+    labfam <- rep(labfam, length=nr)
+    labsize <- rep(labsize, length=nr)
+    labfnt <- rep(p$font, length=nr)
     ## Select only items within xlim, ylim
     take <- rep(TRUE, nr)
     if (!missing(xlim))
@@ -291,10 +307,14 @@
         take <- take & sco[,2] >= ylim[1] & sco[,2] <= ylim[2]
     sco <- sco[take,, drop=FALSE]
     labs <- rownames(sco)
-    ##pcol <- pcol[take]
-    ##pbg <- pbg[take]
-    ##p$col <- p$col[take]
-    ##p$pch <- p$pch[take]
+    pcol <- pcol[take]
+    pbg <- pbg[take]
+    tcol <- tcol[take]
+    pch <- pch[take]
+    diam <- diam[take]
+    labfam <- labfam[take]
+    labsize <- labsize[take]
+    labfnt <- labfnt[take]
     ## Ranges and pretty values for axes
     if (missing(xlim))
         xlim <- range(sco[,1])
@@ -407,10 +427,12 @@
     id <- tclArray()          # index
     for (i in 1:nrow(sco)) {
         xy <- usr2xy(sco[i,])
-        item <- Point(xy[1], xy[2], pch = p$pch, col = pcol, fill = pbg)
+        item <- Point(xy[1], xy[2], pch = pch[i], col = pcol[i],
+                      fill = pbg[i], diam = diam[i])
         xy <- usr2xy(lsco[i,])
+        fnt <- c(labfam[i], labsize[i], saneslant(labfnt[i]))
         lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
-                        fill = p$col, font=fnt)
+                        fill = tcol[i], font=fnt)
         tkaddtag(can, "point", "withtag", item)
         tkaddtag(can, "label", "withtag", lab)
         pola[[lab]] <- item

@@ -6,7 +6,8 @@ Version 1.14-7 (opened July 5, 2008)
 
 	* orditkplot: imitates now plotting character (argument
 	pch). Zooming maintains graphical parameters (such as mar). Label
-	selection shown by a rectangle, since label may already be red.
+	selection shown by a rectangle, since label may already be
+	red. Label family, size and font can be vectors.
 	
 	* permat.R, swapcount.R: summary method was modified according to
 	standard R ways, ylab argument was deleted from plot method.  The
@@ -20,7 +21,9 @@ Version 1.14-7 (opened July 5, 2008)
 	* ordipointlabel: new function for cluttered ordination plots --
 	points are in fixed positions, but their text label is located to
 	avoid overlap. The optimization is based on optim(..., method =
-	"SANN"). Similar to pointLabel function in maptools.
+	"SANN"). Similar to pointLabel function in maptools. Returns an
+	"orditkplot" object, but orditkplot cannot yet completely handle
+	this (and this feature is undocumented).
 
 	* permutations: permuted.index2 and associated functions now allow
 	for restricted permutations of strata (i.e. restricted shuffling

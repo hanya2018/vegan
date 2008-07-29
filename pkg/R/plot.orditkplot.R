@@ -5,6 +5,7 @@
     on.exit(par(op))
     plot(x$points, pch = x$args$pch, cex = x$args$pcex, col = x$args$pcol,
          bg = x$args$pbg, xlim = x$args$xlim, ylim = x$args$ylim, asp=1)
-    text(x$labels, rownames(x$labels), cex = x$args$tcex)
+    text(x$labels, rownames(x$labels), cex = x$args$tcex,
+         col = x$args$tcol)
     invisible(x)
 }
