@@ -4,11 +4,11 @@
 % Copyright 1995-2007 R Core Development Team
 % Distributed under GPL 2 or later
 
-\name{cmdscale}
-\alias{cmdscale}
+\name{wcmdscale}
+\alias{wcmdscale}
 \title{Weighted Classical (Metric) Multidimensional Scaling}
 \usage{
-cmdscale(d, k, eig = FALSE, add = FALSE, x.ret = FALSE, w)
+wcmdscale(d, k, eig = FALSE, add = FALSE, x.ret = FALSE, w)
 }
 \description{
   Weighted classical multidimensional scaling, 
@@ -19,7 +19,7 @@ cmdscale(d, k, eig = FALSE, add = FALSE, x.ret = FALSE, w)
     or a full symmetric matrix containing the dissimilarities.}
   \item{k}{the dimension of the space which the data are to be
     represented in; must be in \eqn{\{1,2,\ldots,n-1\}}. If missing,
-    dimensions with above zero eigenvalue.}
+     all dimensions with above zero eigenvalue.}
   \item{eig}{indicates whether eigenvalues should be returned.}
   \item{add}{logical indicating if an additive constant \eqn{c*} should
     be computed, and added to the non-diagonal dissimilarities such that
@@ -48,7 +48,6 @@ cmdscale(d, k, eig = FALSE, add = FALSE, x.ret = FALSE, w)
     \code{eig} is true.}
   \item{x}{the doubly centred and weighted distance matrix if \code{x.ret} is true.}
   \item{weights}{Weights.}
-     }
 }
 \references{
   Gower, J. C. (1966)  
