@@ -1,4 +1,5 @@
 
+
 ###
 ### Editable Tcl/Tk plot for ordination
 ###
@@ -81,11 +82,9 @@
     ## Imitate R plotting symbols pch
     SQ <- sqrt(2)     # Scaling factor for plot
     Point <- function(x, y, pch, col, fill, diam) {
+        x <- round(x)
+        y <- round(y)
         switch(as.character(pch),
-               "plus" = {tkcreate(can, "line", x-diam, y, x+diam, y,
-                                  fill=col)
-                         tkcreate(can, "line", x, y+diam, x, y-diam,
-                                  fill = col)},
                "0" = Point(x, y, 22, col, fill = "", diam),
                "1" = Point(x, y, 21, col, fill = "", diam),
                "2" = Point(x, y, 24, col, fill = "", diam),
@@ -105,11 +104,11 @@
                       Point(x, y, 4, col, fill, diam)},
                "9" = {Point(x, y, 3, col, fill, diam)
                       Point(x, y, 5, col, fill, diam)},
-               "10" = {Point(x, y, "plus", col, fill, diam)
+               "10" = {Point(x, y, 3, col, fill, diam/SQ)
                        Point(x, y, 1, col, fill, diam)},
                "11" = {Point(x, y, 2, col, fill, diam)
                        Point(x, y, 6, col, fill, diam)},
-               "12" = {Point(x, y, "plus", col, fill, diam)
+               "12" = {Point(x, y, 3, col, fill, diam/SQ)
                        Point(x, y, 0, col, fill, diam)},
                "13" = {Point(x, y, 4, col, fill, diam)
                        Point(x, y, 1, col, fill, diam)},
@@ -121,12 +120,9 @@
                "15" = Point(x, y, 22, col = col, fill = col, diam),
                "16" = Point(x, y, 21, col = col, fill = col, diam),
                "17" = Point(x, y, 24, col = col, fill = col, diam),
-               "18" = tkcreate(can, "polygon", x, y+diam,
-               x+diam, y, x, y-diam, x-diam, y,
-               outline = col, fill = col),               
+               "18" = Point(x, y, 23, col = col, fill = col, diam/SQ),
                "19" = Point(x, y, 21, col = col, fill = col, diam),
-               "20" = tkcreate(can, "oval", x-diam/2, y-diam/2,
-               x+diam/2, y+diam/2, outline = col, fill = col),
+               "20" = Point(x, y, 21, col = col, fill = col, diam/2),
                "21" = tkcreate(can, "oval", x-diam, y-diam,
                x+diam, y+diam, outline = col, fill = fill),
                "22" = tkcreate(can, "rectangle", x-diam, y-diam,
