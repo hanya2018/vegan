@@ -1,3 +1,4 @@
+
 ###
 ### Editable Tcl/Tk plot for ordination
 ###
@@ -416,7 +417,7 @@
     ## with zooming
     if (inherits(x, "orditkplot")) {
         lsco <- scores(x, "labels")
-        laboff <- 0
+        laboff <- rep(0, nrow(lsco))
         lsco <- lsco[rownames(sco),]
     } else {
         lsco <- sco
@@ -431,7 +432,7 @@
                       fill = pbg[i], diam = diam[i])
         xy <- usr2xy(lsco[i,])
         fnt <- c(labfam[i], labsize[i], saneslant(labfnt[i]))
-        lab <- tkcreate(can, "text", xy[1], xy[2]-laboff, text=labs[i],
+        lab <- tkcreate(can, "text", xy[1], xy[2]-laboff[i], text=labs[i],
                         fill = tcol[i], font=fnt)
         tkaddtag(can, "point", "withtag", item)
         tkaddtag(can, "label", "withtag", lab)

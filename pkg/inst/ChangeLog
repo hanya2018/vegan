@@ -9,6 +9,9 @@ Versin 1.14-8 (opened July 30, 2008)
 
 	* ordiArgAbsorber: now knows about 'choices' and 'display' args
 	of scores(). Reported by Michael Denslow.
+
+	* orditkplot: plotting text labels was broken in the default case
+	(zooming is still broken).
 	
 Version 1.14-7 (closed July 30, 2008)
 
