@@ -1,5 +1,3 @@
-
-
 ###
 ### Editable Tcl/Tk plot for ordination
 ###
@@ -538,8 +536,9 @@
         ## FIXME: Doesn't do a perfect job
         mul <- abs(diff(nxlim)/diff(xlim))
         xy$labels <- xy$points + (xy$labels - xy$points)*mul
-        orditkplot(ordDump(), xlim = nxlim, ylim = nylim, tcex = tcex,
-                   pcol = pcol, pcex = pcex)
+        xy$args$xlim <- nxlim
+        xy$args$ylim <- nylim
+        orditkplot(xy)
     }
     ## Dummy location of the mouse
     .lastX <- 0
