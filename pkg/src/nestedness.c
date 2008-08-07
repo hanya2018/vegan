@@ -94,14 +94,14 @@ void trialswap(int *m, int *nr, int *nc, int *thin)
 
     GetRNGstate();
 
-    for (i=0; i < *thin; i ++) {
+    for (i=0; i < *thin; i++) {
 	i2rand(row, (*nr) - 1);
 	i2rand(col, (*nc) - 1);
 	a = INDX(row[0], col[0], *nr);
 	b = INDX(row[0], col[1], *nr);
 	c = INDX(row[1], col[0], *nr);
 	d = INDX(row[1], col[1], *nr);
-	if (m[a] == 1 && m[d] == 1 && m[b] == 0 & m[c] == 0) {
+	if (m[a] == 1 && m[d] == 1 && m[b] == 0 && m[c] == 0) {
 	    m[a] = 0;
 	    m[d] = 0;
 	    m[b] = 1;
@@ -130,7 +130,7 @@ void swap(int *m, int *nr, int *nc, int *thin)
 
     GetRNGstate();
 
-    for (i=0; i < *thin; i ++) {
+    for (i=0; i < *thin; i++) {
 	for(;;) {
 	    i2rand(row, (*nr) - 1);
 	    i2rand(col, (*nc) - 1);
@@ -138,7 +138,7 @@ void swap(int *m, int *nr, int *nc, int *thin)
 	    b = INDX(row[0], col[1], *nr);
 	    c = INDX(row[1], col[0], *nr);
 	    d = INDX(row[1], col[1], *nr);
-	    if (m[a] == 1 && m[d] == 1 && m[b] == 0 & m[c] == 0) {
+	    if (m[a] == 1 && m[d] == 1 && m[b] == 0 && m[c] == 0) {
 		m[a] = 0;
 		m[d] = 0;
 		m[b] = 1;
