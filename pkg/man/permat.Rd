@@ -46,7 +46,7 @@ If \code{none} of the margins are fixed, cells are randomised within the matrix.
 If \code{rows} or \code{columns} are fixed, cells within rows or columns are randomised, respectively.
 If \code{both} margins are fixed, the \code{\link{r2dtable}} function is used that is based on
 Patefield's (1981) algorithm. For presence absence data, matrix fill is necessarily fixed, and \code{permatfull}
-is a wrapper for the function \code{\link{commsimulator}}. The \code{r00}, r0, c0, quasiswap}
+is a wrapper for the function \code{\link{commsimulator}}. The \code{r00, r0, c0, quasiswap}
 algorithms of \code{\link{commsimulator}} are used for \code{"none", "rows", "columns", "both"} values 
 of the \code{fixedmar} argument, respectively 
 
@@ -85,7 +85,8 @@ Bray-Curtis dissimilarities calculated pairvise among original and
 permuted matrices, and check results of the constraints.  }
 
 \references{
-Original references for presence-absence swap methods are given on help page of \link{commsimulator}}.
+Original references for presence-absence swap methods are given on help
+page of \code{\link{commsimulator}}.
 
 Patefield, W. M. (1981) Algorithm AS159. An efficient method of generating r x c tables with given row and column totals. 
 Applied Statistics 30, 91-97.
