@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-9 (open August 10, 2008)
 
+    * adipart: new function to perform additive diversity partitioning
+    with corresponding S3 methods.
+    * tsallis: new function to calculate Tsallis-entropy,
+    a scalable diversity index family 
 	* treedive: new functions for estimating functional diversity
 	defined as the height of a dendrogram of species properties for a
 	site (Petchey & Gaston). Still very preliminary.
