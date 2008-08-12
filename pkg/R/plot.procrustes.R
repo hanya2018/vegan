@@ -20,8 +20,8 @@
 	        abline(v = 0, lty = 2)
             abline(h = 0, lty = 2)
             if (ncol(x$rotation) == 2) {
-                ## Sometimes rotation[1,1] is 2.2e-16 above one
-                x$rotation[1,1] <- min(x$rotation[1,1], 1)
+                ## Sometimes rotation[1,1] is exactly 1 or 1+2.2e-16
+                x$rotation[1,1] <- min(x$rotation[1,1], 1 - .Machine$double.eps)
                 abline(0, tan(acos(x$rotation[1, 1])), lty = 1)
                 abline(0, 1/tan(acos(-x$rotation[1, 1])), lty = 1)
             }
@@ -59,4 +59,3 @@
     }
     invisible(out)
 }
-
