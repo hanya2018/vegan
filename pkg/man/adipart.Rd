@@ -93,17 +93,10 @@ plot(mite.xy, main="l2", col=levsm$l2+1)
 plot(mite.xy, main="l3", col=levsm$l3+1)
 par(mfrow=c(1,1))
 ## Additive diversity partitioning
-adpMite1 <- adipart(mite, levsm, index=c("ri", "sh", "si"), times=25)
-adpMite1
-summary(adpMite1)
-plot(adpMite1)
-## "Twoway" partitioning (maybe meaningless...)
-substrate <- mite.env$Substrate
-levels(substrate) <- c("sphagn", "sphagn", "sphagn", "sphagn", "other", "other", "other")
-adpMite2 <- adipart(mite, levsm, substrate, index="sh", times=25)
-adpMite2
-summary(adpMite2)
-plot(adpMite2)
+adpMite <- adipart(mite, levsm, index=c("ri", "sh", "si"), times=10)
+adpMite
+summary(adpMite)
+plot(adpMite)
 ## Simple artificial example
 set.seed(4321)
 matr <- r2dtable(1, c(3,4,3,7,4,8,7,6), 3:9)[[1]]
@@ -112,11 +105,13 @@ strata <- cbind(
    rep(1,8),
    rep(1:4,each=2),
    1:8)
-x1 <- adipart(matr, strata, index=c("ri", "sh", "si"))
+## Additive diversity partitioning ('oneway')
+x1 <- adipart(matr, strata, index=c("ri", "sh", "si"), times=25)
 x1
 summary(x1)
 plot(x1)
-x2 <- adipart(matr, strata, habitat)
+## 'Twoway' partitioning
+x2 <- adipart(matr, strata, habitat, times=25)
 x2
 summary(x2)
 plot(x2)
