@@ -14,8 +14,8 @@ community level simulations. Options for preserving characteristics of
 the original matrix (rows/columns sums, matrix fill) and
 restricted permutations (within strata based on spatial units, habitat
 classes or both) are discussed in the Details section. By using these functions,
-hypothesis testing is separated from the null model generation, thus
-several tests can be applied on the same set of random matrices.  }
+hypothesis testing can be separated from the null model generation, thus
+several tests might be applied on the same set of random matrices.  }
 
 \usage{
 permatfull(m, fixedmar = "both", reg = NULL, hab = NULL, mtype = "count", times = 100)
@@ -45,7 +45,7 @@ The \code{fixedmar} argument is used to set constraints for permutation.
 If \code{none} of the margins are fixed, cells are randomised within the matrix.
 If \code{rows} or \code{columns} are fixed, cells within rows or columns are randomised, respectively.
 If \code{both} margins are fixed, the \code{\link{r2dtable}} function is used that is based on
-Patefield's (1981) algorithm. For presence absence data, matrix fill is necessarily fixed, and \code{permatfull}
+Patefield's (1981) algorithm. For presence absence data, matrix fill should be necessarily fixed, and \code{permatfull}
 is a wrapper for the function \code{\link{commsimulator}}. The \code{r00, r0, c0, quasiswap}
 algorithms of \code{\link{commsimulator}} are used for \code{"none", "rows", "columns", "both"} values 
 of the \code{fixedmar} argument, respectively 
@@ -53,15 +53,17 @@ of the \code{fixedmar} argument, respectively
 The function \code{permatswap} is useful when matrix fill (i.e. the proportion of empty cells) should be kept constant.
 \code{permatswap} uses different kinds of swap algorithms, and row and columns sums are fixed in all cases.
 For presence-absence data, the \code{swap} and \code{tswap} methods of \code{\link{commsimulator}} can be used.
-For count data, a special swap algorithm (swapcount) is implemented that results in permuted matrices with
+For count data, a special swap algorithm ('swapcount') is implemented that results in permuted matrices with
 fixed marginals and matrix fill at the same time.
 
-!!! THIS HAS TO BE EXTENDED WITH SWAPCOUNT ALGORITHM'S DOCUMENTATION !!!
+The 'swapcount' algorithm tries to find 2x2 submatrices (identified by 2 random row and 2 random column indices), that
+can be swapped in order to leave column and row totals and fill unchanged. First, the algorithm finds the largest value ($LVS$)
+in the submatrix that can be swapped and whether in diagonal or antidiagonal way. Submatrices that contain values larger than zero in either diagonal or antidiagonal position can be swapped. Swap means that the values in diagonal or antidiagonal positions are decreased by $LVS$, while remaining cells are increased by $LVS$. A swap is made only if fill doesn't change.
 
 Constraints on row/colum sums, matrix fill, total sum and sums within
 strata can be checked by the \code{summary} method. \code{plot} method is for
-visually testing the randomness of the prmuted matrices, especially for the
-swap methods. If there are any tendency in the graph, higher \code{burnin} and 
+visually testing the randomness of the permuted matrices, especially for the
+swap algorithms. If there are any tendency in the graph, higher \code{burnin} and 
 \code{thin} values can help.
 
 Unrestricted and restricted permutations: if both
@@ -69,8 +71,8 @@ Unrestricted and restricted permutations: if both
 unrestricted permutations. If either of the two is given, it is used
 as is for restricted permutations. If both are given, interaction is
 used for restricted permutations. Each strata should contain at least 2 rows
-in order to perform randomization (in case of low row numbers, swap methods
-can be more slower).
+in order to perform randomization (in case of low row numbers, swap algorithms
+can be rather slow).
 }
 
 \value{
@@ -80,7 +82,7 @@ Functions \code{permatfull} and \code{permatswap} return an object of class \cod
   \item{perm}{a list of permuted matrices with length \code{times}.}
   \item{specs}{a list of other specifications (variable in length, depending on the function used): \code{reg}, \code{hab}, \code{burnin}, \code{thin}.}
 
-\code{summary.permat} returns a list invisibly containing mean
+\code{summary.permat} returns a list containing mean
 Bray-Curtis dissimilarities calculated pairvise among original and
 permuted matrices, and check results of the constraints.  }
 
@@ -92,7 +94,7 @@ Patefield, W. M. (1981) Algorithm AS159. An efficient method of generating r x c
 Applied Statistics 30, 91-97.
 }
 
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}; Jari Oksanen translated the original swap algorithm for count data into C}
+\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}; Jari Oksanen translated the original 'swapcount' algorithm for count data into C}
 
 \seealso{
 \code{\link{commsimulator}}, \code{\link{r2dtable}}, \code{\link{sample}}
