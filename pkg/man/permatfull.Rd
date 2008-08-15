@@ -18,8 +18,10 @@ hypothesis testing can be separated from the null model generation, thus
 several tests might be applied on the same set of random matrices.  }
 
 \usage{
-permatfull(m, fixedmar = "both", reg = NULL, hab = NULL, mtype = "count", times = 100)
-permatswap(m, reg = NULL, hab = NULL, mtype = "count", method = "swap", times = 100, burnin = 10000, thin = 1000)
+permatfull(m, fixedmar = "both", reg = NULL, 
+hab = NULL, mtype = "count", times = 100)
+permatswap(m, reg = NULL, hab = NULL, mtype = "count", 
+method = "swap", times = 100, burnin = 10000, thin = 1000)
 \method{plot}{permat}(x, ...)
 \method{summary}{permat}(object, ...)
 \method{print}{summary.permat}(x, digits = 2, ...)
@@ -57,8 +59,8 @@ For count data, a special swap algorithm ('swapcount') is implemented that resul
 fixed marginals and matrix fill at the same time.
 
 The 'swapcount' algorithm tries to find 2x2 submatrices (identified by 2 random row and 2 random column indices), that
-can be swapped in order to leave column and row totals and fill unchanged. First, the algorithm finds the largest value ($LVS$)
-in the submatrix that can be swapped and whether in diagonal or antidiagonal way. Submatrices that contain values larger than zero in either diagonal or antidiagonal position can be swapped. Swap means that the values in diagonal or antidiagonal positions are decreased by $LVS$, while remaining cells are increased by $LVS$. A swap is made only if fill doesn't change.
+can be swapped in order to leave column and row totals and fill unchanged. First, the algorithm finds the largest value
+in the submatrix that can be swapped ($d$) and whether in diagonal or antidiagonal way. Submatrices that contain values larger than zero in either diagonal or antidiagonal position can be swapped. Swap means that the values in diagonal or antidiagonal positions are decreased by $d$, while remaining cells are increased by $d$. A swap is made only if fill doesn't change.
 
 Constraints on row/colum sums, matrix fill, total sum and sums within
 strata can be checked by the \code{summary} method. \code{plot} method is for

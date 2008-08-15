@@ -27,13 +27,13 @@ tsallisaccum(x, scales = seq(0, 2, 0.2), permutations = 100, raw = FALSE, ...)
 \details{
 The Tsallis diversity (also equivalent to Patil and Taillie diversity) is a one-parametric generalised entropy function, defined as:
 
-\deqn{H_q = \frac{1}{q-1} (1-\sum p_i^q)}{H.q = 1/(q-1)(1-sum(p^q))}
+\deqn{H_q = \frac{1}{q-1} (1-\sum_{i=1}^S p_i^q)}{H.q = 1/(q-1)(1-sum(p^q))}
 
-where \eqn{q} is a scale parameter (Tsallis 1988, Tothmeresz 1995). This diversity is concave for all \eqn{q>0}, but non-additive (Keylock 2005). For \eqn{q=0} it gives the number of species minus one, as \eqn{q} tends to 1 this gives Shannon diversity, for \eqn{q=2} this gives the Simpson index (see function \code{\link{diversity}}.
+where \eqn{q} is a scale parameter, \eqn{S} the number of species in the sample (Tsallis 1988, Tothmeresz 1995). This diversity is concave for all \eqn{q>0}, but non-additive (Keylock 2005). For \eqn{q=0} it gives the number of species minus one, as \eqn{q} tends to 1 this gives Shannon diversity, for \eqn{q=2} this gives the Simpson index (see function \code{\link{diversity}}).
 
 When \code{norm = TRUE}, \code{tsallis} gives values normalized by the maximum:
 
-\deqn{H_q(max) = \frac{S^(1-q)-1}{1-q}}{H.q(max) = (S^(1-q)-1)/(1-q)}
+\deqn{H_q(max) = \frac{S^{1-q}-1}{1-q}}{H.q(max) = (S^(1-q)-1)/(1-q)}
 
 where \eqn{S} is the number of species. As \eqn{q} tends to 1, maximum is defined as \eqn{ln(S)}.
 
@@ -52,7 +52,7 @@ Tothmeresz, B. (1995). Comparison of different methods for diversity
 Patil, GP and Taillie, C. (1982). Diversity as a concep and its measurement.
   \emph{J. Am. Stat. Ass.} 77, 548--567.
 
-Keylock, CJ (2005).Simpson diversity and the Shannon-Wiener index as special cases of a generalized entropy.
+Keylock, CJ (2005). Simpson diversity and the Shannon-Wiener index as special cases of a generalized entropy.
   \emph{Oikos} 109, 203--207.
 }
 \author{Peter Solymos, based on the code of Roeland Kindt and Jari Oksanen written for \code{renyi}}
