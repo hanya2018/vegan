@@ -18,7 +18,7 @@ ordiParseFormula(formula, data, xlev = NULL)
 ordiTerminfo(d, data)
 ordiArrowMul(x, at = c(0,0), fill = 0.75)
 ordiArgAbsorber(..., shrink, origin, scaling, triangular,
-                display, choices, FUN)
+                display, choices, const, FUN)
 centroids.cca(x, mf, wt)
 permuted.index(n, strata)
 pasteCall(call, prefix = "Call:")
