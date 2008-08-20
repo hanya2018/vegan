@@ -11,14 +11,14 @@ function(matr, strata, hclass=NULL, method="trad", index=c("richness", "shannon"
     permtype <- match.arg(permtype, c("full", "swap"))
     if (length(unique(strata[,1])) != 1)
         stop("first column of strata should be uniform")
-    if (method == "tsallis" & length(scales) != 1 & !is.null(hclass))
+    if (method == "tsallis" && length(scales) != 1 && !is.null(hclass))
         stop("scales must be of length 1 if hclass is defined")
     if (times == 0) test <- FALSE
-    if (!test & results)
+    if (!test && results)
         stop("results are not produced when test is FALSE or times = 0")
-    if (!is.null(hclass) & results)
+    if (!is.null(hclass) && results)
         stop("results are not produced when hclass is defined")
-    if (inherits(matr, "matrix") | inherits(matr, "data.frame")) m <- matr
+    if (inherits(matr, "matrix") || inherits(matr, "data.frame")) m <- matr
     if (inherits(matr, "permat")) m <- matr$orig
     if (test) {
         if (inherits(matr, "permat")) {
@@ -166,11 +166,11 @@ adpTsallis <- function(y, f, weights="unif", serr=TRUE, scales=seq(0, 2, 0.2)){
     return(out)}
 ## internal
 formatAdp <- function(x, style=c("alpha","beta","alpha2","beta2", "alphaH"),col.nam=NULL){
-    if (style=="alpha" | style=="alpha2" | style=="alphaH") {
+    if (style=="alpha" || style=="alpha2" || style=="alphaH") {
         rownames(x) <- interaction(rep("Alpha",nrow(x)), 1:nrow(x))
-        if (style=="alpha" | style=="alphaH") rownames(x)[nrow(x)] <- "Gamma"
-        if (style=="alpha2" | style=="alphaH") colnames(x) <- col.nam}
-    if (style=="beta" | style=="beta2") {
+        if (style=="alpha" || style=="alphaH") rownames(x)[nrow(x)] <- "Gamma"
+        if (style=="alpha2" || style=="alphaH") colnames(x) <- col.nam}
+    if (style=="beta" || style=="beta2") {
         rownames(x) <- interaction(rep("Beta",nrow(x)), 1:nrow(x))
         if (style=="beta2") colnames(x) <- col.nam}
     return(x)}
