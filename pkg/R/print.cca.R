@@ -5,8 +5,8 @@
         warning("this is an ade4 object which vegan cannot handle")
         x <- ade2vegancca(x)
     }
-    cat("\nCall:\n")
-    cat(deparse(x$call), "\n\n")
+    writeLines(strwrap(pasteCall(x$call)))
+    cat("\n")
     chi <- rbind(x$tot.chi, x$pCCA$tot.chi, x$CCA$tot.chi, x$CA$tot.chi)
     rnk <- rbind(NA, x$pCCA$rank, x$CCA$rank, x$CA$rank)
     tbl <- cbind(chi, rnk)
