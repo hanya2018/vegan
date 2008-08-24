@@ -8,7 +8,12 @@
                                   "quasiswap"))
     comm <- ifelse(comm > 0, 1, 0)
     ind <- nestfun(comm, ...)
-    simind <- numeric(nsimul)
+    if (is.list(ind))
+        indstat <- ind[["statistic"]]
+    else
+        indstat <- ind
+    n <- length(indstat)
+    simind <- matrix(0, nrow=n, ncol=nsimul)
     if (method %in% c("swap", "tswap")){
         checkbrd <- 1
         if (method == "tswap") {
@@ -26,22 +31,30 @@
                 x <- commsimulator(x, method= method, thin = round(checkbrd))
         for(i in 1:nsimul) {
             x <- commsimulator(x, method = method, thin = thin)
-            simind[i] <- nestfun(x, ...)$statistic
+            tmp <- nestfun(x, ...)
+            if (is.list(tmp))
+                simind[,i] <- tmp[["statistic"]]
+            else
+                simind[,i] <- tmp
         }
     }
     else {
         for (i in 1:nsimul) {
             x <- commsimulator(comm, method=method)
-            simind[i] <- nestfun(x,...)$statistic
+            tmp <- nestfun(x,...)
+            if (is.list(tmp))
+                simind[,i] <- tmp[["statistic"]]
+            else
+                simind[,i] <- tmp
         }
     }
-    z <- (ind$statistic - mean(simind))/sd(simind)
-    p <- 2*min(sum(ind$statistic > simind), sum(ind$statistic < simind))
+    z <- (indstat - rowMeans(simind))/apply(simind, 1, sd)
+    p <- 2*pmin(rowSums(indstat > simind), rowSums(indstat < simind))
     p <- (p + 1)/(nsimul + 1)
-    if (is.null(names(ind$statistic)))
-        names(ind$statistic) <- "Statistic"
+    if (is.null(names(indstat)))
+        names(indstat) <- "Statistic"
     ind$oecosimu <- list(z = z, pval = p, simulated=simind, method=method,
-                         statistic = ind$statistic)
+                         statistic = indstat)
     class(ind) <- c("oecosimu", class(ind))
     ind
 }

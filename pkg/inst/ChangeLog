@@ -3,8 +3,13 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-10 (opened August 21, 2008: Prague Anniversary)
+Version 1.14-10 (opened August 21, 2008)
 
+	* oecosimu: accepts now a vector of statistics and plain
+	statistics instead of the list item statistics. This means that
+	things like species richness for sites can be analysed with
+	approprite simulation model (needs fine tuning, though).
+	
 	* ordiParseFormula: formula of the partial terms has the same
 	environment as the general formula. Cures some tricky issues when
 	the partial term of cca/rda/capscale model is updated within a
