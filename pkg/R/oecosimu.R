@@ -53,6 +53,8 @@
     p <- (p + 1)/(nsimul + 1)
     if (is.null(names(indstat)))
         names(indstat) <- "Statistic"
+    if (!is.list(ind))
+        ind <- list(statistic = ind)
     ind$oecosimu <- list(z = z, pval = p, simulated=simind, method=method,
                          statistic = indstat)
     class(ind) <- c("oecosimu", class(ind))
