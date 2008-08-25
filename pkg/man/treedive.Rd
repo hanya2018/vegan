@@ -10,7 +10,7 @@
 }
 
 \usage{
-treedive(comm, tree)
+treedive(comm, tree, match.force = FALSE)
 treeheight(tree)
 }
 
@@ -18,6 +18,10 @@ treeheight(tree)
   \item{comm}{Community data frame or matrix.}
   \item{tree}{A dendrogram which for \code{treedive} must be for species
     (columns).}
+  \item{match.force}{Force matching of column names in \code{comm} and
+    labels in \code{tree}. If \code{FALSE}, matching only happens when
+    dimensions differ, and in that case the species must be in identical
+    order in both.}
 }
 \details{
   Function \code{treeheight} finds the sum of lengths of connecting
@@ -43,6 +47,10 @@ treeheight(tree)
   and usually the recommended clustering method is UPGMA (\code{method =
   "average"} in function \code{\link{hclust}}) (Podani and Schmera
   2006).
+
+  It is possible to analyse the non-randomness of functional diversity
+  using \code{\link{oecosimu}}. This provided specifying an adequate
+  Null model, and the results will change with this choice.
 }
 
 \value{
@@ -69,9 +77,12 @@ another world. }
 ## the example uses taxonomy 
 data(dune)
 data(dune.taxon)
-d <- taxa2dist(dune.taxon)
+d <- taxa2dist(dune.taxon, varstep=TRUE)
 cl <- hclust(d, "aver")
 treedive(dune, cl)
+## Significance test using Null model communities.
+## The current choice fixes both species and site totals.
+oecosimu(dune, treedive, "quasiswap", tree = cl)
 }
 
 \keyword{ univar }

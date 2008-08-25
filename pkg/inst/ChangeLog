@@ -5,6 +5,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-10 (opened August 21, 2008)
 
+	* treedive: tries to match 'comm' and 'tree' names if forced (by
+	an arg), or when sizes do not match. Output vector has names. Docs
+	discuss estimating signifcance using oecosimu().
+
 	* oecosimu: accepts now a vector of statistics and plain
 	statistics instead of the list item statistics. This means that
 	things like species richness for sites can be analysed with
