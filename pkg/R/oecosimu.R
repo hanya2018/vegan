@@ -1,6 +1,6 @@
 `oecosimu` <-
     function(comm, nestfun, method, nsimul=99,
-             burnin=0, thin=1, ...)
+             burnin=0, thin=1, statistic = "statistic", ...)
 {
     nestfun <- match.fun(nestfun)
     method <- match.arg(method, c("r00", "r0", "r1", "r2", "c0",
@@ -9,7 +9,7 @@
     comm <- ifelse(comm > 0, 1, 0)
     ind <- nestfun(comm, ...)
     if (is.list(ind))
-        indstat <- ind[["statistic"]]
+        indstat <- ind[[statistic]]
     else
         indstat <- ind
     n <- length(indstat)
@@ -33,7 +33,7 @@
             x <- commsimulator(x, method = method, thin = thin)
             tmp <- nestfun(x, ...)
             if (is.list(tmp))
-                simind[,i] <- tmp[["statistic"]]
+                simind[,i] <- tmp[[statistic]]
             else
                 simind[,i] <- tmp
         }
@@ -43,7 +43,7 @@
             x <- commsimulator(comm, method=method)
             tmp <- nestfun(x,...)
             if (is.list(tmp))
-                simind[,i] <- tmp[["statistic"]]
+                simind[,i] <- tmp[[statistic]]
             else
                 simind[,i] <- tmp
         }
@@ -52,7 +52,7 @@
     p <- 2*pmin(rowSums(indstat > simind), rowSums(indstat < simind))
     p <- (p + 1)/(nsimul + 1)
     if (is.null(names(indstat)))
-        names(indstat) <- "Statistic"
+        names(indstat) <- statistic
     if (!is.list(ind))
         ind <- list(statistic = ind)
     ind$oecosimu <- list(z = z, pval = p, simulated=simind, method=method,

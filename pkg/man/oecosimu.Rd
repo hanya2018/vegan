@@ -25,7 +25,8 @@
 }
 
 \usage{
-oecosimu(comm, nestfun, method, nsimul = 99, burnin = 0, thin = 1, ...)
+oecosimu(comm, nestfun, method, nsimul = 99, burnin = 0, thin = 1,
+   statistic = "statistic",  ...)
 nestedchecker(comm)
 nestedn0(comm)
 nesteddisc(comm)
@@ -39,7 +40,8 @@ commsimulator(x, method, thin=1)
   \item{comm}{Community data. }
   \item{nestfun}{Function to analyse nestedness. Some functions are
   provided in \pkg{vegan}, but any function can be used if it accepts the
-  community as the first argument, and returns the result in item
+  community as the first argument, and returns either a plain number or
+  the result in list item with the name defined in argument
   \code{statistic}. See Examples for defining your own functions.}
   \item{method}{Null model method. See details.}
   \item{nsimul}{Number of simulated null communities.}
@@ -48,6 +50,8 @@ commsimulator(x, method, thin=1)
   \item{thin}{Number of discarded null communities between two
   evaluations of nestedness statistic in sequential methods
   \code{"swap"} and \code{"tswap"}.}
+  \item{statistic}{The name of the statistic returned by
+    \code{nestedfun}} 
   \item{kind}{The kind of plot produced.}
   \item{x}{Matrix for \code{commsimulator} or a \code{plot} object.}
   \item{col}{Colour scheme for matrix temperatures.}
@@ -94,12 +98,14 @@ commsimulator(x, method, thin=1)
   \code{\link{vignette}} or \code{\link{vegandocs}}. 
 
   In addition to these functions provided in \pkg{vegan}, any function
-  can be used that takes \code{comm} as the first argument, and
-  returns the nestedness index in item \code{statistic}. Function
-  \code{\link{chisq.test}} is such a function, and examples show how
-  to do this in general.  If you write a function that may be useful
-  to others, please consider submitting it to \pkg{vegan} for others
-  to enjoy (you will be credited as an author of that function).
+  can be used that takes \code{comm} as the first argument, and returns
+  the nestedness index either as plain numeric value or in an item with
+  name defined in \code{statistic} (which defaults to
+  \code{"statistic"}). Function \code{\link{chisq.test}} is such a
+  function, and examples show how to do this in general.  If you write a
+  function that may be useful to others, please consider submitting it
+  to \pkg{vegan} for others to enjoy (you will be credited as an author
+  of that function).
 
   Function \code{commsimulator} implements null models for community
   composition. The implemented models are \code{r00} which maintains the
@@ -236,12 +242,12 @@ commsimulator(x, method, thin=1)
   \code{thin}ning in large matrices. You should plot the simulated
   values to see that they are more or less stationary and there is no
   trend. Method \code{quasiswap} is implemented
-  in plain R, and it is very slow, and it slows down very strongly
-  with big matrices. In general, \code{backtrack} is faster and less
-  sensitive to matrix size, but it also can be very slow.
+  in C and it is much faster than \code{backtrack}.  Method
+  \code{backtrack} may be removed from later releases of \pkg{vegan}
+  because it is slow, but it is still included for comparison.
 
   If you wonder about the name of \code{oecosimu}, look at journal
-names in the References.  }
+  names in the References.  }
 
 \seealso{ \code{\link{r2dtable}} generates table with given marginals but
   with entries above one.  Function \code{\link[labdsv]{rndtaxa}}
@@ -256,11 +262,11 @@ plot(out, kind="incid")
 ## Use the first eigenvalue of correspondence analysis as an index
 ## of structure: a model for making your own functions.
 ## This is a minimal structure; fancier functions give fancier results
-caeval <- function(x) list(statistic = decorana(x, ira=1)$evals[1])
+caeval <- function(x) decorana(x, ira=1)$evals
 out <- oecosimu(sipoo, caeval, "swap", burnin=100, thin=10)
 out
 ## Inspect the swap sequence
-plot(out$oecosimu$simulated, type="l")
+matplot(t(out$oecosimu$simulated), type="l")
 }
 \keyword{ multivariate }
 

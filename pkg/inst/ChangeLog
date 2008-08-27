@@ -10,9 +10,10 @@ Version 1.14-10 (opened August 21, 2008)
 	discuss estimating signifcance using oecosimu().
 
 	* oecosimu: accepts now a vector of statistics and plain
-	statistics instead of the list item statistics. This means that
-	things like species richness for sites can be analysed with
-	approprite simulation model (needs fine tuning, though).
+	statistics instead of the list item statistics, and the user can
+	define the name of the statistic in the function call. This means
+	that things like functional diversity (treedive) for sites can be
+	analysed with approprite simulation model.
 	
 	* ordiParseFormula: formula of the partial terms has the same
 	environment as the general formula. Cures some tricky issues when
