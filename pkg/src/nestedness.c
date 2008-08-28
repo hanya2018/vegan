@@ -202,7 +202,10 @@ double isDiag(double *sm)
 	(sm[0] > 0 && sm[1] > 0 && sm[2] == 0 && sm[3] == 0) ||
 	(sm[0] == 0 && sm[1] > 0 && sm[2] == 0 && sm[3] > 0) ||
 	(sm[0] > 0 && sm[1] == 0 && sm[2] > 0 && sm[3] == 0))
-	    return 0;                                              
+	    return 0; 
+    /* never reach this but pacify a pedantic compiler */
+    else
+	 return 0;
 }
 
 void swapcount(double *m, int *nr, int *nc, int *thin)
