@@ -1,10 +1,10 @@
 "ordiParseFormula" <-
-function (formula, data, xlev = NULL) 
+function (formula, data, xlev = NULL, envdepth = 2) 
 {
     Terms <- terms(formula, "Condition", data = data)
     flapart <- fla <- formula <- formula(Terms, width.cutoff = 500)
     specdata <- formula[[2]]
-    X <- eval.parent(specdata)
+    X <- eval.parent(specdata, n = envdepth)
     X <- as.matrix(X)
     indPartial <- attr(Terms, "specials")$Condition
     mf <- Z <- NULL

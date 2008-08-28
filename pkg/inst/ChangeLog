@@ -21,6 +21,16 @@ Version 1.14-10 (opened August 21, 2008)
 	environment as the general formula. Cures some tricky issues when
 	the partial term of cca/rda/capscale model is updated within a
 	function. (The environment() drives me crazy, says J.O.)
+
+	* ordiParseFormula gains new argument 'envdepth' to define the
+	depth where the community data (dependent data) is evaluated. Most
+	functions evaluate community data in the parent environment of the
+	calling function, but capscale() creates new dependent data and
+	needs evaluate the community within calling function. (The
+	environment() drives me absolutely crazy, says J.O.)
+
+	* vegan-internal.Rd: brief documentation of internal functions for
+	developers with some guidelines of good practices.
 	
 Version 1.14-9 (closed August 20, 2008)
 
