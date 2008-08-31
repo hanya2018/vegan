@@ -29,6 +29,10 @@ Version 1.14-10 (opened August 21, 2008)
 	needs evaluate the community within calling function. (The
 	environment() drives me absolutely crazy, says J.O.)
 
+	* specaccum: empy (all zeros) species removed from input
+	data. These confused sd estimation in method = "exact" which gave
+	all NA.
+
 	* vegan-internal.Rd: brief documentation of internal functions for
 	developers with some guidelines of good practices.
 	
