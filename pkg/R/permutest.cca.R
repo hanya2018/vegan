@@ -88,7 +88,7 @@ permutest.default <- function(x, ...)
     }
     sol <- list(call = x$call, model = model, F.0 = F.0, F.perm = F.perm, 
                 chi = c(Chi.z, Chi.xz), num = num, den = den, df = c(q, 
-                                                              r), nperm = permutations, method = x$method, Random.seed = seed)
+                                                              r), nperm = permutations, method = x$method, first = first,  Random.seed = seed)
     if (!missing(strata)) {
         sol$strata <- deparse(substitute(strata))
         sol$stratum.values <- strata
