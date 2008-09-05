@@ -12,6 +12,8 @@ Version 1.14-11 (opened September 5, 2008)
 	CANOCO (but permutation of CCA residuals differs from CANOCO). For
 	compatibility with old versions of vegan, you must set model =
 	"direct" explicitly.
+
+	* ordiplot: did not use partial match for "sites" and "species".
 	
 Version 1.14-10 (closed September 5, 2008)
 
