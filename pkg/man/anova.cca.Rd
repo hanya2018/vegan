@@ -23,7 +23,7 @@
 permutest(x, ...)
 
 \method{permutest}{cca}(x, permutations = 100,
-          model = c("direct", "reduced", "full"),
+          model = c("reduced", "direct", "full"),
           first = FALSE, strata, ...)
 }
 
@@ -59,7 +59,7 @@ permutest(x, ...)
   \code{anova.cca} passes all parameters to \code{permutest.cca}.
 
   In \code{anova.cca} the number of permutations is controlled by
-  targeted ``critical'' \eqn{P} value (\code{alpha}) and accepted Type
+  targeted \dQuote{critical} \eqn{P} value (\code{alpha}) and accepted Type
   II or rejection error (\code{beta}).  If the results of permutations
   differ from the targeted \code{alpha} at risk level given by
   \code{beta}, the permutations are
@@ -73,19 +73,20 @@ permutest(x, ...)
   by \code{step}.  
   
   The function \code{permutest.cca} implements a permutation test for
-  the ``significance'' of constraints in \code{\link{cca}},
+  the \dQuote{significance} of constraints in \code{\link{cca}},
   \code{\link{rda}} or \code{\link{capscale}}.  Community data are
   permuted with choice \code{model = "direct"}, residuals after
-  partial CCA/RDA/CAP with choice \code{model = "reduced"},
+  partial CCA/RDA/CAP with choice \code{model = "reduced"} (default),
   and residuals after CCA/RDA/CAP under choice \code{model = "full"}.
   If there is no partial CCA/RDA/CAP stage, \code{model = "reduced"}
-  simply permutes the data. The test statistic is ``pseudo-\eqn{F}'',
+  simply permutes the data and is equivalent to \code{model = "direct"}. 
+  The test statistic is ``pseudo-\eqn{F}'',
   which is the ratio of constrained and unconstrained total Inertia
   (Chi-squares, variances or something similar), each divided by their
-  respective ranks.  If there are no conditions ("partial" terms), the
+  respective ranks.  If there are no conditions (\dQuote{partial} terms), the
   sum of all eigenvalues remains constant, so that pseudo-\eqn{F} and
   eigenvalues would give equal results.  In partial CCA/RDA/CAP, the
-  effect of conditioning variables (``covariables'') is removed before
+  effect of conditioning variables (\dQuote{covariables} is removed before
   permutation, and these residuals are added to the non-permuted fitted
   values of partial CCA (fitted values of \code{X ~ Z}).  Consequently,
   the total Chi-square is not fixed, and test based on pseudo-\eqn{F}
@@ -121,6 +122,12 @@ permutest(x, ...)
   \code{"permutest.cca"}, which has its own \code{print} method.  The
   function \code{anova.cca} calls \code{permutest.cca}, fills an
   \code{\link{anova}} table and uses \code{\link{print.anova}} for printing.
+}
+\note{
+  The default permutation \code{model} changed from \code{"direct"} to
+  \code{"reduced"} in \pkg{vegan} version 1.14-11 (release version
+  1.15-0), and you must explicitly set \code{model = "direct"} for
+  compatibility with the old version.
 }
 \references{
   Legendre, P. and Legendre, L. (1998). \emph{Numerical Ecology}. 2nd English

@@ -5,7 +5,7 @@ permutest.default <- function(x, ...)
     stop("No default permutation test defined")
 
 `permutest.cca` <-
-    function (x, permutations = 100, model = c("direct", "reduced", 
+    function (x, permutations = 100, model = c("reduced", "direct", 
                                      "full"), first = FALSE, strata, ...) 
 {
     model <- match.arg(model)
