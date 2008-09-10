@@ -134,7 +134,12 @@ permutest(x, ...)
   ed. Elsevier.
 }
 \author{Jari  Oksanen}
-\seealso{\code{\link{cca}}, \code{\link{rda}}, \code{\link{capscale}}. }
+\seealso{\code{\link{cca}}, \code{\link{rda}}, \code{\link{capscale}}
+  to get something to analyse. Function \code{\link{drop1.cca}} calls
+  \code{anova.cca} with \code{by = "margin"}, and
+  \code{\link{add1.cca}} an analysis for single terms additions, which
+  can be used in automatic or semiautomatic model building (see
+  \code{\link{deviance.cca}}. }
 
 \examples{
 data(varespec)

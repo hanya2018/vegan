@@ -3,7 +3,18 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.14-11 (opened September 5, 2008)
+Version 1.14-12 (opened September 10, 2008)
+
+	* add1.cca, drop1.cca: new functions that also implement
+	permutation tests with argument test = "permutation", but only use
+	default methods with test = "none". Function drop1.cca uses
+	anova.cca(..., by = "margin"), and add1.cca implements a new type of
+	analysis for single term additions. The immediate reason for
+	implementing these tests was that I found out that step(..., test
+	= "Chisq") worked(!) producing parametric likelihood ratio tests,
+	and this hole had to be closed before users notice this.
+	
+Version 1.14-11 (closed September 10, 2008)
 
 	* anova.cca/permutest.cca: default permutation model changed from
 	"direct" to "reduced" after Pierre Legendre's simulation test
