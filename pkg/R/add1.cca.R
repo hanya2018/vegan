@@ -8,6 +8,8 @@
     cl <- class(out)
     ## Loop over terms in 'scope' and do anova.cca
     if (test == "permutation") {
+        ## Avoid nested Condition(Condition(x) + z)
+        hasfla <- update(terms(object$terminfo), . ~  Condition(.))
         if (!is.character(scope)) 
             scope <- add.scope(object, update.formula(object, scope))
         ns <- length(scope)
@@ -15,13 +17,19 @@
         adds[1, ] <- NA
         for (i in 1:ns) {
             tt <- scope[i]
-            if (!is.null(object$CCA))
-                nfit <- update(object,
-                               as.formula(paste(". ~  Condition(.) + ", tt)))
+            ## Condition(.) previous terms (if present)
+            if (!is.null(object$CCA)) {
+                fla <- update(hasfla, paste("~ . +", tt))
+                nfit <- update(object, fla)
+            }
             else
                 nfit <- update(object,
                                as.formula(paste(". ~ . +", tt)))
-            tmp <- anova(nfit, perm.max = perm.max, ...)
+            ## Handle completely aliased terms
+            if (is.null(nfit$CCA))
+                tmp <- matrix(NA, 1, 5)
+            else
+                tmp <- anova(nfit, perm.max = perm.max, ...)
             adds[i+1,] <- unlist(tmp[1,3:5])
         }
         colnames(adds) <- colnames(tmp)[3:5]
