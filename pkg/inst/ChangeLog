@@ -13,6 +13,12 @@ Version 1.14-12 (opened September 10, 2008)
 	implementing these tests was that I found out that step(..., test
 	= "Chisq") worked(!) producing parametric likelihood ratio tests,
 	and this hole had to be closed before users notice this.
+
+	* anova.cca: improved treatment of models where constrained or
+	unconstrained models are NULL so that permutation tests are
+	impossible. These used to stop with error, but now they return a
+	zeroed result so that things like anova(..., by = "term") and
+	drop1() work. Added function anova.ccanull to handle these cases.
 	
 Version 1.14-11 (closed September 10, 2008)
 

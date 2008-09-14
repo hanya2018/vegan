@@ -22,8 +22,6 @@
             fla <- paste(fla, updfla, sep="+")
         }
         tmp <- update(object, fla)
-        if (is.null(tmp$CCA))
-            stop("cannot analyse by = \"margin\" with complete aliasing")
         tmp <- anova(tmp, step=step, ...)
         ## Meaning is to start every permutation from the same seed, but
         ## get the seed of the longest simulation and reset the RNG
