@@ -1,5 +1,6 @@
 \name{anova.cca}
 \alias{anova.cca}
+\alias{anova.ccanull}
 \alias{anova.ccabyaxis}
 \alias{anova.ccabyterm}
 \alias{anova.ccabymargin}
