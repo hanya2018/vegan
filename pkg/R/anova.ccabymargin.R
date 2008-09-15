@@ -1,7 +1,10 @@
 `anova.ccabymargin` <-
-    function(object, step=100,...)
-{ 
-    trms <- drop.scope(object)
+    function(object, step=100, scope, ...)
+{
+    if (!missing(scope) && is.character(scope))
+        trms <- scope
+    else
+        trms <- drop.scope(object, scope)
     alltrms <- labels(terms(object$terminfo))
     keep <- trms %in% alltrms
     trms <- trms[keep]
@@ -11,8 +14,9 @@
         fla <- formula(object)
         ## Put all trms except current into Condition() and update
         ## formula
-        if (ntrms > 1) {
-            updfla <- paste("Condition(",paste(trms[-i], collapse="+"), ")")
+        if (length(alltrms) > 1) {
+            keeptrms <- alltrms[!(alltrms==trms[i])]
+            updfla <- paste("Condition(",paste(keeptrms, collapse="+"), ")")
             fla <- update(fla, paste(". ~ . + ", updfla))
         }
         tmp <- update(object, fla)

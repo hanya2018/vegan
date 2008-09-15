@@ -6,9 +6,13 @@
     out <- NextMethod("drop1", object, test="none", ...)
     cl <- class(out)
     if (test == "permutation") {
-        adds <- anova(object, by = "margin", perm.max = perm.max, ...)
+        rn <- rownames(out)[-1]
+        if (missing(scope))
+            scope <- rn
+        adds <- anova(object, by = "margin", perm.max = perm.max,
+                      scope = scope, ...)
         nr <- nrow(adds)
-        out <- cbind(out, rbind(NA, adds[-nr,3:5]))
+        out <- cbind(out, rbind(NA, adds[rn,3:5]))
         class(out) <- cl
     }
     out

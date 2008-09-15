@@ -19,6 +19,13 @@ Version 1.14-12 (opened September 10, 2008)
 	impossible. These used to stop with error, but now they return a
 	zeroed result so that things like anova(..., by = "term") and
 	drop1() work. Added function anova.ccanull to handle these cases.
+
+	* anova.cca(..., by = "margin") was handling wrongly 'x' in ~
+	Condition(x) + x + z, or model formulae where same variables were
+	used both as Conditions and (aliased) constraints. 
+
+	* anova.cca(..., by = "margin") or function anova.ccabymargin
+	gained a 'scope' argument which is used in drop.scope(). 
 	
 Version 1.14-11 (closed September 10, 2008)
 

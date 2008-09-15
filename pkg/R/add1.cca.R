@@ -25,11 +25,7 @@
             else
                 nfit <- update(object,
                                as.formula(paste(". ~ . +", tt)))
-            ## Handle completely aliased terms
-            if (is.null(nfit$CCA))
-                tmp <- matrix(NA, 1, 5)
-            else
-                tmp <- anova(nfit, perm.max = perm.max, ...)
+            tmp <- anova(nfit, perm.max = perm.max, ...)
             adds[i+1,] <- unlist(tmp[1,3:5])
         }
         colnames(adds) <- colnames(tmp)[3:5]

@@ -109,7 +109,11 @@ permutest(x, ...)
   variable). The terms are assessed sequentially from first to last, and
   the order of the terms will influence their significances. Setting
   \code{by = "margin"} will perform separate significance test for each
-  marginal term in a model with all other terms. These are similar to
+  marginal term in a model with all other terms. The marginal test
+  also accepts a \code{scope} argument for the
+  \code{\link{drop.scope}} which can be a character vector
+  of term labels that are analysed, or a fitted model of lower scope. 
+  The marginal effects are also known as
   \dQuote{Type III} effects, but the current function only evaluates
   marginal terms. It will, for instance, ignore main effects that are
   included in interaction terms. In calculating pseudo-\eqn{F}, all
@@ -146,10 +150,16 @@ permutest(x, ...)
 data(varespec)
 data(varechem)
 vare.cca <- cca(varespec ~ Al + P + K, varechem)
+## overall test
 anova(vare.cca)
+## Test for axes
 anova(vare.cca, by="axis", perm.max=500)
+## Sequential test for terms
 anova(vare.cca, by="terms", permu=200)
+## Marginal or Type III effects
 anova(vare.cca, by="margin")
+## Marginal test knows 'scope'
+anova(vare.cca, by = "m", scope="P")
 }
 \keyword{ multivariate }
 \keyword{ htest }
