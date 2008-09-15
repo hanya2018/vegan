@@ -5,27 +5,21 @@
     alltrms <- labels(terms(object$terminfo))
     keep <- trms %in% alltrms
     trms <- trms[keep]
-    cond <- alltrms %in% trms
-    if (sum(!cond) > 0) {
-        keepfla <- reformulate(alltrms[!cond])
-        keepfla <- update(keepfla, ~ Condition(.))
-        keepfla <- deparse(keepfla, width.cutoff=500)
-    } else {
-        keepfla <- "~"
-    }
     ntrms <- length(trms)
     bigperm <- 0
     for (i in 1:ntrms) {
-        fla <- paste(keepfla, trms[i], sep="+") 
+        fla <- formula(object)
+        ## Put all trms except current into Condition() and update
+        ## formula
         if (ntrms > 1) {
             updfla <- paste("Condition(",paste(trms[-i], collapse="+"), ")")
-            fla <- paste(fla, updfla, sep="+")
+            fla <- update(fla, paste(". ~ . + ", updfla))
         }
         tmp <- update(object, fla)
         tmp <- anova(tmp, step=step, ...)
-        ## Meaning is to start every permutation from the same seed, but
-        ## get the seed of the longest simulation and reset the RNG
-        ## to that state when exiting the function
+        ## Start every permutation from the same seed, but get the
+        ## seed of the longest simulation and reset the RNG to that
+        ## state when exiting the function
         if (tmp[1,"N.Perm"] > bigperm) {
             bigperm <- tmp[1, "N.Perm"]
             bigseed <- get(".Random.seed", envir = .GlobalEnv,
@@ -49,4 +43,3 @@
     attr(sol, "heading") <- head
     sol
 }
-
