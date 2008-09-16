@@ -1,6 +1,6 @@
 `add1.cca`<-
     function(object, scope, test = c("none", "permutation"),
-             perm.max = 200, ...)
+             pstep = 100, perm.max = 200, ...)
 {
     test <- match.arg(test)
     ## Default add1
@@ -25,7 +25,7 @@
             else
                 nfit <- update(object,
                                as.formula(paste(". ~ . +", tt)))
-            tmp <- anova(nfit, perm.max = perm.max, ...)
+            tmp <- anova(nfit, step = pstep, perm.max = perm.max, ...)
             adds[i+1,] <- unlist(tmp[1,3:5])
         }
         colnames(adds) <- colnames(tmp)[3:5]
