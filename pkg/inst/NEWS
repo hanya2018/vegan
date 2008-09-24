@@ -1,26 +1,193 @@
+
 -*-Text-*-
 
-		      VEGAN DEVELOPMENT VERSIONS
-		      ==========================
+			VEGAN RELEASE VERSIONS 
+		       	======================
+
+		       CHANGES IN VEGAN 1.15-0
+
+NEW FUNCTIONS
+
+    - add1.cca and drop1.cca: functions to implement permutation tests
+      in with argument test = "permutation". Function drop1.cca uses
+      anova.cca(by = "margin") and add1.cca implements a new type of
+      analysis for single term additions.
+
+    - ordilabel: new alternative for cluttered ordination plots.  Text
+      labels are written on opaque background tag. The texts still
+      cover each other, but at least the uppermost are readable, and
+      the ordering can be controlled by 'priority' argument. Similar
+      to 's.label' in ade4 pacakge.
+
+    - ordipointlabel: new alternative for cluttered ordination plots.
+      Points are in fixed positions, but their text labels are located
+      to avoid overplotting. The optimization uses simulated annealing
+      of 'optim' function. Returns an "orditkplot" so that the results
+      can be edited with 'orditkplot'. Similar to 'pointLabel'
+      function in maptools package. 
+      FIXME: INTERFACE WITH orditkplot NEEDS A FINISHING TOUCH.
+
+    - permatfull, permatswap: functions to permute quantitative count
+      data.
+
+    - treedive: estimation of functional diversity defined as the
+      height of dendrogram of species properties for a site (Petchey &
+      Gaston, Ecology Letters 9, 741-758; 2006). With a helper
+      function 'treeheight' to find the height of a 'hclust'
+      dendrogram.
+      FIXME: check matching names in dendrogram and community data.
+
+    - tsallis: Tsallis entropy family as an alternative to 'renyi'. 
+
+    - wcmdscale: weighted metric scaling a.k.a. weighted principal
+      coordinates analysis; only uses row weights.  
+      FIXME: Update documentation to know wcmdscale.
+
+NEW FEATURES AND FIXES
+
+    - anova.cca: default permutation model changed from "direct" to
+      "reduced" after Pierre Legendre's demonstrated tha model
+      "reduced" was superior in term of Type I error.
+
+    - anova.cca: handles smoothly models where constrained or
+      unconstrained models are NULL and the tests are impossible (used
+      to stop with error). 
+
+    - anova.cca(..., by = "margin") was handling wrongly 'x' in
+      '~Condition(x) + x + z', or model formulae where same variables
+      where used both as conditions and (aliased constraints).
+
+    - cca/rda/capscale: improved robustness in the formula
+      interface. Partial handling of "cca" objects produced by
+      ade4:::cca. 
+
+    - commsimulator: swap, trial swap and quasiswap written in C and
+      *much* faster (100x in some tests). 
+
+    - oecosimu: accepts now a vector of statistics and plain
+      statistics, and the user can give the name of the statistic in
+      the function call. 
+
+    - ordiplot: did not use partial matching for "sites" and
+      "species". 
+
+    - orditkplot: Improved user interface. Allows zooming into
+      graphs. Imitates R plotting characters ('pch'). Label family,
+      size and font can be vectors. 
+      FIXME: SHOULD BE ABLE TO EDIT ALL ordipointlabel RESULTS.
+
+    - permuted.index2 and associated functions allow for restricted
+      permutations of strata (i.e., restricted shuffling of blocks). 
+
+    - specaccum: removes missing (all zero) species which gave sd = NA
+      with method = "exact".
+
+		       CHANGES IN VEGAN 1.13-2
+
+    - anova.cca (and permutest.cca) now calculate the residual df as
+      (number of rows) - (rank of constraints and conditions) - 1
+      instead of using the rank of the residual ordination.  With
+      single response variable in 'rda' the degrees of freedom and
+      F-values are now identical to those in 'lm' (linear
+      model). However, the change does not influence significances
+      (P-values), because these have been always found by permutation,
+      and this change does not influence the order statistic used in
+      permutations.
+
+    - oecosimu: always estimates the original statistic with binary
+      data even when the user supplies quantitative data.
+
+    - orditkplot: no superfluous pointer lines when moving labels. 
+
+    - procrustes plot failed if two configurations were exactly
+      identical. 
+
+    - rda (and capscale) use internal scaling constant so that the
+      returned site and species scores with scalings 1, 2 or 3
+      together provide a biplot approximation of the original
+      data. This scaling constant is calculated internally, but now
+      its numerical value is returned as an attribute of 'scores.rda',
+      and 'summary' displays its value. Vignette on "Design decisions
+      and implementation" in vegan explains the calculation of the
+      internal scaling constant.
+
+    - summary of capscale identical to the summary of rda.
+
+    - scores of rda and capscale with scaling = 0 really return the
+      unmodified scores without the scaling constant.
+
+		       CHANGES IN VEGAN 1.13-1
 
 GENERAL
 
-    - User visible changes in the development version to be 1.13-0.
+    - Helene Wagner joined the vegan team.
+
+FIXES FOR HANDLING RANKS IN CONSTRAINED ORDINATION
+
+    - cca, rda and capscale had only known one kind of rank: the rank
+      of the ordination result (= number of axes). In fact there are
+      two other types of ranks: the rank of constraints after removing
+      conditions, and the rank of constraints + conditions, where
+      conditions refer to terms "partialled out". This hit those that
+      tried to use rda with single response variable instead of
+      community matrix, and also some partial models were handled
+      wrongly. The changes mainly concern cases where the rank of
+      constraints is higher than the rank of the ordination (more
+      constraints than ordination axes).  The changes have visible
+      effects in following support functions:
+      	  
+    - alias: no superfluous aliasing of terms, partial models aliased
+      correctly.
+
+    - anova: always uses rank of the constraints which also fixes
+      anova(..., by = "terms") when single response variable was used.
+
+    - calibrate.cca: identifies cases when the rank of constraints is
+      higher than the rank of ordination and refuses to analyse these.
+
+    - extractAIC: uses rank of constraints for degrees of freedom.
+
+    - predict: predict(..., type = "lc", newdata = somedata) works in
+      partial analysis.
+
+OTHER FIXES
+
+    - adonis: faster and improved documentation.
+
+    - intersetcor and inertcomp now check that input really is from
+      constrained ordination instead of giving obscure error messages.
+
+    - lines.spantree knows again graphical arguments such as 'col',
+      'lty'.
+
+    - mite.xy: new data set on the spatial coordinates of sample sites
+      of Oribatid mites.
+
+    - mso: plot.mso replaced with msoplot, and plot function now
+      displays the ordination scatter plot. Function msoplot collapses
+      distances larger than half of the maximum distance into a single
+      distance class. Printed result shows the variogram data.
+
+    - ordicluster, ordiellipse, ordispider, orglspider, ordisurf,
+      factorfit and vectorfit could fail with non-vegan ordination
+      objects in R 2.7.0 whose weights.default function gave error if
+      object had no weights (these worked in R 2.6.2 and earlier).
+
+    - taxa2dist: has a "method" name for distances.
+
+
+		       CHANGES IN VEGAN 1.13-0
+
+GENERAL
+
+    - Based on development version 1.12-15 (revision 354 at
+      http://vegan.r-forge.r-project.org) 
 
 NEW FUNCTIONS
 
     - betadiver: beta diversity functions as reviewed by Patricia
       Koleff et al.  (J. Anim. Ecol., 72, 367-382; 2003), with a plot
       function to produce triangular plots.
-
-    - MOStest: Mitchell-Olds--Shaw test (quadratic extreme in an
-      interval). The test was suggested for analysis humped species
-      richness patterns, but function implements a generalized test,
-      which also can be used for analysing location the Gaussian
-      optimum in gradient analysis. Moreover, it also can be used to
-      replace Tokeshi's test for bimodal species frequency
-      patterns.  The confidence limits for the location of the optimum
-      can be estimated with Fieller theorem or from profile deviance.
 
     - mso: Helene Wagner's multiscale ordination or spatial
       partitioning of cca and rda. This is taken from the Ecological
@@ -51,17 +218,17 @@ NEW FEATURES AND FIXES
     - capscale: accepts other distance functions than vegdist, and can
       use metaMDSdist for extended dissimilarites & "metaPCoA".
 
-    - designdist: accepts 2x2 contingency table notation with a, b, c,
+    - designdist: knows 2x2 contingency table notation with a, b, c,
       and d.
 
     - metaMDS: transforms data like with distances for species WA.
 
-    - orditkplot: allows editing labels and zooming.
+    - orditkplot: allows editing labels and zooming into plot.
 
     - permDisper: renamed to permutest.betadisper.
 
     - permutest: now a generic function, currently with methods
-        'cca' and 'permDisper'.
+      'cca' and 'permDisper'.
 
     - rarefy: accepts vectors of sample sizes.
 
@@ -75,10 +242,6 @@ NEW FEATURES AND FIXES
 
     - zzz: vegan got startup message.
 
-
-			VEGAN RELEASE VERSIONS
-			======================
- 
 
 		   CHANGES IN VEGAN VERSION 1.11-4
 
