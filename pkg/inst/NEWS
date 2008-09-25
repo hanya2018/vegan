@@ -1,4 +1,3 @@
-
 -*-Text-*-
 
 			VEGAN RELEASE VERSIONS 
@@ -6,35 +5,38 @@
 
 		       CHANGES IN VEGAN 1.15-0
 
+GENERAL
+
+    - Peter Solymos joined the vegan development team.
+
 NEW FUNCTIONS
 
     - add1.cca and drop1.cca: functions to implement permutation tests
-      in with argument test = "permutation". Function drop1.cca uses
+      with argument test = "permutation". Function drop1.cca uses
       anova.cca(by = "margin") and add1.cca implements a new type of
       analysis for single term additions.
 
     - ordilabel: new alternative for cluttered ordination plots.  Text
-      labels are written on opaque background tag. The texts still
-      cover each other, but at least the uppermost are readable, and
-      the ordering can be controlled by 'priority' argument. Similar
-      to 's.label' in ade4 pacakge.
+      is written on opaque label. The texts still cover each other,
+      but at least the uppermost are readable, and the ordering can be
+      controlled by 'priority' argument. Similar to 's.label' in ade4
+      pacakge.
 
     - ordipointlabel: new alternative for cluttered ordination plots.
-      Points are in fixed positions, but their text labels are located
-      to avoid overplotting. The optimization uses simulated annealing
-      of 'optim' function. Returns an "orditkplot" so that the results
-      can be edited with 'orditkplot'. Similar to 'pointLabel'
-      function in maptools package. 
-      FIXME: INTERFACE WITH orditkplot NEEDS A FINISHING TOUCH.
+      Points are in fixed positions, but their text labels are
+      relocated to avoid overplotting. The optimization uses simulated
+      annealing of 'optim' function. Returns an "orditkplot" object so
+      that the results can be edited with 'orditkplot'. Similar to
+      'pointLabel' function in maptools package.  FIXME: INTERFACE
+      WITH orditkplot NEEDS A FINISHING TOUCH.
 
     - permatfull, permatswap: functions to permute quantitative count
       data.
 
     - treedive: estimation of functional diversity defined as the
-      height of dendrogram of species properties for a site (Petchey &
-      Gaston, Ecology Letters 9, 741-758; 2006). With a helper
-      function 'treeheight' to find the height of a 'hclust'
-      dendrogram.
+      height of dendrogram of species properties (Petchey & Gaston,
+      Ecology Letters 9, 741-758; 2006). With a helper function
+      'treeheight' to find the height of a 'hclust' dendrogram.
       FIXME: check matching names in dendrogram and community data.
 
     - tsallis: Tsallis entropy family as an alternative to 'renyi'. 
@@ -46,7 +48,7 @@ NEW FUNCTIONS
 NEW FEATURES AND FIXES
 
     - anova.cca: default permutation model changed from "direct" to
-      "reduced" after Pierre Legendre's demonstrated tha model
+      "reduced" after Pierre Legendre demonstrated that model
       "reduced" was superior in term of Type I error.
 
     - anova.cca: handles smoothly models where constrained or
@@ -55,7 +57,7 @@ NEW FEATURES AND FIXES
 
     - anova.cca(..., by = "margin") was handling wrongly 'x' in
       '~Condition(x) + x + z', or model formulae where same variables
-      where used both as conditions and (aliased constraints).
+      where used both as conditions and (aliased) constraints.
 
     - cca/rda/capscale: improved robustness in the formula
       interface. Partial handling of "cca" objects produced by
@@ -64,14 +66,13 @@ NEW FEATURES AND FIXES
     - commsimulator: swap, trial swap and quasiswap written in C and
       *much* faster (100x in some tests). 
 
-    - oecosimu: accepts now a vector of statistics and plain
-      statistics, and the user can give the name of the statistic in
-      the function call. 
+    - oecosimu: accepts now a vector of statistics, and the user can
+      give the name of the statistic in the function call.
 
     - ordiplot: did not use partial matching for "sites" and
       "species". 
 
-    - orditkplot: Improved user interface. Allows zooming into
+    - orditkplot: Improved user interface. Improved zooming into
       graphs. Imitates R plotting characters ('pch'). Label family,
       size and font can be vectors. 
       FIXME: SHOULD BE ABLE TO EDIT ALL ordipointlabel RESULTS.
