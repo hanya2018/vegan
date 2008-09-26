@@ -50,7 +50,12 @@ ordipointlabel(x, display = c("sites", "species"), choices = c(1, 2),
   label. In addition, it returns the result of \code{\link{optim}} as
   an attribute \code{"optim"}. The unit of overlap is the area
   of character \code{"m"}, and with variable \code{cex} it is the
-  smallest alternative. 
+  smallest alternative. The result object inherits from
+  \code{\link{orditkplot}} result, and can be replotted with its
+  \code{plot} command. It may be possible to further edit the result
+  object with \code{\link{oridtkplot}}, but for good results it is
+  necessary that the points span the whole horizontal axis without empty
+  margins. 
 }
 \references{ See \code{\link[maptools]{pointLabel}} for references. }
 \author{ Jari Oksanen }

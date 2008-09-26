@@ -293,7 +293,10 @@
     diam <- rep(diam, length=nr)
     labfam <- rep(labfam, length=nr)
     labsize <- rep(labsize, length=nr)
-    labfnt <- rep(p$font, length=nr)
+    if (inherits(x, "ordipointlabel"))
+        labfnt <- attr(x$labels, "font")
+    else
+        labfnt <- rep(p$font, length=nr)
     ## Select only items within xlim, ylim
     take <- rep(TRUE, nr)
     if (!missing(xlim))

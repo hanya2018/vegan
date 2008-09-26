@@ -27,8 +27,7 @@ NEW FUNCTIONS
       relocated to avoid overplotting. The optimization uses simulated
       annealing of 'optim' function. Returns an "orditkplot" object so
       that the results can be edited with 'orditkplot'. Similar to
-      'pointLabel' function in maptools package.  FIXME: INTERFACE
-      WITH orditkplot NEEDS A FINISHING TOUCH.
+      'pointLabel' function in maptools package. 
 
     - permatfull, permatswap: functions to permute quantitative count
       data.
@@ -75,7 +74,6 @@ NEW FEATURES AND FIXES
     - orditkplot: Improved user interface. Improved zooming into
       graphs. Imitates R plotting characters ('pch'). Label family,
       size and font can be vectors. 
-      FIXME: SHOULD BE ABLE TO EDIT ALL ordipointlabel RESULTS.
 
     - permuted.index2 and associated functions allow for restricted
       permutations of strata (i.e., restricted shuffling of blocks). 

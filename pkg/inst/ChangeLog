@@ -26,6 +26,9 @@ Version 1.14-12 (opened September 10, 2008)
 
 	* anova.cca(..., by = "margin") or function anova.ccabymargin
 	gained a 'scope' argument which is used in drop.scope(). 
+
+	* orditkplot & ordipointlabel: improved interface allows passing
+	font type from ordipointlabel to orditkplot. 
 	
 Version 1.14-11 (closed September 10, 2008)
 

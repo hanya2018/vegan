@@ -98,6 +98,13 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \R plots, your plot must have the same dimensions as the
   \code{orditkplot} canvas to have identical location of the labels.
 
+  The function only displays one set of scores. However, you can use
+  \code{\link{ordipointlabel}} to produce a result object that has
+  different points and text types for several sets of scores and this
+  can further edited fith \code{orditkplot}. For a good starting
+  solution you need to scale the \code{\link{ordipointlabel}} result so
+  that the points span over the whole horizontal axis.
+
   The plot is a Tcl/Tk canvas, but the function tries to replicate
   standard graphical device of the platform, and it honours several
   graphical parameters (see \code{\link{par}}).  Many of the graphical
@@ -146,7 +153,12 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 \dontrun{
 data(varespec)
 ord <- cca(varespec)
+## Do something with the graph and end by clicking "Dismiss"
 orditkplot(ord, mar = c(4,4,1,1)+.1, font=3)
+## Use ordipointlabel to produce a plot that has both species and site
+## scores in different colors and plotting symbols
+pl <- ordipointlabel(ord)
+orditkplot(pl)
 }
 }
 \keyword{ iplot }
