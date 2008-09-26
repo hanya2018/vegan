@@ -1,12 +1,14 @@
 
 $Date$
 
+VEGAN STABLE VERSIONS
+
+Version 1.15-0 (opened September 26, 2008)
+
+	* based on rev506 at http://r-forge.r-project.org/
+
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.16-0 (opened September 26, 2008)
-
-	* New devel version after branching the release version 1.15-0.
-	
 Version 1.14-12 (closed September 26, 2008)
 
 	* add1.cca, drop1.cca: new functions that also implement
@@ -33,8 +35,6 @@ Version 1.14-12 (closed September 26, 2008)
 
 	* orditkplot & ordipointlabel: improved interface allows passing
 	font type from ordipointlabel to orditkplot. 
-
-	* copied to version 1.15-0 at rev506.
 	
 Version 1.14-11 (closed September 10, 2008)
 
