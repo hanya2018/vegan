@@ -53,7 +53,7 @@ ordipointlabel(x, display = c("sites", "species"), choices = c(1, 2),
   smallest alternative. The result object inherits from
   \code{\link{orditkplot}} result, and can be replotted with its
   \code{plot} command. It may be possible to further edit the result
-  object with \code{\link{oridtkplot}}, but for good results it is
+  object with \code{\link{orditkplot}}, but for good results it is
   necessary that the points span the whole horizontal axis without empty
   margins. 
 }

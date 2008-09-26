@@ -42,7 +42,6 @@ NEW FUNCTIONS
 
     - wcmdscale: weighted metric scaling a.k.a. weighted principal
       coordinates analysis; only uses row weights.  
-      FIXME: Update documentation to know wcmdscale.
 
 NEW FEATURES AND FIXES
 
