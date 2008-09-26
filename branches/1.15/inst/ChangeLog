@@ -7,6 +7,10 @@ Version 1.15-0 (opened September 26, 2008)
 
 	* based on rev506 at http://r-forge.r-project.org/
 
+	* removed MOStest.
+
+	* removed adipart.
+
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.14-12 (closed September 26, 2008)
