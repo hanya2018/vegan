@@ -36,7 +36,6 @@ NEW FUNCTIONS
       height of dendrogram of species properties (Petchey & Gaston,
       Ecology Letters 9, 741-758; 2006). With a helper function
       'treeheight' to find the height of a 'hclust' dendrogram.
-      FIXME: check matching names in dendrogram and community data.
 
     - tsallis: Tsallis entropy family as an alternative to 'renyi'. 
 
