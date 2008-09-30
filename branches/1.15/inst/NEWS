@@ -13,18 +13,18 @@ NEW FUNCTIONS
 
     - add1.cca and drop1.cca: functions to implement permutation tests
       with argument test = "permutation". Function drop1.cca uses
-      anova.cca(by = "margin") and add1.cca implements a new type of
-      analysis for single term additions.
+      anova.cca(..., by = "margin") and add1.cca implements a new type
+      of analysis for single term additions.
 
     - ordilabel: new alternative for cluttered ordination plots.  Text
-      is written on opaque label. The texts still cover each other,
+      is written on opaque labels. The texts still cover each other,
       but at least the uppermost are readable, and the ordering can be
       controlled by 'priority' argument. Similar to 's.label' in ade4
       pacakge.
 
     - ordipointlabel: new alternative for cluttered ordination plots.
       Points are in fixed positions, but their text labels are
-      relocated to avoid overplotting. The optimization uses simulated
+      located to avoid overplotting. The optimization uses simulated
       annealing of 'optim' function. Returns an "orditkplot" object so
       that the results can be edited with 'orditkplot'. Similar to
       'pointLabel' function in maptools package. 
@@ -33,7 +33,7 @@ NEW FUNCTIONS
       data.
 
     - treedive: estimation of functional diversity defined as the
-      height of dendrogram of species properties (Petchey & Gaston,
+      height of the dendrogram of species properties (Petchey & Gaston,
       Ecology Letters 9, 741-758; 2006). With a helper function
       'treeheight' to find the height of a 'hclust' dendrogram.
 
@@ -70,8 +70,8 @@ NEW FEATURES AND FIXES
       "species". 
 
     - orditkplot: Improved user interface. Improved zooming into
-      graphs. Imitates R plotting characters ('pch'). Label family,
-      size and font can be vectors. 
+      graphs. Imitates R plotting characters ('pch'). Label font
+      family, size and font type can be vectors.
 
     - permuted.index2 and associated functions allow for restricted
       permutations of strata (i.e., restricted shuffling of blocks). 
