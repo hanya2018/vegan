@@ -7,8 +7,8 @@
 \alias{summary.cca}
 \alias{print.summary.cca}
 \alias{ade2vegancca}
-\alias{head.cca}
-\alias{tail.cca}
+\alias{head.summary.cca}
+\alias{tail.summary.cca}
 
 \title{Plot or Extract Results of Constrained Correspondence Analysis
   or Redundancy Analysis}
@@ -30,8 +30,8 @@
 \method{summary}{cca}(object, scaling = 2, axes = 6, display = c("sp", "wa", 
     "lc", "bp", "cn"), digits = max(3, getOption("digits") - 3), ...)
 \method{print}{summary.cca}(x, digits = x$digits, head = NA, tail = head, ...)
-\method{head}{cca}(x, n = 6, tail = 0, ...)
-\method{tail}{cca}(x, n = 6, head = 0, ...)
+\method{head}{summary.cca}(x, n = 6, tail = 0, ...)
+\method{tail}{summary.cca}(x, n = 6, head = 0, ...)
 }
 
 \arguments{
@@ -110,9 +110,12 @@
   needed components with the selected \code{scaling}.
 
   Function \code{summary} lists all scores and the output can be very
-  long.  You can suppress all output for scores by setting \code{axes =
-    0} or \code{display = NA} or \code{display = NULL}. 
-  Palmer (1993) suggested using linear constraints
+  long.  You can suppress scores by setting \code{axes = 0} or
+  \code{display = NA} or \code{display = NULL}. You can display some
+  first or last (or both) rows of scores by using \code{head} or
+  \code{tail} or explicit \code{print} command for the \code{summary}.
+  
+ Palmer (1993) suggested using linear constraints
   (``LC scores'') in ordination diagrams, because these gave better
   results in simulations and site scores (``WA scores'') are a step from
   constrained to unconstrained analysis.  However, McCune (1997) showed
@@ -121,16 +124,7 @@
   were little affected.  Therefore the \code{plot} function uses site
   scores (``WA scores'') as the default. This is consistent with the
   usage in statistics and other functions in \R
-  (\code{\link[MASS]{lda}}, \code{\link{cancor}}). The \code{summary}
-  output can be voluminous, but you can show only some lines of the
-  scores by setting \code{head} or \code{tail} arguments in
-  \code{print.summary.cca}, or by using functions \code{head} or
-  \code{tail}. Function \code{head} and \code{tail} are shortcuts to
-  \code{summary} with \code{head} or \code{tail} set in the
-  \code{print}. In general they only show \code{n} first or last rows of
-  the scores (and optionally also \code{head} or \code{tail}), but they
-  display all other results completely. They pass all arguments to
-  \code{summary}. 
+  (\code{\link[MASS]{lda}}, \code{\link{cancor}}).
 }
 \value{
   The \code{plot} function returns invisibly a plotting structure which
@@ -165,7 +159,7 @@ text(mod, dis="cn")
 points(mod, pch=21, col="red", bg="yellow", cex=1.2)
 text(mod, "species", col="blue", cex=0.8)
 ## Limited output of 'summary'
-head(mod, tail=2)
+head(summary(mod), tail=2)
 }
 \keyword{hplot}
 \keyword{aplot}
