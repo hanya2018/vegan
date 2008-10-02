@@ -176,7 +176,7 @@ metaMDSredist(object, ...)
     based on closer dissimilarities where the relation between ordination
     distance and community dissimilarity is rather linear; the limit is
     controlled by parameter \code{threshold}.  If there are enough points
-    below this threshold (controlled by the the parameter
+    below this threshold (controlled by the parameter
     \code{nthreshold}), dissimilarities are regressed on distances.
     The intercept of this regression is taken as the replicate
     dissimilarity, and half-change is the distance where similarity

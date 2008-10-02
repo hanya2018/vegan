@@ -44,7 +44,7 @@ wisconsin(x)
     \item \code{chi.square}: divide by row sums and square root of
     column sums, and adjust for square root of matrix total
     (Legendre & Gallagher 2001). When used with the Euclidean
-    distance, the distances should be similar to the the
+    distance, the distances should be similar to the
     Chi-square distance used in correspondence analysis. However, the
     results from \code{\link{cmdscale}} would still differ, since
     CA is a weighted ordination method (default \code{MARGIN =

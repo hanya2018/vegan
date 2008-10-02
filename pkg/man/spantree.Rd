@@ -60,7 +60,7 @@ spantree(dis, toolong = 0)
   the tree segments. Function \code{plot} displays the tree over a
   supplied ordination configuration, and \code{lines} adds a spanning
   tree to an ordination graph. If configuration is not supplied for \code{plot},
-  the function ordinates the the cophenetic dissimilarities of the
+  the function ordinates the cophenetic dissimilarities of the
   spanning tree and overlays the tree on this result. The default
   ordination function is \code{\link[MASS]{sammon}} (package \pkg{MASS}),
   because Sammon scaling emphasizes structure in the neighbourhood of
