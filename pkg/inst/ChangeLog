@@ -4,8 +4,11 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-1 (opened September 30, 2008)
 
-	* print.radfit.frame: failed if the input data frame had no row
-	names. 
+	* radfit: Should work with empty sites (no species) or when the
+	number of species is less or equal the number of parameters
+	estimated (like may happen in sweeping analysis of data frames or
+	simulations). Takes care that input data frames have row names
+	which are necessary for displaying results.
 	
 	* head.summary.cca & tail.summary.cca: shortcuts to
 	print(summary(x, ...), head, tail) for nicer Sweave tutorials.
