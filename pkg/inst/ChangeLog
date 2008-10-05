@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-1 (opened September 30, 2008)
 
+    * dispindmorisita: function to calculate Morisita's index of
+    dispersion, and its standardized version. Uses the correct
+    way of standardizing, see Note section in help.
+
 	* radfit: Should work with empty sites (no species) or when the
 	number of species is less or equal the number of parameters
 	estimated (like may happen in sweeping analysis of data frames or

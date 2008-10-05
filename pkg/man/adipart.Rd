@@ -1,3 +1,4 @@
+\encoding{UTF-8}
 \name{adipart}
 \alias{adipart}
 \alias{plot.adipart}
@@ -93,7 +94,7 @@ Crist, T.O., Veech, J.A., Gering, J.C. and Summerville, K.S. 2003. Partitioning 
 
 Wagner, H. H., Wildi, O. and Ewald, K.C. 2000. Additive partitioning of plant species diversity in an agricultural mosaic landscape. \emph{Landscape Ecology}, 15, 219-227.
 }
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}}
+\author{\enc{P\'eter S\'olymos}{Peter Solymos}, \email{solymos@ualberta.ca}}
 \seealso{See \code{\link{permatfull}} and \code{\link{permatswap}} for permutation settings, and \code{\link{tsallis}} for Tsallis entropy.}
 \examples{
 data(mite)
