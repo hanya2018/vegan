@@ -11,11 +11,11 @@
     off <- rep(log(sum(x)), length(x))
     p <- 0
     fam <- family(link = "log")
-    if (length(x) > 3) 
+    if (length(x) > 2) 
         nl <- try(nlm(mandelfun, p = p, x = x, rnk = rnk, off = off, 
                       family = fam, hessian = TRUE, ...))
-    if (length(x) <= 3) {
-        aic <- 6
+    if (length(x) < 3) {
+        aic <- NA
         dev <- rdf <-  0
         ln <- nl <- NA
         p <- rep(NA, 3)

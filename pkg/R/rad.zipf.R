@@ -5,10 +5,10 @@
     rnk <- seq(along = x)
     off <- rep(log(sum(x)), length(x))
     fam <- family(link = "log")
-    if (length(x) > 2)
+    if (length(x) > 1)
         ln <- try(glm(x ~ log(rnk) + offset(off), family = fam))
-    if (length(x) <= 2) {
-        aic <- 4
+    if (length(x) < 2) {
+        aic <- NA
         dev <- rdf <-  0
         ln <- nl <- NA
         p <- rep(NA, 2)

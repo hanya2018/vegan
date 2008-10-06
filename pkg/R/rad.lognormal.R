@@ -6,10 +6,10 @@
     rnk <- -qnorm(ppoints(n))
     fam <- family(link = "log")
     ## Must be > 2 species to fit a model
-    if (length(x) > 2)
+    if (length(x) > 1)
         ln <- try(glm(x ~ rnk, family = fam))
-    if (length(x) <= 2) {
-        aic <- 4
+    if (length(x) < 2) {
+        aic <- NA
         dev <- rdf <-  0
         ln <- nl <- NA
         p <- rep(NA, 2)
