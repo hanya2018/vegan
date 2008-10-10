@@ -3,6 +3,16 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
+Version 1.15-1 (opened October 10, 2008)
+
+	* copied head/tail of summary.cca.
+
+	* merged r516, 519, 521: radfit fixes for 0..2 species
+	communities. 
+
+	* merged 522: ordiParseFormula takes care of non-NULL row names.
+
+
 Version 1.15-0 (released September 30, 2008)
 
 	* based on rev506 at http://r-forge.r-project.org/
