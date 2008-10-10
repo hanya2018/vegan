@@ -20,7 +20,7 @@ several tests might be applied on the same set of random matrices.  }
 
 \usage{
 permatfull(m, fixedmar = "both", reg = NULL, 
-hab = NULL, mtype = "count", times = 100)
+hab = NULL, mtype = "count", replace = TRUE, times = 100)
 permatswap(m, reg = NULL, hab = NULL, mtype = "count", 
 method = "swap", times = 100, burnin = 10000, thin = 1000)
 \method{plot}{permat}(x, ...)
@@ -35,6 +35,7 @@ method = "swap", times = 100, burnin = 10000, thin = 1000)
   \item{mtype}{matrix data type, either \code{"count"} for count data, or \code{"prab"} for presence-absence type incidence data.}
   \item{times}{number of permuted matrices.}
   \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available.}
+  \item{replace}{logical, whether shuffle individuals (\code{TRUE}, default) or samples (cells, \code{FALSE}).}
   \item{burnin}{number of null communities discarded before proper analysis in sequential (\code{"swap", "tswap"}) methods.}
   \item{thin}{number of discarded permuted matrices between two evaluations in sequential (\code{"swap", "tswap"}) methods.}
   \item{x, object}{object of class \code{"permat"}}
@@ -52,6 +53,8 @@ Patefield's (1981) algorithm. For presence absence data, matrix fill should be n
 is a wrapper for the function \code{\link{commsimulator}}. The \code{r00, r0, c0, quasiswap}
 algorithms of \code{\link{commsimulator}} are used for \code{"none", "rows", "columns", "both"} values 
 of the \code{fixedmar} argument, respectively 
+
+The \code{replace} argument only have effect if the \code{mtype = "count"} and \code{permatfull} function is used with \code{"none", "rows", "columns"} values of \code{fixedmar}. All other cases are for count data are individual based randomisations.
 
 The function \code{permatswap} is useful when matrix fill (i.e. the proportion of empty cells) should be kept constant.
 \code{permatswap} uses different kinds of swap algorithms, and row and columns sums are fixed in all cases.

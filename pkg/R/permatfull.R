@@ -1,12 +1,25 @@
 ## permatfull function
 `permatfull` <-
-function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
+function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", replace=TRUE, times=100)
 {
+## internal function
+indshuffle <- function(x)
+{
+   N <- length(x)
+   n <- sum(x)
+   out <- numeric(N)
+   names(out) <- 1:N
+   y <- table(sample(1:N, n, replace = TRUE))
+   out[names(out) %in% names(y)] <- y
+   names(out) <- NULL
+   return(out)
+}
     if (!identical(all.equal(m, round(m)), TRUE))
        stop("function accepts only integers (counts)")
     mtype <- match.arg(mtype, c("prab", "count"))
     count <- mtype == "count"
     fixedmar <- match.arg(fixedmar, c("none", "rows", "columns", "both"))
+    sample.fun <- if (replace) indshuffle else sample
     m <- as.matrix(m)
     n.row <- nrow(m)
     n.col <- ncol(m)
@@ -27,27 +40,30 @@ function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", times=100)
     id <- which(str == j)
         if (fixedmar == "none")
             for (i in 1:times)
-                if (count) perm[[i]][id,] <- matrix(sample(m[id,]), length(id), n.col)
+                if (count) perm[[i]][id,] <- matrix(sample.fun(array(m[id,])), length(id), n.col)
                 else perm[[i]][id,] <- commsimulator(m[id,], method="r00")
         if (fixedmar == "rows")
             for (i in 1:times)
-                if (count) perm[[i]][id,] <- apply(m[id,], 2, sample)
+                if (count) perm[[i]][id,] <- t(apply(m[id,], 1, sample.fun))
                 else perm[[i]][id,] <- commsimulator(m[id,], method="r0")
         if (fixedmar == "columns")
             for (i in 1:times)
-                if (count) perm[[i]][id,] <- t(apply(m[id,], 1, sample))
+                if (count) perm[[i]][id,] <- apply(m[id,], 2, sample.fun)
                 else perm[[i]][id,] <- commsimulator(m[id,], method="c0")
         if (fixedmar == "both")
             for (i in 1:times)
                 if (count) perm[[i]][id,] <- r2dtable(1, apply(m[id,], 1, sum), apply(m[id,], 2, sum))[[1]]
                 else perm[[i]][id,] <- commsimulator(m[id,], method="quasiswap")
         }
+    if (fixedmar == "both")
+        replace <- NA
     specs <- list(reg=reg, hab=hab)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
     attr(out, "ptype") <- "full"
     attr(out, "fixedmar") <- fixedmar
     attr(out, "times") <- times
+    attr(out, "replace") <- replace
     class(out) <- c("permat", "list")
     return(out)
 }

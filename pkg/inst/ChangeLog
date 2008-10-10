@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-2 (opened October 10, 2008)
 
+    * permatfull: bug of row/col marins is fixed, replace argument is
+    added to enable individual and sample based randomisation of
+    count data when not both margins are fixed.
+
 	* anosim: API and documentation made similar to mrpp to combine
 	their documentation. Now anosim can take data frame input and find
 	the dissimilarities internally.

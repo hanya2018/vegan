@@ -56,6 +56,7 @@ function(m, reg=NULL, hab=NULL, mtype="count", method="swap", times=100, burnin 
     attr(out, "ptype") <- "swap"
     attr(out, "fixedmar") <- "both"
     attr(out, "times") <- times
+    attr(out, "replace") <- NA
     class(out) <- c("permat", "list")
     return(out)
 }

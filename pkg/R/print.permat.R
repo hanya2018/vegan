@@ -6,8 +6,11 @@ function(x, digits=3, ...)
         restr <- TRUE else restr <- FALSE
     cat("Object of class 'permat'\n\nCall: ")
     print(x$call)
-    cat("Matrix type:", attr(x, "mtype"), "\nPermutation type:", attr(x, "ptype"))
+    cat("\nMatrix type:", attr(x, "mtype"), "\nPermutation type:", attr(x, "ptype"))
     cat("\nRestricted:", restr, "\nFixed margins:", attr(x, "fixedmar"))
+    if (!is.na(attr(x, "replace"))) {
+        if (attr(x, "replace")) cat(" (individual based)")
+        else cat(" (sample based)")}
     cat("\n\nMatrix dimensions:", nrow(x$orig), "rows,", ncol(x$orig), "columns")
     cat("\nSum of original matrix:", sum(x$orig))
     cat("\nFill of original matrix:", round(sum(x$orig>0)/(nrow(x$orig)*ncol(x$orig)),digits))
