@@ -1,6 +1,6 @@
 ## permatfull function
 `permatfull` <-
-function(m, fixedmar="both", reg=NULL, hab=NULL, mtype="count", replace=TRUE, times=100)
+function(m, fixedmar="both", shuffle="ind", reg=NULL, hab=NULL, mtype="count", times=100)
 {
 ## internal function
 indshuffle <- function(x)
@@ -14,12 +14,21 @@ indshuffle <- function(x)
    names(out) <- NULL
    return(out)
 }
+bothshuffle <- function(x)
+{
+x[x!=0] <- indshuffle(x[x!=0])
+return(sample(x))
+}
     if (!identical(all.equal(m, round(m)), TRUE))
        stop("function accepts only integers (counts)")
     mtype <- match.arg(mtype, c("prab", "count"))
+    shuffle <- match.arg(shuffle, c("ind", "samp", "both"))
     count <- mtype == "count"
     fixedmar <- match.arg(fixedmar, c("none", "rows", "columns", "both"))
-    sample.fun <- if (replace) indshuffle else sample
+    sample.fun <- switch(shuffle,
+        "ind"=indshuffle,
+        "samp"=sample,
+        "both"=bothshuffle)
     m <- as.matrix(m)
     n.row <- nrow(m)
     n.col <- ncol(m)
@@ -56,14 +65,14 @@ indshuffle <- function(x)
                 else perm[[i]][id,] <- commsimulator(m[id,], method="quasiswap")
         }
     if (fixedmar == "both")
-        replace <- NA
+        shuffle <- NA
     specs <- list(reg=reg, hab=hab)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
     attr(out, "ptype") <- "full"
     attr(out, "fixedmar") <- fixedmar
     attr(out, "times") <- times
-    attr(out, "replace") <- replace
+    attr(out, "shuffle") <- shuffle
     class(out) <- c("permat", "list")
     return(out)
 }

@@ -19,11 +19,12 @@ hypothesis testing can be separated from the null model generation, thus
 several tests might be applied on the same set of random matrices.  }
 
 \usage{
-permatfull(m, fixedmar = "both", reg = NULL, 
-hab = NULL, mtype = "count", replace = TRUE, times = 100)
+permatfull(m, fixedmar = "both", shuffle = "ind", reg = NULL, 
+hab = NULL, mtype = "count", times = 100)
 permatswap(m, reg = NULL, hab = NULL, mtype = "count", 
 method = "swap", times = 100, burnin = 10000, thin = 1000)
-\method{plot}{permat}(x, ...)
+\method{plot}{permat}(x, ylab="Bray-Curtis dissimilarity", 
+xlab="Runs", col=c(2,4), lty=c(1,2), plot=TRUE, text=TRUE, ...)
 \method{summary}{permat}(object, ...)
 \method{print}{summary.permat}(x, digits = 2, ...)
 }
@@ -35,11 +36,13 @@ method = "swap", times = 100, burnin = 10000, thin = 1000)
   \item{mtype}{matrix data type, either \code{"count"} for count data, or \code{"prab"} for presence-absence type incidence data.}
   \item{times}{number of permuted matrices.}
   \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available.}
-  \item{replace}{logical, whether shuffle individuals (\code{TRUE}, default) or samples (cells, \code{FALSE}).}
+  \item{shuffle}{character, indicating whether individuals (\code{"ind"}), samples (\code{"samp"}) or both (\code{"both"}) should be shuffled, see details.}
   \item{burnin}{number of null communities discarded before proper analysis in sequential (\code{"swap", "tswap"}) methods.}
   \item{thin}{number of discarded permuted matrices between two evaluations in sequential (\code{"swap", "tswap"}) methods.}
   \item{x, object}{object of class \code{"permat"}}
   \item{digits}{number of digits used for rounding.}
+  \item{ylab, xlab, col, lty}{graphical parameters for the \code{plot} method.}
+  \item{plot, text}{logical arguments for the \code{plot} method, whether a plot should be drawn, and statistic values should be printed on the plot.}
   \item{\dots}{other arguments passed to methods.}
 } 
 
@@ -54,7 +57,7 @@ is a wrapper for the function \code{\link{commsimulator}}. The \code{r00, r0, c0
 algorithms of \code{\link{commsimulator}} are used for \code{"none", "rows", "columns", "both"} values 
 of the \code{fixedmar} argument, respectively 
 
-The \code{replace} argument only have effect if the \code{mtype = "count"} and \code{permatfull} function is used with \code{"none", "rows", "columns"} values of \code{fixedmar}. All other cases are for count data are individual based randomisations.
+The \code{shuffle} argument only have effect if the \code{mtype = "count"} and \code{permatfull} function is used with \code{"none", "rows", "columns"} values of \code{fixedmar}. All other cases for count data are individual based randomisations. The \code{"samp"} option results fixed matrix fill. The \code{"both"} option means that samples are shuffled, and individuals are shuffled among non zero cells. This however, not necessarily result in the same matrix fill. Matrix fill can be less than the original if samples bacame empty because of the shuffling of individuals.
 
 The function \code{permatswap} is useful when matrix fill (i.e. the proportion of empty cells) should be kept constant.
 \code{permatswap} uses different kinds of swap algorithms, and row and columns sums are fixed in all cases.
@@ -88,10 +91,12 @@ Functions \code{permatfull} and \code{permatswap} return an object of class \cod
   \item{perm}{a list of permuted matrices with length \code{times}.}
   \item{specs}{a list of other specifications (variable in length, depending on the function used): \code{reg}, \code{hab}, \code{burnin}, \code{thin}.}
 
-\code{summary.permat} returns a list containing mean
+The \code{summary} method returns a list containing mean
 Bray-Curtis dissimilarities calculated pairvise among original and
-permuted matrices, and check results of the constraints.  }
+permuted matrices, and check results of the constraints.  
 
+The \code{plot} method also returns the Bray-Curtis dissimilarities invisibly.
+}
 \references{
 Original references for presence-absence swap methods are given on help
 page of \code{\link{commsimulator}}.

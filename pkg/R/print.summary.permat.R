@@ -10,9 +10,11 @@ function(x, digits=2, ...)
     print(x$call)
     cat("\nMatrix type:", attr(x, "mtype"), "\nPermutation type:", attr(x, "ptype"))
     cat("\nRestricted:", restr, "\nFixed margins:", attr(x, "fixedmar"))
-    if (!is.na(attr(x, "replace"))) {
-        if (attr(x, "replace")) cat(" (individual based)")
-        else cat(" (sample based)")}
+    if (!is.na(attr(x, "shuffle"))) {
+        if (attr(x, "shuffle")=="ind") cat("\nIndividuals")
+        if (attr(x, "shuffle")=="samp") cat("\nSamples")
+        if (attr(x, "shuffle")=="both") cat("\nIndividuals and samples")
+    cat(" are shuffled")}
     cat("\n\nMatrix dimensions:", nrow(x$orig), "rows,", ncol(x$orig), "columns")
     cat("\nSum of original matrix:", sum(x$orig))
     cat("\nFill of original matrix:", round(sum(x$orig>0)/(nrow(x$orig)*ncol(x$orig)),digits))
