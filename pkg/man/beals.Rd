@@ -28,8 +28,8 @@ swan(x)
   \item{incSp}{ This flag indicates whether the target species has to be
   included when computing the mean of the conditioned probabilities. The
   original Beals (1984) definition is equivalent to \code{incSp=TRUE},
-  while the formulation of Münzbergová and Herben is equal to
-  \code{incSp=FALSE}. }  
+  while the formulation of \enc{Münzbergová}{Munzbergova} and Herben is
+  equal to \code{incSp=FALSE}. }  
   \item{mode }{Specifies if and how abundance values have to be
   used. \code{mode = 0} presence/absence mode. \code{mode = 1}
   abundances in \code{refX} (or \code{x}) are used to compute
@@ -39,20 +39,21 @@ swan(x)
   conditioned probabilities and the weighted average.}  
 }
 \details{
-  Beals smoothing is the estimated probability \eqn{p_{ij}}{p[ij]}
-  that species \eqn{j} occurs in site \eqn{i}.  It is defined as
-  \eqn{p_{ij} = \frac{1}{S_i} \sum_k \frac{N_{jk} I_{ik}}{N_k}}{p[ij]
-    = 1/S[i] Sum(k) N[jk] I[ik] / N[k]}, where \eqn{S_i}{S[i]} is the
-  number of species on site \eqn{i}, \eqn{N_{jk}}{N[jk]} is the number of
-  joint occurrences of species \eqn{j} and \eqn{k},
-  \eqn{N_k}{N[k]} is the number of occurences of species \eqn{k}, and
-  \eqn{I} is the incidence (0 or 1) of species (this last term is
-  usually omitted from the equation, but it is necessary). As
-  \eqn{N_{jk}}{N[jk]} can be interpreted as a mean of conditional
-  probability,  the \code{beals} fucntion can be interpred as a mean
-  of conditioned probabilities (De Caceres & Legendre 2008).  The
-  currrent function is generalized to abundance values (De Caceres &
-  Legendre 2008).
+
+  Beals smoothing is the estimated probability \eqn{p_{ij}}{p[ij]} that
+  species \eqn{j} occurs in site \eqn{i}.  It is defined as \eqn{p_{ij}
+  = \frac{1}{S_i} \sum_k \frac{N_{jk} I_{ik}}{N_k}}{p[ij] = 1/S[i]
+  Sum(k) N[jk] I[ik] / N[k]}, where \eqn{S_i}{S[i]} is the number of
+  species on site \eqn{i}, \eqn{N_{jk}}{N[jk]} is the number of joint
+  occurrences of species \eqn{j} and \eqn{k}, \eqn{N_k}{N[k]} is the
+  number of occurences of species \eqn{k}, and \eqn{I} is the incidence
+  (0 or 1) of species (this last term is usually omitted from the
+  equation, but it is necessary). As \eqn{N_{jk}}{N[jk]} can be
+  interpreted as a mean of conditional probability, the \code{beals}
+  fucntion can be interpred as a mean of conditioned probabilities (De
+  \enc{Cáceres}{Caceres} & Legendre 2008).  The currrent function is
+  generalized to abundance values (De \enc{Cáceres}{Caceres} & Legendre
+  2008).
 
   Beals smoothing was originally suggested as a method of data
   transformation to remove excessive zeros (Beals 1984, McCune
@@ -86,7 +87,7 @@ Beals, E.W. 1984. Bray-Curtis-ordination: an effective strategy for
 analysis of multivariate ecological data.  \emph{Adv. Ecol. Res.} 14:
 1--55.
 
-De Caceres, M. & Legendre, P. 2008. Beals smoothing
+De \enc{Cáceres}{Caceres}, M. & Legendre, P. 2008. Beals smoothing
 revisited. \emph{Oecologia} 156: 657--669.
   
 Ewald, J. 2002. A probabilistic approach to estimating species pools
@@ -104,7 +105,7 @@ Swan, J.M.A. (1970) An examination of some ordination problems by use of
 simulated vegetational data. \emph{Ecology} 51, 89--102. 
 
 }
-\author{Miquel De Caceres and Jari Oksanen}
+\author{Miquel De \enc{Cáceres}{Caceres} and Jari Oksanen}
 
 \seealso{\code{\link{decostand}} for proper standardization methods,
   \code{\link{specpool}} for an attempt to assess the size of species
