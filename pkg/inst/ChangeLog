@@ -4,9 +4,17 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-2 (opened October 10, 2008)
 
-    * permatfull: bug of row/col marins is fixed, shuffle argument is
-    added to enable individual and sample based randomisation of
-    count data (or both) when not all the margins are fixed.
+	* beals: replaced old beals.R with the new code by Miquel de
+	Caceres with new methods described in De Caceres & Legendre
+	(Oecologia 156, 657-669; 2008). This also implements the
+	cross-validatory Beals of Munzbergova & Herben (Oikos 104,
+	408-414; 2004) plus many new options of unbiasing estimates. In
+	addition to new beals, there is a function for bealsing only one
+	target species.
+
+	* permatfull: bug of row/col marins is fixed, shuffle argument is
+	added to enable individual and sample based randomisation of count
+	data (or both) when not all the margins are fixed.
 
 	* anosim: API and documentation made similar to mrpp to combine
 	their documentation. Now anosim can take data frame input and find
