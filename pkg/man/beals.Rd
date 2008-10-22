@@ -1,7 +1,6 @@
 \encoding{UTF-8}
 \name{beals}
 \alias{beals}
-\alias{beals.sp}
 \alias{swan}
 
 \title{Beals Smoothing and Degree of Absence }
@@ -14,29 +13,27 @@
   with smoothed values. 
 }
 \usage{
-beals(x, refX = x, mode = 0, incSp = TRUE)
-beals.sp(x, spIndex, refX = x, mode = 0, incSp = FALSE)
+beals(x, species = NA, reference = x, type = 0, include = TRUE)
 swan(x)
 }
 \arguments{
   \item{x}{Community data frame or matrix }
-  \item{spIndex}{Index of the single species whose Beals smoothing
-  values are to be computed. } 
-  \item{refX}{ Community data frame or matrix to be used to compute
-  joint occurrences. If \code{refX=NULL} then \code{x} is used to
+  \item{species}{ Column index used to compute Beals function for a single species. The default (\code{NA}) indicates that the function will be computed for all species.} 
+  \item{reference}{ Community data frame or matrix to be used to compute
+  joint occurrences. By default, \code{x} is used as reference to
   compute the joint occurrences.} 
-  \item{incSp}{ This flag indicates whether the target species has to be
-  included when computing the mean of the conditioned probabilities. The
-  original Beals (1984) definition is equivalent to \code{incSp=TRUE},
-  while the formulation of \enc{Münzbergová}{Munzbergova} and Herben is
-  equal to \code{incSp=FALSE}. }  
-  \item{mode }{Specifies if and how abundance values have to be
-  used. \code{mode = 0} presence/absence mode. \code{mode = 1}
-  abundances in \code{refX} (or \code{x}) are used to compute
-  conditioned probabilities. \code{mode = 2} abundances in \code{x} are
+  \item{type}{Specifies if and how abundance values have to be
+  used. \code{type = 0} presence/absence mode. \code{type = 1}
+  abundances in \code{reference} (or \code{x}) are used to compute
+  conditioned probabilities. \code{type = 2} abundances in \code{x} are
   used to compute weighted average of conditioned
-  probabilities. \code{mode = 3} abundances are used to compute both
+  probabilities. \code{type = 3} abundances are used to compute both
   conditioned probabilities and the weighted average.}  
+  \item{include}{This logical flag indicates whether the target species has to be
+  included when computing the mean of the conditioned probabilities. The
+  original Beals (1984) definition is equivalent to \code{include=TRUE},
+  while the formulation of \enc{Münzbergová}{Munzbergova} and Herben is
+  equal to \code{include=FALSE}. }  
 }
 \details{
 
@@ -65,9 +62,9 @@ swan(x)
   belong to the species pool (Ewald 2002) or to identify suitable
   unoccupied patches in metapopulation analysis
   (\enc{Münzbergová}{Munzbergova} & Herben 
-  2004).  In this case, the function shold be called with \code{incSp
-  = FALSE} for cross-validatory smoothing for species, and function
-  \code{beals.sp} can be used if onl one species was studied.
+  2004).  In this case, the function shold be called with \code{include
+  = FALSE} for cross-validatory smoothing for species, and argument
+  \code{species} can be used if only one species was studied.
 
   Swan (1970) suggested replacing zero values with degrees of absence of
   a species in a community data matrix. Swan expressed the method in
@@ -79,7 +76,7 @@ swan(x)
   \code{\link{stepacross}}), but very rarely used. 
 }
 \value{
-  The function returns a transformed data matrix.
+  The function returns a transformed data matrix or a vector in case of asking Beals smoothing for a single species.
 }
 \references{
   
@@ -115,16 +112,16 @@ data(dune)
 ## Default
 x <- beals(dune)
 ## Remove target species
-x <- beals(dune, incSp = FALSE)
+x <- beals(dune, include = FALSE)
 ## Smoothed values against presence or absence of species
 pa <- decostand(dune, "pa")
 boxplot(as.vector(x) ~ unlist(pa), xlab="Presence", ylab="Beals")
 ## Remove the bias of tarbet species: Yields lower values.
-beals(dune, mode =3, incSp = FALSE)
+beals(dune, type =3, include = FALSE)
 ## Uses abundance information.
 ## Vector with beals smoothing values corresponding to the first species
 ## in dune.
-beals.sp(dune, spIndex=1, incSp=TRUE) 
+beals(dune, species=1, include=TRUE) 
 }
 \keyword{ manip }
 \keyword{ smooth }
