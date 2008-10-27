@@ -8,7 +8,7 @@ Version 1.16-3 (opened October 27, 2008)
 	attention to the sensitivity of discrepancy to ties in column
 	frequencies. These are not handled by any way (yet), but the users
 	are warned now about ties. For instance, the example matrix 'A' on
-	page 259 of Brualdi & Anderson (Oecologia 119, 256-264; 1999) can
+	page 259 of Brualdi & Sanderson (Oecologia 119, 256-264; 1999) can
 	be ordered to give discrepancy value = 2 instead of value = 3
 	reported in the paper with a different ordering of columns.
 	Different random reorderings of species in the 'sipoo' data in
