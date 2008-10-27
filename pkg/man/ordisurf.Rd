@@ -56,10 +56,21 @@ ordisurf(x, y, choices=c(1, 2), knots=10, family="gaussian", col="red",
   accordance with constrained \code{\link{cca}}, you should set
   \code{display = "lc"} (and possibly \code{scaling = 2}).
 }
+
 \value{
-  Function is usually called for its side effect of drawing the contour
-  plot, but it returns the result object of \code{\link[mgcv]{gam}}.
+  Function is usually called for its side effect of drawing the
+  contour plot. The function returns the result object of class
+  \code{"ordisurf"} that inherits from \code{\link[mgcv]{gam}} used
+  internally to fit the surface, but adds an item \code{grid} that
+  contains the data for the grid surface. The item \code{grid} has
+  elements \code{x} and \code{y} which are vectors of axis coordinates,
+  and element \code{z} that is a matrix of fitted values for
+  \code{\link{contour}}. The values outside the convex hull of observed
+  points are \code{NA} in \code{z}. The \code{\link[mgcv]{gam}}
+  component of the result can be used for further analysis like
+  predicting new values (see \code{\link[mgcv]{predict.gam}}).
 }
+
 \author{ Dave Roberts and Jari Oksanen }
 \note{   
   The default is to use thinplate splines.  These make sense in

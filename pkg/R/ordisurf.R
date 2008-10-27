@@ -45,5 +45,7 @@
     contour(xn1, xn2, matrix(fit, nrow=GRID), col = col, add = TRUE,
             levels = levels, labcex = labcex,
             drawlabels = !is.null(labcex) && labcex > 0)
+    mod$grid <- list(x = xn1, y = xn2, z = matrix(fit, nrow = GRID))
+    class(mod) <- c("ordisurf", class(mod))
     return(mod)
 }

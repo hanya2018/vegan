@@ -2,15 +2,18 @@ $Date$
 
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.16-2 (opened October 10, 2008)
+Version 1.16-3 (opened October 27, 2008)
+
+	* ordisurf: returns x, y and z used by contour() following a query
+	"[R-sig-eco] output from ordisurf" on Oct 23, 2008.
+	
+Version 1.16-2 (closed October 27, 2008) --- for Annukka
 
 	* beals: replaced old beals.R with the new code by Miquel de
 	Caceres with new methods described in De Caceres & Legendre
 	(Oecologia 156, 657-669; 2008). This also implements the
 	cross-validatory Beals of Munzbergova & Herben (Oikos 104,
-	408-414; 2004) plus many new options of unbiasing estimates. In
-	addition to new beals, there is a function for bealsing only one
-	target species.
+	408-414; 2004) plus many new options of unbiasing estimates. 
 
 	* permatfull: bug of row/col marins is fixed, shuffle argument is
 	added to enable individual and sample based randomisation of count
