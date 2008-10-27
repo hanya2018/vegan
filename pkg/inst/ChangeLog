@@ -4,6 +4,19 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-3 (opened October 27, 2008)
 
+	* nesteddisc: Carsten Dormann (UFZ, Leipzig, Germany) turned my
+	attention to the sensitivity of discrepancy to ties in column
+	frequencies. These are not handled by any way (yet), but the users
+	are warned now about ties. For instance, the example matrix 'A' on
+	page 259 of Brualdi & Anderson (Oecologia 119, 256-264; 1999) can
+	be ordered to give discrepancy value = 2 instead of value = 3
+	reported in the paper with a different ordering of columns.
+	Different random reorderings of species in the 'sipoo' data in
+	vegan can give discrepancy values 51 to 58 (and the original
+	arbitrary ordering gives 55). This means that discrepancy values
+	are not very reliable, but ties should be handled better or the
+	function withdrawn from vegan. 
+
 	* ordisurf: returns x, y and z used by contour() following a query
 	"[R-sig-eco] output from ordisurf" on Oct 23, 2008.
 	
