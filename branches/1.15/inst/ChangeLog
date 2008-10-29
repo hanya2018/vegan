@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-1 (opened October 10, 2008)
 
+	* new email address of Peter Solymos in Rd files (from r520).
+
 	* fixed row/column mix-up in permatfull (the bugfix part of r525
 	transferred by hand).
 

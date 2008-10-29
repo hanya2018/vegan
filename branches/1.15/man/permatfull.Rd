@@ -1,3 +1,4 @@
+\encoding{UTF-8}
 \name{permat}
 \alias{permatfull}
 \alias{permatswap}
@@ -96,7 +97,7 @@ Patefield, W. M. (1981) Algorithm AS159. An efficient method of generating r x c
 Applied Statistics 30, 91-97.
 }
 
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}; Jari Oksanen translated the original 'swapcount' algorithm for count data into C}
+\author{\enc{P\'eter S\'olymos}{Peter Solymos}, \email{solymos@ualberta.ca}; Jari Oksanen translated the original 'swapcount' algorithm for count data into C}
 
 \seealso{
 \code{\link{commsimulator}}, \code{\link{r2dtable}}, \code{\link{sample}}
