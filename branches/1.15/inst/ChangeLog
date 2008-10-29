@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-1 (opened October 10, 2008)
 
+	* fixed row/column mix-up in permatfull (the bugfix part of r525
+	transferred by hand).
+
 	* merged r533: warning of ties in nesteddisc().
 
 	* merged r526: typo in wcmdscale() result object item.
