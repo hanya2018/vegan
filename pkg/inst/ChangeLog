@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-3 (opened October 27, 2008)
 
+	* orditkplot: added option to copy the current graph to a TIFF
+	file. The capabilities("tiff") check was added in R-2.8.0, but the
+	test works in R < 2.8.0 as well.
+
 	* nesteddisc: Carsten Dormann (UFZ, Leipzig, Germany) turned my
 	attention to the sensitivity of discrepancy to ties in column
 	frequencies. These are not handled by any way (yet), but the users
