@@ -4,6 +4,10 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-3 (opened October 27, 2008)
 
+	* spantree: saves labels of points, and 'cophenetic' and 'plot'
+	use these labels. Function 'plot' uses 'ordilabel' for text
+	labels.
+
 	* orditkplot: added option to copy the current graph to a TIFF
 	file. The capabilities("tiff") check was added in R-2.8.0, but the
 	test works in R < 2.8.0 as well.
