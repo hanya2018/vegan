@@ -35,9 +35,9 @@ spantree(dis, toolong = 0)
     by \code{\link{scores}}.}
   \item{cex}{Character expansion factor.}
   \item{type}{Observations are plotted as points with
-    \code{type="p"} or \code{type="b"}, or as text with
+    \code{type="p"} or \code{type="b"}, or as text label with
     \code{type="t"}. The tree (lines) will always be plotted.}
-  \item{labels}{Text used with \code{type="t"} or row names if this is
+  \item{labels}{Text used with \code{type="t"} or node names if this is
     missing.}
   \item{dlim}{A ceiling value used to highest \code{cophenetic} dissimilarity.}
   \item{FUN}{Ordination function to find the configuration from
@@ -68,8 +68,7 @@ spantree(dis, toolong = 0)
   to set \code{dlim}, and sometimes the results will remain
   twisted). These ordination methods do not work with disconnected
   trees, but you must supply the ordination configuration. Function
-  \code{lines} will overlay the tree in an existing 
-  plot. 
+  \code{lines} will overlay the tree in an existing plot. 
 
   Function \code{spantree} uses Prim's method
   implemented as priority-first search for dense graphs (Sedgewick
@@ -89,6 +88,7 @@ spantree(dis, toolong = 0)
     and tree is disconnected at the node.}
   \item{dist }{Corresponding distance. If \code{kid = NA}, then
     \code{dist = 0}.}
+  \item{labels }{Names of nodes as found from the input dissimilarities.} 
 }
 \references{
  Sedgewick, R. (1990). \emph{Algorithms in C}. Addison Wesley. 
