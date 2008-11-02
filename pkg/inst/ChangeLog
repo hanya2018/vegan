@@ -4,6 +4,13 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-4 (opened November 1, 2008)
 
+    * permatwsap: quasiswap method is implemented for count data
+    based on the idea of Carsten Dormann in the swap.web::bipartite
+    function. This takes a random matrix first with same row and
+    column sums as the original (via r2dtable), and than restores
+    the original matrix fill through steps of swaping 2x2
+    submatrices. The current R code is slow.
+
     * permatfull: when both cells and individuals are shuffled,
     the matrix fill remains constant.
 
