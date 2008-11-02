@@ -14,10 +14,10 @@ indshuffle <- function(x)
    names(out) <- NULL
    return(out)
 }
-bothshuffle <- function(x)
+bothshuffle <- function(x, y=1)
 {
-x[x!=0] <- indshuffle(x[x!=0])
-return(sample(x))
+    x[x!=0] <- indshuffle(x[x!=0] - y) + 1
+    return(sample(x))
 }
     if (!identical(all.equal(m, round(m)), TRUE))
        stop("function accepts only integers (counts)")
