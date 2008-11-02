@@ -10,16 +10,16 @@
 
     ## starting values and CONSTANTS
     NALL <- 7
-	NITER <- 5000
+    NITER <- 5000
     ties <- FALSE
     trace <- FALSE
     ## Code
     comm <- ifelse(comm > 0, 1, 0)
     cs <- colSums(comm)
-    j <- rev(order(cs))
+    k <- rev(order(cs))
     ## initial order
-    cs <- cs[j]
-    comm <- comm[, j]
+    cs <- cs[k]
+    comm <- comm[, k]
     ## run lengths: numbers of tied values
     le <- rle(cs)$lengths
     cle <- cumsum(le)
@@ -58,7 +58,7 @@
             }
         }
     }
-    out <- list(statistic=Ad, ties = ties, order = x)
+    out <- list(statistic=Ad, ties = ties, order = k[x])
     class(out) <- "nesteddisc"
     out
 }
