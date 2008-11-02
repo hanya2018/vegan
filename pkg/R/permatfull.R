@@ -16,7 +16,7 @@ indshuffle <- function(x)
 }
 bothshuffle <- function(x, y=1)
 {
-    x[x!=0] <- indshuffle(x[x!=0] - y) + 1
+    x[x!=0] <- indshuffle(x[x!=0] - y) + y
     return(sample(x))
 }
     if (!identical(all.equal(m, round(m)), TRUE))
