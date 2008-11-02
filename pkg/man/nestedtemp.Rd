@@ -51,7 +51,13 @@ nestedtemp(comm, ...)
   (Patterson & Atmar 1986).  Function \code{nesteddisc} implements
   discrepancy index which is the number of ones that should be shifted
   to fill a row with ones in a table arranged by species frequencies
-  (Brualdi & Sanderson 1999). Function \code{nestedtemp} finds the
+  (Brualdi & Sanderson 1999). The original definition arranges species
+  (columns) by their frequencies, but did not have any method of
+  handling tied frequencies. The \code{nesteddisc} function tries to
+  order tied columns to minimize the discrepancy statistic but this is
+  rather slow, and with a large number of tied columns there is no
+  guarantee that the best ordering was found. In that case a warning
+  of tied columns will be issued. Function \code{nestedtemp} finds the
   matrix temperature which is defined as the sum of \dQuote{surprises}
   in arranged matrix.  In arranged unsurprising matrix all species
   within proportion given by matrix fill are in the upper left corner of
