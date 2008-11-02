@@ -4,6 +4,9 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-4 (opened November 1, 2008)
 
+    * permatfull: when both cells and individuals are shuffled,
+    the matrix fill remains constant.
+
 	* nesteddisc: replaced with a new function that orders tied
 	columns to minimize the discrepancy statistic. If there are <=7
 	tied columns, all upto 5040 permutations are inspected, and if
@@ -51,7 +54,7 @@ Version 1.16-2 (closed October 27, 2008) --- for Annukka
 	cross-validatory Beals of Munzbergova & Herben (Oikos 104,
 	408-414; 2004) plus many new options of unbiasing estimates. 
 
-	* permatfull: bug of row/col marins is fixed, shuffle argument is
+	* permatfull: bug of row/col margins is fixed, shuffle argument is
 	added to enable individual and sample based randomisation of count
 	data (or both) when not all the margins are fixed.
 

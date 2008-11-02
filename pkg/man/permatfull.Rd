@@ -57,10 +57,9 @@ is a wrapper for the function \code{\link{commsimulator}}. The \code{r00, r0, c0
 algorithms of \code{\link{commsimulator}} are used for \code{"none", "rows", "columns", "both"} values 
 of the \code{fixedmar} argument, respectively 
 
-The \code{shuffle} argument only have effect if the \code{mtype = "count"} and \code{permatfull} function is used with \code{"none", "rows", "columns"} values of \code{fixedmar}. All other cases for count data are individual based randomisations. The \code{"samp"} option results fixed matrix fill. The \code{"both"} option means that samples are shuffled, and individuals are shuffled among non zero cells. This however, not necessarily result in the same matrix fill. Matrix fill can be less than the original if samples bacame empty because of the shuffling of individuals.
+The \code{shuffle} argument only have effect if the \code{mtype = "count"} and \code{permatfull} function is used with \code{"none", "rows", "columns"} values of \code{fixedmar}. All other cases for count data are individual based randomisations. The \code{"samp"} and \code{"both"} options result fixed matrix fill. The \code{"both"} option means that individuals are shuffled among non zero cells ensuring that there are no cell with zeros as a result, than cell (zero and new valued cells) are shuffled.
 
-The function \code{permatswap} is useful when matrix fill (i.e. the proportion of empty cells) should be kept constant.
-\code{permatswap} uses different kinds of swap algorithms, and row and columns sums are fixed in all cases.
+The function \code{permatswap} is useful when bith matrix fill (i.e. the proportion of empty cells) and row/columns sums should be kept constant. \code{permatswap} uses different kinds of swap algorithms, and row and columns sums are fixed in all cases.
 For presence-absence data, the \code{swap} and \code{tswap} methods of \code{\link{commsimulator}} can be used.
 For count data, a special swap algorithm ('swapcount') is implemented that results in permuted matrices with
 fixed marginals and matrix fill at the same time.
