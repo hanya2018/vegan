@@ -223,7 +223,10 @@ mod <- rad.lognormal(BCI[1,])
 mod
 plot(mod)
 mod <- radfit(BCI[1,])
+## Standard plot overlaid for all models
 plot(mod)
+## Lattice graphics separately for each model
+radlattice(mod)
 # Take a subset of BCI to save time and nerves
 mod <- radfit(BCI[2:5,])
 mod
