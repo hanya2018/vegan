@@ -4,9 +4,14 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-4 (opened November 1, 2008)
 
+	* radlattice: a new function to display each radfit model in a
+	separate panel together with their AIC or BIC values. I wanter to
+	have this for a manuscript.
+
 	* plot.cca: takes care that plotted items have non-NULL names that
 	plot neatly.  This was already take care of with formula
-	interface, but now it should work also in other cases in plots.
+	interface, but now it should work also in other cases in
+	plots. Reported by Daniel Borcard.
 	
 	* permatwsap: quasiswap method is implemented for count data based
 	on the idea of Carsten Dormann in the swap.web::bipartite
