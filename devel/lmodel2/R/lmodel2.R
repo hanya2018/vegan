@@ -186,7 +186,7 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
        res8 <- c(res8, NA)
    }
 
-    ## Angle (°) between the two OLS regression lines (Numerical
+    ## Angle (degrees) between the two OLS regression lines (Numerical
     ## ecology 1998, eq. 10.5)
     sdy <- sqrt(vary)
     sdx <- sqrt(varx)
@@ -209,7 +209,7 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
     reg.res <- data.frame(met,res1,res2,res3,res8)
     CI.res <- data.frame(met,res4,res5,res6,res7)
     colnames(reg.res) <- c("Method","Intercept","    Slope",
-                           " Angle(°)"," P-perm (1-tailed)")
+                           " Angle (degrees)"," P-perm (1-tailed)")
     colnames(CI.res) <- c("Method"," 2.5%-Intercept","97.5%-Intercept",
                           " 2.5%-Slope","97.5%-Slope")
 
@@ -309,7 +309,7 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
     cat("Parametric P-values:   2-tailed =",x$P.param,
         "   1-tailed =",x$P.param/2,'\n')
     cat("Angle between the two OLS regression lines = ",
-        x$theta,"°",sep="",'\n')
+        x$theta," degrees",sep="",'\n')
     ##if((x$nperm > 0) || (x$info.slope == 1) || (x$info.CI == 1)) cat("")
     if(x$info.slope == 1)
         cat("MA, SMA, RMA slopes = 555.5555 when the correlation is zero\n")

@@ -17,6 +17,5 @@
 
 \examples{
 data(mod2ex1)
-## maybe str(mod2ex1) ; plot(mod2ex1) ...
 }
 \keyword{datasets}
