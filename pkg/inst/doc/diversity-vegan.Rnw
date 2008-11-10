@@ -22,8 +22,9 @@
 par(mfrow=c(1,1))
 par(mar=c(3,3,1,0)+.1)
 options(width=72)
+figset <- function() par(mar=c(4,4,1,1)+.1)
+options(SweaveHooks = list(fig = figset))
 @
-
 \maketitle
 
 \tableofcontents

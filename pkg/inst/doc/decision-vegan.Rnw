@@ -25,7 +25,8 @@ in \Sexpr{R.version.string} on \today}
 \SweaveOpts{strip.white=TRUE}
 \setkeys{Gin}{width=0.55\linewidth}
 <<echo=false,results=hide>>=
-par(mar=c(3,3,1,1)+.1)
+figset <- function() par(mar=c(4,4,1,1)+.1)
+options(SweaveHooks = list(fig = figset))
 require(vegan)
 @
 
