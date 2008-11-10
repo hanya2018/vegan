@@ -20,7 +20,6 @@
 \SweaveOpts{strip.white=true}
 <<echo=false>>=
 par(mfrow=c(1,1))
-par(mar=c(3,3,1,0)+.1)
 options(width=72)
 figset <- function() par(mar=c(4,4,1,1)+.1)
 options(SweaveHooks = list(fig = figset))
@@ -178,14 +177,17 @@ Rarefaction is sometimes presented as an ecologically meaningful
 alternative to dubious diversity indices, but the differences really
 seem to be small.
 
-\section{Taxonomic diversity}
+\section{Taxonomic and functional diversity}
 
 Simple diversity indices only consider species identity: all different
-species are equally different. In contrast, taxonomic diversity sees
-how different two different species are. The index is much used in
-aquatic ecology, in particular for studying the effects of pollution
-or other degradation, which often is first evident in the loss of
-higher taxonomic units.
+species are equally different. In contrast, taxonomic and functional
+diversity indices see how different two different species
+are. Taxonomic and functional diversities are used in different fields
+of science, but they really have very similar reasoning, and either
+could be used either with taxonomic or functional properties of
+species.
+
+\subsection{Taxonomic diversity: average distance of properties}
 
 The two basic indecies are called taxonomic diversity ($\Delta$) and
 taxonomic distinctness ($\Delta^*$):
@@ -247,6 +249,27 @@ plot(mod)
 \label{fig:taxondive}
 \end{SCfigure}
 
+\subsection{Functional diversity: the height of property tree}
+
+In taxonomic diversity the primary data were taxonomic trees which
+were transformed to pairwise distances among species. In functional
+diversity the primary data are species properties which are translated
+to pairwise distances among species and then to clustering trees of
+species properties. The argument for trees is that in this way a
+single deviant species will have a small influence, since its
+difference is evaluated only once instead of evaluating its distance
+to all other species.
+
+Function \texttt{treedive} implements functional diversity defined as
+the total branch length in a trait dendrogram connecting all species,
+but excluding the unnecessary root segments of the tree.  The example
+uses the taxonomic distances of the previous chapter. These are first
+converted to a hierarchic clustering (which actually were their
+original form before \texttt{taxa2dist} converted them into distances)
+<<>>=
+tr <- hclust(taxdis, "aver")
+mod <- treedive(dune, tr)
+@
 
 \section{Species abundance models}
 
@@ -346,11 +369,10 @@ rad
 @
 \begin{SCfigure}
 <<fig=true,echo=false>>=
-plot(rad)
+print(radlattice(rad))
 @
 \caption{Ranked abundance distribution models for a random plot
-  (no. \Sexpr{k}).  The best model is chosen by the \textsc{aic}, and
-  displayed with a thick line.}
+  (no. \Sexpr{k}).  The best model has the lowest \textsc{aic}.}
 \label{fig:rad}
 \end{SCfigure}
 
@@ -649,12 +671,12 @@ Function \texttt{beals} implement Beals smoothing:
 smo <- beals(BCI)
 @
 We may see how the estimated probability of occurrence and observed
-numbers of stems relate in one of the more familiar species
-(Fig. \ref{fig:beals}):
+numbers of stems relate in one of the more familiar species. We study
+only one species, and to avoid circular reasoning we do not include
+the target species in the smoothing (Fig. \ref{fig:beals}):
 <<a>>=
 j <- which(colnames(BCI) == "Ceiba.pentandra")
-plot(smo[,j], BCI[,j], main="Ceiba pentandra", xlab="Probability of occurrence",
-ylab="Occurrence")
+plot(beals(BCI, species=j, include=FALSE), BCI[,j], main="Ceiba pentandra", xlab="Probability of occurrence", ylab="Occurrence")
 @
 \begin{SCfigure}
 <<fig=true,echo=false>>=
@@ -663,9 +685,5 @@ ylab="Occurrence")
 \caption{Beals smoothing for \emph{Ceiba pentandra}.}
 \label{fig:beals}
 \end{SCfigure}
-For the probability of the pool membership, jackknived estimates
-should be used, and concerned site and species should be removed when
-estimating the probablity, but this is not done in \texttt{beals}
-which uses the traditional equations.
 
 \end{document}

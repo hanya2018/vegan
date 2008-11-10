@@ -4,6 +4,12 @@ VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-4 (opened November 1, 2008)
 
+	* vignettes: Figures with narrower margins. Vignetted
+	"diversity-vegan" adds functional diversity ('treedive'), 'beals'
+	and 'radfit' graphics updated to current vegan. Still missing
+	pieces: nestedness & null models, quantitative null models,
+	additive diversity partioninng, Tsallis entropy.
+
 	* radlattice: a new function to display each radfit model in a
 	separate panel together with their AIC or BIC values. I wanter to
 	have this for a manuscript.
