@@ -7,6 +7,7 @@
 \usepackage[authoryear,round]{natbib}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{sidecap}
 \setlength{\captionindent}{0pt}
 \usepackage{url}
@@ -366,7 +367,37 @@ an underestimation of these confidence intervals.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.9\linewidth]{mod2rmafig.pdf}
+\resizebox{\linewidth}{!}{  
+  \begin{tikzpicture}
+    \draw[->, very thick] (0,0) -- (6,0);
+    \draw[<-, very thick]  (3,3) -- (3,-3);
+    \draw[->, very thick] (8,0) -- (14, 0);
+    \draw[->, very thick] (11,-3) -- (11,3);
+    \draw[->, thick] (6.8,-2) -- (8.6,-2);
+    \draw[<-, thick] (7.7,-1.1) -- (7.7,-2.8);
+    \draw[font=\footnotesize] (8.2,-1.6) node {I};
+    \draw[font=\footnotesize] (7.2,-1.6) node {II};
+    \draw[font=\footnotesize] (7.2,-2.4) node {III};
+    \draw[font=\footnotesize] (8.2,-2.4) node {IV};
+    \draw[dashed] (3,0) -- (3+3/2.75,3) node[above]{$b_{1 \inf} = 2.75$};
+    \draw (3,0) -- (3-3/2.75,-3) node[at start,sloped,above]{Lower bound
+    of CI};
+    \draw (3,0) -- (3+3/5.67,-3) node[midway,sloped,above]{MA
+      regression line} node[below]{$b_1 = -5.67$};
+    \draw (3,0) -- (3+2.7/1.19, -2.7) node[midway,sloped,above]{Upper
+      bound of CI} node[below]{$b_{1 \sup}=-1.19$};
+    \draw (11,0) -- (11-3/5.67,3);
+    \draw[dashed] (11,0) -- (11+3/5.67,-3)
+    node[at start,sloped,below]{Upper bound of CI} node[below]{$b_{1 \sup}
+      = -5.67$};
+    \draw (11,0) -- (11+3/2.75, 3) node[near end,sloped,above]{MA
+      regression line} node[right]{$b_1 = 2.75$};
+    \draw (11,0) -- (11+2.5/0.84, 2.5) node[midway,sloped,above]{Lower
+      bound of CI} node[right]{$b_{1 \inf} =0.84$};
+    \draw[font=\large] (0,3) node{(a)};
+    \draw[font=\large] (8,3) node{(b)};
+  \end{tikzpicture}
+}
   \caption{(a) If a MA regression line has the lower bound of its
     confidence interval (C.I.) in quadrant III, this bound has a
     positive slope ($+2.75$ in example). (b) Likewise, if a MA
