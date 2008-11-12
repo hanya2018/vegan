@@ -314,7 +314,7 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
     if(x$info.slope == 1)
         cat("MA, SMA, RMA slopes = 555.5555 when the correlation is zero\n")
     if(x$info.CI == 1)
-        cat("999.9999 or -999.9999 when the slope is infinite (90° angle)\n")   
+        cat("999.9999 or -999.9999 when the slope is infinite (90 deg. angle)\n")   
     if(x$nperm > 0) {
         cat("Permutation tests of OLS, MA, RMA slopes: 1-tailed, tail corresponding to sign\n")
         cat("A permutation test of r is equivalent to a permutation test of the OLS slope\n")
@@ -323,7 +323,7 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
        is.na(x$confidence.intervals[3,2])) {
         cat("\nConfidence interval = NA when the limits of the confidence interval\n")
         cat("cannot be computed. This happens when the correlation is 0\n")
-        cat("or the C.I. includes all 360° of the plane (H >= 1)\n")
+        cat("or the C.I. includes all 360 deg. of the plane (H >= 1)\n")
     }
     if((x$nperm > 0) && (x$rsquare < x$epsilon))
         cat("\nR-square = 0: no permutation test was performed\n")
@@ -401,13 +401,13 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
                     b1sup <- NA
                 } else {
                     A <- sqrt(H/(1-H))
-                    if((b.ma*A) == -1) {          # angle = -90°, b1inf = -infinity
+                    if((b.ma*A) == -1) {          # angle = -90 deg., b1inf = -infinity
                         b1inf <- -999.9999
                         info.CI <- 1
                     } else {
                         b1inf <- ratio * (b.ma-A) / (1+b.ma*A)
                }
-                    if((b.ma*A) == 1) {           # angle = +90°, b1sup = +infinity
+                    if((b.ma*A) == 1) {           # angle = +90 deg., b1sup = +infinity
                         b1sup <- 999.9999
                         info.CI <- 1
                     } else {
