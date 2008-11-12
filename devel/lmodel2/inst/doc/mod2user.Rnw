@@ -20,8 +20,8 @@
 
 \author{Pierre Legendre}
 
-\address{Departement de sciences biologiques, Universite de
-Montreal, C.P. 6128, succursale Centre-ville, Montreal,
+\address{D{\'e}partement de sciences biologiques, Universit{\'e} de
+Montr{\'e}al, C.P. 6128, succursale Centre-ville, Montreal,
 Quebec H3C 3J7, Canada}
 \email{Pierre.Legendre@umontreal.ca}
 
@@ -428,7 +428,7 @@ i.e. it always underestimates the MA slope in absolute value.
 
 
 \section{Examples}
-\subsection{Example 1}
+\subsection{Surgical unit data}
 \label{sec:exa1}
 
 \subsubsection{Input data}
@@ -499,7 +499,7 @@ comparisons of this type, would show an even greater discrepancy
 (33.3$^{\circ}$ angle) from the 45$^{\circ}$ line, compared to the MA
 regression line (36.8$^{\circ}$ angle).
 
-\subsection{Example 2}
+\subsection{Eagle rays and \emph{Macomona} bivalves}
 \label{sec:exa2}
 
 \subsubsection{Input data}
@@ -580,9 +580,8 @@ of permutations + 1), where
   than the reference value.
 \end{itemize}
 
-\subsection{Example 3}
-\label{sec:exa3}
-
+\subsection{Cabezon spawning}%
+\label{sec:exa3}%
 \subsubsection{Input data}
 
 The following table presents data used by \citet[Box
@@ -643,7 +642,7 @@ legend("topleft", c("OLS", "SMA", "RMA"), col=1:3, lty=1)
 \label{fig:ex3}
 \end{SCfigure}
 
-\subsection{Example 4}
+\subsection{Highly correlated random variables}
 \label{sec:exa4}
 
 \subsubsection{Input data}
@@ -685,7 +684,7 @@ intervals of the slopes include the value 1 and the confidence
 intervals of the intercepts include the value 0, as expected for this
 data set because of the way the data were generated.
 
-\subsection{Example 5}
+\subsection{Uncorrelated random variables}
 \label{sec:exa5}
 
 \subsubsection{Input data}

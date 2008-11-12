@@ -1,8 +1,8 @@
 Package: lmodel2
 Type: Package
 Title: Model II Regression
-Version: 1.4
-Date: 2008-11-10
+Version: 1.5
+Date: 2008-11-12
 Author: Pierre Legendre
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Depends: vegan
