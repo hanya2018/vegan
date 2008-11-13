@@ -131,15 +131,17 @@ Ex2.res
 op <- par(mfrow = c(1,2))
 plot(Ex2.res, "SMA")
 plot(Ex2.res, "RMA")
-
+par(op)
 ## Example 3 (cabezon spawning)
+op <- par(mfrow = c(1,2))
 data(mod2ex3)
 Ex3.res <- lmodel2(No_eggs ~ Mass, data=mod2ex3, "relative", "relative", 99)
 Ex3.res
 plot(Ex3.res, "SMA")
 plot(Ex3.res, "RMA")
-
+par(op)
 ## Example 4 (highly correlated random variables)
+op <- par(mfrow=c(1,2))
 data(mod2ex4)
 Ex4.res <- lmodel2(y ~ x, data=mod2ex4, "interval", "interval", 99)
 Ex4.res

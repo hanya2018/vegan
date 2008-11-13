@@ -302,9 +302,9 @@ function(formula, data = NULL, range.y = NULL, range.x = NULL,
     function(x, ...)
 {
 ## Print the regression results
-    cat("\nModel II regression\n")
-    cat("\nCall:\n")
-    cat(deparse(x$call), "\n\n")
+    cat("\nModel II regression\n\n")
+    writeLines(strwrap(pasteCall(x$call)))
+    cat("\n")
     cat("n =",x$n,"  r =",x$r,"  r-square =",x$rsquare,'\n')
     cat("Parametric P-values:   2-tailed =",x$P.param,
         "   1-tailed =",x$P.param/2,'\n')

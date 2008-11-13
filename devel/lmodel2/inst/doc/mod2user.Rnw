@@ -33,9 +33,9 @@ Quebec H3C 3J7, Canada}
 \SweaveOpts{strip.white=true}
 <<echo=false>>=
 require(lmodel2)
-par(mfrow=c(1,1))
-par(mar=c(3,3,1,0)+.1)
 options(width=72)
+figset <- function() par(mar=c(4,4,1,1)+.1)
+options(SweaveHooks = list(fig = figset))
 @
 
 
@@ -392,7 +392,7 @@ an underestimation of these confidence intervals.
       = -5.67$};
     \draw (11,0) -- (11+3/2.75, 3) node[near end,sloped,above]{MA
       regression line} node[right]{$b_1 = 2.75$};
-    \draw (11,0) -- (11+2.5/0.84, 2.5) node[midway,sloped,above]{Lower
+    \draw (11,0) -- (11+2/0.84, 2) node[near end,sloped,above]{Lower
       bound of CI} node[right]{$b_{1 \inf} =0.84$};
     \draw[font=\large] (0,3) node{(a)};
     \draw[font=\large] (8,3) node{(b)};
@@ -431,7 +431,7 @@ i.e. it always underestimates the MA slope in absolute value.
 \subsection{Surgical unit data}
 \label{sec:exa1}
 
-\subsubsection{Input data}
+%\subsubsection{Input data}
 
 This example compares observations to the values forecasted by a
 model. A hospital surgical unit wanted to forecast survival of
@@ -446,8 +446,6 @@ regression models were studied. One of them, which uses variables $X_3 =$
 enzyme function test score and $X_4$ = liver function test score, is used
 as the basis for the present example. The multiple regression equation
 is the following:
-
-
 
 
 \begin{equation*}
@@ -502,7 +500,7 @@ regression line (36.8$^{\circ}$ angle).
 \subsection{Eagle rays and \emph{Macomona} bivalves}
 \label{sec:exa2}
 
-\subsubsection{Input data}
+%\subsubsection{Input data}
 
 The following table presents observations at 20 sites from a study on
 predator-prey relationships \citep{Hines.ea97}. $y$ is the number of
@@ -582,7 +580,7 @@ of permutations + 1), where
 
 \subsection{Cabezon spawning}%
 \label{sec:exa3}%
-\subsubsection{Input data}
+%\subsubsection{Input data}
 
 The following table presents data used by \citet[Box
 14.12]{SokalRohlf95} to illustrate model II regression analysis. They
@@ -645,7 +643,7 @@ legend("topleft", c("OLS", "SMA", "RMA"), col=1:3, lty=1)
 \subsection{Highly correlated random variables}
 \label{sec:exa4}
 
-\subsubsection{Input data}
+%\subsubsection{Input data}
 
 \citet{Mesple.ea96} generated a variable $X$ containing 100 values
 drawn at random from a uniform distribution in the interval $[0,
@@ -687,7 +685,7 @@ data set because of the way the data were generated.
 \subsection{Uncorrelated random variables}
 \label{sec:exa5}
 
-\subsubsection{Input data}
+%\subsubsection{Input data}
 
 Two vectors of 100 random data drawn from a normal distribution
 $\mathcal{N}(0, 1)$ were generated. One expects to find a null
