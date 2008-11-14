@@ -2,71 +2,71 @@
 `permatswap` <-
 function(m, method="quasiswap", reg=NULL, hab=NULL, mtype="count", times=100, burnin = 10000, thin = 1000)
 {
+
 ## temporary internal function
 ## quasiswapcount is based on the idea of Carsten Dorman from function swap.web::bipartite
-quasiswapcount <-
-function(m)
+## this swapcount implementation roughly follow the original swapcount that was put in C
+## new lines are commented
+swapcount <-
+function(m, thin = 1, mfill = 0)                                            # new arg
 {
-
-## internal fun
-incRease <- function(x, increase)
-{
-    x<- as.vector(x)
-    X <- as.numeric(x>0)
-    ## sX: number of non-zero cells
-    sX <- sum(X)
-    ## Smallest antidiagonal(1) and diagonal(2)  element
-    choose <- c(min(x[c(2,3)]), min(x[c(1,4)]))
-    ## if fill should be increased
-    if (increase) {
-        if (identical(X, c(0,1,1,0)) || identical(X, c(0,1,1,1)) || identical(X, c(1,1,1,0))) {
-            if (choose[1] > 1)
-                ## this step to modify choose[] is needed to increase fill
-                return(choose[1] - sample(choose[1]-1, 1))
-            else return(0)
-        } else {
-        if (identical(X, c(1,0,0,1)) || identical(X, c(1,0,1,1)) || identical(X, c(1,1,0,1))) {
-            if (choose[2] > 1)
-                return(-(choose[2] - sample(choose[2]-1, 1)))
-            else return(0)
-        } else return(0)
-        }
-    ## if fill should be decreased
-    } else {
-
-        if (identical(X, c(1,1,1,1)) || identical(X, c(0,1,1,1)) || identical(X, c(1,1,1,0))) {
-            return(choose[1])
-        } else {
-        if (identical(X, c(1,0,1,1)) || identical(X, c(1,1,0,1)))
-            return(-choose[2])
-        else return(0)
-        }
-    }
-} ## end of internal fun
+## internal, is the 2x2 matrix diagonal or anti-diagonal
+## 'isDiag' is a utility function for 'swapcount' to find the largest
+## value that can be swapped and whether in diagonal or antidiagonal
+## way. The input is a 2x2 submatrix.
+isDiag <- function(x) {
+        x<- as.vector(x)
+        X <- as.numeric(x>0)
+        ## sX: number of non-zero cells
+        sX <- sum(X)
+        ## Smallest diagonal and antidiagonal element
+        choose <- c(min(x[c(2,3)]), min(x[c(1,4)]))
+        ## Either choose could be returned, but RNG is not needed,
+        ## because submatrix already is in random order, and we always return choose[0]
+        if (sX == 4) return(choose[1])
+        if (identical(X, c(0,1,1,0)) || identical(X, c(0,1,1,1)) || identical(X, c(1,1,1,0)))
+                return(choose[1])
+        if (identical(X, c(1,0,0,1)) || identical(X, c(1,0,1,1)) || identical(X, c(1,1,0,1)))
+                return(-choose[2])
+        if (sX < 2 | identical(X, c(0,0,1,1)) || identical(X, c(1,1,0,0)) || 
+            identical(X, c(0,1,0,1)) || identical(X, c(1,0,1,0)))
+                return(0)
+        } ## end of isDiag
 
     x <- as.matrix(m)
     n.col <- ncol(x)
     n.row <- nrow(x)
-    fill.orig <- sum(x > 0)
-    ## marginal totals are retained, but not matrix fill
-    x <- r2dtable(1, apply(x, 1, sum), apply(x, 2, sum))[[1]]
-    ## if fill is o.k., no need for further steps (this is rarely the case)
-    if (sum(x > 0) == fill.orig)
-        return(x)
-    ## if fill is not o.k.
-    else {
-    ## while loop as long as fill is o.k.
-        fill.changed <- sum(x > 0)
-        while(fill.changed != fill.orig) {
-            rr <- sample(n.row, 2)
-            rc <- sample(n.col, 2)
-            ev <- incRease(x[rr, rc], increase = fill.changed < fill.orig)
-            if (ev != 0)
-                x[rr, rc] <- x[rr, rc] + matrix(c(ev,-ev,-ev,ev), 2, 2)
-            fill.changed <- sum(x > 0)
+    changed <- 0
+    if (mfill != 0) thin <- 1                                                                 # just to be sure
+    while(changed < thin) {
+        ran.row <- sample(n.row, 2)
+        ran.col <- sample(n.col, 2)
+        ## The largest value that can be swapped
+        ev <- isDiag(x[ran.row, ran.col])
+        if (ev != 0) {
+            ## Check that the fill doesn't change
+                                                                            # new condition: mfill == 0
+            if (mfill == 0 && identical(sum(x[ran.row, ran.col] > 0), sum(x[ran.row, ran.col] + matrix(c(ev,-ev,-ev,ev), 2, 2) > 0)))
+                {
+                ## Swap
+                x[ran.row, ran.col] <- x[ran.row, ran.col] + matrix(c(ev,-ev,-ev,ev), 2, 2)
+                changed <- changed + 1
+                } else {                                                                       # these few lies are also new
+                                                                                               # logical: has it tecreased?
+                decreased <- sum(x[ran.row, ran.col] > 0) > sum(x[ran.row, ran.col] + matrix(c(ev,-ev,-ev,ev), 2, 2) > 0)
+                    # sum(x > 0) > mfill && decreased         DO
+                    # sum(x > 0) > mfill && !decreased        DONT DO
+                    # sum(x > 0) < mfill && !decreased         DO
+                    # sum(x > 0) < mfill && decreased        DONT DO
+                if ((sum(x > 0) > mfill && decreased) || (sum(x > 0) < mfill && !decreased))
+                    # this result only depend on actual fill and ev effects
+                    x[ran.row, ran.col] <- x[ran.row, ran.col] + matrix(c(ev,-ev,-ev,ev), 2, 2)
+                if (sum(x > 0) == mfill)
+                    changed <- changed + 1                         # changed changes only if target is met
+                }                                                                   # new lines untill here
+            }
         }
-        return(x)
-    }
+    return(x)
 }
 
 
@@ -92,9 +92,15 @@ incRease <- function(x, increase)
     nstr <- length(unique(str))
     if (any(tapply(str,list(str),length) == 1))
         stop("strata should contain at least 2 observations")
-    perm <- list()
-    for (i in 1:times)
-        perm[[i]] <- matrix(0, n.row, n.col)
+
+    if (method != "quasiswap") {
+        perm <- list()
+        for (i in 1:times)
+            perm[[i]] <- matrix(0, n.row, n.col)
+    } else {
+        perm <- r2dtable(times, apply(m, 1, sum), apply(m, 2, sum))
+    }
+
     for (j in 1:nstr) {
         id <- which(str == j)
         temp <- m[id,]
@@ -121,7 +127,8 @@ incRease <- function(x, increase)
         } else {
             for (i in 1:times) {
                 if (count)
-                    perm[[i]][id,] <- quasiswapcount(temp)                      ## this should be replaced by .C()
+                    if (sum(perm[[i]][id,] > 0) != sum(m[id,] > 0))             ## if fills are equal, no need to do it (r2dtable)
+                        perm[[i]][id,] <- swapcount(perm[[i]][id,], thin=1, mfill=sum(m[id,] > 0))   ## this should be replaced by .C()
                 else perm[[i]][id,] <- commsimulator(temp, method=method)
             }
             thin <- burnin <- 0
