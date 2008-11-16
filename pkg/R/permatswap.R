@@ -138,6 +138,7 @@ isDiag <- function(x) {
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
     attr(out, "ptype") <- "swap"
+    attr(out, "method") <- method
     attr(out, "fixedmar") <- "both"
     attr(out, "times") <- times
     attr(out, "shuffle") <- NA

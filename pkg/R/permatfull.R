@@ -70,6 +70,7 @@ bothshuffle <- function(x, y=1)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
     attr(out, "ptype") <- "full"
+    attr(out, "method") <- NA
     attr(out, "fixedmar") <- fixedmar
     attr(out, "times") <- times
     attr(out, "shuffle") <- shuffle
