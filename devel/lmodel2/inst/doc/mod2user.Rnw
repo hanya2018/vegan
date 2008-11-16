@@ -25,7 +25,7 @@ Montr{\'e}al, C.P. 6128, succursale Centre-ville, Montreal,
 Quebec H3C 3J7, Canada}
 \email{Pierre.Legendre@umontreal.ca}
 
-\date{June 2008}
+\date{$ $Id$ $}
 
 \begin{document}
 
@@ -72,8 +72,8 @@ Model II regression should be used when the two variables in the
 regression equation are random, i.e. not controlled by the
 researcher. Model I regression using least squares underestimates the
 slope of the linear relationship between the variables when they both
-contain error; see example 4 (p. \pageref{sec:exa4}). Detailed
-recommendations follow.
+contain error; see example in chapter \ref{sec:exa4}
+(p. \pageref{sec:exa4}). Detailed recommendations follow.
 
 \section{Recommendations on the use of model II regression methods}
 
@@ -103,9 +103,9 @@ Distribution is bivariate normal\\
 & &Error variance on each axis proportional to variance of\\
 & &corresponding variable \\
 
-4.1 & RMA &
+4a & RMA &
 Check scatter diagram: no outlier & Yes\\
-4.2 &SMA& Correlation r is significant& No\\
+4b &SMA& Correlation $r$ is significant& No\\
 5 &OLS& Distribution is not bivariate normal& Yes\\
 & &Relationship between $x$ and $y$ is linear\\
 6 &OLS& To compute forecasted (fitted) or predicted $y$ values& Yes\\
@@ -178,9 +178,9 @@ Check scatter diagram: no outlier & Yes\\
   be used with caution: simulations have shown that, as the slope
   departs from $\pm 1$, the SMA slope estimate is increasingly biased
   and the confidence interval includes the true value less and less
-  often. Even when the slope is near $\pm 1$ (e.g. example 5), the
-  confidence interval is too narrow if $n$ is very small or if the
-  correlation is weak.
+  often. Even when the slope is near $\pm 1$ (e.g. example \S
+  \ref{sec:exa5}), the confidence interval is too narrow if $n$ is
+  very small or if the correlation is weak.
 \end{enumerate}
 
 \item If the distribution is not bivariate normal and the data cannot
@@ -410,13 +410,14 @@ of the slope may, on occasions, lie outside quadrants I and IV of the
 plane centred on the centroid of the bivariate distribution. When the
 \emph{lower bound} of the confidence interval corresponds to a line in
 quadrant III (Fig. \ref{fig:rma}a), it has a positive slope; the RMA
-regression line of example 5 (p. \pageref{sec:exa5}) provides an
-example of this phenomenon. Likewise, when the \emph{upper bound} of
-the confidence interval corresponds to a line in quadrant II
-(Fig. \ref{fig:rma}b), it has a negative slope. In other instances, the
-confidence interval of the slope may occupy all 360$^{\circ}$ of the
-plane, which results in it having no bounds. The bounds are then noted
-0.00000; see example 5 (p. \pageref{sec:exa5}).
+regression line of example in chapter \ref{sec:exa5}
+(p. \pageref{sec:exa5}) provides an example of this
+phenomenon. Likewise, when the \emph{upper bound} of the confidence
+interval corresponds to a line in quadrant II (Fig. \ref{fig:rma}b),
+it has a negative slope. In other instances, the confidence interval
+of the slope may occupy all 360$^{\circ}$ of the plane, which results
+in it having no bounds. The bounds are then noted 0.00000; see chapter
+\ref{sec:exa5} (p. \pageref{sec:exa5}).
 
 In SMA or OLS, confidence interval bounds cannot lie outside quadrants
 I and IV. In SMA, the regression line always lies at a $+45^{\circ}$
@@ -431,7 +432,7 @@ i.e. it always underestimates the MA slope in absolute value.
 \subsection{Surgical unit data}
 \label{sec:exa1}
 
-%\subsubsection{Input data}
+\subsubsection{Input data}
 
 This example compares observations to the values forecasted by a
 model. A hospital surgical unit wanted to forecast survival of
@@ -500,7 +501,7 @@ regression line (36.8$^{\circ}$ angle).
 \subsection{Eagle rays and \emph{Macomona} bivalves}
 \label{sec:exa2}
 
-%\subsubsection{Input data}
+\subsubsection{Input data}
 
 The following table presents observations at 20 sites from a study on
 predator-prey relationships \citep{Hines.ea97}. $y$ is the number of
@@ -580,7 +581,7 @@ of permutations + 1), where
 
 \subsection{Cabezon spawning}%
 \label{sec:exa3}%
-%\subsubsection{Input data}
+\subsubsection{Input data}
 
 The following table presents data used by \citet[Box
 14.12]{SokalRohlf95} to illustrate model II regression analysis. They
@@ -643,7 +644,7 @@ legend("topleft", c("OLS", "SMA", "RMA"), col=1:3, lty=1)
 \subsection{Highly correlated random variables}
 \label{sec:exa4}
 
-%\subsubsection{Input data}
+\subsubsection{Input data}
 
 \citet{Mesple.ea96} generated a variable $X$ containing 100 values
 drawn at random from a uniform distribution in the interval $[0,
@@ -685,7 +686,7 @@ data set because of the way the data were generated.
 \subsection{Uncorrelated random variables}
 \label{sec:exa5}
 
-%\subsubsection{Input data}
+\subsubsection{Input data}
 
 Two vectors of 100 random data drawn from a normal distribution
 $\mathcal{N}(0, 1)$ were generated. One expects to find a null
