@@ -77,7 +77,7 @@ isDiag <- function(x) {
     count <- mtype == "count"
     if (count) {
         method <- match.arg(method, c("swap", "quasiswap"))
-    } else {method <- match.arg(method, c("swap", "quasiswap", "tswap"))}
+    } else {method <- match.arg(method, c("swap", "quasiswap", "tswap", "quasiswap"))}
 
     m <- as.matrix(m)
     n.row <- nrow(m)

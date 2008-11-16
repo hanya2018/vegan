@@ -35,7 +35,7 @@ xlab="Runs", col=c(2,4), lty=c(1,2), plot=TRUE, text=TRUE, ...)
   \item{hab}{numeric vector or factor with length same as \code{nrow(m)} for grouping rows within strata (habitat classes) for restricted permutations. Unique values or levels are used.}
   \item{mtype}{matrix data type, either \code{"count"} for count data, or \code{"prab"} for presence-absence type incidence data.}
   \item{times}{number of permuted matrices.}
-  \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} only \code{"swap"} is available.}
+  \item{method}{character for method used for the swap algorithm (\code{"swap"}, \code{"tswap"}, \code{"quasiswap"}, \code{"backtrack"}) as described for function \code{\link{commsimulator}}. If \code{mtype="count"} the \code{"quasiswap"} and \code{"swap"} methods are available.}
   \item{shuffle}{character, indicating whether individuals (\code{"ind"}), samples (\code{"samp"}) or both (\code{"both"}) should be shuffled, see details.}
   \item{burnin}{number of null communities discarded before proper analysis in sequential (\code{"swap", "tswap"}) methods.}
   \item{thin}{number of discarded permuted matrices between two evaluations in sequential (\code{"swap", "tswap"}) methods.}
