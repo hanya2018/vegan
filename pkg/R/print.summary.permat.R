@@ -9,6 +9,8 @@ function(x, digits=2, ...)
     cat("Summary of object of class 'permat'\n\nCall: ")
     print(x$call)
     cat("\nMatrix type:", attr(x, "mtype"), "\nPermutation type:", attr(x, "ptype"))
+    if (attr(x, "ptype") == "swap")
+        cat("\nMethod:", attr(x, "method"))
     cat("\nRestricted:", restr, "\nFixed margins:", attr(x, "fixedmar"))
     if (!is.na(attr(x, "shuffle"))) {
         if (attr(x, "shuffle")=="ind") cat("\nIndividuals")
