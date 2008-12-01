@@ -6,6 +6,9 @@ VEGAN STABLE VERSIONS
 Version 1.15-1 (opened October 10, 2008)
 
 	* merged r598: text.decorana failed.
+
+	* merged r590: betadisper and related functions now work when
+	'group' represents a single group/level.
 	
 	* merged r550, 552: neat plot.cca when input rownames are NULL.
 
