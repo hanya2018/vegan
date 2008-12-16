@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-1 (opened October 10, 2008)
 
+	* added warning on permatswap, since the "swap" algorithm used
+	there appeared to be biased in tests run by PS & JO.
+
 	* merged r598: text.decorana failed.
 
 	* merged r590: betadisper and related functions now work when
