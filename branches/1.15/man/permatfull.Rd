@@ -68,7 +68,7 @@ comparisons, and may be removed from the future versions of
 
 The 'swapcount' algorithm tries to find 2x2 submatrices (identified by 2 random row and 2 random column indices), that
 can be swapped in order to leave column and row totals and fill unchanged. First, the algorithm finds the largest value
-in the submatrix that can be swapped (\eqn{d]) and whether in diagonal or antidiagonal way. Submatrices that contain values larger than zero in either diagonal or antidiagonal position can be swapped. Swap means that the values in diagonal or antidiagonal positions are decreased by \eqn{d}, while remaining cells are increased by \eqn{d}. A swap is made only if fill doesn't change.
+in the submatrix that can be swapped (\eqn{d}) and whether in diagonal or antidiagonal way. Submatrices that contain values larger than zero in either diagonal or antidiagonal position can be swapped. Swap means that the values in diagonal or antidiagonal positions are decreased by \eqn{d}, while remaining cells are increased by \eqn{d}. A swap is made only if fill doesn't change.
 
 Constraints on row/colum sums, matrix fill, total sum and sums within
 strata can be checked by the \code{summary} method. \code{plot} method is for
