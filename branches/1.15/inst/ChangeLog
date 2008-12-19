@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-1 (opened October 10, 2008)
 
+	* merged r644: \$ escape fix in Rd files.
+	
 	* added warning on permatswap, since the "swap" algorithm used
 	there appeared to be biased in tests run by PS & JO.
 
