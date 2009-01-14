@@ -3,7 +3,12 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
-Version 1.15-1 (opened October 10, 2008)
+Version 1.15-2 (opened January 14, 2009)
+
+	* merged r652, r657: cleaner output of summary.cca in unconstrained
+	models (PCA, CA).
+	
+Version 1.15-1 (released December 19, 2008)
 
 	* merged r644: \$ escape fix in Rd files.
 	
