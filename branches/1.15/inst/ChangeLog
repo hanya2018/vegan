@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r660: Rd parser v2 fixes to make vegan R 2.9.0-ready.
+
 	* merged r652, r657: cleaner output of summary.cca in unconstrained
 	models (PCA, CA).
 	
