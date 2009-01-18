@@ -11,7 +11,7 @@
   matrices; uses a permutation test with pseudo-F ratios.}
 
 \usage{
-adonis(formula, data, permutations = 5, method = "bray",
+adonis(formula, data, permutations = 999, method = "bray",
        strata = NULL, contr.unordered = "contr.sum",
        contr.ordered = "contr.poly", ...)
 }
@@ -123,6 +123,9 @@ overview of rules.
   \item{f.perms}{ an \eqn{N} by \eqn{m} matrix of the null \eqn{F}
     statistics for each source of variation  based on \eqn{N}
     permutations of the data.}
+  \item{model.matrix}{The \code{\link{model.matrix}} for the right hand
+    side of the formula.}
+  \item{terms}{The \code{\link{terms}} component of the model.}
 }
 \references{
 Anderson, M.J. 2001. A new method for non-parametric multivariate
@@ -158,7 +161,7 @@ Sciences, USA}, \strong{103}:19430--19435.
 \examples{
 data(dune)
 data(dune.env)
-adonis(dune ~ Management*A1, data=dune.env, permutations=100)
+adonis(dune ~ Management*A1, data=dune.env, permutations=99)
 }
 
 \keyword{multivariate }

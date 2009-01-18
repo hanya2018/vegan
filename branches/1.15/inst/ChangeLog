@@ -5,6 +5,10 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r559, r662, r663, r664: adonis adds one both to numerator
+	and denominator in permuation tests, increases default number of
+	permutations from 5 to 999, and gains a 'terms' component.
+
 	* merged r660: Rd parser v2 fixes to make vegan R 2.9.0-ready.
 
 	* merged r652, r657: cleaner output of summary.cca in unconstrained
