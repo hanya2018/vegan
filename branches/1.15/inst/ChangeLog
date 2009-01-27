@@ -5,6 +5,10 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r673: vegdist doc fixes for Horn-Morisita equation.
+	
+	* merged r671: ordirgl warnings with type = "t".
+
 	* merged r559, r662, r663, r664: adonis adds one both to numerator
 	and denominator in permuation tests, increases default number of
 	permutations from 5 to 999, and gains a 'terms' component.
