@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r678: anovacca.bymargin was not setting RNG properly for
+	the second term.
+	
 	* merged r673: vegdist doc fixes for Horn-Morisita equation.
 	
 	* merged r671: ordirgl warnings with type = "t".
