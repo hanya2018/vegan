@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r686: rad.null failed with families gaussian and Gamma.
+
 	* merged r678: anovacca.bymargin was not setting RNG properly for
 	the second term.
 	
