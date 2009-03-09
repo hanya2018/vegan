@@ -5,6 +5,11 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r728: oecosimu.Rd example knows "statistic" argument.
+	
+	* merged r683 & r690: anova.cca(..., by = "margin") gained
+	argument "cutoff = 1", and doc expanded.
+
 	* merged r686: rad.null failed with families gaussian and Gamma.
 
 	* merged r678: anovacca.bymargin was not setting RNG properly for
