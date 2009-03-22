@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r750: better example in add1.cca.Rd.
+
 	* merged r735 & r736: stepacross fixes in metaMDSdist with
 	open-ended dissimilarities (Euclidean, Manhattan etc.).
 
