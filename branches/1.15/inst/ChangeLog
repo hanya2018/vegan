@@ -11,6 +11,8 @@ Version 1.15-2 (opened January 14, 2009)
 	open-ended dissimilarities (Euclidean, Manhattan etc.).
 
 	* merged r728: oecosimu.Rd example knows "statistic" argument.
+
+	* merged r689: added text.procrustes.
 	
 	* merged r683 & r690: anova.cca(..., by = "margin") gained
 	argument "cutoff = 1", and doc expanded.
@@ -19,6 +21,9 @@ Version 1.15-2 (opened January 14, 2009)
 
 	* merged r678: anovacca.bymargin was not setting RNG properly for
 	the second term.
+
+	* merged r674: metaMDSdist does not evaluate no.shared if set
+	noshared=0. 
 	
 	* merged r673: vegdist doc fixes for Horn-Morisita equation.
 	
