@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* copied kendall.global at rev767 from pkg/vegan tree to
+	branches/1.15.
+
 	* merged r608: plot.radfit gained argument log = "y".
 
 	* merged r538: orditkplot makes TIFF graphics.
