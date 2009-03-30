@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged new beals code by Miquel de Caceres (rev 528:531).
+
 	* copied dispindmorisita at rev769 from pkg/vegan.
 
 	* copied kendall.global at rev767 from pkg/vegan.
