@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged rev532, 596 to ordisurf: returns a grid item of fitted
+	surface, and gains option for bubble plots of observed values.
+
 	* merged new beals code by Miquel de Caceres (rev 528:531).
 
 	* copied dispindmorisita at rev769 from pkg/vegan.
