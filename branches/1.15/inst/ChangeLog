@@ -5,6 +5,10 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merger rev 762, 763, 765: better heuristics for detecting
+	open-ended dissimilarities (Euclidean, Manhattan) and triggering
+	half-change scaling. metaMDS honours 'halfchange'.
+
 	* merged rev532, 596 to ordisurf: returns a grid item of fitted
 	surface, and gains option for bubble plots of observed values.
 
