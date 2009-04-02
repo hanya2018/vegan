@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* copied contribdiv from pkg/vegan at rev681 (vegan at rev775). 
+	
 	* merged rev 755 to 760: mrpp upgrade: group statistics,
 	classification strength.
 	

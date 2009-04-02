@@ -8,7 +8,6 @@ The contribution diversity approach is based in the differentiation of within-un
 \usage{
 contribdiv(comm, index = c("richness", "simpson"),
      relative = FALSE, scaled = TRUE, drop.zero = FALSE)
-\method{plot}{contribdiv}(x, sub, xlab, ylab, ylim, col, ...)
 }
 \arguments{
   \item{comm}{The community data matrix with samples as rows and species as column.}
@@ -16,9 +15,6 @@ contribdiv(comm, index = c("richness", "simpson"),
   \item{relative}{Logical, if \code{TRUE} then contribution diversity values are expressed as their signed deviation from their mean. See details.}
   \item{scaled}{Logical, if \code{TRUE} then relative contribution diversity values are scaled by the sum of gamma values (if \code{index = "richness"}) or by sum of gamma values times the number of rowx in \code{comm} (if \code{index = "simpson"}). See details.}
   \item{drop.zero}{Logical, should empty rows dropped from the result? If empty rows are not dropped, their corresponding results will be \code{NA}s.}
-  \item{x}{An object of class 'contribdiv'.}
-  \item{sub, xlab, ylab, ylim, col}{Graphical arguments passed to plot.}
-  \item{\dots}{Other arguments passed to plot.}
 }
 \details{
 This approach was proposed by Lu et al. (2007). Additive diversity partitioning deals with the relation of mean alpha and the total (gamma) diversity. Although alpha diversity values are often vary considerably. Thus, contributions of the sites to the total diversity are uneven. This site specific contribution is measured by contribution diversity components. A unit that has e.g. many unique species will contribute more to the higher level (gamma) diversity than another unit with the same number of species, but all of which common.
