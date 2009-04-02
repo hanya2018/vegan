@@ -1,7 +1,6 @@
 \encoding{UTF-8}
 \name{contribdiv}
 \alias{contribdiv}
-\alias{plot.contribdiv}
 \title{Contribution Diversity Approach}
 \description{
 The contribution diversity approach is based in the differentiation of within-unit and among-unit diversity by using additive diversity partitioning and unit distinctiveness.
@@ -58,11 +57,9 @@ contribdiv(x, "richness", relative = TRUE, scaled = FALSE)
 contribdiv(x, "simpson", relative = TRUE, scaled = FALSE)
 ## BCI data set
 data(BCI)
-opar <- par(mfrow=c(2,2))
-plot(contribdiv(BCI, "richness"), main = "Absolute")
-plot(contribdiv(BCI, "richness", relative = TRUE), main = "Relative")
-plot(contribdiv(BCI, "simpson"))
-plot(contribdiv(BCI, "simpson", relative = TRUE))
-par(opar)
+contribdiv(BCI, "richness")
+contribdiv(BCI, "richness", relative = TRUE)
+contribdiv(BCI, "simpson")
+contribdiv(BCI, "simpson", relative = TRUE)
 }
 \keyword{multivariate}
