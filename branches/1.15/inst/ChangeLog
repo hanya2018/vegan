@@ -5,8 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
-	* merged r781 from trunk to 1.15 branch: betadisper bug fix and
-	upgrade to work more nicely with Euclidean 'd'.
+	* merged r781 and r786  from trunk to 1.15 branch: betadisper 
+	bug fix and upgrade to work more nicely with Euclidean 'd'.
 
 	* copied contribdiv from pkg/vegan at rev681 (vegan at rev775). 
 	
