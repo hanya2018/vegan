@@ -28,7 +28,7 @@ The unit distinctiveness of site \eqn{i} is the average of the species distincti
 The Lu et al. (2007) gives an in-depth description of the different indices.
 }
 \value{
-An object of class 'contribdiv'.
+An object of class \code{"contribdiv"}.
 }
 \references{
 Lu, H. P., Wagner, H. H. and Chen, X. Y. 2007. A contribution diversity approach to evaluate species diversity.
