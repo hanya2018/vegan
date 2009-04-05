@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merge r788: add "..." to decostand so that stressplot(metaMDS(x,
+	dist="gower", trymax=40)) works.
+
 	* merge r790 to 1.15 branch: handle missing values in betadisper.
 
 	* merged r781 and r786  from trunk to 1.15 branch: betadisper 
