@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* copied nestednodf.R and print.nestednodf.R from pkg/vegan at
+	rev651, updated docs at rev653.
+
 	* merge r788: add "..." to decostand so that stressplot(metaMDS(x,
 	dist="gower", trymax=40)) works.
 
