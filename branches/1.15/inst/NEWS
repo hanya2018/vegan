@@ -76,6 +76,8 @@
 
     - spantree: retains names and uses labels in plot.
 
+    - datasets: Oribatid mites (data 'mite') got taxon names.
+
     - help files updated, and do not raise errors or warnings with the
       Rd parser version 2 in R 2.9.0.
 

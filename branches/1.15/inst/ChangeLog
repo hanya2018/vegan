@@ -5,6 +5,8 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r600: Oribatid mites (dataset 'mite') got taxon names. 
+
 	* copied nestednodf.R and print.nestednodf.R from pkg/vegan at
 	rev651, updated docs at rev653.
 
