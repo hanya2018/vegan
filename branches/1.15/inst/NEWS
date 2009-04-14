@@ -7,7 +7,8 @@
     
     - adonis: adds one to numerator and denominator of permutation
       tests, the default number of iterations was raised from 5 to
-      999, and the result object got a 'terms' component.
+      999, and the result object got a 'terms' component. Uses much 
+      less memory  allowing analysis of larger problems.
 
     - anova.cca: anova(..., by = "axis") gained new keyword 'cutoff'
       to stop permutation tests after exceeding the given cut-off

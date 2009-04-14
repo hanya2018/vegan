@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* merged r800 (adonis uses less memory in permutation tests) and
+	r802 (example enhanced in adonis.Rd, with formatting).
+
 	* merged r600: Oribatid mites (dataset 'mite') got taxon names. 
 
 	* copied nestednodf.R and print.nestednodf.R from pkg/vegan at
