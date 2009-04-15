@@ -3,7 +3,7 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
-Version 1.15-2 (opened January 14, 2009)
+Version 1.15-2 (released to CRAN: 15 April, 2009)
 
 	* spantree.Rd: example plots use type = "t". Parallel change with
 	pkg/vegan. 
