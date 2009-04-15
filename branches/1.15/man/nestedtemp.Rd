@@ -95,8 +95,10 @@ nestednodf(comm, order = TRUE)
   matrix (\code{NODF}).  If you set \code{order = FALSE}, the statistic
   is evaluated with the current matrix ordering allowing tests of other
   meaningful hypothesis of matrix structure than ordering by row and
-  column totals (see Almeida-Neto et al. 2008).
-}
+  column totals (see Almeida-Neto et al. 2008). Function
+  \code{\link[bipartite]{nestedness}} in the \pkg{bipartite} package is
+  a direct port of the BINMATNEST programme of
+  \enc{Rodríguez-Gironés}{Rodriguez-Girones} & Santamaria (2006).  }
 
 \value{
   The result returned by a nestedness function contains an item called

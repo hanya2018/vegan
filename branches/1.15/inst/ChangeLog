@@ -5,6 +5,10 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* nestedtemp.Rd tells that bipartite::nestedness is a direct port
+	of BINMATNEST of Rodriquez-Girones & Santamaria. Parallel change
+	with pkg/vegan.
+
 	* merged r800 (adonis uses less memory in permutation tests) and
 	r802 (example enhanced in adonis.Rd, with formatting).
 
