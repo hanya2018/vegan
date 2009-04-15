@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-2 (opened January 14, 2009)
 
+	* spantree.Rd: example plots use type = "t". Parallel change with
+	pkg/vegan. 
+
 	* nestedtemp.Rd tells that bipartite::nestedness is a direct port
 	of BINMATNEST of Rodriquez-Girones & Santamaria. Parallel change
 	with pkg/vegan.
