@@ -11,7 +11,7 @@
       less memory  allowing analysis of larger problems.
 
     - anova.cca: anova(..., by = "axis") gained new keyword 'cutoff'
-      to stop permutation tests after exceeding the given cut-off
+      to stop permutation tests after exceeding the given cut off
       level of significance. The second term of anova(..., by =
       "margin") used different random numbers than other terms.
     
@@ -20,13 +20,13 @@
       choices described by De Caceres & Legendre, Oecologia 156,
       657-669; 2008.
 
+    - betadisper: handles missing values both in dissimilarities and
+      grouping. 
+
     - cca/rda: cleaner output of summary() in unconstrained models.
 
     - commsimulator: simulated result retains original row and column
       names. 
-
-    - betadisper: handles missing values both in dissimilarities and
-      grouping. 
 
     - contribdiv: new function for contribution diversity (Lu et al.,
       Basic and Applied Ecology 8, 1-12; 2007).
@@ -44,15 +44,19 @@
 
     - metaMDS: more robust with distances like Euclidean and Manhattan
       which have no upper limit. The stepacross works correctly for
-      these, but gives a warning that stepacross may not be
-      sensible. There is a better heuristics to avoid half-change
-      scaling with these indices. The 'halfchange' argument is now
-      honoured when given in metaMDS() call.
+      these, but gives a warning that its use may not be sensible.
+      There is a better heuristics to avoid half-change scaling with
+      these indices. The 'halfchange' argument is now honoured when
+      given in metaMDS() call.
 
     - mrpp: returns within-class dissimilarities. Evaluates
       classification strength (Van Sickle, Biological and
       Environmental Statistics, 2, 370-388; 1997) if weight.type = 3
       was used.
+
+    - nestednodf: new nestedness function of overlap and decreasing
+      fill (Almeida-Neto et al., Oikos 117, 1227-1239; 2008). Coding
+      by Gustava Carvalho.
 
     - ordirgl: no more superfluous warnings with type = "t". 
 
@@ -61,19 +65,15 @@
       The (invisible) return object now has an item 'grid' for the
       fitted value and grid values.
 
-    - nestednodf: new nestedness function of overlap and decreasing
-      fill (Almeida-Neto et al., Oikos 117, 1227-1239; 2008). Coding
-      by Gustava Carvalho.
-
-    - orditkplot: can produce TIFF graphics, if the R installation has
-      this capability.
+    - orditkplot: can produce TIFF graphics, if installed R has this
+      capability.
 
     - procrustes: new text() function.
 
     - radfit: broken-stick model (function rad.null) failed with
       Gaussian and Gamma error families. The plot.radfit command
       gains argument log = "y", which allows using arithmetic scales
-      or double-log scales where Zipf model is a straight line.
+      or log-log scales where Zipf model is a straight line.
 
     - spantree: retains names and uses labels in plot.
 
