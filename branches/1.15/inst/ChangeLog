@@ -3,6 +3,26 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
+Version 1.15-3 (opened 28 May, 2009)
+
+	* merged r832: wrong reference in metaMDS.Rd.
+	
+	* merged r827: kendall.global: could get wrong counts of ties in
+	large data sets.
+	
+	* merged r823: fixed wrong test of output validity in taxa2dist.
+	
+	* merged r815: anova.cca(..., by = ) name clash if data were
+	indexed with 'i' in fitted model.
+	
+	* merged r812: ordixyplot mixed x and y axes for biplot arrows and
+	env centres.
+
+	* merged r811: orditkplot copes with NA and NaN scores.
+	
+	* merged r810: ordixyplot failed in constrained ordination (broken
+	in r108 in Nov 2007).
+
 Version 1.15-2 (released to CRAN: 15 April, 2009)
 
 	* spantree.Rd: example plots use type = "t". Parallel change with
