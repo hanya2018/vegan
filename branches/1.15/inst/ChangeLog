@@ -5,11 +5,11 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-3 (opened 28 May, 2009)
 
-	* merged r837:r842 and r846 that put the observed test statistic
-	among permutations like should be done with order statistics.
-	Concerns functions anosim, mantel, mantel.partial, mrpp, protest,
-	factorfit, vectorfit. General cleanup also concerns adonis and
-	permutest.cca. 
+	* merged r834, r837:r842 and r846 that put the observed test
+	statistic among permutations like should be done with order
+	statistics.  Concerns functions anosim, mantel, mantel.partial,
+	mrpp, protest, factorfit, vectorfit. General cleanup also concerns
+	adonis and permutest.cca.
 
 	* merged r832: wrong reference in metaMDS.Rd.
 	
