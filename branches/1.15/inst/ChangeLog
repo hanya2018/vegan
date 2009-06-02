@@ -5,6 +5,12 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-3 (opened 28 May, 2009)
 
+	* merged r845: summary.cca uses eigenvals.
+	
+	* copied eigenvals at r845.
+	
+	* copied simulate.rda at r814.
+
 	* merged r818, 820: tsallis got argument hill.
 
 	* merged r796, 801: ordisurf can do linear or quadratic surfaces
