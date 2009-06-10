@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-3 (opened 28 May, 2009)
 
+	* merged fixes for capscale handling of negative eigenvalues: revs
+	851, 858, 859, 861, 863.
+
 	* merged r850: wcmdscale removes zero eigenvalues, but may keep
 	the last (unlike cmdscale).
 
