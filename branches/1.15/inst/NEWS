@@ -14,14 +14,19 @@
     - anova.cca: name clash if data were indexed with 'i'.
 
     - capscale: fixed handling of negative eigenvalues with
-      non-Euclidean distances. The negative eigenvalues are subtracted
-      from the total and unconstrained inertia, and the rank of the
-      unconstrained component is the number of all non-zero
-      eigenvalues, including negative ones. The procedure is based on
-      Gower, Linear Algebra and its Applications 67, 81-97 (1985).
-      New argument 'sqrt.dist' takes square root of the internally
-      calculated dissimilarities which avoids negative eigenvalues
-      with some indices, such as vegan Jaccard and Bray-Curtis.
+      non-Euclidean distances. The total inertia is the sum of all
+      eigenvalues so that negative eigenvalues are subtracted from the
+      total. The total inertia of negative components and their rank
+      (number) is given as 'Imaginary' component, and the negative
+      eigenvalues are listed after unconstrained positive eigenvalues.
+      The procedure is based on Gower, Linear Algebra and its
+      Applications 67, 81-97 (1985).  New argument 'sqrt.dist' takes
+      square root of the internally calculated dissimilarities and
+      avoids negative eigenvalues with some indices, such as vegan
+      Jaccard and Bray-Curtis. The adjustment is corrected for indices
+      with upper limit of one, and the reported eigenvalues and
+      inertia components are reduced by a factor of sqrt(n-1) and are
+      similar to those reported by 'cmdscale' or 'wcmdscale'.
 
     - eigenvals: a new function to extract eigenvalues from rda, cca,
       capscale, wcmdscale, prcomp, princomp, svd or eigen. If the

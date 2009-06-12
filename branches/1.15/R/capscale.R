@@ -46,7 +46,7 @@
         adjust <- 1
     }
     else {
-        adjust <- k
+        adjust <- sqrt(k)
     }
     nm <- attr(X, "Labels")
     ## cmdscale is only used if 'add = TRUE': it cannot properly
@@ -60,15 +60,14 @@
     if (is.null(rownames(X$points))) 
         rownames(X$points) <- nm
     X$points <- adjust * X$points
-    X$eig <- adjust * X$eig
-    tot.chi <- sum(X$eig) 
+    if (adjust == 1)
+        X$eig <- X$eig/k
     neig <- min(which(X$eig < 0) - 1, sum(X$eig > EPS))
     sol <- X$points[, 1:neig]
     fla <- update(formula, sol ~ .)
     environment(fla) <- environment()
     d <- ordiParseFormula(fla, data, envdepth = 1)
     sol <- rda.default(d$X, d$Y, d$Z, ...)
-    sol$tot.chi <- tot.chi
     if (!is.null(sol$CCA)) {
         colnames(sol$CCA$u) <- colnames(sol$CCA$biplot) <- names(sol$CCA$eig) <-
             colnames(sol$CCA$wa) <- colnames(sol$CCA$v) <-
@@ -83,8 +82,9 @@
             negax <- X$eig[X$eig < 0]
             names(negax) <- paste("NEG", seq_along(negax), sep="")
             sol$CA$eig <- c(sol$CA$eig, negax)
-            sol$CA$tot.chi <- abs(sum(sol$CA$eig))
-            sol$CA$rank <- length(sol$CA$eig)
+            sol$CA$imaginary.chi <- sum(negax)
+            sol$tot.chi <- sol$tot.chi + sol$CA$imaginary.chi
+            sol$CA$imaginary.rank <- length(negax)
         }
     }
     if (!is.null(comm)) {
