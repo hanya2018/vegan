@@ -5,6 +5,9 @@ VEGAN STABLE VERSIONS
 
 Version 1.15-3 (opened 28 May, 2009)
 
+	* merged revs 866 to 868: changed the way capscale displays
+	negative inertia, fixes scaling of 0..1 range indices.
+
 	* merged fixes for capscale handling of negative eigenvalues: revs
 	851, 858, 859, 861, 863.
 
