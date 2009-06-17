@@ -3,7 +3,7 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
-Version 1.15-3 (opened 28 May, 2009)
+Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
 	negative inertia, fixes scaling of 0..1 range indices.
