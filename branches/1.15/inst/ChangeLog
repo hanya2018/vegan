@@ -3,6 +3,26 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
+Version 1.15-4 (working from August 20, 2009)
+
+	* merged r874: rrarefy.
+
+	* merged r875,888: betadisper fix of removing zero eigenvalues.
+
+	* merged r880: fix diversity.Rd warnings.
+
+	* merged r881, r882: pass args of 'scores' to other functions, clean
+	summary.cca. 
+
+	* merged r883: orditorp works with reverse axes.
+
+	* merged r884 to r886: returns axes scaled by negative
+	eigenvalues.
+
+	* merged r888: capscale got fitted method.
+
+	* merged r889: postMDS uses numeric palette.
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
