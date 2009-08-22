@@ -11,7 +11,7 @@ Version 1.15-4 (working from August 20, 2009)
 
 	* merged r880: fix diversity.Rd warnings.
 
-	* merged r881, r882: pass args of 'scores' to other functions, clean
+	* merged r881, r882, r904: pass args of 'scores' to other functions, clean
 	summary.cca. 
 
 	* merged r883: orditorp works with reverse axes.
@@ -22,6 +22,20 @@ Version 1.15-4 (working from August 20, 2009)
 	* merged r888: capscale got fitted method.
 
 	* merged r889: postMDS uses numeric palette.
+
+	* merged r902: orditkplot cleaning.
+
+	* merged r905-907, 910, 911: metaMDS takes distances.
+
+	* merged r908, 909, 925: remove backticks from messages.
+
+	* merged r918: cleaner specpool2vect.
+
+	* merged r929, 930: ordiellipse (and vegan 1.15) does not depend
+	on 'ellipse' package.
+
+	* merged r931: ordihull, ordiellipse gained arg 'label' and
+	invisibly return their result (summary() not yet merged).
 
 Version 1.15-3 (released June 17, 2009)
 
