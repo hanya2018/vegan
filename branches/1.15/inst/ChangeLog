@@ -37,6 +37,8 @@ Version 1.15-4 (working from August 20, 2009)
 	* merged r931: ordihull, ordiellipse gained arg 'label' and
 	invisibly return their result (summary() not yet merged).
 
+	* panel.ordi has now 'arrows': merged r813, 814, 835, 879.
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
