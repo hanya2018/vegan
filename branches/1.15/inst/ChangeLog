@@ -41,6 +41,8 @@ Version 1.15-4 (working from August 20, 2009)
 
 	* radlattice copied from pkg/ and merged doc changes r551, 553.
 
+	* copied indpower (with rev948 for beals.Rd).
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
