@@ -52,6 +52,9 @@ Version 1.15-4 (working from August 20, 2009)
 	* added poolaccum & estaccumR with associated functions and
 	updates (rev 913 to 923).
 
+	* merged summary.ordihull & summary.ordiellipse: centres and areas
+	of plotted hulls or ellipses.
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
