@@ -47,6 +47,8 @@ Version 1.15-4 (working from August 20, 2009)
 
 	* merged RsquareAdj (rev809, 945, 946).
 
+	* merged rev685: add keyword 'datagen' in Rd where appropriate.
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
