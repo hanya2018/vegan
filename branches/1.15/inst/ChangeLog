@@ -45,6 +45,8 @@ Version 1.15-4 (working from August 20, 2009)
 
 	* copied mantel.correlog.
 
+	* merged RsquareAdj (rev809, 945, 946).
+
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
