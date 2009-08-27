@@ -59,6 +59,8 @@ Version 1.15-4 (working from August 20, 2009)
 	column labels. 
 
 	* merged r779: formatting fixes in mrpp.Rd.
+
+	* merged changes to anosim (rev 523, 839, 963).
 	
 Version 1.15-3 (released June 17, 2009)
 

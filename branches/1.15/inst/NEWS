@@ -5,7 +5,11 @@
 
 			  CHANGES IN 1.15-4
 
-    - Changed package dependency: vegan does not depend on 'ellipse'.  
+    - Changed package dependence: vegan does not depend on 'ellipse'.
+
+    - anosim: user interface identical to 'mrpp'. Most importantly,
+      accepts now data matrix and finds dissimilarities within the
+      function instead of accepting only dissimilarities.
 
     - betadisper: fix removing zero eigenvalues with non-Euclidean
       distances. This may change the results slightly, but in most
