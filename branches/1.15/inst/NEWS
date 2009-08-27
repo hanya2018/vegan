@@ -3,6 +3,83 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+			  CHANGES IN 1.15-4
+
+    - Changed package dependency: vegan does not depend on 'ellipse'.  
+
+    - betadisper: fix removing zero eigenvalues with non-Euclidean
+      distances. This may change the results slightly, but in most
+      cases the effects are minor or none.
+
+    - capscale: has now 'fitted' and 'residual' methods, and 'predict'
+      works with 'type = "response"'. These return dissimilarities
+      that produce the same ordination as the original data. However,
+      with non-Euclidean distances the dissimilarities of constrained
+      and unconstrained components are not additive as the imaginary
+      axes with negative eigenvalues are not used in estimating the
+      unconstrained dissimilarities.
+
+    - indpower: new function to find the indicator power of species to
+      predict presence of other species (Halme et al., Conservation
+      Biology 23, 1008-1016; 2009). Closely related to the the power
+      to predict probabilities in beals().
+
+    - mantel.correlog: new functions to produce multivariate Mantel
+      correlograms (Legendre & Legendre, Numerical Ecology, section
+      13.1.5; 1998). 
+
+    - metaMDS: accepts user-supplied dissimilarities instead of
+      calculating dissimilarities in the function. Species scores,
+      data transformation, step-across and half-change scaling are
+      unavailable with user-supplied dissimilarities, but random
+      starts, PC rotation and scaling to original range of input
+      dissimilarities work. 
+
+    - nestedtemp: row and column labels can be turned on/off
+      independently. 
+
+    - ordihull & ordiellipse: new argument 'label' to plot group names
+      for hulls or ellipses. Return (invisibly) the data for plotted
+      convex hulls or ellipses. In 'ordihull' this is a list of hull
+      vertices, and in 'ordiellipse' a list of (scaled) covariance and
+      centre data for ellipses. New 'summary' methods find the centres
+      and areas of plotted hulls or ellipses. Argument 'draw' has new
+      option "none" that suppresses all drawing so that only the data
+      for summary can be extracted without plotting. This feature was
+      added so that it is easier to develop permutation tests for
+      hulls and ellipses
+
+    - orditorp: works with reversed axes, like with 'xlim = c(3, -3)'.
+
+    - ordixyplot: has a panel function for arrows: a lattice variant
+      of ordiarrows.
+
+    - poolaccum, estaccumR: new functions to find the specpool() or
+      estimateR() estimates of extrapolated species richness in random
+      accumulations of sites. These have 'plot' and 'summary' methods.
+
+    - scores: functions biplot, points, text, ordilabel, ordiplot3d,
+      ordixyplot and spantreee did not pass all arguments to scores()
+      function. In particular, this concerned rda where 'scaling' and
+      'const' arguments could not be used within these functions.
+
+    - radfit: has new function 'radlattice' for a lattice alternative
+      to simple plot function for single site.
+
+    - rrarefy: a new function to generate random rarefied communities.
+
+    - RsquareAdj: now a generic function with special cases to 'rda',
+      'cca', 'lm' and 'glm'. The specific functions directly estimate
+      the adjusted R-squared from the ordination or regression result
+      of the previous methods, and the default function estimates the
+      adjusted R-squared from the unadjusted R-squared, number of
+      model df, and number of observations. 
+
+    - summary.cca: cleaner output.
+
+    - wcmdscale: returns scaled scores for axes with negative
+      eigenvalues. 
+    
 
 			CHANGES IN VEGAN 1.15-3
 
@@ -167,7 +244,7 @@
     - radfit: all methods work consistently for communities of 0, 1 or
       2 species.
 
-    - wmdscale: typo in the result object items corrected.
+    - wcmdscale: typo in the result object items corrected.
 
 		       CHANGES IN VEGAN 1.15-0
 
@@ -186,7 +263,7 @@ NEW FUNCTIONS
       is written on opaque labels. The texts still cover each other,
       but at least the uppermost are readable, and the ordering can be
       controlled by 'priority' argument. Similar to 's.label' in ade4
-      pacakge.
+      package.
 
     - ordipointlabel: new alternative for cluttered ordination plots.
       Points are in fixed positions, but their text labels are
