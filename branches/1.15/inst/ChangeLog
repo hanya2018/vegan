@@ -11,12 +11,12 @@ Version 1.15-4 (working from August 20, 2009)
 
 	* merged r880: fix diversity.Rd warnings.
 
-	* merged r881, r882, r904: pass args of 'scores' to other functions, clean
-	summary.cca. 
+	* merged r881, r882, r904: pass args of 'scores' to other
+	functions, clean summary.cca.
 
 	* merged r883: orditorp works with reverse axes.
 
-	* merged r884 to r886: returns axes scaled by negative
+	* merged r884 to r886: wcmdscale returns axes scaled by negative
 	eigenvalues.
 
 	* merged r888: capscale got fitted method.
@@ -55,6 +55,11 @@ Version 1.15-4 (working from August 20, 2009)
 	* merged summary.ordihull & summary.ordiellipse: centres and areas
 	of plotted hulls or ellipses.
 
+	* merged r602: plot.nestedtemp can independently turn of row or
+	column labels. 
+
+	* merged r779: formatting fixes in mrpp.Rd.
+	
 Version 1.15-3 (released June 17, 2009)
 
 	* merged revs 866 to 868: changed the way capscale displays
@@ -189,7 +194,7 @@ Version 1.15-2 (released to CRAN: 15 April, 2009)
 
 	* merged r652, r657: cleaner output of summary.cca in unconstrained
 	models (PCA, CA).
-	
+
 Version 1.15-1 (released December 19, 2008)
 
 	* merged r644: \$ escape fix in Rd files.
