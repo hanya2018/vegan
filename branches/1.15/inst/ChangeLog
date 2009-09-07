@@ -3,7 +3,12 @@ $Date$
 
 VEGAN STABLE VERSIONS
 
-Version 1.15-4 (released September 1, 2009)
+Version 1.15-4 (released September 7, 2009)
+
+	* merged r889, 891: the package was submitted to CRAN on 1 Sep,
+	2009, but failed in R 2.10 (development version) tests due to
+	obsolete or wrong links in Rd files. These are fixed here, and the
+	package will be re-released.
 
 	* merged r874: rrarefy.
 
