@@ -1,8 +1,16 @@
 $Date$
 
+VEGAN RELEASE VERSIONS at http://cran.r-project.org/
+
+Version 1.17-0 (opened January 2, 2010)
+
+	* Copied from vegan/pkg/vegan version 1.16-34 (rev1087).
+
+	* removed treedist().
+
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
-Version 1.16-34 (opened December 13, 2009) -- (codename: Lucia)
+Version 1.16-34 (closed January 2, 2010) -- (codename: Lucia)
 
 	* twostagechao: deleted, because question regarding the
 	notation in the original article remained unanswered.

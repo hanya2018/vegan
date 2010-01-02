@@ -47,8 +47,6 @@
     - spandepth: a new function to find the depth of each node in the
       minimum spanning tree produced by spantree(). 
 
-    - treedist: undocumented (alias in treedive.Rd) --- REMOVE!
-
     - alias.cca: gained argument names.only.
 
     - betadisper: can use spatial medians which are the recommended
