@@ -5,52 +5,51 @@
 
 	       CHANGES AND NEW FEATURES IN VEGAN 1.17-0
 
-    - adipart: new function for additive partitioning of
-      diversity. New function hiersimu() performs hierarchical null
-      model testing for evaluating the adipart() components of alpha,
-      beta and gamma diversity.
+    - New functions to partition data-set diversity (gamma) into
+      within-plot (alpha) and between-plot (beta) diversity
+      components. Function multipart performs multiplicative
+      partitioning (gamma = alpha*beta), and function adipart additive
+      partitioning (gamma = alpha + beta). Function hiersimu performs
+      hierarchical null model testing for adipart.
 
-    - as.ts.oecosimu: 
+    - Subsets and missing value handling added to constrained
+      ordination methods cca(), rda() and capscale(). The missing
+      values (NA) can be handled with setting na.action (defaults
+      na.fail). With na.action = na.omit, observations with missing
+      values are removed, and with na.action = na.exclude they are
+      kept, but scores may be NA. However, the WA scores for sites are
+      available in non-partial models with na.action = na.exclude.
+
+    - oecosimu: rewritten to handle a simple case of quantitative null
+      models. Gained keyword 'alternative' for "two-sided", or "less"
+      and "greater" one-sided tests. More robust with degenerate
+      solutions. The 'method' can now be a user-supplied function. New
+      support functions as.ts() and as.mcmc  which transform
+      sequential models into form that can be analysed using tools for
+      time-series (as.ts()) or MCMC sequences of the 'coda' package
+      (as.mcmc).
 
     - calibrate: calibrate is now a generic function with a new method
       calibrate.ordisurf() in addition to the old calibrate.cca. These
       find the estimates of environmental variables from ordination.
 
-    - model.matrix.cca & model.frame.cca: new functions to reconstruct
-      the model frame and model matrix of constraints used in
-      ordination methods cca(), rda() and capscale().
-
-    - MOStest: Mithcell-Olds & Shaw test to evaluate the probability
-      that a quadratic response has its extreme value (top or bottom)
-      at the given interval. 
-
-    - multipart: multiplicative partitioning of diversity into alpha,
-      beta and gamma components.
+    - MOStest: new function for the Mithcell-Olds & Shaw test to
+      evaluate the probability that a quadratic response has its
+      extreme value (top or bottom) at the given interval.
 
     - ordistep: stepwise selection of terms in constrained ordination
       (cca, rda and capscale) using permutation tests instead of
       pseudo-AIC that is used by the standard step() function.
 
-    - pcnm: finds weighted principal coordinates of neighbour matrix
-      (PCNM) from distances between points. These are typically used
-      for spatial filtering in constrained ordination. The function
-      does weighted analysis and can therefore produce PCNM for
-      correspondence analysis in addition to PCA and RDA.
-
-    - simulate.cca & simulate.cca: simulate the community (response)
-      data from the result of cca() or rda() under alternative
-      hypothesis. Error is added to the fitted values from
-      ordination. The function uses either Gaussian error or permutes
-      residuals and adds these to fitted values. Function is intended
-      for advanced users.
-
-    - spandepth: a new function to find the depth of each node in the
-      minimum spanning tree produced by spantree(). 
-
-    - alias.cca: gained argument names.only.
+    - pcnm: new function to find weighted principal coordinates of
+      neighbour matrix (PCNM) from distances between points. These are
+      typically used for spatial filtering in constrained
+      ordination. The function does weighted analysis and can
+      therefore produce PCNM for correspondence analysis in addition
+      to PCA and RDA.
 
     - betadisper: can use spatial medians which are the recommended
-      method.
+      method. 
 
     - decostand & vegdist: new transformation 'log' which implements
       Marti Anderson's scaling log(x) + 1 for x>0 (which is not at all
@@ -58,7 +57,23 @@
       function that skips double zeros. Together these implement
       the "modified Gower" distance of Anderson et al. (Ecology
       Letters 9, 683-693; 2006).
- 
+
+    - model.matrix.cca & model.frame.cca: new functions to reconstruct
+      the model frame and model matrix (model matrices in partial
+      models) of constraints used in ordination methods cca(), rda()
+      and capscale().
+
+    - simulate.cca & simulate.cca: simulate the community (response)
+      data from the result of cca() or rda() under alternative
+      hypothesis. Error is added to the fitted values from
+      ordination. The function uses either Gaussian error or permutes
+      residuals and adds these to fitted values. 
+
+    - spandepth: a new function to find the depth of each node in the
+      minimum spanning tree produced by spantree(). 
+
+    - alias.cca: gained argument names.only.
+
     - metaMDSrotate: a new function to rotate metaMDS so that first
       axis is parallel to an environmental variable. (KEEP or DROP?)
 
@@ -67,11 +82,6 @@
     - nesteddisc: new method that tries to find the smallest possible
       value of the statistic in tied data. Slow, but fixes the
       problems of the published method.
-
-    - oecosimu: rewritten to handle a simple case of quantitative null
-      models. Gained keyword 'alternative' for "two-sided", or "less"
-      and "greater" one-sided tests. More robust with degenerate
-      solutions. The 'method' can now be a user-supplied function. 
 
     - contribdiv: gained a plot method. 
 
