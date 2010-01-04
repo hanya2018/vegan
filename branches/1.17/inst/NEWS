@@ -5,6 +5,10 @@
 
 	       CHANGES AND NEW FEATURES IN VEGAN 1.17-0
 
+    - Guillaume Blanchet joined the vegan team.
+
+    - vegan depends again on the ellipse package.
+
     - New functions to partition data-set diversity (gamma) into
       within-plot (alpha) and between-plot (beta) diversity
       components. Function multipart performs multiplicative
