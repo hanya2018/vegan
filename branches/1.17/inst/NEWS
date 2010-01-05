@@ -23,6 +23,13 @@
       values are removed, and with na.action = na.exclude they are
       kept, but scores may be NA. However, the WA scores for sites are
       available in non-partial models with na.action = na.exclude.
+      The 'subset' can be defined using any variable in the
+      constraining data set or species in the dependent data.
+
+    - Functions for fitting environmental variables onto ordination
+      (envfit, ordisurf) are aware of missing values in constraints or
+      NA values in scores. The ordination plot functions also can
+      handle NA scores. 
 
     - oecosimu: rewritten to handle a simple case of quantitative null
       models. Gained keyword 'alternative' for "two-sided", or "less"
@@ -94,6 +101,9 @@
 
     - meandist: plot can draw histograms as an alternative to
       dendrograms. 
+
+    - plot functions for 'decorana' and 'cca' and friends and
+      'ordiplot' use 'linestack' if only one axis was requested.
 
 
 		       CHANGES IN VEGAN 1.15-4
