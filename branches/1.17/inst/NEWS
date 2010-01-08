@@ -7,12 +7,12 @@
 
     - Guillaume Blanchet joined the vegan team.
 
-    - New functions to partition data-set diversity (gamma) into
+    - New function to partition data-set diversity (gamma) into
       within-plot (alpha) and between-plot (beta) diversity
-      components. Function multipart performs multiplicative
-      partitioning (gamma = alpha*beta), and function adipart additive
+      components. Function adipart performs additive
       partitioning (gamma = alpha + beta). Function hiersimu performs
-      hierarchical null model testing for adipart.
+      hierarchical null model testing similar to adipart but by using
+      custom function to calculate statistics for levels of a hierarchy.
 
     - Subsets and missing value handling added to constrained
       ordination methods cca(), rda() and capscale(). The missing
