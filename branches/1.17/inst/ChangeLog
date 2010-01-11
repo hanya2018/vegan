@@ -14,6 +14,8 @@ Version 1.17-0 (opened January 2, 2010)
 
 	* removed multipart.
 
+	* merged betadisper updates (rev1096 & 1114). 
+
 VEGAN DEVEL VERSIONS at http://r-forge.r-project.org/
 
 Version 1.16-34 (closed January 2, 2010) -- (codename: Lucia)
