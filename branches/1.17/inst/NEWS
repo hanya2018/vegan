@@ -27,16 +27,21 @@
     - Functions for fitting environmental variables onto ordination
       (envfit, ordisurf) are aware of missing values in constraints or
       NA values in scores. The ordination plot functions also can
-      handle NA scores. 
+      handle NA scores.
 
-    - oecosimu: rewritten to handle a simple case of quantitative null
-      models. Gained keyword 'alternative' for "two-sided", or "less"
-      and "greater" one-sided tests. More robust with degenerate
-      solutions. The 'method' can now be a user-supplied function. New
-      support functions as.ts() and as.mcmc  which transform
-      sequential models into form that can be analysed using tools for
-      time-series (as.ts()) or MCMC sequences of the 'coda' package
-      (as.mcmc).
+    - New and upgraded quantitative null models. In particular,
+      quantitative swap models (function abuswap) allows generetating
+      null matrices where marginal totals and fill are fixed, or row
+      and column fills are fixed, or row and column fills and either
+      row or column totals are fixed.
+
+    - oecosimu: rewritten to handle quantitative null models. Gained
+      keyword 'alternative' for "two-sided", or "less" and "greater"
+      one-sided tests. More robust with degenerate solutions. The
+      'method' can now be a user-supplied function. New support
+      functions as.ts() and as.mcmc which transform sequential models
+      into form that can be analysed using tools for time-series
+      (as.ts()) or MCMC sequences of the 'coda' package (as.mcmc).
 
     - calibrate: calibrate is now a generic function with a new method
       calibrate.ordisurf() in addition to the old calibrate.cca. These
