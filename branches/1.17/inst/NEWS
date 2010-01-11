@@ -54,19 +54,22 @@
     - pcnm: new function to find weighted principal coordinates of
       neighbour matrix (PCNM) from distances between points. These are
       typically used for spatial filtering in constrained
-      ordination. The function does weighted analysis and can
+      ordination. The function uses weighted analysis and can
       therefore produce PCNM for correspondence analysis in addition
       to PCA and RDA.
 
-    - betadisper: can use spatial medians which are the recommended
-      method. 
+    - betadisper: can use spatial medians which are now the default
+      method. Preliminary tests indicate that spatial medians correct
+      the anti-conservative Type I errors reported by Stewart
+      Schultz. 
 
     - decostand & vegdist: new transformation 'log' which implements
       Marti Anderson's scaling log(x) + 1 for x>0 (which is not at all
       the same as log(x+1)), and vegdist has alternative Gower
-      function that skips double zeros. Together these implement
-      the "modified Gower" distance of Anderson et al. (Ecology
-      Letters 9, 683-693; 2006).
+      function that skips double zeros. Together these implement the
+      "modified Gower" distance of Anderson et al. (Ecology Letters 9,
+      683-693; 2006).  Feature request #473 by Etienne Laliberte in
+      vegan.r-forge.r-project.org.
 
     - model.matrix.cca & model.frame.cca: new functions to reconstruct
       the model frame and model matrix (model matrices in partial
@@ -80,18 +83,20 @@
       residuals and adds these to fitted values. 
 
     - spandepth: a new function to find the depth of each node in the
-      minimum spanning tree produced by spantree(). 
+      minimum spanning tree produced by spantree(). Feature request by
+      W. E. Sharp. 
 
     - alias.cca: gained argument names.only.
 
     - metaMDSrotate: a new function to rotate metaMDS so that first
-      axis is parallel to an environmental variable. (KEEP or DROP?)
+      axis is parallel to an environmental variable. 
 
     - msoplot: uses standard legend. 
 
     - nesteddisc: new method that tries to find the smallest possible
       value of the statistic in tied data. Slow, but fixes the
-      problems of the published method.
+      problems of the published method. The problem with tied values
+      in nesteddisc was found with Carsten Dormann. 
 
     - contribdiv: gained a plot method. 
 
