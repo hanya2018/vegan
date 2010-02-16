@@ -2,6 +2,13 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 1.17-1 (opened February 16, 2010)
+
+	* merged r1124: envfit() weights fixed for cca().
+
+	* merged r1123: CCorA() output fixes plus upgrades of
+	biplot.CCorA(). 
+	
 Version 1.17-0 (released January 11, 2010)
 
 	* Copied from vegan/pkg/vegan version 1.16-34 (rev1087).
