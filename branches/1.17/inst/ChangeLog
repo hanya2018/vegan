@@ -8,6 +8,11 @@ Version 1.17-1 (opened February 16, 2010)
 
 	* merged r1123: CCorA() output fixes plus upgrades of
 	biplot.CCorA(). 
+
+	* merged r1118, r1119: predict.cca/rda match 'newdata' by dim
+	names and gained new choice 'type = "working"'.
+
+	* merged r1120, 1122: simulate.rda/cca gained argument 'rank'. 
 	
 Version 1.17-0 (released January 11, 2010)
 
@@ -206,7 +211,7 @@ Version 1.16-30 (closed October 3, 2009)
 	zero, and z became NaN. Now z = 0 for these cases. A response to
 	the query of Martin Kopecky at the vegan-help forum in R-Forge.
 
-	* densitplot.oecosimu: panels keep the order of statistics. The
+	* densityplot.oecosimu: panels keep the order of statistics. The
 	panels were ordered alphabetically, but the vertical line for the
 	observed statistic was in the original order (and thus often in
 	the wrong panel).
