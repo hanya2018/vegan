@@ -3,6 +3,19 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+
+			FIXES IN VEGAN 1.17-1
+
+    - CCorA: Fixed choice of scores in biplots -- Used PC scores
+      instead of observed scores in the right-hand-side biplot
+      panel. New choices of biplot types.
+
+    - envfit: ignored weights in cca() results for factors or a single
+      continuous variable.  The bug was introduced with NA handling
+      upgrade in vegan 1.17-0. The problem with fitted vectors was
+      reported by Richard Telford (Bergen, Norway).
+
+
 	       CHANGES AND NEW FEATURES IN VEGAN 1.17-0
 
     - Guillaume Blanchet joined the vegan team.
