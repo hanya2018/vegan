@@ -13,6 +13,8 @@ Version 1.17-1 (opened February 16, 2010)
 	names and gained new choice 'type = "working"'.
 
 	* merged r1120, 1122: simulate.rda/cca gained argument 'rank'. 
+
+	* merged r1102: isompadist() need not require 'vegan'.
 	
 Version 1.17-0 (released January 11, 2010)
 
