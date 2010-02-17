@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-1 (opened February 16, 2010)
 
+	* copied multipart.R & print.multipart.R from the devel branch. 
+
 	* merged r1124: envfit() weights fixed for cca().
 
 	* merged r1123: CCorA() output fixes plus upgrades of
