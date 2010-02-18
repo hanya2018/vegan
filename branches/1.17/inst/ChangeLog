@@ -2,7 +2,9 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-1 (opened February 16, 2010)
+Version 1.17-1 (released February 18, 2010)
+
+	* merged and edited r1133: update FAQ.
 
 	* copied multipart.R & print.multipart.R from the devel branch. 
 
