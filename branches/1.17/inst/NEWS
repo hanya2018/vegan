@@ -3,6 +3,15 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+		     NEW FEATURES IN VEGAN 1.17-2
+
+    - predict functions for cca and rda objects match 'newdata' by
+      dimension names instead of index.
+
+    - simulate.rda and simulate.cca have new argument 'rank' which
+      allows using lower rank presentation of fitted values
+      (including rank = 0). 
+
 
 		NEW FEATURES AND FIXES IN VEGAN 1.17-1
 
