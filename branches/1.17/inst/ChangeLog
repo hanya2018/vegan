@@ -2,6 +2,13 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 1.17-2
+
+	* permutest.betadisper: print method got ordering of permutation
+	p-values wrong in displaying the matrix of pairwise tests. The
+	computed values were correct. The formatting for printing contained
+	the bug. Reported by Dan O'Shea.
+
 Version 1.17-1 (released February 18, 2010)
 
 	* merged and edited r1133: update FAQ.
