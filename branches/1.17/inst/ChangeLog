@@ -9,6 +9,11 @@ Version 1.17-2
 	computed values were correct. The formatting for printing contained
 	the bug. Reported by Dan O'Shea.
 
+	* screeplot: New argument 'legend' for all methods (except
+	'decorana') to draw a legend if the observed and broken stick
+	distribution are both plotted. Now also respects 'pch' for the
+	broken stick line.
+
 Version 1.17-1 (released February 18, 2010)
 
 	* merged and edited r1133: update FAQ.
