@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-2
 
+	* densityplot.oecosimu: merged r1164 (warnings when there was only
+	one statistic and hence one lattice panel).
+
 	* nesteddisc: failed if the most species rich sites were tied. Is
 	no faster but slaker. Revs 1158, 1159, 1163.
 
