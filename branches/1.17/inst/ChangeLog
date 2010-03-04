@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-2
 
+	* ordistep: merged r1131, 1165 (adds 'anova' item to the result
+	object). 
+
 	* densityplot.oecosimu: merged r1164 (warnings when there was only
 	one statistic and hence one lattice panel).
 
