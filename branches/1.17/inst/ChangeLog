@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-2
 
+	* nesteddisc: failed if the most species rich sites were tied. Is
+	no faster but slaker. Revs 1158, 1159, 1163.
+
 	* permutest.betadisper: print method got ordering of permutation
 	p-values wrong in displaying the matrix of pairwise tests. The
 	computed values were correct. The formatting for printing contained
