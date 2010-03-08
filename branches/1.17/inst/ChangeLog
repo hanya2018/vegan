@@ -11,7 +11,7 @@ Version 1.17-2
 	one statistic and hence one lattice panel).
 
 	* nesteddisc: failed if the most species rich sites were tied. Is
-	no faster but slaker. Revs 1158, 1159, 1163.
+	no faster but slacker. Revs 1158, 1159, 1163.
 
 	* permutest.betadisper: print method got ordering of permutation
 	p-values wrong in displaying the matrix of pairwise tests. The
