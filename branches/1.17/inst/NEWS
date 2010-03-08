@@ -10,8 +10,8 @@
       correct, but formatting failed). Reported by Dan O'Shea.
 
     - nesteddisc: failed if the most species rich sites were tied. The
-      function is now much faster, but the price is that it does not
-      try as hard to find the optimal ordering. 
+      function is now much faster (though still slow), but the price
+      is that it does not try as hard to find the optimal ordering.
 
     - screeplot.cca & friends: new argument 'legend' for all methods
       (except 'decorana') to draw a legend if the observed and broken
@@ -19,7 +19,7 @@
 
     - ordistep: adds an 'anova' item to the final model similarly as
       the standard step(). You can suppress the tracing ('trace =
-      FALSE'), and find the model build history in this item in a
+      FALSE'), and find the model build history save in 'anova' in a
       compact form.
 
     - densityplot.oecosimu: gave warnings when there was only one
