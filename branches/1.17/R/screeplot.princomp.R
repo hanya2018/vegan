@@ -40,7 +40,7 @@
         else
             par("pch")
         lines(mids, ord.bstick[comps], type = ptype, col = bst.col,
-              lty = bst.lty)
+              lty = bst.lty, pch = pch)
         if(legend) {
             col <- if("col" %in% dot.nams)
                 dot.args$col
