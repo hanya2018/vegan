@@ -2,6 +2,12 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 1.17-3 (not yet released)
+
+	* betadisper: 'type = "median"', the default, was not computing
+	the spatial median on the real and imaginary axes separately.
+	Reported by Marek Omelka.
+
 Version 1.17-2 (released March 8, 2010)
 
 	* ordistep: merged r1131, 1165 (adds 'anova' item to the result
