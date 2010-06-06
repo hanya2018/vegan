@@ -8,10 +8,15 @@ Version 1.17-3 (not yet released)
 
 	* merge r1210: tsallis a bit faster.
 
+	* merge r1197:1203: 'label' argument in ordispider, ordisegments
+	and ordiarrows.
+
 	* merge r1200: cca, rda failed when Condition() was a factor, but
 	constraints had no factors.
 	
 	* merge r1190: RsquareAdj.default handles vector arguments.
+
+	* merge r1189: ordiellipse checks that it gets the 2d it can use. 
 
 	* merge r1188: ordiresids de-weights *CA.
 
