@@ -4,7 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-3 (not yet released)
 
-	* merged r1210:1213: mantel and mantel.partial speed-ups.
+	* merge r1211:1213: mantel and mantel.partial speed-ups.
+
+	* merge r1210: tsallis a bit faster.
 
 	* merge r1200: cca, rda failed when Condition() was a factor, but
 	constraints had no factors.
@@ -12,6 +14,8 @@ Version 1.17-3 (not yet released)
 	* merge r1190: RsquareAdj.default handles vector arguments.
 
 	* merge r1188: ordiresids de-weights *CA.
+
+	* merge r1185: metaMDS handles NA distances.
 
 	* merge r1182 (r1184 for Rd) r1187: mantel.correlog upgrades.
 
