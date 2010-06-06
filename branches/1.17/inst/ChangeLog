@@ -4,6 +4,28 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-3 (not yet released)
 
+	* merged r1210:1213: mantel and mantel.partial speed-ups.
+
+	* merge r1200: cca, rda failed when Condition() was a factor, but
+	constraints had no factors.
+	
+	* merge r1190: RsquareAdj.default handles vector arguments.
+
+	* merge r1188: ordiresids de-weights *CA.
+
+	* merge r1182 (r1184 for Rd) r1187: mantel.correlog upgrades.
+
+	* merge r1181: RsquareAdj.rda used wrong df in rank-deficit
+	models. 
+
+	* merge r1179: tie handling in adonis.
+
+	* merge r1177: print.permutest.cca uses correct order statistic.
+
+	* merge r1176: permutest.cca speed-up in CCA re-weighting.
+
+	* merge r1174: scores.cca/rda always have names.
+
 	* betadisper: 'type = "median"', the default, was not computing
 	the spatial median on the real and imaginary axes separately.
 	Reported by Marek Omelka.
