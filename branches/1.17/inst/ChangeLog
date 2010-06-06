@@ -33,7 +33,7 @@ Version 1.17-3 (not yet released)
 
 	* merge r1176: permutest.cca speed-up in CCA re-weighting.
 
-	* merge r1174: scores.cca/rda always have names.
+	* merge r1174:1175: scores.cca/rda always have names.
 
 	* betadisper: 'type = "median"', the default, was not computing
 	the spatial median on the real and imaginary axes separately.
