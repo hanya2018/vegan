@@ -20,6 +20,8 @@ Version 1.17-3 (not yet released)
 
 	* merge r1188: ordiresids de-weights *CA.
 
+	* merge r1186: envfit defaults to 999 permutations (was 0).
+
 	* merge r1185: metaMDS handles NA distances.
 
 	* merge r1182 (r1184 for Rd) r1187: mantel.correlog upgrades.
