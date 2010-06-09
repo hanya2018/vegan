@@ -1,3 +1,4 @@
+\encoding{UTF-8}
 \name{mantel.correlog}
 \alias{mantel.correlog}
 \alias{print.mantel.correlog}
@@ -115,7 +116,7 @@ cutoff=TRUE, r.type="pearson", nperm=999, mult="holm", progressive=TRUE)
   \item{call }{The function call. }  
 }
 
-\author{ Pierre Legendre, Universite de Montreal }
+\author{ Pierre Legendre, Université de Montréal }
 
 \references{
 
