@@ -2,7 +2,10 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-3 (not yet released)
+Version 1.17-3 (release scheduled for June 15, 2010)
+
+	* copied treedist.R from the devel version and merged its
+	documentation (r1205 plus fixes and speed-up r1207:1209).
 
 	* merge r1211:1213: mantel and mantel.partial speed-ups.
 

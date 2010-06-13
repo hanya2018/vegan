@@ -10,8 +10,8 @@
     - anova.cca and permutest.cca: permutations of cca result is
       faster and now nearly equally fast (or slow) in rda and cca. 
 
-    - betadisper: 'type = "median"' (teh default) was not computing
-      the spatial median on the real and imagninary axes separately.
+    - betadisper: 'type = "median"' (the default) was not computing
+      the spatial median on the real and imaginary axes separately.
       Reported by Marek Omelka.
 
     - cca, rda and capscale failed when Condition() was a factor, but
@@ -72,6 +72,12 @@
       allows using lower rank presentation of fitted values
       (including rank = 0). 
 
+    - treedist: new function to find dissimilarities of species
+      property trees of communities. The property trees can be, e.g.,
+      functional diversity trees, taxonomies or phylogenies. Similar
+      in spirit to UniFrac distance (C. Lozupone & R. Knight, Appl
+      Environ Microbiol 71:8225-8235; 2005), but completely different
+      in design and works only with binary data.
 
 		NEW FEATURES AND FIXES IN VEGAN 1.17-1
 
