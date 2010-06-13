@@ -3,6 +3,46 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+	      NEW FEATURES AND BUG FIXES IN VEGAN 1.17-3
+
+    - adonis: handles ties correctly.
+
+    - anova.cca and permutest.cca: permutations of cca result is
+      faster and now nearly equally fast (or slow) in rda and cca. 
+
+    - betadisper: 'type = "median"' (teh default) was not computing
+      the spatial median on the real and imagninary axes separately.
+      Reported by Marek Omelka.
+
+    - cca, rda and capscale failed when Condition() was a factor, but
+      the constraints had only continuous variables.
+
+    - envfit: defaults to use 999 permutations instead of skipping
+      permutations. 
+
+    - mantel and mantel.partial: faster permutation.
+
+    - mantel.correlog: upgraded and faster.
+
+    - ordiarrows, ordisegments and ordispider gained argument 'label'
+      to label the groups corresponding to drawn arrows or lines.
+
+    - ordiresids: de-weights residuals and fitted values in CCA so
+      that these are identical to the values shuffled in simulate.cca.
+
+    - permutest.cca: adds observed statistic among permutations when
+      printing the result (does not influence anova.cca or
+      calculations).
+
+    - RsquareAdj: The 'rda' method used wrong number of degrees of
+      freedom in rank deficit models (number of dependent variables
+      was lower than the rank of constraints and conditions). Default
+      method handles vector input.
+
+    - scores: default method works with one row of scores. The scores
+      of "cca" and "rda" methods always have names, even if there are
+      no names in the input data.
+
 		     NEW FEATURES IN VEGAN 1.17-2
 
     - permutest.betadisper: printed P-values in a wrong order in
