@@ -43,6 +43,9 @@
       of "cca" and "rda" methods always have names, even if there are
       no names in the input data.
 
+    - Permutation tests: The available permutation tests are described
+      in a new help files accessed via ?permutations.
+
 		     NEW FEATURES IN VEGAN 1.17-2
 
     - permutest.betadisper: printed P-values in a wrong order in

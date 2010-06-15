@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-3 (release scheduled for June 15, 2010)
 
+	* copied permutations.Rd from devel version (added there in r1229
+	and updated in r1230).
+
 	* copied treedist.R from the devel version and merged its
 	documentation (r1205 plus fixes and speed-up r1207:1209).
 
