@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-3 (release scheduled for June 15, 2010)
+Version 1.17-3 (released June 16, 2010)
 
 	* copied permutations.Rd from devel version (added there in r1229
 	and updated in r1230).
