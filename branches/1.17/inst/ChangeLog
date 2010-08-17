@@ -4,7 +4,7 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-4 (released August 17, 2010)
 
-	* merged changes 1235:1260 from the main devel branch plus copied
+	* merged changes 1235:1259 from the main devel branch plus copied
 	MOStest and support and predict.cca7rda update from earlier
 	revisions. Changed procedures include:
 
