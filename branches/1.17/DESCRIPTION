@@ -11,5 +11,5 @@ Suggests: MASS, mgcv, lattice, cluster, scatterplot3d, rgl,
 Description: Ordination methods, diversity analysis and other
   functions for community and vegetation ecologists.
 License: GPL-2 
-URL: http://vegan.r-forge.r-project.org/
+URL: http://cran.r-project.org/, http://vegan.r-forge.r-project.org/
 
