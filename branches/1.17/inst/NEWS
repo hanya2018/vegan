@@ -5,10 +5,10 @@
 
 	      NEW FEATURES AND BUG FIXES IN VEGAN 1.17-4
 
-    - MOStest: new set functions to implement generalized
+    - MOStest: a new set of functions to implement generalized
       Mitchell-Olds & Shaw test for the location of the quadratic
       extreme in a given interval. The test can also be used for the
-      location of the optimum in the Gaussian response model. In
+      location of the optimum of the Gaussian response model. In
       addition to the basic test, there are Fieller and deviance
       profile methods for the confidence interval of the location of
       the quadratic extreme or Gaussian optimum.
