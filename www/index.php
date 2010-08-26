@@ -74,8 +74,6 @@ echo $contents; } ?>
 
 <li>Vegan tutorial as a <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">pdf file</a>.</li>
 
-<li><a href="http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:vegan">R wiki entry</a></li>
-
 <li> The old  
 <a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
 </ul>
