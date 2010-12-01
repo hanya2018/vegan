@@ -13,12 +13,33 @@ Version 1.17-5 (opened November 17, 2010)
 
 	* merge r1280: deviance.cca/rda return 0 in unconstrained
 	models.
-
 	* merge r1288:1290, 1305: rankindex takes a list of indices.
 
 	* merge r1296: example on unbiased Simpson in diversity.Rd.
 
 	* merge r1300, 1369:1371: FAQ and vignette updates.
+
+	* merge r1301:1304: metaMDSdist update.
+
+	* merge r1311: plot.decorana uses points if no text available. 
+
+	* merge r1313:1314: ordilabel and ordiellipse text uses border
+	colour. 
+
+	* merge r1315: fix swan infinite loop.
+
+	* merge r1319: decorana internal (rowSums/colSums)
+
+	* merge r1320: decorana prints warning.
+
+	* merge r1328, 1341: Gustavo Carvalho's nestednodf upgrade.
+
+	* merge r1329: treedive handles trivial trees.
+
+	* merge r1330:1331: oecosimu NA handling and takes care that
+	binary statistic is used with binary null models.
+
+	* merge r1332: anova.ccabyaxis really uses marginal models.
 
 Version 1.17-4 (released August 20, 2010)
 
