@@ -4,6 +4,22 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-5 (opened November 17, 2010)
 
+	* merged r1273, 1275: permutest.cca 99 permutation & saves its
+	call. 
+
+	* merge r1277: biplot.CCorA resets par.
+
+	* merge r1278:1279: vegdist.Rd update.
+
+	* merge r1280: deviance.cca/rda return 0 in unconstrained
+	models.
+
+	* merge r1288:1290, 1305: rankindex takes a list of indices.
+
+	* merge r1296: example on unbiased Simpson in diversity.Rd.
+
+	* merge r1300, 1369:1371: FAQ and vignette updates.
+
 Version 1.17-4 (released August 20, 2010)
 
 	* merged r1263: mrpp.Rd polish.
