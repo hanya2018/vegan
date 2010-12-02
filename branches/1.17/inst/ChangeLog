@@ -13,6 +13,9 @@ Version 1.17-5 (opened November 17, 2010)
 
 	* merge r1280: deviance.cca/rda return 0 in unconstrained
 	models.
+
+	* merge r1281: fix anova.ccanull df.
+	
 	* merge r1288:1290, 1305: rankindex takes a list of indices.
 
 	* merge r1296: example on unbiased Simpson in diversity.Rd.
@@ -55,8 +58,9 @@ Version 1.17-5 (opened November 17, 2010)
 	scores.rda, makes treedist to work with zero-height trees and
 	introduces unscaled tree distance, fixes NA handling in capscale
 	with fix in ordiParseFormula(), makes eigenvals to know pcnm and
-	new cmdscale in R 2.12.1, and introduces printing of proportional
-	inertia in print.cca.
+	new cmdscale in R 2.12.1, introduces printing of proportional
+	inertia in print.cca, makes pcnm return its truncated distance
+	matrix. 
 
 Version 1.17-4 (released August 20, 2010)
 
