@@ -41,6 +41,23 @@ Version 1.17-5 (opened November 17, 2010)
 
 	* merge r1332: anova.ccabyaxis really uses marginal models.
 
+	* merged r1332:1385 (or current head) except fitspecaccum.R and
+	related SSarrhenius.R & friends. Earlier merges skipped
+	ordiR2step.R and related functions. Otherwise this release branch
+	is now mainly in sync with the pkg/vegan branch. This set of
+	merges fixes issues with cmdscale changes and negative eigenvalues
+	in capscale, wcmdscale, isomap & eigenvals, fixes translation
+	parameter in procrustes and introduces predict.procrustes,
+	introduces new code for prc() by Cajo ter Braak, fixes no. of
+	permutations in mantel.correlog, fixes R bug (pre 2.12.1) in
+	pivoting aliased variables with qr.X() in vif.cca, intersetcor,
+	and as.mlm.cca/rda, introduces two scaling constants for
+	scores.rda, makes treedist to work with zero-height trees and
+	introduces unscaled tree distance, fixes NA handling in capscale
+	with fix in ordiParseFormula(), makes eigenvals to know pcnm and
+	new cmdscale in R 2.12.1, and introduces printing of proportional
+	inertia in print.cca.
+
 Version 1.17-4 (released August 20, 2010)
 
 	* merged r1263: mrpp.Rd polish.
