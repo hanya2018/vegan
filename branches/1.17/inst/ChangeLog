@@ -32,7 +32,7 @@ Version 1.17-5 (opened November 17, 2010)
 
 	* merge r1311: plot.decorana uses points if no text available. 
 
-	* merge r1313:1314: ordilabel and ordiellipse text uses border
+	* merge r1312:1314: ordilabel and ordiellipse text uses border
 	colour. 
 
 	* merge r1315: fix swan infinite loop.
