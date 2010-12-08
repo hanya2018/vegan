@@ -18,6 +18,9 @@ Version 1.17-5 (opened November 17, 2010)
 	models.
 
 	* merge r1281: fix anova.ccanull df.
+
+	* merge r1284, 1324: ordistep has new formatting of formula and is
+	more robust.
 	
 	* merge r1288:1290, 1305: rankindex takes a list of indices.
 
