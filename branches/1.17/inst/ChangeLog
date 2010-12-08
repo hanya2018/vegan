@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-5 (opened November 17, 2010)
 
+	* copied ordiR2step.R from pkg/vegan and merged docs to
+	ordistep.Rd. 
+
 	* merged r1273, 1275: permutest.cca 99 permutation & saves its
 	call. 
 
