@@ -32,8 +32,6 @@ ordilabel(x, display, labels, choices = c(1, 2), priority, cex = 0.8,
     defined in \code{\link{polygon}}).}
   \item{col}{Text colour. Default \code{NULL} will give the value of
     \code{border} or \code{par("fg")} if \code{border} is \code{NULL}.} 
-  \item{col}{Text colour. Default \code{NULL} will give the value of
-    \code{border} or \code{par("fg")} if \code{border} is \code{NULL}.} 
   \item{\dots}{Other arguments (passed to \code{\link{text}}). }
 }
 
