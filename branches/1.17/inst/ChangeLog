@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-5 (opened November 17, 2010)
 
+	* based on development version 1.18-18 at
+	http://vegan.r-forge.r-project.org/ 
+
 	* copied ordiR2step.R from pkg/vegan and merged docs to
 	ordistep.Rd. 
 

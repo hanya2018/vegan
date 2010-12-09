@@ -3,6 +3,114 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+	      NEW FEATURES AND BUG FIXES IN VEGAN 1.17-5				   		    	    
+    
+    - anova.cca: Empty models with no constrained component have now
+      correct degrees of freedom. Tests 'by = "axis"' are now really
+      marginal for all axes (first axis used to be non-marginal to
+      latter axes).
+
+    - as.mlm.cca/rda, intersetcor, vif.cca: avoid bug in qr.X in R
+      2.12.0 and older to use wrong variable names in aliased models
+      (fix also in R 2.12.1). 
+
+    - betadisper: plot did not allow selecting axes. Reported by Sarah
+      Goslee. 
+
+    - capscale: failed with NA action (reported by Nevil Amos). Total
+      inertia is now defined as the sum of absolute values of all
+      eigenvalues consistently with cmdscale (from R 2.12.1 but not
+      older) and other vegan functions.
+
+    - cca/rda/capscale: print now proportional inertia components. 
+
+    - decorana: Fortran code prints now warnings of failed
+      convergence. 
+
+    - eigenvals: uses sum of absolute values of eigenvalues in models
+      that may have negative eigenvalues (cmdscale, wcmdscale,
+      capscale). Can now extract eigenvalues of pcnm() and cmdscale()
+      of R 2.12.1 (not older). Uses zapsmall() to print near-zero
+      eigenvalues.
+
+    - nestednodf: Gustavo Carvalho's new version that also implements
+      a new quantitative method of Almeida-Neto & Ulrich (Env Mod
+      Software, in press; 2010).
+
+    - oecosimu: takes care that the statistic is evalutaed with binary
+      data when null models are binary (regression introduced in vegan
+      1.17-0). Can now handle NA values in permutations (as na.rm =
+      TRUE). 
+
+    - ordilabel: gained new argument 'col' to set the text colour of
+      the labels separately from 'border', Function ordiellipse() uses
+      this in filled polygons to set the colour of labels to that of
+      borders or foreground instead of the colour of the fill.
+
+    - ordiR2step: new function to model selection in rda() and
+      capscale() based on adjusted R2 following the recommendations of
+      Blanchet, Legendre & Borcard (Ecology 89, 2623-2632; 2008).
+
+    - ordistep: corrected a name clash if the fitted model had term or
+      item called 'mod'. Reported by Richard Telford (Bergen,
+      Norway). 
+
+    - pcnm: returns now the truncated distanced matrix with argument
+      'dist.ret'. 
+      
+    - prc: rewritten by Cajo ter Braak with a fix to scaling of
+      coefficients for full compatibility with Canoco.
+
+    - procrustes: Fixed translation following the report and fix by
+      Christian Dudel (Bochum, Germany). New predict() method to
+      rotate new points to the target. Graphics with plot() can now
+      select the direction of arrows with new argument 'to.target',
+      and use ordilabel() to display the labels of points with 'type =
+      "t"'.
+
+    - rankindex: can now take a list of dissimilarity functions as the
+      argument to allow the use of other dissimilarity functions than
+      vegdist() of vegan. 
+
+    - rda/capscale: the scores() can now take two scaling constant
+      ('const'). One is used for species, second for WA and LC scores
+      of sites. This allows using scalings of prcomp(), princomp() or
+      Canoco like documented in the design decisions vignette.
+
+    - swan: disconnected data caused infinite loop. Now zeros are left
+      to the result with disconnected data.
+
+    - treedist: can now handle empty or one-node trees. Gained new
+      argument 'relative' (defaults TRUE): if FALSE, finds raw
+      dissimilarities of tree heights.  Help page now tells that
+      relative tree distances are in range 0..2 instead of 0..1, since
+      combining two trees may add a new common root.
+
+    - treedive: handles trivial cases of zero (diversity NA) or one
+      species (diversity 0).
+
+    - vif.cca: can now handle models with aliased terms.
+
+    - wcmdscale: returns now goodness of fit statistic (item GOF) and
+      handles negative eigenvalues consistently with cmdscale() and
+      capscale(). 
+
+    - Small changes that may not be needed, but are put here
+      temporarily for the record and consideration:
+
+      o isomap returns only axes related to positive eigenvalues
+      o mantel.correlog tried to fix an order statistic (add +1 to
+        both sides) although this was already fixed in mantel()
+        earlier.
+      o CCorA: biplot() resests parameters it sets internally. 
+      o deviance.cca/rda: now zero for models with no constrained
+        component (used to be NA).
+      o metaMDSdist is more verbose and handles NA values in
+        dissimiliraties (but isoMDS in MASS 7.3.9 does not handle 
+	them correctly). 
+      o plot.decorana switches to type = "p" if points have no
+        labels. 
+
 	      NEW FEATURES AND BUG FIXES IN VEGAN 1.17-4
 
     - MOStest: a new set of functions to implement generalized
