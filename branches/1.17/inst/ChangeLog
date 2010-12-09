@@ -10,7 +10,10 @@ Version 1.17-5 (opened November 17, 2010)
 	* copied ordiR2step.R from pkg/vegan and merged docs to
 	ordistep.Rd. 
 
-	* merged r1273, 1275: permutest.cca 99 permutation & saves its
+	* merge r1109, 1121: more diffable permatfull.Rd and fixes in
+	markup. 
+
+	* merge r1273, 1275: permutest.cca 99 permutation & saves its
 	call. 
 
 	* merge r1277: biplot.CCorA resets par.
