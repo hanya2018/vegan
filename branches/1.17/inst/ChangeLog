@@ -77,6 +77,8 @@ Version 1.17-5 (opened November 17, 2010)
 	* merged r1390: fix to plot.betadisper when plotting any axes other
 	than 1 and 2.
 
+	* merged r1407: diffable and updated contribdiv.Rd.
+
 	* sipoo.rda got row names and decision-vegan.Rnw changed
 	accordingly in parallel to pkg/vegan devel branch.
 
