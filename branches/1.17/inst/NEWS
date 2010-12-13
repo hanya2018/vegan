@@ -43,13 +43,13 @@
       not changed after fixing mantel()).
 
     - metaMDS: metaMDSdist() is more verbose about connectivity and
-      handles NA values in dissimiliraties.
+      handles NA values in dissimilarities.
    
     - nestednodf: Gustavo Carvalho's new version that also implements
       a new quantitative method of Almeida-Neto & Ulrich (Env Mod
       Software, in press; 2010).
 
-    - oecosimu: takes care that the statistic is evalutaed with binary
+    - oecosimu: takes care that the statistic is evaluated with binary
       data when null models are binary (regression introduced in vegan
       1.17-0). Can handle NA values in permutations (as na.rm = TRUE).
 
