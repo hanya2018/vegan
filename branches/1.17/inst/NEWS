@@ -27,8 +27,8 @@
       Default plot() uses points if items have no name labels to be
       plotted.
 
-    - deviance.cca/rda: return 0 (instead of NA) for models with no
-      constrained component.
+    - deviance.cca/rda: return 0 (instead of NA) for over-paremetrized
+      models with no unconstrained component.
 
     - eigenvals: uses sum of absolute values of eigenvalues in models
       that may have negative eigenvalues (cmdscale, wcmdscale,
@@ -41,13 +41,10 @@
       correction was already done in mantel(). (The correction was not
       done in older version of mantel(), but the mantel.correlog() was
       not changed after fixing mantel()).
-
-    - metaMDS: metaMDSdist() is more verbose about connectivity and
-      handles NA values in dissimilarities.
    
     - nestednodf: Gustavo Carvalho's new version that also implements
       a new quantitative method of Almeida-Neto & Ulrich (Env Mod
-      Software, in press; 2010).
+      Software, 26, 173-178; 2011).
 
     - oecosimu: takes care that the statistic is evaluated with binary
       data when null models are binary (regression introduced in vegan
@@ -84,7 +81,7 @@
     - rda/capscale: the scores() can take two scaling constants
       ('const'). One is used for species, second for WA and LC scores
       of sites. This allows using scalings of prcomp(), princomp() or
-      Canoco like documented in the design decisions vignette.
+      Canoco (like documented in the design decisions vignette).
 
     - swan: disconnected data caused infinite loop. Now zeros are left
       to the result with disconnected data.

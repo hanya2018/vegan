@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-5 (opened November 17, 2010)
+Version 1.17-5 (released December 15, 2010)
 
 	* based on development version 1.18-18 at
 	http://vegan.r-forge.r-project.org/ 
@@ -20,8 +20,8 @@ Version 1.17-5 (opened November 17, 2010)
 
 	* merge r1278:1279: vegdist.Rd update.
 
-	* merge r1280: deviance.cca/rda return 0 in unconstrained
-	models.
+	* merge r1280: deviance.cca/rda return 0 in overparamerized models
+	with no unconstrained component.
 
 	* merge r1281: fix anova.ccanull df.
 
