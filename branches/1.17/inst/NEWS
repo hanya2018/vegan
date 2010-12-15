@@ -36,11 +36,14 @@
       2.12.1. Uses zapsmall() to print near-zero
       eigenvalues.
 
-    - mantel.correlog: P-values were slightly off, because function
-      added 1 to the numerator and denumerator, although this
-      correction was already done in mantel(). (The correction was not
-      done in older version of mantel(), but the mantel.correlog() was
-      not changed after fixing mantel()).
+    - mantel.correlog: P-values could slightly off. The function uses
+      internally mantel() to evaluate the statistic and its
+      significance. The mantel() function adds one both to the
+      denominator and numerator, but mantel.correlog() did not notice
+      this and made the addition for the second time. When the
+      mantel.correlog() reported a positive value of the statistic, it
+      reversed the direction of the one-sided test of mantel(), but
+      did not handle tied values correctly in this reversal.
    
     - nestednodf: Gustavo Carvalho's new version that also implements
       a new quantitative method of Almeida-Neto & Ulrich (Env Mod
