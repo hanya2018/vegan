@@ -14,10 +14,11 @@
       components are now expressed for non-negative eigenvalues only,
       and a new item "Real Total" (sum of positive eigenvalues) is
       added to the output if there are negative eigenvalues
-      ("Imaginary" component).
+      ("Imaginary" component). The function no longer returns the
+      negative eigenvalues.
 
     - CCorA: scaling of object scores changed: they are no longer
-      divided with (n-1). Minor fixes for improved robustness.
+      divided with sqrt(n-1). Minor fixes for improved robustness.
 
     - metaMDS: automatically changes some arguments to non-default
       values if input data contains negative entries. Help page gives
