@@ -7,7 +7,7 @@
 
     - capscale: vegan 1.17-5 defined total inertia as the sum of
       absolute values of eigenvalues which changed the total inertia
-      from previous versions. This is now redesigned so that total
+      from previous versions. This is changed so that the total
       inertia is the sum of all eigenvalues, i.e., negative
       eigenvalues are subtracted from the total which was the
       definition in 1.17-4 and earlier. The proportions of inertia
