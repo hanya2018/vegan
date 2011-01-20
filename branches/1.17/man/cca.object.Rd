@@ -126,15 +126,19 @@
   }
 }
 
-\section{NA Action}{
-  If the constraints had missing values, and \code{\link{na.action}}
+\section{NA Action and Subset}{
+  If the constraints had missing values or subsets, and \code{\link{na.action}}
   was set to  \code{\link{na.exclude}} or \code{\link{na.omit}}, the
   result will have some extra items:
   \describe{
+    \item{\code{subset}}{subset evaluated as a logical vector
+      (\code{TRUE} for included cases).}
     \item{\code{na.action}}{The object returned by
-    \code{\link{na.action}} which is a named vector of indices of
-    removed items. The class of the vector is either \code{"omit"} or
-    \code{"exclude"} as set by \code{\link{na.action}}.}
+      \code{\link{na.action}} which is a named vector of indices of
+      removed items. The class of the vector is either \code{"omit"} or
+      \code{"exclude"} as set by \code{\link{na.action}}. The \code{na.action}
+      is applied after \code{subset} so that the indices refer to the subset
+      data.}
   \item{\code{residuals.zombie}}{A zombie vector of the length of
     number of rows in the residual ordination. Some standard \R
     functions find the number of valid observations from this vector,
@@ -149,6 +153,17 @@
     \code{\link{capscale}} and in partial ordination.}
   \item{\code{CA$u.excluded}}{Row scores for sites in unconstrained
     ordination with identical conditions as above.}
+  }
+}
+
+\section{capscale}{
+  Function \code{capscale} may add some items depending on its arguments:
+  \describe{
+    \item{\code{metaMDSdist}}{The data set name if 
+       \code{metaMDSdist = TRUE}.} 
+    \item{\code{ac}}{Additive constant used if \code{add = TRUE}.}
+    \item{\code{adjust}}{Adjustment of dissimilarities: see
+      \code{\link{capscale}}, section \dQuote{Notes}.}
   }
 }
   

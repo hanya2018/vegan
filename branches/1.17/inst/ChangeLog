@@ -4,6 +4,23 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-7 (opened January 10, 2011)
 
+	* merged revs 1444 to 1467:
+
+	* fixes in anova.cca scope, subset and NA handling:
+	anova.ccabyaxis, anova.ccabyterm, ordiParseFormula, rda.formula
+	cca.formula, capscale.
+
+	* implemented subset in capscale.
+
+	* implemented simulate.capscale. 
+
+	* removed additive constant 'ac' in predict.rda() for capscale and
+	fitted.capscale().
+
+	* fixed typo in specaccum() result.
+
+	* added choice of 'individuals' or 'sites' in plot.specaccum()
+
 Version 1.17-6 (released January 10, 2011)
 
 	* merged revs 1427:1441 (versions 1.18-19 and 1.18-20) or
