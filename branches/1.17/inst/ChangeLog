@@ -4,6 +4,12 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-7 (opened January 10, 2011)
 
+	* merged r1476: zip data files.
+
+	* merged r1475: partially matched argunments in functions.
+
+	* merged r1471,3,4: split "ties" in prestonfit (and allies).
+
 	* merged revs 1444 to 1467:
 
 	* fixes in anova.cca scope, subset and NA handling:
