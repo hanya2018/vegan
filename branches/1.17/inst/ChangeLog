@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-7 (opened January 10, 2011)
 
+	* merged r1482,3: eigenvals for ade4 and labdsv.
+
 	* merged r1476: zip data files.
 
 	* merged r1475: partially matched argunments in functions.
