@@ -10,6 +10,8 @@ Version 1.17-8 (opened February 20, 2011)
 
 	* merged r1496,7: FAQ updates.
 
+	* merged r1501: as.preston 'tiesplit = TRUE' bug.
+
 Version 1.17-7 (released February 16, 2011)
 
 	* merged r1489: nestednodf with weighted = FALSE.
