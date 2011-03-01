@@ -3,7 +3,18 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
-                       CHANGES IN VEGAN 1.17-7
+                       CHANGES IN VEGAN 1.17-8
+
+    - prestonfit: fixed a bug where the largest octave could be
+      missing with 'tiesplit = TRUE'. 
+    
+    - decorana: axis scores were wrongly rescaled to scores when their
+      eigenvalues actually were zero (zero eigenvalues typically occur
+      only with arbitrary data sets).
+
+    - procrustes: checks input.
+
+                      CHANGES IN VEGAN 1.17-7
 
     - anova.cca: more robust when models were fitted without 'data'
       argument, or when 'na.action' or 'subset' was used.
