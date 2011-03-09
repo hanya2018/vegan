@@ -2,6 +2,17 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 1.17-9 (opened March 9, 2011)
+
+	* merged r1527,8: doc updates in CCorA.Rd & ordihull.Rd.
+
+	* merged r1522 thru r1526: implement drarefy; drarefy, rrarefy,
+	specnumber, diversity accept vector input.
+
+	* merged r1521: clarify envfit.Rd.
+	
+	* merged r1499: as.preston, preston default to 'tiesplit = TRUE'.
+
 Version 1.17-8 (released March 2, 2011)
 
 	* merged r1494: no return.
