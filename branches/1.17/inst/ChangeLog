@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-9 (opened March 9, 2011)
 
+	* merged r1532: fix gettextf in d/r/rarefy.
+
 	* merged r1527,8: doc updates in CCorA.Rd & ordihull.Rd.
 
 	* merged r1522 thru r1526: implement drarefy; drarefy, rrarefy,
