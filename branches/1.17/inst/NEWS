@@ -3,6 +3,36 @@
 			VEGAN RELEASE VERSIONS 
 		       	======================
 
+                       CHANGES IN VEGAN 1.17-9
+
+    - diversity and related functions rarefy, rrarefy and specnumber
+      accept now a vector input. Earlier a single site had to be
+      analysed either as a one-row matrix or using non-default setting
+      MARGIN = 2.
+
+    - drarefy: new function that returns a matrix of probabilities
+      that a species occurs in a rarefied sample of a given size.
+
+    - metaMDS: it is possible to give starting configuration with the
+      'previous.best' argument. An old metaMDS or isoMDS result can
+      also be given as a starting configuration. If the starting
+      configuration has a higher number of dimensions than requested,
+      the extra ones are dropped, and if the starting configuration
+      has fewer dimensions, random scores for extra dimensions will be
+      added. This may help in running metaMDS over a range of
+      dimensionalities. 
+
+    - metaMDSrotate: can now rotate metaMDS solutions with any number
+      of dimensions so that the first axis is parallel to a fitted
+      environmental vector. Earlier only two dimensions worked.
+
+    - ordisurf: gained several new arguments to control the gam
+      fitting. Also gained an argument to suppress plotting, and a new
+      plot method. The fitted model can be specified with a formula. 
+
+    - prestonfit and friends: default is now 'tiesplit = TRUE' (which
+      was a new feature introduced in vegan 1.17-8).
+
                        CHANGES IN VEGAN 1.17-8
 
     - prestonfit: fixed a bug in as.preston(): the largest octave
