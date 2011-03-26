@@ -5,8 +5,11 @@
 
                        CHANGES IN VEGAN 1.17-9
 
+    - anova of cca/rda/capscale results gave wrong results in partial
+      models. The bug was introduced in vegan 1.17-7. 
+
     - diversity and related functions rarefy, rrarefy and specnumber
-      accept now a vector input. Earlier a single site had to be
+      accept now vector input. Earlier a single site had to be
       analysed either as a one-row matrix or using non-default setting
       MARGIN = 2.
 
@@ -25,6 +28,9 @@
     - metaMDSrotate: can now rotate metaMDS solutions with any number
       of dimensions so that the first axis is parallel to a fitted
       environmental vector. Earlier only two dimensions worked.
+
+    - ordilabel: gained argument 'xpd' that allows labels outside the
+      plot area. This allows labels above axes, for instance.
 
     - ordisurf: gained several new arguments to control the gam
       fitting. Also gained an argument to suppress plotting, and a new

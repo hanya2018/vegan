@@ -4,12 +4,17 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-9 (opened March 9, 2011)
 
-	* merged 1534: typo in vegdist.Rd.
-
+	* merged 1551,2: anova.cca(..., by = "axis") failed in partial
+	models. 
+	
+	* merged 1550: ordilabel gained arg 'xpd'.
+	
 	* merged 1541,8: metaMDSiter got more flexible 'previous.tries. 
 
 	* merged 1538,9, 1542,5: ordisurf gaine new arguments and got a
 	new plot method.
+
+	* merged 1534: typo in vegdist.Rd.
 
 	* merged r1533,7, 1544,7: metaMDSrotate works with > 2 dim.
 
