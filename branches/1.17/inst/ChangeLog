@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-9 (opened March 9, 2011)
+Version 1.17-9 (released March 31, 2011)
 
 	* merged 1551,2: anova.cca(..., by = "axis") failed in partial
 	models. 

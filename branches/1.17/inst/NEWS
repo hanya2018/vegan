@@ -9,7 +9,7 @@
       models. The bug was introduced in vegan 1.17-7. 
 
     - diversity and related functions rarefy, rrarefy and specnumber
-      npow accept vector input. Earlier a single site had to be
+      now accept vector input. Earlier a single site had to be
       analysed either as a single-row matrix or using the non-default
       setting MARGIN = 2.
 
