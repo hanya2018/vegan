@@ -2,6 +2,12 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 1.17-10 (opened April 10, 2011)
+
+	* merged 1564: missing definitionin ordering.f.
+
+	* merged 1570: na.rm in metaMDSrotate.
+
 Version 1.17-9 (released March 31, 2011)
 
 	* merged 1551,2: anova.cca(..., by = "axis") failed in partial
