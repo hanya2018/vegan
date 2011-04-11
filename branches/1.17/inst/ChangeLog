@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-10 (opened April 10, 2011)
 
+	* merged r1204, 1206, 1209, 1568: speed-up of examples in Rd
+	files. 
+
 	* merged 1555: #include's in vegdist.c.
 
 	* merged 1564: missing definitionin ordering.f.
