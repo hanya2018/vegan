@@ -2,7 +2,11 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 1.17-10 (opened April 10, 2011)
+Version 1.17-11 (opened April 29, 2011)
+
+	* nobs: copied nobs() methods for vegan from r1596.
+	
+Version 1.17-10 (released April 27, 2011)
 
 	* merged 1591:R 2.14.0 test warnings in decision-vegan.Rnw.
 
