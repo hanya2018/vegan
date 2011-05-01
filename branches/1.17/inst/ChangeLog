@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-11 (opened April 29, 2011)
 
+	* merged r1598: doc of nobs in cca.object.Rd.
+
 	* nobs: copied nobs() methods for vegan from r1596.
 	
 Version 1.17-10 (released April 27, 2011)
