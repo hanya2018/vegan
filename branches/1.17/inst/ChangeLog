@@ -4,6 +4,15 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-11 (opened April 29, 2011)
 
+	* merged r1603: cca/rda support functions failed with prc() and
+	now refuse its results.
+
+	* merged r1602: scores.cca/rda failed if user asked only for
+	non-existing type of scores.
+
+	* merged r1600: anova.cccanull checks that seed exists before
+	trying to get it.
+
 	* merged r1598: doc of nobs in cca.object.Rd.
 
 	* nobs: copied nobs() methods for vegan from r1596.
