@@ -4,6 +4,12 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-11 (opened April 29, 2011)
 
+	* merged r1615: inconsistent notatation in MOStest.Rd.
+
+	* merged r1614: ordiR2step more informative.
+
+	* merged r1609: specnumber gained 'groups'.
+
 	* merged r1603: cca/rda support functions failed with prc() and
 	now refuse its results.
 
@@ -14,6 +20,8 @@ Version 1.17-11 (opened April 29, 2011)
 	trying to get it.
 
 	* merged r1598: doc of nobs in cca.object.Rd.
+
+	* merged r1588: speed-up of examples.
 
 	* nobs: copied nobs() methods for vegan from r1596.
 	
