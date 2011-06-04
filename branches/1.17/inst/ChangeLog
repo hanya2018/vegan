@@ -4,11 +4,22 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-11 (opened April 29, 2011)
 
+	* merged r1622: document zeroed components in cca.object.Rd. 
+
+	* merged r1620: print.cca does not show "Proportions" in
+	unconstrained models with only one component.
+
+	* merged r1617 thru 1619: zero components in rda() and capscale()
+	similarly as r1517 for cca().
+
 	* merged r1615: inconsistent notatation in MOStest.Rd.
 
 	* merged r1614: ordiR2step more informative.
 
 	* merged r1609: specnumber gained 'groups'.
+
+	* merged r1608, 10, 11, 13: capscale() sets species scores to NA
+	if input were dissimilarities and no 'comm' was given.
 
 	* merged r1603: cca/rda support functions failed with prc() and
 	now refuse its results.
@@ -22,6 +33,8 @@ Version 1.17-11 (opened April 29, 2011)
 	* merged r1598: doc of nobs in cca.object.Rd.
 
 	* merged r1588: speed-up of examples.
+
+	* merged r1517: zero components in cca().
 
 	* nobs: copied nobs() methods for vegan from r1596.
 	
