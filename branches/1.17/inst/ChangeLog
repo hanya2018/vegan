@@ -4,7 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 1.17-11 (opened April 29, 2011)
 
-	* merger r1625,6: Ref to our MEE paper in anova.cca.Rd.
+	* merged r1629,30: added anova.prc().
+	
+	* merged r1625,6: Ref to our MEE paper in anova.cca.Rd.
 	
 	* merged r1624: doc vegdist(..., "raup") not using unequal
 	sampling probabilities for species.

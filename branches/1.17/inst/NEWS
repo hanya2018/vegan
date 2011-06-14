@@ -12,18 +12,21 @@
       components changed. They are no longer made NULL and left
       undisplayed, but now they are shown as zero rank. The general
       output also changed so that proportions of inertia are only
-      shown if there are conditions or constrains, but not for
+      shown if there are conditions or constraints, but not for
       unconstrained analysis. The capscale() function no longer shows
-      species scores if these are unvailable. Several support
+      species scores if these are unavailable. Several support
       functions more robust.
 
     - nobs: R 2.13.0 introduced generic function nobs() to find the
-      number of observations, and this releae provides nobs() for
-      several vegan results. However, this does not make vegan
-      dependent on R 2.13.0, but it can be used with older functions
-      as well.
+      number of observations, and this release provides nobs() for
+      several vegan results. (This does not make vegan dependent on R
+      2.13.0, but vegan works with older R as well.)
 
-    - specaccum: gained arumgent 'groups' which can be used to find
+    - prc: allows anova(..., by = "axis") and other 'by' cases for
+      prc() results. Some rda() support functions still fail, but now
+      they stop informatively.
+
+    - specaccum: gained argument 'groups' which can be used to find
       the number of species in subsets of the data.
 
 		       CHANGES IN VEGAN 1.17-10
