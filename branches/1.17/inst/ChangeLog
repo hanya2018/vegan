@@ -8,9 +8,11 @@ Version 1.17-12 (opened August 7, 2011)
 	1634). Basically everything except 'permute' dependence and
 	monoMDS. Also adds the minimal NAMESPACE file of 1695 (without S3
 	method registration and later revs).
+	* tolerance (generic), tolerance.cca: copy from devel at 1558.
 	* merged 1704: better axis limits in plot.envfit to allow space
 	for vector and centroid labels.
-	* partially merged 1700: model.{frame,matrix}.cca scoping.
+	* partially merged 1700: model.{frame,matrix}.cca scoping,
+	tolerance.Rd. 
 	* merged 1699: ade2vegancca typo.
 	* partially merged r1696: superfluous aliases in deviance.cca.Rd
 	and predict.cca.Rd, scoping in anova.ccabyterm.R.
