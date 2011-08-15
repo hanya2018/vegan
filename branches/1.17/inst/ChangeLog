@@ -35,7 +35,7 @@ Version 1.17-12 (opened August 7, 2011)
 	* merged 1679: NA in ordiellipse/hull/spider.
 	* merged 1678: rename 'index' to 'method' in betadiver.
 	* merged 1652: embeddable capscale (fix 1613).
-	* rev 1636: speed-up of adonis
+	* rev 1635 (1636): speed-up of adonis
 	
 Version 1.17-11 (released June 14, 2011)
 
