@@ -12,7 +12,7 @@
       widths (a.k.a. tolerances) and sample heteregeneities from a
       cca() result.
 
-    - adonis: clearly faster.
+    - adonis: much faster.
 
     - betadiver: argument 'index' was renamed to 'method' so that the
       function can be used similarly as dist(), vegdist() and other
@@ -27,6 +27,9 @@
       screeplot.cca, calibrate.cca, deviance.cca/rda, ordiplot3d,
       ordiresids, ordirgl, ordixytplot.
 
+    - isomap: text or points are plotted more cleanly, and text uses
+      ordilabel(). 
+
     - make.cepnames: a bit more flexible and robust, with a new
       argument that allows selecting first and second name component
       instead of first and last.
@@ -38,7 +41,8 @@
 
     - ordilabel: gained argument 'select'. 
 
-    - ordiplot: better handling of graphical arguments.
+    - ordiplot: better handling of graphical arguments, arg 'cex' can
+      be set by the user.
 
     - swan: gained new argument 'maxit' that allows setting maximum
       number of iterations (defaults 'maxit = Inf' or the current
