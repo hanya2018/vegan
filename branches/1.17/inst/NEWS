@@ -16,7 +16,7 @@
 
     - betadiver: argument 'index' was renamed to 'method' so that the
       function can be used similarly as dist(), vegdist() and other
-      distance functions. This allows using betadiver() as distance
+      distance functions. This allows using betadiver() as a distance
       function in metaMDS().
 
     - cca/rda/capscale: handling of aliased and other zero-rank
@@ -45,9 +45,9 @@
       be set by the user.
 
     - swan: gained new argument 'maxit' that allows setting maximum
-      number of iterations (defaults 'maxit = Inf' or the current
+      number of iterations. Defaults 'maxit = Inf' or the current
       behaviour of continuing as long as there are zeros that can be
-      filled). 
+      filled. 
 
                       CHANGES IN VEGAN 1.17-11
 
