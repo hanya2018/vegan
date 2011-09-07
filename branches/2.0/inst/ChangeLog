@@ -9,6 +9,7 @@ Version 2.0-0 (released September 7, 2011)
 	* Release: Copied the devel pkg/vegan branch to release
 	branches/2.0 at r1796 (inst/doc/vegan.bib at r1798), and removed
 	tests/ directory.
+	* merge r1800: Abstract to diversity-vegan.Rnw.
 	* some old functions used attributes(x)$which instead of more
 	correct attr(x, "which"), and in addition postMDS() used
 	attributes(x)$names instead of names(). Concerns anosim(),
