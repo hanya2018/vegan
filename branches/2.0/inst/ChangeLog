@@ -3,6 +3,9 @@ $Date$
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-1 (opened September 8, 2011)
+
+	* merge r1811: permatswap bug fix in nestedness.c.
+	* merge r1810: -pedatic -Wall fixes in monoMDS.f, ordering.f
 	
 Version 2.0-0 (released September 8, 2011)
 
