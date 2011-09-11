@@ -1,4 +1,0 @@
-## compiled code
-useDynLib(vegan)
-## Export
-exportPattern(".")

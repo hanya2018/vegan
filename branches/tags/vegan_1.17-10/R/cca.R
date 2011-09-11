@@ -1,5 +1,0 @@
-"cca" <-
-function (...) 
-{
-   UseMethod("cca")
-}

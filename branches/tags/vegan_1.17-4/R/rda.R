@@ -1,5 +1,0 @@
-"rda" <-
-function (...) 
-{
-    UseMethod("rda")
-}
