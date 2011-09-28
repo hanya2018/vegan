@@ -11,6 +11,7 @@ Version 2.0-1 (opened September 8, 2011)
 	* merge r1869: meandist re-ordering bug fix.
 	* merge r1846: tweak speed (a bit).
 	* merge r1845: faster centroids.cca.
+	* merge r1843: tiny speed-up in permutest.cca(..., first=TRUE) 
 	* merge r1838: a bit faster example(MDSrotate).
 	* merge r1835: add raupcrick.
 	* merge r1811: permatswap bug fix in nestedness.c.
