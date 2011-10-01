@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-1 (opened September 8, 2011)
 
+	* merge r1916: ordisurf.Rd references.
+	* merge r1914: example speed-up.
 	* r1897, 1840, 1825, 1823: copy clamtest (at r1897),
 	summary.clamtest, print.summary.clamtest, plot.clamtest (all at
 	r1823) and clamtest.Rd (at r1897)
