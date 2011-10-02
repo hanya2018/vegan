@@ -1,6 +1,15 @@
 R-FORGE REVISIONS OF VEGAN RELEASES
 
-Revision numbers in this file can be used to get a vegan/branches snapshot of vegan release versions in CRAN
+Revision numbers in this file can be used to get a vegan/branches
+snapshot of vegan release versions in CRAN.
+
+To export a release from a working version of a checked-out vegan
+repository, use, e.g.,
+
+    svn export vegan/branches/1.17@1126
+
+which exports the given repository at r1126 (= vegan_1.17-0) to
+directory 1.17.
 
 2.0-0:   r1801 (Wed, 07 Sep 2011)
 1.17-12: r1725 (Wed, 17 Aug 2011)
@@ -29,4 +38,4 @@ Revision numbers in this file can be used to get a vegan/branches snapshot of ve
 1.11-1:   r259 (Mon, 10 Mar 2008)
 1.11-0:   r239 (Wed, 20 Feb 2008)
 1.8-8:     r67 (Wed, 03 Oct 2007)
-1.8-7:     r61 (Mon, 01 Oct 2007) 
+1.8-7:     r61 (Mon, 01 Oct 2007; created branches/1.8-8)
