@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-1 (opened September 8, 2011)
 
+	* merge r1928: permutest.cca result could not be update()d.
+ 	* merge r1927: reset 'tries' when 'previous.best' was a different
+	model.
 	* merge r1916: ordisurf.Rd references.
 	* merge r1914: example speed-up.
 	* r1897, 1840, 1825, 1823: copy clamtest (at r1897),

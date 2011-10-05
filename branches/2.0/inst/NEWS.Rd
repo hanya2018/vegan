@@ -34,9 +34,16 @@
       especially when the \code{grouping} was numerical. The problem
       was reported by Dr Miguel Alvarez (Univ. Bonn).
 
+      \item \code{metaMDS} did not reset \code{tries} when a new model
+      was started with a \code{previous.best} solution from a different
+      model. 
+
       \item Function \code{permatswap} for community null models using
       quantitative swap never swapped items in a \eqn{2 \times 2}{2 by 2}
       submatrix if all cells were filled.
+
+      \item The result from \code{permutest.cca} could not be
+      \code{update}d because of a \file{NAMESPACE} issue.
 
     }	
   } % end BUG FIXES
@@ -48,7 +55,7 @@
       
       \item Peter Minchin joins the \pkg{vegan} team.
       
-      \item \pkg{vegan} implements standard \R \code{NAMESPACE}. In
+      \item \pkg{vegan} implements standard \R \file{NAMESPACE}. In
       general, \code{S3} methods are not exported which means that you
       cannot directly use or see contents of functions like
       \code{cca.default}, \code{plot.cca} or \code{anova.ccabyterm}. To
