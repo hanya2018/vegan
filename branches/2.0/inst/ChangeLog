@@ -4,6 +4,11 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-1 (opened September 8, 2011)
 
+	* merge r1945: add plot & lines for as.preston & as.fisher.
+	* merge r1944: R 2.14.0 (r52709) gives a message() when sd() is
+	used for matrices -- now fixed for rda.default, capscale and
+	simulate.rda/cca/capscale. 
+	* merge r1939: slacker and faster nesteddisc.
 	* merge r1928: permutest.cca result could not be update()d.
  	* merge r1927: reset 'tries' when 'previous.best' was a different
 	model.

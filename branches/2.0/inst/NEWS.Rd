@@ -13,6 +13,12 @@
       habitat types or sampling units, and is applicable only to count
       data with no over-dispersion.
 
+      \item \code{as.preston} gained \code{plot} and \code{lines}, and
+      \code{as.fisher} gained \code{plot} method (which also can add
+      items to existing plots). These are similar as these methods for
+      \code{prestonfit} and \code{fisherfit}, but without the fitted
+      model.
+
       \item \code{raupcrick}: new function to implement Raup-Crick
       dissimilarity as a probability of number of co-occurring species
       with occurrence probabilities proportional to species
@@ -45,8 +51,26 @@
       \item The result from \code{permutest.cca} could not be
       \code{update}d because of a \file{NAMESPACE} issue.
 
+      \item \R 2.14.0 changed so that it does not accept using
+      \code{sd()} function for matrices, and several \pkg{vegan}
+      functions were changed to adapt to these changes (\code{rda},
+      \code{capscale}, \code{simulate} methods for \code{rda},
+      \code{cca} and \code{capscale}).
+
     }	
   } % end BUG FIXES
+
+  \subsection{ANALYSES}{
+    \itemize{
+
+      \item \code{nesteddisc} is slacker and hence faster when trying
+      to optimize the statistic for tied column frequencies. Tracing
+      showed that in most cases an improved ordering was found rather
+      early in tries, and the results are equally good in most cases.
+
+    }
+  } % end ANALYSES 
+
 } % end version 2.0-1
 
 \section{Changes in version 2.0-0}{
