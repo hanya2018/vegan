@@ -15,15 +15,15 @@
 
       \item \code{as.preston} gained \code{plot} and \code{lines}, and
       \code{as.fisher} gained \code{plot} method (which also can add
-      items to existing plots). These are similar as these methods for
-      \code{prestonfit} and \code{fisherfit}, but without the fitted
-      model.
+      items to existing plots). These are similar as \code{plot} and
+      \code{lines} for \code{prestonfit} and \code{fisherfit}, but
+      display only data without the fitted model.
 
       \item \code{raupcrick}: new function to implement Raup-Crick
       dissimilarity as a probability of number of co-occurring species
       with occurrence probabilities proportional to species
       frequencies.  \pkg{Vegan} has Raup-Crick index as a choice in
-      \code{vegdist}, but it uses equal sampling probabilities for
+      \code{vegdist}, but that uses equal sampling probabilities for
       species and analytic equations. The new \code{raupcrick}
       function uses simulation with \code{oecosimu}. The function
       follows Chase et al. (2011) \emph{Ecosphere} 2:art24
@@ -36,9 +36,9 @@
   \subsection{BUG FIXES}{
     \itemize{
 
-      \item Function \code{meandist} could randomly permute items,
-      especially when the \code{grouping} was numerical. The problem
-      was reported by Dr Miguel Alvarez (Univ. Bonn).
+      \item Function \code{meandist} can scramble items and confusing
+      results, especially when the \code{grouping} was numerical. The
+      problem was reported by Dr Miguel Alvarez (Univ. Bonn).
 
       \item \code{metaMDS} did not reset \code{tries} when a new model
       was started with a \code{previous.best} solution from a different
@@ -55,7 +55,10 @@
       \code{sd()} function for matrices, and several \pkg{vegan}
       functions were changed to adapt to these changes (\code{rda},
       \code{capscale}, \code{simulate} methods for \code{rda},
-      \code{cca} and \code{capscale}).
+      \code{cca} and \code{capscale}). The change in \R 2.14.0 does
+      not change the results but causes a lot of annoying warnings in
+      \code{rda} and related functions, and you probably wish to
+      upgrade \pkg{vegan}.
 
     }	
   } % end BUG FIXES
