@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-1 (opened September 8, 2011)
+Version 2.0-1 (released October 20, 2011)
 
 	* merge r1945: add plot & lines for as.preston & as.fisher.
 	* merge r1944: R 2.14.0 (r52709) gives a message() when sd() is
