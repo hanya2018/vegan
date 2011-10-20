@@ -2,6 +2,24 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0-2}{
+  \subsection{BUG FIXES}{
+
+   \itemize{
+
+     \item Function \code{capscale} failed if constrained component
+     had zero rank. This is most likely in partial models where the
+     conditions can alias constraints. This was manifest in
+     \code{anova(..., by ="margin")} which uses partial models to
+     analyses the marginal effects, and was raported in an email
+     message to
+     \href{https://stat.ethz.ch/pipermail/r-help/2011-October/293077.html}{R-News
+     mailing list}.
+
+     }
+ }  % end bug fixes 		  
+} %end version 2.0-2
+
 \section{Changes in version 2.0-1}{
   \subsection{NEW FUNCTIONS}{
     \itemize{
@@ -27,8 +45,8 @@
       species and analytic equations. The new \code{raupcrick}
       function uses simulation with \code{oecosimu}. The function
       follows Chase et al. (2011) \emph{Ecosphere} 2:art24
-      [doi:10.1890/ES10-00117.1], and was developed with the
-      consultation of Brian Inouye.
+      [\href{http://www.esajournals.org/doi/abs/10.1890/ES10-00117.1}{doi:10.1890/ES10-00117.1}],
+      and was developed with the consultation of Brian Inouye.
 
     }
   } % end NEW FUNCTIONS
