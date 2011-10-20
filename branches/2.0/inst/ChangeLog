@@ -2,6 +2,8 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 2.0-2 (opened October 20, 2011)
+
 Version 2.0-1 (released October 20, 2011)
 
 	* merge r1945: add plot & lines for as.preston & as.fisher.
