@@ -70,7 +70,9 @@ echo $contents; } ?>
 
 <li>The project <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>summary page</strong></a> at R-Forge. </li>
 
-<li>Vegan <a href="http://cc.oulu.fi/~jarioksa/softhelp/FAQ-vegan.html">FAQ</a>.</li>
+<li>The <a href="NEWS.html">NEWS of the (next) release</a> </li>
+
+<li>Vegan <a href="FAQ-vegan.html">FAQ</a>.</li>
 
 <li>Vegan tutorial as a <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">pdf file</a>.</li>
 
