@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-2 (opened October 20, 2011)
 
+	* merge r1964: clarify stress scaling in iso/monoMDS.
+	* merge r1961: consinstent 'noshrink' defaults in metaMDSdist()
+	and metaMDS(..., engine="isoMDS")
 	* merge r1959: capscale zero-rank constraints bug fix.
 
 Version 2.0-1 (released October 20, 2011)

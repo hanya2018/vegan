@@ -16,6 +16,13 @@
      \href{https://stat.ethz.ch/pipermail/r-help/2011-October/293077.html}{R-News
      mailing list}.
 
+     \item \code{stressplot} sometimes failed when \code{metaMDS} was
+     based on \code{isoMDS} because \code{metaMDSdist} did not use same
+     defaults for step-across (extended) dissimilarities as
+     \code{metaMDS(..., engine = "isoMDS")}. The change of defaults
+     can also influence triggering of step-across in
+     \code{capscale(..., metaMDSdist = TRUE)}.
+
      }
  }  % end bug fixes 		  
 } %end version 2.0-2
