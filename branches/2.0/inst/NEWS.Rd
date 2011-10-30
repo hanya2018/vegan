@@ -16,12 +16,13 @@
      \href{https://stat.ethz.ch/pipermail/r-help/2011-October/293077.html}{R-News
      mailing list}.
 
-     \item \code{stressplot} sometimes failed when \code{metaMDS} was
-     based on \code{isoMDS} because \code{metaMDSdist} did not use same
-     defaults for step-across (extended) dissimilarities as
-     \code{metaMDS(..., engine = "isoMDS")}. The change of defaults
-     can also influence triggering of step-across in
-     \code{capscale(..., metaMDSdist = TRUE)}.
+     \item \code{stressplot} and \code{goodness} sometimes failed when
+     \code{metaMDS} was based on \code{isoMDS} (\pkg{MASS} package)
+     because \code{metaMDSdist} did not use same defaults for
+     step-across (extended) dissimilarities as \code{metaMDS(...,
+     engine = "isoMDS")}. The change of defaults can also influence
+     triggering of step-across in \code{capscale(..., metaMDSdist =
+     TRUE)}.
 
      }
  }  % end bug fixes 		  
@@ -61,9 +62,10 @@
   \subsection{BUG FIXES}{
     \itemize{
 
-      \item Function \code{meandist} can scramble items and give wrong
-      results, especially when the \code{grouping} was numerical. The
-      problem was reported by Dr Miguel Alvarez (Univ. Bonn).
+      \item Function \code{meandist} could scramble items and give
+      wrong results, especially when the \code{grouping} was
+      numerical. The problem was reported by Dr Miguel Alvarez
+      (Univ. Bonn).
 
       \item \code{metaMDS} did not reset \code{tries} when a new model
       was started with a \code{previous.best} solution from a different
