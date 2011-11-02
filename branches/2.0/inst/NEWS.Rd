@@ -4,7 +4,6 @@
 
 \section{Changes in version 2.0-2}{
   \subsection{BUG FIXES}{
-
    \itemize{
 
      \item Function \code{capscale} failed if constrained component
@@ -25,7 +24,19 @@
      TRUE)}.
 
      }
- }  % end bug fixes 		  
+ }  % end bug fixes 
+ 
+ \subsection{NEW FEATURES}{
+   \itemize{
+      
+     \item Function \code{ordispider} invisibly returns the
+     coordinates to which the points are connected.  Typically these
+     are class centroids for each point, but for constrained
+     ordination with no \code{groups} they are the LC scores.
+
+    }		 
+  }  %end new features
+		  
 } %end version 2.0-2
 
 \section{Changes in version 2.0-1}{
