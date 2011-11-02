@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-2 (opened October 20, 2011)
 
+	* merge r1974,1975,1980,1982: FAQ update.
+	* merge r1970: ordispider returns invisible plotting structure.
+	* merge r1969: ordiplot3d.Rd tells about xyz.convert().
 	* merge r1964: clarify stress scaling in iso/monoMDS.
 	* merge r1961: consinstent 'noshrink' defaults in metaMDSdist()
 	and metaMDS(..., engine="isoMDS")
