@@ -28,6 +28,10 @@
  
  \subsection{NEW FEATURES}{
    \itemize{
+
+     \item \code{ordiarrows} and \code{ordisegments} gained argument
+     \code{order.by} to give a variable used to sort points within
+     \code{groups}. Earlier the points were assumed to be in order.
       
      \item Function \code{ordispider} invisibly returns the
      coordinates to which the points are connected.  Typically these
