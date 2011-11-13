@@ -23,6 +23,13 @@
      triggering of step-across in \code{capscale(..., metaMDSdist =
      TRUE)}.
 
+   \item \code{adonis} contained a minor bug resulting from incomplete
+   implementation of a speed-up that did not affect the results. In
+   fixing this bug, a further bug was identified in transposing the hat
+   matrices. This second bug was only active following fixing of the
+   first bug. In fixing both bugs, a speed-up in the internal f.test()
+   function is fully realised.
+   
      }
  }  % end bug fixes 
  
