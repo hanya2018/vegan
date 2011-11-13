@@ -10,7 +10,7 @@
      had zero rank. This happened most likely in partial models when
      the conditions aliased constraints. The problem was observed in
      \code{anova(..., by ="margin")} which uses partial models to
-     analyses the marginal effects, and was raported in an email
+     analyses the marginal effects, and was reported in an email
      message to
      \href{https://stat.ethz.ch/pipermail/r-help/2011-October/293077.html}{R-News
      mailing list}.
