@@ -7,8 +7,8 @@
    \itemize{
 
      \item Function \code{capscale} failed if constrained component
-     had zero rank. This is most likely in partial models where the
-     conditions can alias constraints. This was manifest in
+     had zero rank. This happened most likely in partial models when
+     the conditions aliased constraints. The problem was observed in
      \code{anova(..., by ="margin")} which uses partial models to
      analyses the marginal effects, and was raported in an email
      message to
@@ -17,7 +17,7 @@
 
      \item \code{stressplot} and \code{goodness} sometimes failed when
      \code{metaMDS} was based on \code{isoMDS} (\pkg{MASS} package)
-     because \code{metaMDSdist} did not use same defaults for
+     because \code{metaMDSdist} did not use the same defaults for
      step-across (extended) dissimilarities as \code{metaMDS(...,
      engine = "isoMDS")}. The change of defaults can also influence
      triggering of step-across in \code{capscale(..., metaMDSdist =
@@ -30,13 +30,13 @@
    \itemize{
 
      \item \code{ordiarrows} and \code{ordisegments} gained argument
-     \code{order.by} to give a variable used to sort points within
+     \code{order.by} that gives a variable to sort points within
      \code{groups}. Earlier the points were assumed to be in order.
       
      \item Function \code{ordispider} invisibly returns the
-     coordinates to which the points are connected.  Typically these
-     are class centroids for each point, but for constrained
-     ordination with no \code{groups} they are the LC scores.
+     coordinates to which the points were connected.  Typically these
+     are class centroids of each point, but for constrained ordination
+     with no \code{groups} they are the LC scores.
 
     }		 
   }  %end new features
