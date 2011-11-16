@@ -2,10 +2,13 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-2 (opened October 20, 2011)
+Version 2.0-3 (opened November 13, 2011)
 
 	* merge r2001: explain scaling of arrows in envfit() plot() --
 	this looks like being a FAQ.
+
+Version 2.0-2 (opened October 20, 2011)
+
 	* merge r1991 by hand: change sapply(H.s t) to use lapply in adonis
 	to fix a further bug in implementing speed-ups in f.test
 	* merge r1988 by hand: calling f.test without transposed matrix
