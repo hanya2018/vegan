@@ -3,6 +3,19 @@
 \encoding{UTF-8}
 
 \section{Changes in version 2.0-3}{
+
+  \subsection{NEW FUNCTIONS}{
+    \itemize{
+
+      \item Added function \code{rarecurve} to draw rarefaction curves
+      for each row (sampling unit) of the input data, optionally with
+      lines showing rarefied species richness with given sample size
+      for each curve.
+
+    }
+  } % end new functions
+
+		  
   \subsection{NEW FEATURES}{
      \itemize{
 
