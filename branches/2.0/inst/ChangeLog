@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-3 (opened November 13, 2011)
 
+	* merge r2007: FAQ update for arrow scaling.
+	* merge r2004: metaMDS(..., noshare=0) triggers stepacross(), but
+	'noshare = FALSE' never does.
 	* merge r2001: explain scaling of arrows in envfit() plot() --
 	this looks like being a FAQ.
 

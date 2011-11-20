@@ -2,6 +2,20 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0-3}{
+  \subsection{NEW FEATURES}{
+     \itemize{
+
+       \item \code{metaMDS} argument \code{noshare = 0} is now
+       regarded as a numeric threshold that always triggers extended
+       dissimilarities (\code{stepacross}), instead of being treated
+       as synonymous with \code{noshare = FALSE} which always
+       suppresses extended dissimilarities.
+     
+     }
+  } % end new features
+} % end version 2.0-3
+
 \section{Changes in version 2.0-2}{
   \subsection{BUG FIXES}{
    \itemize{
@@ -23,12 +37,13 @@
      triggering of step-across in \code{capscale(..., metaMDSdist =
      TRUE)}.
 
-   \item \code{adonis} contained a minor bug resulting from incomplete
-   implementation of a speed-up that did not affect the results. In
-   fixing this bug, a further bug was identified in transposing the hat
-   matrices. This second bug was only active following fixing of the
-   first bug. In fixing both bugs, a speed-up in the internal f.test()
-   function is fully realised. Reported by Nicholas Lewin-Koh.
+     \item \code{adonis} contained a minor bug resulting from
+     incomplete implementation of a speed-up that did not affect the
+     results. In fixing this bug, a further bug was identified in
+     transposing the hat matrices. This second bug was only active
+     following fixing of the first bug. In fixing both bugs, a
+     speed-up in the internal f.test() function is fully
+     realised. Reported by Nicholas Lewin-Koh.
    
      }
  }  % end bug fixes 
