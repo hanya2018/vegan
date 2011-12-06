@@ -15,6 +15,14 @@
     }
   } % end new functions
 
+  \subsection{BUG FIXES}{
+    \itemize{
+
+      \item \code{betadisper()} failed when the \code{groups} was a
+      factor with empty levels.
+
+    }
+  } % end bug fixes	
 		  
   \subsection{NEW FEATURES}{
      \itemize{

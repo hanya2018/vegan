@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-3 (opened November 13, 2011)
 
+	* merge r2016: empty factor levels in betadisper() fixed in
+	ordimedian(). 
 	* merge r2008,9,11,12: add rarecurve.
 	* merge r2007: FAQ update for arrow scaling.
 	* merge r2004: metaMDS(..., noshare=0) triggers stepacross(), but
