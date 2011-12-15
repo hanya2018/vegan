@@ -7,6 +7,11 @@
   \subsection{NEW FUNCTIONS}{
     \itemize{
 
+      \item Added new nestedness functions \code{nestedbetasor} and
+      \code{nestedbetajac} that implement multiple-site dissimilarity
+      indices of Baselga (\emph{Global Ecology and Biogeography} 19,
+      134--143; 2010).
+
       \item Added function \code{rarecurve} to draw rarefaction curves
       for each row (sampling unit) of the input data, optionally with
       lines showing rarefied species richness with given sample size
