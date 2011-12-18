@@ -1,0 +1,58 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <head>
+<title>FAQ: R-Forge binaries of vegan fail in Mac OS</title>
+</head>
+<body>
+<h1>FAQ: R-Forge binaries of vegan fail in Mac OS</h1>
+
+<p>Several users have reported that R-Forge binaries of <b>vegan</b>
+fail with a message similar to below (the exact message varies with
+your platform, but all report <code>Errod in dyn.load</code>):
+<code>
+<pre>
+Error in dyn.load(file, DLLpath = DLLpath, ...) :
+ unable to load shared object
+'/Library/Frameworks/R.framework/Versions/2.14/Resources/library/vegan/libs/i386/vegan.so':
+ dlopen(/Library/Frameworks/R.framework/Versions/2.14/Resources/library/vegan/libs/i386/vegan.so,
+6): Library not loaded: /usr/local/lib/libgfortran.2.dylib
+ Referenced from:
+/Library/Frameworks/R.framework/Versions/2.14/Resources/library/vegan/libs/i386/vegan.so
+ Reason: image not found
+In addition: Warning message:
+package ‘vegan’ was built under R version 2.14.1
+</pre>
+</code>
+<p> Alternatively, you can get the following message:
+<pre>
+<code>
+downloaded_packages
+Error in get(Info[i, 1], envir = env) :
+internal error -3 in R_decompress1
+Error: package/namespace load failed for ‘vegan’
+</code>
+</pre>
+
+<p>The problem is that the R-Forge binary package was built assuming
+that Fortran and Fortran run time libraries are installed in the
+computer, and if you do not have Fortan, you get the
+reported problem. <b>R</b> ships with its own Fortran runtime libraries, but
+you must tell that they are used, and if the built package fails to do
+this, you get the error like that above.
+
+<p>I have filed this as <a href=
+"https://r-forge.r-project.org/tracker/?func=detail&aid=1343&group_id=34&atid=194">Bug
+#1343</a> in R-Forge. If this is your problem, you may consider
+confirming my report in the R-Forge bug reporting system: perhaps this
+will make R-Forge admins to do something to fix this issue.
+
+<p>You can try to fix the problem following instructions in 
+<a
+href="http://cran.R-project.org/bin/macosx/RMacOSX-FAQ.html#Building-universal-package">R
+for MacOS FAQ</a> (last paragraph in Question 5.4).
+
+<address>
+<a href="mailto:jari.oksanen@oulu.fi">Jari Oksanen</a>
+</address>
+</body>
+</html>
