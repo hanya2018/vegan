@@ -72,7 +72,7 @@ echo $contents; } ?>
 
 <li>The <a href="NEWS.html">NEWS of the (next) release</a> </li>
 
-<li><a href="FAQ-R-Forge.html">:FAQ: R-Forge binaries of vegan fail in Mac</a></li>
+<li><a href="FAQ-R-Forge.html">FAQ: R-Forge binaries of vegan fail in Mac</a></li>
 
 <li>Vegan <a href="FAQ-vegan.html">FAQ</a>.</li>
 
