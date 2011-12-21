@@ -5,6 +5,7 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-3 (opened November 13, 2011)
 
 	* merge r2030: resurrect old ChangeLog entries.
+	* merge r2027,28,33: tweak oecosimu printed output.
 	* merge r2018,19,21: add nestedbetasor() & nestedbetajac().
 	* merge r2016: empty factor levels in betadisper() fixed in
 	ordimedian(). 

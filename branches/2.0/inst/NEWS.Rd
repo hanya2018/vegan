@@ -9,8 +9,9 @@
 
       \item Added new nestedness functions \code{nestedbetasor} and
       \code{nestedbetajac} that implement multiple-site dissimilarity
-      indices of Baselga (\emph{Global Ecology and Biogeography} 19,
-      134--143; 2010).
+      indices and their decomposition into turnover and nestedness
+      components following Baselga (\emph{Global Ecology and
+      Biogeography} 19, 134--143; 2010).
 
       \item Added function \code{rarecurve} to draw rarefaction curves
       for each row (sampling unit) of the input data, optionally with
@@ -37,6 +38,10 @@
        dissimilarities (\code{stepacross}), instead of being treated
        as synonymous with \code{noshare = FALSE} which always
        suppresses extended dissimilarities.
+
+       \item \code{oecosimu} displays the mean of simulations and
+       describes alternative hypothesis more clearly in the printed
+       output. 
      
      }
   } % end new features
