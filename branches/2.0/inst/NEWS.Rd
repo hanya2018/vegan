@@ -27,6 +27,13 @@
       \item \code{betadisper()} failed when the \code{groups} was a
       factor with empty levels.
 
+      \item Some constrained ordination methods and their support
+      functions are more robust in border cases (completely aliased
+      effects, saturated models, user requests for non-existng scores
+      etc). Concerns \code{capscale}, \code{ordistep}, \code{varpart},
+      \code{plot} function for constrained ordination, and
+      \code{anova(<cca.object>, by = "margin")}.
+
     }
   } % end bug fixes	
 		  
@@ -42,6 +49,12 @@
        \item \code{oecosimu} displays the mean of simulations and
        describes alternative hypothesis more clearly in the printed
        output. 
+
+       \item Implemented adjusted \eqn{R^2}{R-squared} for partial
+       RDA. For partial model \code{rda(Y ~ X1 + Condition(X2))} this
+       is the same as the component \code{[a] = X1|X2} in variance
+       partition in \code{varpart} and describes the marginal (unique)
+       effect of constraining term to adjusted \eqn{R^2}{R-squared}.
      
      }
   } % end new features

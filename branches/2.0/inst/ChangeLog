@@ -3,7 +3,9 @@ $Date$
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-3 (opened November 13, 2011)
-	
+
+	* merge r2053: implement adjusted R2 for partial RDA.
+	* merge r2052: do not scale constraints in varpart[234].
 	* merge r2049: capscale robust for zeroed centroids.
 	* merge r2044: ordistep robust for complete aliasing.
 	* merge r2043: anova.ccabymargin robust for zero effects.
