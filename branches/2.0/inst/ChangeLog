@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-3 (opened November 13, 2011)
 
+	* copy simper.R & simper.Rd at r2092.
+	* merge r2089: scores.default fixed with non-existing scores.
+	* merge r2080: use droplevels in betadisper.
 	* merge r2079: do not use .Internal().
 	* merge r2071,2: dimnames fix in indopower & expand example.
 	* merge r2068: broken url in renyi.Rd.
