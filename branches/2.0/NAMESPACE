@@ -23,7 +23,7 @@ ordixyplot, orglpoints, orglsegments, orglspider, orgltext,
 pcnm, permatfull, permatswap, permutest, poolaccum, postMDS, prc,
 prestondistr, prestonfit, procrustes, protest, radfit, radlattice,
 rankindex, rarecurve, rarefy, raupcrick, rda, renyiaccum, renyi,
-rrarefy, scores, showvarparts, spandepth, spantree, specaccum,
+rrarefy, scores, showvarparts, simper, spandepth, spantree, specaccum,
 specnumber, specpool2vect, specpool, spenvcor, stepacross, stressplot,
 swan, taxa2dist, taxondive, tolerance, treedist, treedive, treeheight,
 tsallisaccum, tsallis, varpart, vectorfit, vegandocs, vegdist,
@@ -304,6 +304,7 @@ S3method(print, radfit)
 S3method(print, radfit.frame)
 S3method(print, radline)
 S3method(print, specaccum)
+S3method(print, simper)
 S3method(print, summary.bioenv)
 S3method(print, summary.cca)
 S3method(print, summary.clamtest)
@@ -378,6 +379,7 @@ S3method(summary, poolaccum)
 S3method(summary, prc)
 S3method(summary, procrustes)
 S3method(summary, radfit.frame)
+S3method(summary, simper)
 S3method(summary, specaccum)
 S3method(summary, taxondive)
 # tail: utils
