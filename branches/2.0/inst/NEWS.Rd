@@ -18,6 +18,15 @@
       lines showing rarefied species richness with given sample size
       for each curve.
 
+      \item Added function \code{simper} that implements
+      \dQuote{similarity percentages} of Clarke (\emph{Australian
+      Journal of Ecology} 18, 117--143; 1993).  The method compares
+      two or more groups and decomposes the average between-group
+      Bray-Curtis dissimilarity index to contributions of individual
+      species.  The method also adds permutation tests as an
+      experimental feature: these tests may change or can be removed
+      in later releases.
+
     }
   } % end new functions
 
@@ -33,6 +42,11 @@
       etc). Concerns \code{capscale}, \code{ordistep}, \code{varpart},
       \code{plot} function for constrained ordination, and
       \code{anova(<cca.object>, by = "margin")}.
+
+      \item The default \code{scores} method failed if the number of
+      requested axes was higher than the ordination object had.  This
+      was reported as an error in \code{ordiplot} in
+      \href{https://stat.ethz.ch/pipermail/r-sig-ecology/2012-February/002768.html}{R-sig-ecology} mailing list.
 
     }
   } % end bug fixes	
