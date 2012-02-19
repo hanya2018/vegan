@@ -5,6 +5,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-3 (opened November 13, 2011)
 
 	* copy simper.R & simper.Rd at r2092.
+	* merge r2098: fix summary.simper(..., order=FALSE) when
+	permutations = 0.
+	* merge r2097: add print.summary.simper.
 	* merge r2089: scores.default fixed with non-existing scores.
 	* merge r2080: use droplevels in betadisper.
 	* merge r2078,2084: simper NAMESPACE.
