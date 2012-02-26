@@ -43,6 +43,10 @@
       \code{plot} function for constrained ordination, and
       \code{anova(<cca.object>, by = "margin")}.
 
+      \item The \code{scores} function for \code{monoMDS} did not
+      honour \code{choices} argument and hence dimensions could not be
+      chosen in \code{plot}.
+
       \item The default \code{scores} method failed if the number of
       requested axes was higher than the ordination object had.  This
       was reported as an error in \code{ordiplot} in
@@ -69,6 +73,13 @@
        is the same as the component \code{[a] = X1|X2} in variance
        partition in \code{varpart} and describes the marginal (unique)
        effect of constraining term to adjusted \eqn{R^2}{R-squared}.
+
+       \item Added Cao dissimilarity (CYd) as a new dissimilarity
+       method in \code{vegdist} following Cao et al., \emph{Water
+       Envir Res} 69, 95--106 (1997). The index should be good for
+       data with high beta diversity and variable sampling
+       intensity. Thanks to consultation to Yong Cao (Univ Illinois,
+       USA).
      
      }
   } % end new features

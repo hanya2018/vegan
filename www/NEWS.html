@@ -62,6 +62,11 @@ etc). Concerns <code>capscale</code>, <code>ordistep</code>, <code>varpart</code
 <code>anova(&lt;cca.object&gt;, by = "margin")</code>.
 </p>
 </li>
+<li><p> The <code>scores</code> function for <code>monoMDS</code> did not
+honour <code>choices</code> argument and hence dimensions could not be
+chosen in <code>plot</code>.
+</p>
+</li>
 <li><p> The default <code>scores</code> method failed if the number of
 requested axes was higher than the ordination object had.  This
 was reported as an error in <code>ordiplot</code> in
@@ -94,6 +99,14 @@ RDA. For partial model <code>rda(Y ~ X1 + Condition(X2))</code> this
 is the same as the component <code>[a] = X1|X2</code> in variance
 partition in <code>varpart</code> and describes the marginal (unique)
 effect of constraining term to adjusted <i>R-squared</i>.
+</p>
+</li>
+<li><p> Added Cao dissimilarity (CYd) as a new dissimilarity
+method in <code>vegdist</code> following Cao et al., <EM>Water
+Envir Res</EM> 69, 95&ndash;106 (1997). The index should be good for
+data with high beta diversity and variable sampling
+intensity. Thanks to consultation to Yong Cao (Univ Illinois,
+USA).
 </p>
 </ul>
 
