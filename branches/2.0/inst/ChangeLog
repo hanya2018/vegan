@@ -5,6 +5,13 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-3 (opened November 13, 2011)
 
 	* copy simper.R & simper.Rd at r2092.
+	* merge r2106: merge scores and vegdist doc updates from github.
+	* merge r2105: pacify -pedantic C compiler in vegdist.
+	* merge r2104: add Cao index in vegdist.
+	* merge r2103: fix bug in permutation p-values in simper.
+	* merge r2101: fix stress description and remove refs to
+	ecodist::nmds in monoMDS.Rd.
+	* merge r2100: fix print.summary.simper.
 	* merge r2098: fix summary.simper(..., order=FALSE) when
 	permutations = 0.
 	* merge r2097: add print.summary.simper.
