@@ -5,6 +5,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-3 (opened November 13, 2011)
 
 	* copy simper.R & simper.Rd at r2092.
+	* merge r2110: centroids.cca fix for 2-level factors as the only
+	constraint.
 	* merge r2106: merge scores and vegdist doc updates from github.
 	* merge r2105: pacify -pedantic C compiler in vegdist.
 	* merge r2104: add Cao index in vegdist.
