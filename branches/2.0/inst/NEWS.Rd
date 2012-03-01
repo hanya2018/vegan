@@ -23,9 +23,7 @@
       Journal of Ecology} 18, 117--143; 1993).  The method compares
       two or more groups and decomposes the average between-group
       Bray-Curtis dissimilarity index to contributions of individual
-      species.  The method also adds permutation tests as an
-      experimental feature: these tests may change or can be removed
-      in later releases.
+      species.  
 
     }
   } % end new functions

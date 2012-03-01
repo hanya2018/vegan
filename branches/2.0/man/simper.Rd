@@ -10,7 +10,7 @@
 }
 
 \usage{
-  simper(comm, group, permutations = 0, trace = FALSE, ...)
+  simper(comm, group,  ...)
   
   \method{summary}{simper}(object, ordered = TRUE, 
      digits = max(3, getOption("digits") - 3), ...)
@@ -20,19 +20,11 @@
   \item{comm}{Community data matrix.}
   \item{group}{Factor describing the group structure. Must have at
     least 2 levels.}
-  \item{permutations}{Number of permutations or a permutation matrix
-    where each row gives a permuted index for assessing the
-    \dQuote{significance} of the average contribution. Default is set
-    to 0 (no permutation test), since computations may take long
-    time.}
-  \item{trace}{Trace permutations.}
   \item{object}{an object returned by \code{simper}.}
   \item{ordered}{Logical; Should the species be ordered by their
     average contribution?}
   \item{digits}{Number of digits in output.}
-  \item{...}{Parameters passed to other functions. In \code{simper} the
-    extra parameters are passed to \code{\link[permute]{shuffleSet}} if
-    permutations are used.}
+  \item{...}{Parameters passed to other functions.}
 }
 
 \details{ Similarity percentage, \code{simper} (Clarke 1993) is based
@@ -74,9 +66,6 @@
   \item{ord}{An index vector to order vectors by their contribution or
     order \code{cusum} back to the original data order.}
   \item{cusum}{Ordered cumulative per cent contribution.}
-  \item{p}{permutation \eqn{p}-value. Probability of getting a larger
-    or equal average contribution in random permutation of the group
-    factor.}
 }
 
 \examples{

@@ -1,6 +1,8 @@
 `simper` <-
-    function(comm, group, permutations = 0, trace = FALSE,  ...)
+    function(comm, group, ...)
 {
+    permutations <- 0
+    trace <- FALSE
     comm <- as.matrix(comm)
     comp <- t(combn(unique(as.character(group)), 2))
     outlist <- NULL
