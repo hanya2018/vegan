@@ -22,8 +22,10 @@
       \dQuote{similarity percentages} of Clarke (\emph{Australian
       Journal of Ecology} 18, 117--143; 1993).  The method compares
       two or more groups and decomposes the average between-group
-      Bray-Curtis dissimilarity index to contributions of individual
-      species.  
+      Bray-Curtis dissimilarity index to contributions by individual
+      species.  The code was developed in 
+      \href{https://github.com/jarioksa/vegan}{GitHub}
+      by Eduard Szöcz (Uni Landau, Germany).
 
     }
   } % end new functions
