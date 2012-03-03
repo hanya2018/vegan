@@ -64,6 +64,10 @@
        as synonymous with \code{noshare = FALSE} which always
        suppresses extended dissimilarities.
 
+       \item Nestedness discrepancy index \code{nesteddisc} gained a
+       new argument that allows user to set the number of iterations
+       in optimizing the index.
+
        \item \code{oecosimu} displays the mean of simulations and
        describes alternative hypothesis more clearly in the printed
        output. 
