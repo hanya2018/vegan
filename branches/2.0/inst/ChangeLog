@@ -4,7 +4,6 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-3 (opened November 13, 2011)
 
-	* copy simper.R & simper.Rd at r2092.
 	* merge r2115: simper fixes from github EDiLD/vegan pull request
 	#6 by Eduard Szöcz (proportions instead of percentages etc.)
 	* merge r2113: tweak simper.Rd formatting.
@@ -21,10 +20,11 @@ Version 2.0-3 (opened November 13, 2011)
 	* merge r2098: fix summary.simper(..., order=FALSE) when
 	permutations = 0.
 	* merge r2097: add print.summary.simper.
+	* copy simper.R & simper.Rd at r2092.
 	* merge r2089: scores.default fixed with non-existing scores.
 	* merge r2080: use droplevels in betadisper.
-	* merge r2078,2084: simper NAMESPACE.
 	* merge r2079: do not use .Internal().
+	* merge r2078, 2084: simper NAMESPACE.
 	* merge r2071,2: dimnames fix in indopower & expand example.
 	* merge r2068: broken url in renyi.Rd.
 	* merge r2065: number of iterations is an arguent in nesteddisc.
@@ -39,10 +39,11 @@ Version 2.0-3 (opened November 13, 2011)
 	* merge r2035,6,7: more robust plot.cca.
 	* merge r2030: resurrect old ChangeLog entries.
 	* merge r2027,28,33: tweak oecosimu printed output.
-	* merge r2018,19,21: add nestedbetasor() & nestedbetajac().
+	* merge r2018,19, 20, 21: add nestedbetasor() & nestedbetajac().
 	* merge r2016: empty factor levels in betadisper() fixed in
 	ordimedian(). 
 	* merge r2015: remove Bob O'Hara's old email address.
+	* r2014: typo in diversity.Rd.
 	* merge r2008,9,11,12: add rarecurve.
 	* merge r2007: FAQ update for arrow scaling.
 	* merge r2004: metaMDS(..., noshare=0) triggers stepacross(), but
