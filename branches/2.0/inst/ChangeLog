@@ -2,7 +2,9 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-3 (opened November 13, 2011)
+Version 2.0-4 (opened March 9, 2012)
+	
+Version 2.0-3 (released March 3, 2012)
 
 	* merge r2115: simper fixes from github EDiLD/vegan pull request
 	#6 by Eduard Szöcz (proportions instead of percentages etc.)
