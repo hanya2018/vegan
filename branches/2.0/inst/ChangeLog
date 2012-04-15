@@ -3,6 +3,14 @@ $Date$
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
+
+	* merge r2129: envfit failed with empty factor levels.
+	* merge r2128: anova(<prc-object>, by = ...) failed.
+	* merge r2127: more configurable msoplot.
+	* merge r2125: typo in anova.cca.Rd.
+	* merge r2123: r2121 for adonis.
+	* merge r2121: doc location/dispersion mix-up in simper, mrpp &
+	anosim. 
 	
 Version 2.0-3 (released March 3, 2012)
 
@@ -29,7 +37,7 @@ Version 2.0-3 (released March 3, 2012)
 	* merge r2078, 2084: simper NAMESPACE.
 	* merge r2071,2: dimnames fix in indopower & expand example.
 	* merge r2068: broken url in renyi.Rd.
-	* merge r2065: number of iterations is an arguent in nesteddisc.
+	* merge r2065: number of iterations is an argument in nesteddisc.
 	* merge r2060: adonis tells terms were added sequentially.
 	* mrege r2057: add .Rinstignore to silense R 2.15.0 checks.
 	* merge r2056: use inconsolata fonts in vignettes.

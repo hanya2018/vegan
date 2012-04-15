@@ -2,6 +2,30 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0-4}{
+
+  \subsection{BUG FIXES}{
+    \itemize{
+    
+      \item \code{anova(<prc-object>, by = "axis")} and other
+      \code{by} cases failed due to \file{NAMESPACE} issues.
+
+      \item \code{envfit} failed with unused factor levels.
+    
+    }
+  }% end bug fixes
+
+  \subsection{NEW FEATURES}{
+    \itemize{
+
+      \item \code{msoplot} is more configurable, and allows, for
+      instance, setting y-axis limits.
+
+    }
+  } % end new features 	 
+
+}%end version 2.0-4
+
 \section{Changes in version 2.0-3}{
 
   \subsection{NEW FUNCTIONS}{
