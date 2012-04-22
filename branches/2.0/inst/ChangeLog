@@ -4,6 +4,10 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
 
+	* merge r2137: explain data transformation in pyrifos.Rd.
+	* merge r2135: print.adipart displays null model method.
+	* merge r2132: adipart bug fix: assumed constant gamma in
+	permutations. 
 	* merge r2129: envfit failed with empty factor levels.
 	* merge r2128: anova(<prc-object>, by = ...) failed.
 	* merge r2127: more configurable msoplot.

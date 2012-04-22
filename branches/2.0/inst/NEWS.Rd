@@ -7,6 +7,13 @@
   \subsection{BUG FIXES}{
     \itemize{
     
+      \item \code{adipart} assumed constant gamma diversity in
+        simulations when assessing the \eqn{P}-value.  This could give
+        biased results if the null model produces variable gamma
+        diversities and option \code{weights = "prop"} is used.  The
+        default null model (\code{"r2dtable"}) and the default option
+        (\code{weights = "unif"}) were analysed correctly.
+
       \item \code{anova(<prc-object>, by = "axis")} and other
       \code{by} cases failed due to \file{NAMESPACE} issues.
 
