@@ -30,6 +30,12 @@ default null model (<code>"r2dtable"</code>) and the default option
 <code>by</code> cases failed due to &lsquo;<span class="file">NAMESPACE</span>&rsquo; issues.
 </p>
 </li>
+<li> <p><code>clamtest</code> wrongly used frequencies instead of the
+counts when calculating sample coverage.  No detectable
+differences were produced when rerunning examples from Chazdon
+et al. 2011 and <span class="pkg">vegan</span> help page.
+</p>
+</li>
 <li> <p><code>envfit</code> failed with unused factor levels.
 </p>
 </ul>
