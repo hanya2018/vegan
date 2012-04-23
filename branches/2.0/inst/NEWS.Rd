@@ -15,7 +15,12 @@
         (\code{weights = "unif"}) were analysed correctly.
 
       \item \code{anova(<prc-object>, by = "axis")} and other
-      \code{by} cases failed due to \file{NAMESPACE} issues.
+        \code{by} cases failed due to \file{NAMESPACE} issues.
+
+      \item \code{clamtest} wrongly used frequencies instead of the
+        counts when calculating sample coverage.  No detectable
+        differences were produced when rerunning examples from Chazdon
+        et al. 2011 and \pkg{vegan} help page.
 
       \item \code{envfit} failed with unused factor levels.
     
