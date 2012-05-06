@@ -30,8 +30,16 @@
   \subsection{NEW FEATURES}{
     \itemize{
 
+      \item Functions for diversity partitioning (\code{adipart},
+        \code{hiersimu} and \code{multipart}) have now \code{formula}
+        and \code{default} methods.  The \code{formula} method is
+        identical to the previous functions, but the \code{default}
+        method can take two matrices as input.  If the second argument
+        describing the hierarcy is missing, the method gives an
+        overall partitioning to alpha, beta and gamma diversities.
+
       \item \code{msoplot} is more configurable, and allows, for
-      instance, setting y-axis limits.
+        instance, setting y-axis limits.
 
     }
   } % end new features 	 
