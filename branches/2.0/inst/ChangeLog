@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
 
+	* merge r2144: hiersimu and multipart do not assume constant
+	gamma.  Similar change was made in r2132 to adipart.
 	* merge r2143: formula method for adipart/hiersimu/multipart.
 	NAMESPACE needed manual merge (edited patch from diff).
 	* merge r2139: clamtest coverage threshold fix.
