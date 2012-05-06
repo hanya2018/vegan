@@ -48,6 +48,15 @@ et al. 2011 and <span class="pkg">vegan</span> help page.
 
 
 <ul>
+<li><p> Functions for diversity partitioning (<code>adipart</code>,
+<code>hiersimu</code> and <code>multipart</code>) have now <code>formula</code>
+and <code>default</code> methods.  The <code>formula</code> method is
+identical to the previous functions, but the <code>default</code>
+method can take two matrices as input.  If the second argument
+describing the hierarcy is missing, the method gives an
+overall partitioning to alpha, beta and gamma diversities.
+</p>
+</li>
 <li> <p><code>msoplot</code> is more configurable, and allows, for
 instance, setting y-axis limits.
 </p>
