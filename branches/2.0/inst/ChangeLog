@@ -4,6 +4,11 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
 
+	* merge r2150: monoMDS checks that the number of dissimilarities
+	is sufficient for the requested analysis. The decostand.Rd fix of
+	r2150 was not yet merged.
+	* merge r2149: drarefy & rrarefy check that input data are
+	integers. 
 	* merge r2148 (partial): format references. However, scoverage()
 	was not merged yet, and its changes have not been merged.
 	* merge r2144: hiersimu and multipart do not assume constant
