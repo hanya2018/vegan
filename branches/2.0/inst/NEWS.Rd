@@ -23,6 +23,12 @@
         et al. 2011 and \pkg{vegan} help page.
 
       \item \code{envfit} failed with unused factor levels.
+
+      \item Equal aspect ratio cannot be forced to \code{ordiplot3d}
+        because underlying core routines do not allow this. Now
+        \code{ordiplot3d} sets equal axis ranges, and the documents
+        urge users to verify that the results the aspect ratio is
+        reasonably equal and the graph looks like a cube.
     
     }
   }% end bug fixes

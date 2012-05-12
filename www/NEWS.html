@@ -38,7 +38,14 @@ et al. 2011 and <span class="pkg">vegan</span> help page.
 </li>
 <li> <p><code>envfit</code> failed with unused factor levels.
 </p>
-</ul>
+</li>
+<li><p> Equal aspect ratio cannot be forced to <code>ordiplot3d</code>
+because underlying core routines do not allow this. Now
+<code>ordiplot3d</code> sets equal axis ranges, and the documents
+urge users to verify that the results the aspect ratio is
+reasonably equal and the graph looks like a cube.
+</p>
+</li></ul>
 
 
 
@@ -60,7 +67,7 @@ overall partitioning to alpha, beta and gamma diversities.
 <li> <p><code>msoplot</code> is more configurable, and allows, for
 instance, setting y-axis limits.
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -97,7 +104,7 @@ species.  The code was developed in
 <a href="https://github.com/jarioksa/vegan">GitHub</a>
 by Eduard Szöcs (Uni Landau, Germany).
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -129,7 +136,7 @@ requested axes was higher than the ordination object had.  This
 was reported as an error in <code>ordiplot</code> in
 <a href="https://stat.ethz.ch/pipermail/r-sig-ecology/2012-February/002768.html">R-sig-ecology</a> mailing list.
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -170,7 +177,7 @@ data with high beta diversity and variable sampling
 intensity. Thanks to consultation to Yong Cao (Univ Illinois,
 USA).
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -212,7 +219,7 @@ following fixing of the first bug. In fixing both bugs, a
 speed-up in the internal f.test() function is fully
 realised. Reported by Nicholas Lewin-Koh.
 </p>
-</ul>
+</li></ul>
 
   
 
@@ -232,7 +239,7 @@ coordinates to which the points were connected.  Typically these
 are class centroids of each point, but for constrained ordination
 with no <code>groups</code> they are the LC scores.
 </p>
-</ul>
+</li></ul>
 		 
   
 
@@ -273,7 +280,7 @@ follows Chase et al. (2011) <EM>Ecosphere</EM> 2:art24
 [<a href="http://www.esajournals.org/doi/abs/10.1890/ES10-00117.1">doi:10.1890/ES10-00117.1</a>],
 and was developed with the consultation of Brian Inouye.
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -312,7 +319,7 @@ changed to adapt to this change (<code>rda</code>, <code>capscale</code>,
 results but you probably wish to upgrade <span class="pkg">vegan</span> to avoid
 annoying warnings.
 </p>
-</ul>
+</li></ul>
 	
  
 
@@ -327,7 +334,7 @@ to optimize the statistic for tied column frequencies. Tracing
 showed that in most cases an improved ordering was found rather
 early in tries, and the results are equally good in most cases.
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -363,7 +370,7 @@ schemes. All <span class="pkg">vegan</span> permutation will gradually move to u
 <span class="pkg">permute</span>, but currently only <code>betadisper</code> uses the new
 feature. 
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -419,7 +426,7 @@ directly in non-linear regression with <code>nls</code>. These functions
 were implemented because they were found good for species-area
 models by Dengler (<EM>J. Biogeogr.</EM> 36, 728-744; 2009).
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -461,7 +468,7 @@ levels in the grouping factor <code>pool</code>.  Now also checks that
 the length of the <code>pool</code> matches the number of
 observations.
 </p>
-</ul>
+</li></ul>
 
  
 
@@ -480,7 +487,7 @@ code was removed in favour of the <span class="pkg">permute</span> package. This
 was not intended for normal use, but packages depending on that
 code in <span class="pkg">vegan</span> should instead depend on <span class="pkg">permute</span>.
 </p>
-</ul>
+</li></ul>
   
  
 
@@ -493,7 +500,7 @@ code in <span class="pkg">vegan</span> should instead depend on <span class="pkg
 <li> <p><code>treeheight</code> uses much snappier code. The results
 should be unchanged.
 </p>
-</ul>
+</li></ul>
 
  
 
