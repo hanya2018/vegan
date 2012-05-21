@@ -24,10 +24,10 @@
 
       \item \code{envfit} failed with unused factor levels.
 
-      \item Equal aspect ratio cannot be forced to \code{ordiplot3d}
-        because underlying core routines do not allow this. Now
-        \code{ordiplot3d} sets equal axis ranges, and the documents
-        urge users to verify that the results the aspect ratio is
+      \item Equal aspect ratio cannot be set exactly in
+        \code{ordiplot3d} because underlying core routines do not allow
+        this. Now \code{ordiplot3d} sets equal axis ranges, and the
+        documents urge users to verify that the aspect ratio is
         reasonably equal and the graph looks like a cube.
     
     }
@@ -44,6 +44,11 @@
         describing the hierarcy is missing, the method gives an
         overall partitioning to alpha, beta and gamma diversities.
 
+      \item \code{bioenv} accepts dissimilarities or square matrices
+        that can be interpreted as dissimilarities as an alternative to
+        community data.  This allows using other dissimilarities than
+        those available in \code{vegdist}.
+ 
       \item \code{msoplot} is more configurable, and allows, for
         instance, setting y-axis limits.
 
