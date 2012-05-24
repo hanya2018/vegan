@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!--This document contains answers to some of the most frequently asked
+<!-- This document contains answers to some of the most frequently asked
 questions about R package vegan. 
-This is version of $Date: 2011-11-02 16:29:50 +0200 (Wed, 02 Nov 2011) $.
-
+This is version of $Date: 2012-05-24 15:08:01 +0300 (Thu, 24 May 2012) $.
 
 This work is licensed under the Creative Commons Attribution 3.0
 License. To view a copy of this license, visit
@@ -11,31 +10,31 @@ http://creativecommons.org/licenses/by/3.0/ or send a letter to
 Creative Commons, 543 Howard Street, 5th Floor, San Francisco,
 California, 94105, USA.
 
-Copyright C 2008-2011 Jari Oksanen
+Copyright C 2008-2012 Jari Oksanen
 
--->
-<!-- Created on November, 17 2011 by texi2html 1.70 -->
-<!--
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+ -->
+<!-- Created on May 24, 2012 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>vegan FAQ: vegan FAQ</title>
+<title>vegan FAQ</title>
 
-<meta name="description" content="vegan FAQ: vegan FAQ">
-<meta name="keywords" content="vegan FAQ: vegan FAQ">
+<meta name="description" content="vegan FAQ">
+<meta name="keywords" content="vegan FAQ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.70">
-<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
 pre.menu-comment {font-family: serif}
@@ -44,6 +43,8 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
 </style>
@@ -53,112 +54,110 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD1"></a>
-<a name="SEC_Top"></a>
+<a name="Top"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
+<a name="vegan-FAQ"></a>
 <h1 class="settitle"><strong>vegan</strong> FAQ</h1>
 <p>This document contains answers to some of the most frequently asked
 questions about R package <strong>vegan</strong>. 
-This is version of $Date: 2011-11-02 16:29:50 +0200 (Wed, 02 Nov 2011) $.
-
-</p><blockquote>
-<p>This work is licensed under the Creative Commons Attribution 3.0
+This is version of $Date: 2012-05-24 15:08:01 +0300 (Thu, 24 May 2012) $.
+</p>
+<blockquote><p>This work is licensed under the Creative Commons Attribution 3.0
 License. To view a copy of this license, visit
 <a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</a> or send a letter to
 Creative Commons, 543 Howard Street, 5th Floor, San Francisco,
 California, 94105, USA.
-
-</p><p>Copyright &copy; 2008-2011 Jari Oksanen
+</p>
+<p>Copyright &copy; 2008-2012 Jari Oksanen
 </p></blockquote>
 
 
 
 
-
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC1">1. Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                
+<tr><td align="left" valign="top"><a href="#Introduction">1. Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC15">2. Ordination</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
+<tr><td align="left" valign="top"><a href="#Ordination">2. Ordination</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC35">3. Other analysis methods</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     
+<tr><td align="left" valign="top"><a href="#Other-analysis-methods">3. Other analysis methods</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     
 </td></tr>
 </table>
 
 <hr size="1">
-<a name="NOD2"></a>
-<a name="SEC1"></a>
+<a name="Introduction"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC2" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-is-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[ &lt;&lt; ]</td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 1. Introduction </h1>
+<a name="Introduction-1"></a>
+<h1 class="chapter">1. Introduction</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC2">1.1 What is <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        
+<tr><td align="left" valign="top"><a href="#What-is-vegan_003f">1.1 What is <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC3">1.2 What is R?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
+<tr><td align="left" valign="top"><a href="#What-is-R_003f">1.2 What is R?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC4">1.3 How to obtain <strong>vegan</strong> and R?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-obtain-vegan-and-R_003f">1.3 How to obtain <strong>vegan</strong> and R?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC5">1.4 What R packages <strong>vegan</strong> depends on?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#What-R-packages-vegan-depends-on_003f">1.4 What R packages <strong>vegan</strong> depends on?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC6">1.5 What other packages are available for ecologists?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#What-other-packages-are-available-for-ecologists_003f">1.5 What other packages are available for ecologists?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC7">1.6 What other documentation is available for <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#What-other-documentation-is-available-for-vegan_003f">1.6 What other documentation is available for <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC8">1.7 Is there a Graphical User Interface (GUI) for <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Is-there-a-Graphical-User-Interface-_0028GUI_0029-for-vegan_003f">1.7 Is there a Graphical User Interface (GUI) for <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC9">1.8 How to cite <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    
+<tr><td align="left" valign="top"><a href="#How-to-cite-vegan_003f">1.8 How to cite <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC10">1.9 How to build <strong>vegan</strong> from sources?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-build-vegan-from-sources_003f">1.9 How to build <strong>vegan</strong> from sources?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC11">1.10 Are there binaries for devel versions?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Are-there-binaries-for-devel-versions_003f">1.10 Are there binaries for devel versions?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC12">1.11 How to report a bug in <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-report-a-bug-in-vegan_003f">1.11 How to report a bug in <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC13">1.12 Is it a bug or a feature?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   
+<tr><td align="left" valign="top"><a href="#Is-it-a-bug-or-a-feature_003f">1.12 Is it a bug or a feature?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC14">1.13 Can I contribute to <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Can-I-contribute-to-vegan_003f">1.13 Can I contribute to <strong>vegan</strong>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD3"></a>
-<a name="SEC2"></a>
+<a name="What-is-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Introduction" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-is-R_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.1 What is <strong>vegan</strong>? </h2>
+<a name="What-is-vegan_003f-1"></a>
+<h2 class="section">1.1 What is <strong>vegan</strong>?</h2>
 
 <p><strong>Vegan</strong> is an R package for community ecologists. It contains the most
 popular methods of multivariate analysis needed in analysing ecological
@@ -167,96 +166,96 @@ useful functions.  <strong>Vegan</strong> is not self-contained but it must be r
 R statistical environment, and it also depends on many other R
 packages. <strong>Vegan</strong> is <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a> and distributed under
 <a href="http://www.gnu.org/licenses/gpl.html">GPL2 license</a>.
-
-</p><hr size="6">
-<a name="NOD4"></a>
-<a name="SEC3"></a>
+</p>
+<hr size="6">
+<a name="What-is-R_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-is-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-obtain-vegan-and-R_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.2 What is R? </h2>
+<a name="What-is-R_003f-1"></a>
+<h2 class="section">1.2 What is R?</h2>
 
 <p>R is a system for statistical computation and graphics.  It consists of
 a language plus a run-time environment with graphics, a debugger, access
 to certain system functions, and the ability to run programs stored in
 script files.
-
-</p><p>R has a home page at <a href="http://www.R-project.org/">http://www.R-project.org/</a>.  It is
+</p>
+<p>R has a home page at <a href="http://www.R-project.org/">http://www.R-project.org/</a>.  It is
 <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a>
-distributed under a GNU-style
+distributed under a <acronym>GNU</acronym>-style
 <a href="http://www.gnu.org/copyleft/copyleft.html">copyleft</a>, and an
-official part of the <a href="http://www.gnu.org/">GNU</a> project
-(&quot;GNU S&quot;).
-
-</p><hr size="6">
-<a name="NOD5"></a>
-<a name="SEC4"></a>
+official part of the <a href="http://www.gnu.org/"><acronym>GNU</acronym></a> project
+(&ldquo;<acronym>GNU</acronym> S&rdquo;).
+</p>
+<hr size="6">
+<a name="How-to-obtain-vegan-and-R_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC5" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-is-R_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-R-packages-vegan-depends-on_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.3 How to obtain <strong>vegan</strong> and R? </h2>
+<a name="How-to-obtain-vegan-and-R_003f-1"></a>
+<h2 class="section">1.3 How to obtain <strong>vegan</strong> and R?</h2>
 
 <p>Both R and latest release version of <strong>vegan</strong> can be obtained through
 <a href="http://cran.r-project.org">CRAN</a>. Unstable development version of
 <strong>vegan</strong> can be obtained through
 <a href="http://r-forge.r-project.org/projects/vegan/">R-Forge</a>.
-
 </p>
 
+
 <hr size="6">
-<a name="NOD6"></a>
-<a name="SEC5"></a>
+<a name="What-R-packages-vegan-depends-on_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-obtain-vegan-and-R_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-other-packages-are-available-for-ecologists_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.4 What R packages <strong>vegan</strong> depends on? </h2>
+<a name="What-R-packages-vegan-depends-on_003f-1"></a>
+<h2 class="section">1.4 What R packages <strong>vegan</strong> depends on?</h2>
 
 <p><strong>Vegan</strong> depends on the <strong>permute</strong> package which will provide
 advanced and flexible permutation routines for vegan (but currently only
 a small part of functions use <strong>permute</strong>). The <strong>permute</strong> package
 is developed together with <strong>vegan</strong> in
 <a href="http://vegan.r-forge.r-project.org/">R-Forge</a>. 
-
-</p><p>Some individual <strong>vegan</strong> functions depend on packages <strong>MASS</strong>,
+</p>
+<p>Some individual <strong>vegan</strong> functions depend on packages <strong>MASS</strong>,
 <strong>mgcv</strong>, <strong>cluster</strong>, <strong>lattice</strong> and <strong>tcltk</strong>.  These all are
 base or recommended R packages that should be available in every R
 installation.  In addition, some <strong>vegan</strong> functions <code>require</code>
@@ -264,62 +263,62 @@ non-standard R packages.  <strong>Vegan</strong> declares these packages only as
 suggested ones, and you can install <strong>vegan</strong> and use most of its
 functions without these packages.  The non-standard packages needed by
 some <strong>vegan</strong> functions are:
-</p><ul class="toc">
-<li><p> Package <strong>scatterplot3d</strong>
+</p><ul>
+<li> Package <strong>scatterplot3d</strong>
 is needed by <code>ordiplot3d</code>
 
-</p></li><li><p> Package <strong>rgl</strong>
+</li><li> Package <strong>rgl</strong>
 is needed by <code>ordirgl</code>
 and <code>rgl.isomap</code>
 
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
-<a name="NOD7"></a>
-<a name="SEC6"></a>
+<a name="What-other-packages-are-available-for-ecologists_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC7" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-R-packages-vegan-depends-on_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-other-documentation-is-available-for-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.5 What other packages are available for ecologists? </h2>
+<a name="What-other-packages-are-available-for-ecologists_003f-1"></a>
+<h2 class="section">1.5 What other packages are available for ecologists?</h2>
 
-<p>CRAN <a href="http://cran.r-project.org/src/contrib/Views/">Task Views</a> include entries like <code>Environmetrics</code>, <code>Multivariate</code>
+<p><acronym>CRAN</acronym> <a href="http://cran.r-project.org/src/contrib/Views/">Task Views</a> include entries like <code>Environmetrics</code>, <code>Multivariate</code>
 and <code>Spatial</code> that describe several useful packages and functions.
 If you install R package <strong>ctv</strong>, you can inspect Task Views from your
 R session, and automatically install sets of most important packages.
-
-</p><hr size="6">
-<a name="NOD8"></a>
-<a name="SEC7"></a>
+</p>
+<hr size="6">
+<a name="What-other-documentation-is-available-for-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-other-packages-are-available-for-ecologists_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Is-there-a-Graphical-User-Interface-_0028GUI_0029-for-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.6 What other documentation is available for <strong>vegan</strong>? </h2>
+<a name="What-other-documentation-is-available-for-vegan_003f-1"></a>
+<h2 class="section">1.6 What other documentation is available for <strong>vegan</strong>?</h2>
 
 <p><strong>Vegan</strong> is a fully documented R package with standard help pages.  These
 are the most authoritative sources of documentation (and as a last
@@ -327,56 +326,56 @@ resource you can use the force and the read the source, as <strong>vegan</strong
 source).  <strong>Vegan</strong> package ships with other documents which can be read
 with <code>vegandocs</code> command (documented in the <strong>vegan</strong> help).  The
 documents included in the <strong>vegan</strong> package are
-</p><ul class="toc">
+</p><ul>
 <li>
-<p><strong>Vegan</strong> <code>NEWS</code>
-</p></li><li> 
-<p><strong>Vegan</strong> <code>ChangeLog</code>.
-</p></li><li>
-<p>This document (<code>FAQ-vegan.pdf</code>).
-</p></li><li>
-<p>Short introduction to basic ordination methods in <strong>vegan</strong>
+<strong>Vegan</strong> <code>NEWS</code>
+</li><li> 
+<strong>Vegan</strong> <code>ChangeLog</code>.
+</li><li>
+This document (<code>FAQ-vegan.pdf</code>).
+</li><li>
+Short introduction to basic ordination methods in <strong>vegan</strong>
 (<code>intro-vegan.pdf</code>).
-</p></li><li>
-<p>Introduction to diversity methods in <strong>vegan</strong> (<code>diversity-vegan.pdf</code>).
-</p></li><li> 
-<p>Discussion on design decisions in <strong>vegan</strong> (<code>decision-vegan.pdf</code>).
-</p></li><li>
-<p>Description of variance partition procedures in function
+</li><li>
+Introduction to diversity methods in <strong>vegan</strong> (<code>diversity-vegan.pdf</code>).
+</li><li> 
+Discussion on design decisions in <strong>vegan</strong> (<code>decision-vegan.pdf</code>).
+</li><li>
+Description of variance partition procedures in function
 <code>varpart</code> (<code>partitioning.pdf</code>).
-</p></li></ul>
+</li></ul>
 
 
 <p>Web documents outside the package include:
-</p><ul class="toc">
+</p><ul>
 <li>
-<p><a href="http://vegan.r-forge.r-project.org/">http://vegan.r-forge.r-project.org/</a>: <strong>vegan</strong> homepage.
-</p></li><li>
-<p><a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf</a>: <strong>vegan</strong>
+<a href="http://vegan.r-forge.r-project.org/">http://vegan.r-forge.r-project.org/</a>: <strong>vegan</strong> homepage.
+</li><li>
+<a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf</a>: <strong>vegan</strong>
 tutorial.
 
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
-<a name="NOD9"></a>
-<a name="SEC8"></a>
+<a name="Is-there-a-Graphical-User-Interface-_0028GUI_0029-for-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-other-documentation-is-available-for-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-cite-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.7 Is there a Graphical User Interface (GUI) for <strong>vegan</strong>? </h2>
+<a name="Is-there-a-Graphical-User-Interface-_0028GUI_0029-for-vegan_003f-1"></a>
+<h2 class="section">1.7 Is there a Graphical User Interface (GUI) for <strong>vegan</strong>?</h2>
 
 <p>Roeland Kindt has made package <strong>BiodiversityR</strong> which provides a
 GUI for <strong>vegan</strong>. The package is available at 
@@ -386,81 +385,81 @@ complements <strong>vegan</strong> functions in order to provide a
 workbench for biodiversity analysis. You can install <strong>BiodiversityR</strong> using
 <code>install.packages(&quot;BiodiversityR&quot;)</code> or graphical package
 management menu in R. The GUI works on Windows, MacOS X and Linux.
-
-</p><hr size="6">
-<a name="NOD10"></a>
-<a name="SEC9"></a>
+</p>
+<hr size="6">
+<a name="How-to-cite-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Is-there-a-Graphical-User-Interface-_0028GUI_0029-for-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-build-vegan-from-sources_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.8 How to cite <strong>vegan</strong>? </h2>
+<a name="How-to-cite-vegan_003f-1"></a>
+<h2 class="section">1.8 How to cite <strong>vegan</strong>?</h2>
 
 <p>Use command <code>citation(&quot;vegan&quot;)</code> in R to see the recommended
 citation to be used in publications. 
-
-</p><hr size="6">
-<a name="NOD11"></a>
-<a name="SEC10"></a>
+</p>
+<hr size="6">
+<a name="How-to-build-vegan-from-sources_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-cite-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Are-there-binaries-for-devel-versions_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.9 How to build <strong>vegan</strong> from sources? </h2>
+<a name="How-to-build-vegan-from-sources_003f-1"></a>
+<h2 class="section">1.9 How to build <strong>vegan</strong> from sources?</h2>
 
 <p>In general, you do not need to build <strong>vegan</strong> from sources, but binary
 builds of release versions are available through
 <a href="http://cran.r-project.org/">CRAN</a> for Windows and MacOS X.  If you
 use some other operating systems, you may have to use source packages.
 <strong>Vegan</strong> is a standard R package, and can be built like instructed in R
-documentation.  <strong>Vegan</strong> contains source files in C and FORTRAN,
+documentation.  <strong>Vegan</strong> contains source files in C and <acronym>FORTRAN</acronym>,
 and you need appropriate compilers (which may need more work in Windows
 and MacOS X).
-
-</p><hr size="6">
-<a name="NOD12"></a>
-<a name="SEC11"></a>
+</p>
+<hr size="6">
+<a name="Are-there-binaries-for-devel-versions_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-build-vegan-from-sources_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-report-a-bug-in-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.10 Are there binaries for devel versions? </h2>
+<a name="Are-there-binaries-for-devel-versions_003f-1"></a>
+<h2 class="section">1.10 Are there binaries for devel versions?</h2>
 
 <p><a href="http://r-forge.r-project.org/projects/vegan/">R-Forge</a> runs daily
 tests on the devel package, and if passed, it builds source package
@@ -469,27 +468,27 @@ packages within R with command
 <code>install.packages(&quot;vegan&quot;, repos=&quot;http://r-forge.r-project.org/&quot;)</code>.
 If you use GUI menu entry, you must select or define the R-Forge
 repository. 
-
-</p><hr size="6">
-<a name="NOD13"></a>
-<a name="SEC12"></a>
+</p>
+<hr size="6">
+<a name="How-to-report-a-bug-in-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC13" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Are-there-binaries-for-devel-versions_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Is-it-a-bug-or-a-feature_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.11 How to report a bug in <strong>vegan</strong>? </h2>
+<a name="How-to-report-a-bug-in-vegan_003f-1"></a>
+<h2 class="section">1.11 How to report a bug in <strong>vegan</strong>?</h2>
 
 <p>If you think you have found a bug in <strong>vegan</strong>, you should report it to
 <strong>vegan</strong> maintainers or developers.  The bug report should be so detailed
@@ -498,36 +497,36 @@ send an example that causes a bug.  If it needs a data set that is not
 available in R, you should send a minimal data set as well. You also
 should paste the output or error message in your message.  You also
 should specify which version of <strong>vegan</strong> you used.
-
-</p><p>Bug reports are welcome: they are the only way to make <strong>vegan</strong> non-buggy.
-
-</p><p>Please note that you shall not send bug reports to R mailing lists,
+</p>
+<p>Bug reports are welcome: they are the only way to make <strong>vegan</strong> non-buggy.
+</p>
+<p>Please note that you shall not send bug reports to R mailing lists,
 since <strong>vegan</strong> is not a standard R package.
-
-</p><p>There also is a bug reporting tool at
+</p>
+<p>There also is a bug reporting tool at
 <a href="http://r-forge.r-project.org/projects/vegan/">R-Forge</a>, but you
 need to register as a site user to report bugs (this is site policy).
-
-</p><hr size="6">
-<a name="NOD14"></a>
-<a name="SEC13"></a>
+</p>
+<hr size="6">
+<a name="Is-it-a-bug-or-a-feature_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC14" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-report-a-bug-in-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Can-I-contribute-to-vegan_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.12 Is it a bug or a feature? </h2>
+<a name="Is-it-a-bug-or-a-feature_003f-1"></a>
+<h2 class="section">1.12 Is it a bug or a feature?</h2>
 
 <p>It is not necessarily a bug if some function gives different
 results than you expect: That may be a deliberate design decision. It
@@ -537,124 +536,126 @@ argument to switch the behaviour to match your expectation. For
 instance, function <code>vegdist</code> always calculates quantitative
 indices (when this is possible). If you expect it to calculate a
 binary index, you should use argument <code>binary = TRUE</code>.
-
-</p><hr size="6">
-<a name="NOD15"></a>
-<a name="SEC14"></a>
+</p>
+<hr size="6">
+<a name="Can-I-contribute-to-vegan_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Is-it-a-bug-or-a-feature_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.13 Can I contribute to <strong>vegan</strong>? </h2>
+<a name="Can-I-contribute-to-vegan_003f-1"></a>
+<h2 class="section">1.13 Can I contribute to <strong>vegan</strong>?</h2>
 
 <p><strong>Vegan</strong> is dependent on user contribution.  All feedback is welcome.  If
 you have problem with <strong>vegan</strong>, it may be as simple as incomplete
-documentation, and we'll do our best to improve the documents.
-
-</p><p>Feature requests also are welcome, but they are not necessarily
+documentation, and we&rsquo;ll do our best to improve the documents.
+</p>
+<p>Feature requests also are welcome, but they are not necessarily
 fulfilled.  A new feature will be added if it is easy to do and it looks
 useful to me or in general, or if you submit code. 
-
-</p><p>Contributed code and functions are welcome and more certain to be
+</p>
+<p>Contributed code and functions are welcome and more certain to be
 included than mere requests.  However, not all functions will be added,
 but I they must be suitable for <strong>vegan</strong>.  We also audit the code, and
 typically we edit the code in <strong>vegan</strong> style for easier maintenance.  All
 included contributions will be credited.  
-
-</p><hr size="6">
-<a name="NOD16"></a>
-<a name="SEC15"></a>
+</p>
+<hr size="6">
+<a name="Ordination"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Can-I-contribute-to-vegan_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#I-have-only-numeric-and-positive-data-but-vegan-still-complaints" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 2. Ordination </h1>
+<a name="Ordination-1"></a>
+<h1 class="chapter">2. Ordination</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC16">2.1 I have only numeric and positive data but <strong>vegan</strong> still complaints</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#I-have-only-numeric-and-positive-data-but-vegan-still-complaints">2.1 I have only numeric and positive data but <strong>vegan</strong> still complaints</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">2.2 Can you analyse binary or cover class data?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Can-you-analyse-binary-or-cover-class-data_003f">2.2 Can you analyse binary or cover class data?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC18">2.3 Why dissimilarities in <strong>vegan</strong> differ from other sources?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Why-dissimilarities-in-vegan-differ-from-other-sources_003f">2.3 Why dissimilarities in <strong>vegan</strong> differ from other sources?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC19">2.4 Why NMDS stress is sometimes 0.1 and sometimes 10?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Why-NMDS-stress-is-sometimes-0_002e1-and-sometimes-10_003f">2.4 Why <acronym>NMDS</acronym> stress is sometimes 0.1 and sometimes 10?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC20">2.5 Zero dissimilarities in isoMDS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#I-get-zero-stress-but-no-convergent-solutions-in-metaMDS">2.5 I get zero stress but no convergent solutions in <code>metaMDS</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC21">2.6 How the RDA results are scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Zero-dissimilarities-in-isoMDS">2.6 Zero dissimilarities in isoMDS</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC22">2.7 cca fails with &quot;data.frame expected&quot; or &quot;&quot;site.env&quot; missing&quot;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-the-RDA-results-are-scaled_003f">2.7 How the <acronym>RDA</acronym> results are scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC23">2.8 Variance explained by ordination axes.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027">2.8 cca fails with &ldquo;data.frame expected&rdquo; or &ldquo;&quot;site.env&quot; missing&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC24">2.9 Is it possible to have passive points in ordination?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Variance-explained-by-ordination-axes">2.9 Variance explained by ordination axes.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC25">2.10 Class variables and dummies</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Is-it-possible-to-have-passive-points-in-ordination_003f">2.10 Is it possible to have passive points in ordination?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC26">2.11 How are environmental arrows scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Class-variables-and-dummies">2.11 Class variables and dummies</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC27">2.12 I want to use Helmert or sum contrasts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-are-environmental-arrows-scaled_003f">2.12 How are environmental arrows scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC28">2.13 What are aliased variables and how to see them?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#I-want-to-use-Helmert-or-sum-contrasts">2.13 I want to use Helmert or sum contrasts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC29">2.14 Plotting aliased variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#What-are-aliased-variables-and-how-to-see-them_003f">2.14 What are aliased variables and how to see them?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC30">2.15 Constrained permutations in <strong>vegan</strong></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Plotting-aliased-variables">2.15 Plotting aliased variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC31">2.16 How to use different plotting symbols in ordination graphics?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Constrained-permutations-in-vegan">2.16 Constrained permutations in <strong>vegan</strong></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC32">2.17 How to avoid cluttered ordination graphs?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-use-different-plotting-symbols-in-ordination-graphics_003f">2.17 How to use different plotting symbols in ordination graphics?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC33">2.18 Can I flip an axis in ordination diagram?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-avoid-cluttered-ordination-graphs_003f">2.18 How to avoid cluttered ordination graphs?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC34">2.19 Can I zoom into an ordination plot?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Can-I-flip-an-axis-in-ordination-diagram_003f">2.19 Can I flip an axis in ordination diagram?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Can-I-zoom-into-an-ordination-plot_003f">2.20 Can I zoom into an ordination plot?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD17"></a>
-<a name="SEC16"></a>
+<a name="I-have-only-numeric-and-positive-data-but-vegan-still-complaints"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Ordination" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Can-you-analyse-binary-or-cover-class-data_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.1 I have only numeric and positive data but <strong>vegan</strong> still complaints </h2>
+<a name="I-have-only-numeric-and-positive-data-but-vegan-still-complaints-1"></a>
+<h2 class="section">2.1 I have only numeric and positive data but <strong>vegan</strong> still complaints</h2>
 
 <p>You are wrong! Computers are painfully pedantic, and if they find
 non-numeric or negative data entries, you really have them. Check your
@@ -664,88 +665,88 @@ argument <code>row.names</code> in reading the data), or that the column names
 were interpreted as data (check argument <code>header = TRUE</code> in reading
 the data). Another common reason is that you had empty cells in your
 input data, and these were interpreted as missing values.
-
-</p><hr size="6">
-<a name="NOD18"></a>
-<a name="SEC17"></a>
+</p>
+<hr size="6">
+<a name="Can-you-analyse-binary-or-cover-class-data_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#I-have-only-numeric-and-positive-data-but-vegan-still-complaints" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Why-dissimilarities-in-vegan-differ-from-other-sources_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.2 Can you analyse binary or cover class data? </h2>
+<a name="Can-you-analyse-binary-or-cover-class-data_003f-1"></a>
+<h2 class="section">2.2 Can you analyse binary or cover class data?</h2>
 
 <p>Yes. Most <strong>vegan</strong> methods can handle binary data or cover abundance data.
 Most statistical tests are based on permutation, and do not make
 distributional assumptions.  There are some methods (mainly in diversity
 analysis) that need count data.  These methods check that input data are
 integers, but they may be fooled by cover class data.
-
-</p><hr size="6">
-<a name="NOD19"></a>
-<a name="SEC18"></a>
+</p>
+<hr size="6">
+<a name="Why-dissimilarities-in-vegan-differ-from-other-sources_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Can-you-analyse-binary-or-cover-class-data_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Why-NMDS-stress-is-sometimes-0_002e1-and-sometimes-10_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.3 Why dissimilarities in <strong>vegan</strong> differ from other sources? </h2>
+<a name="Why-dissimilarities-in-vegan-differ-from-other-sources_003f-1"></a>
+<h2 class="section">2.3 Why dissimilarities in <strong>vegan</strong> differ from other sources?</h2>
 
-<p>Most commonly the reason is that other software use presence-absence
+<p>Most commonly the reason is that other software use presence&ndash;absence
 data whereas <strong>vegan</strong> used quantitative data.  Usually <strong>vegan</strong> indices are
 quantitative, but you can use argument <code>binary = TRUE</code> to make them
-presence-absence.  However, the index name is the same in both cases,
+presence&ndash;absence.  However, the index name is the same in both cases,
 although different names usually occur in literature.  For instance,
 Jaccard index actually refers to the binary index, but <strong>vegan</strong> uses
 name <code>&quot;jaccard&quot;</code> for the quantitative index, too.
-
-</p><p>Another reason may be that indices indeed are defined differently,
+</p>
+<p>Another reason may be that indices indeed are defined differently,
 because people use same names for different indices.
-
-</p><hr size="6">
-<a name="NOD20"></a>
-<a name="SEC19"></a>
+</p>
+<hr size="6">
+<a name="Why-NMDS-stress-is-sometimes-0_002e1-and-sometimes-10_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Why-dissimilarities-in-vegan-differ-from-other-sources_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#I-get-zero-stress-but-no-convergent-solutions-in-metaMDS" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.4 Why NMDS stress is sometimes 0.1 and sometimes 10? </h2>
-
-<p>Stress is a proportional measure of badness of fit. The proportions can
+<a name="Why-NMDS-stress-is-sometimes-0_002e1-and-sometimes-10_003f-1"></a>
+<h2 class="section">2.4 Why <acronym>NMDS</acronym> stress is sometimes 0.1 and sometimes 10?</h2>
+<p>q
+Stress is a proportional measure of badness of fit. The proportions can
 be expressed either as parts of one or as percents.  Function
 <code>isoMDS</code> (<strong>MASS</strong> package) uses percents, and function <code>monoMDS</code>
 (<strong>vegan</strong> package) uses proportions, and therefore the same stress is 100
@@ -753,30 +754,66 @@ times higher in <code>isoMDS</code>. The results of <code>goodness</code> functi
 also depend on the definition of stress, and the same <code>goodness</code> is
 100 times higher in <code>isoMDS</code> than in <code>monoMDS</code>.  Both of these
 conventions are equally correct.
-
-</p><hr size="6">
-<a name="NOD21"></a>
-<a name="SEC20"></a>
+</p>
+<hr size="6">
+<a name="I-get-zero-stress-but-no-convergent-solutions-in-metaMDS"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC21" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Why-NMDS-stress-is-sometimes-0_002e1-and-sometimes-10_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Zero-dissimilarities-in-isoMDS" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.5 Zero dissimilarities in isoMDS </h2>
+<a name="I-get-zero-stress-but-no-convergent-solutions-in-metaMDS-1"></a>
+<h2 class="section">2.5 I get zero stress but no convergent solutions in <code>metaMDS</code></h2>
+
+<p>Most common reason is that you have too few observations for your
+<acronym>NMDS</acronym>. For <code>n</code> observations (points) and <code>k</code>
+dimensions you need to estimate <code>n*k</code> parameters (ordination
+scores) using <code>n*(n-1)/2</code> dissimilarities.  For <code>k</code> dimensions
+you must have <code>n &gt; 2*k + 1</code>, or for two dimensions at least six
+points.  In some degenerate situations you may need even a larger number
+of points.  If you have a lower number of points, you can find an
+undefined number of perfect (stress is zero) but different solutions.
+Conventional wisdom due to Kruskal is that you should have <code>n &gt; 4*k
++ 1</code> points for <code>k</code> dimensions.  A typical symptom of insufficient
+data is that you have (nearly) zero stress but no two convergent
+solutions.  In those cases you should reduce the number of dimensions
+(<code>k</code>) and with very small data sets you should not use <code>NMDS</code>,
+but rely on metric methods.
+</p>
+<hr size="6">
+<a name="Zero-dissimilarities-in-isoMDS"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#I-get-zero-stress-but-no-convergent-solutions-in-metaMDS" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-the-RDA-results-are-scaled_003f" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Zero-dissimilarities-in-isoMDS-1"></a>
+<h2 class="section">2.6 Zero dissimilarities in isoMDS</h2>
 
 <p>Function <code>metaMDS</code> uses function <code>monoMDS</code> as its default
-method for NMDS, and this function can handle zero
+method for <acronym>NMDS</acronym>, and this function can handle zero
 dissimilarities. The alternative function <code>isoMDS</code> was the only
 choice before <strong>vegan</strong> 2.0-0, and it cannot handle zero dissimilarities. If
 you want to use <code>isoMDS</code>, you can use argument <code>zerodist =
@@ -789,55 +826,55 @@ standardizations or with some dissimilarity indices, originally
 non-unique sites can have zero dissimilarity, and you have to resort to
 the kluge (or work harder with your data). Usually it is better to use
 <code>monoMDS</code>.
-
-</p><hr size="6">
-<a name="NOD22"></a>
-<a name="SEC21"></a>
+</p>
+<hr size="6">
+<a name="How-the-RDA-results-are-scaled_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC20" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC22" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Zero-dissimilarities-in-isoMDS" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.6 How the RDA results are scaled? </h2>
+<a name="How-the-RDA-results-are-scaled_003f-1"></a>
+<h2 class="section">2.7 How the <acronym>RDA</acronym> results are scaled?</h2>
 
-<p>The scaling or RDA results indeed differ from most other
-software packages. The scaling of RDA is such a complicated
-issue that it cannot be explained in this FAQ, but it is
-explained in a separate pdf document on &quot;Design decision and
-implementation details in vegan&quot; that you can read with <strong>vegan</strong>
+<p>The scaling or <acronym>RDA</acronym> results indeed differ from most other
+software packages. The scaling of <acronym>RDA</acronym> is such a complicated
+issue that it cannot be explained in this <acronym>FAQ</acronym>, but it is
+explained in a separate <acronym>pdf</acronym> document on &ldquo;Design decision and
+implementation details in vegan&rdquo; that you can read with <strong>vegan</strong>
 command <code>vegandocs(&quot;decision&quot;)</code>.
-
-</p><hr size="6">
-<a name="NOD23"></a>
-<a name="SEC22"></a>
+</p>
+<hr size="6">
+<a name="cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC21" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC23" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-the-RDA-results-are-scaled_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variance-explained-by-ordination-axes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.7 cca fails with &quot;data.frame expected&quot; or &quot;&quot;site.env&quot; missing&quot; </h2>
+<a name="cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027-1"></a>
+<h2 class="section">2.8 cca fails with &ldquo;data.frame expected&rdquo; or &ldquo;&quot;site.env&quot; missing&rdquo;</h2>
 
 <p>This is not a <strong>vegan</strong> error message, but it comes from the
 <code>cca</code> function in the <strong>ade4</strong> package. There is an unfortunate
@@ -846,56 +883,56 @@ name clash, and if you have loaded <strong>ade4</strong> after <strong>vegan</st
 can use the <strong>vegan</strong> version using command <code>vegan::cca()</code>. If
 you do not need package <strong>ade4</strong>, you can detach it with command
 <code>detach(package:ade4)</code>.
-
-</p><hr size="6">
-<a name="NOD24"></a>
-<a name="SEC23"></a>
+</p>
+<hr size="6">
+<a name="Variance-explained-by-ordination-axes"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC22" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC24" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Is-it-possible-to-have-passive-points-in-ordination_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.8 Variance explained by ordination axes. </h2>
+<a name="Variance-explained-by-ordination-axes_002e"></a>
+<h2 class="section">2.9 Variance explained by ordination axes.</h2>
 
 <p>In general, <strong>vegan</strong> does not directly give any statistics on the
-&quot;variance explained&quot; by ordination axes or by the constrained axes.
+&ldquo;variance explained&rdquo; by ordination axes or by the constrained axes.
 This is a design decision: I think this information is normally useless
 and often misleading.  In community ordination, the goal typically is
-not to explain the variance, but to find the &quot;gradients&quot; or main
-trends in the data.  The &quot;total variation&quot; often is meaningless, and
+not to explain the variance, but to find the &ldquo;gradients&rdquo; or main
+trends in the data.  The &ldquo;total variation&rdquo; often is meaningless, and
 all proportions of meaningless values also are meaningless.  Often a
-better solution explains a smaller part of &quot;total variation&quot;.  For
+better solution explains a smaller part of &ldquo;total variation&rdquo;.  For
 instance, in unstandardized principal components analysis most of the
 variance is generated by a small number of most abundant species, and
-they are easy to &quot;explain&quot; because data really are not very
+they are easy to &ldquo;explain&rdquo; because data really are not very
 multivariate.  If you standardize your data, all species are equally
-important.  The first axes explains much less of the &quot;total
-variation&quot;, but now they explain all species equally, and results
+important.  The first axes explains much less of the &ldquo;total
+variation&rdquo;, but now they explain all species equally, and results
 typically are much more useful for the whole community.  Correspondence
 analysis uses another measure of variation (which is not variance), and
-again it typically explains a &quot;smaller proportion&quot; than principal
+again it typically explains a &ldquo;smaller proportion&rdquo; than principal
 components but with a better result.  Detrended correspondence analysis
-and nonmetric multidimensional scaling even do not try to &quot;explain&quot;
+and nonmetric multidimensional scaling even do not try to &ldquo;explain&rdquo;
 the variation, but use other criteria.  All methods are incommensurable,
-and it is impossible to compare methods using &quot;explanation of
-variation&quot;.
-
-</p><p>If you still want to get &quot;explanation of variation&quot; (or a deranged
+and it is impossible to compare methods using &ldquo;explanation of
+variation&rdquo;.
+</p>
+<p>If you still want to get &ldquo;explanation of variation&rdquo; (or a deranged
 editor requests that from you), it is possible to get this information
 for some methods:
-</p><ul class="toc">
-<li><p> Eigenvector methods:
+</p><ul>
+<li> Eigenvector methods:
 Functions <code>rda</code>, <code>cca</code> and <code>capscale</code> give the variation
 of conditional (partialled), constrained (canonical) and residual
 components, but you must calculate the proportions by hand.  Function
@@ -909,41 +946,41 @@ individual species or sites (species are unavailable with
 <code>varpart</code> for unbiased partitioning of variance between up to four
 separate components in redundancy analysis.
 
-</p></li><li><p> Detrended correspondence analysis (function <code>decorana</code>).
+</li><li> Detrended correspondence analysis (function <code>decorana</code>).
 The total amount of variation is undefined in detrended correspondence
 analysis, and therefore proportions from total are unknown and
-undefined.  DCA is not a method for decomposition of
+undefined.  <acronym>DCA</acronym> is not a method for decomposition of
 variation, and therefore these proportions would not make sense either.
 
-</p></li><li><p> Nonmetric multidimensional scaling. 
-NMDS is a method for nonlinear mapping, and the concept of
+</li><li> Nonmetric multidimensional scaling. 
+<acronym>NMDS</acronym> is a method for nonlinear mapping, and the concept of
 of variation explained does not make sense.  However, 1 - stress^2
 transforms nonlinear stress into quantity analogous to squared
 correlation coefficient.  Function <code>stressplot</code> displays the
 nonlinear fit and gives this statistic.
 
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
-<a name="NOD25"></a>
-<a name="SEC24"></a>
+<a name="Is-it-possible-to-have-passive-points-in-ordination_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC23" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC25" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Variance-explained-by-ordination-axes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Class-variables-and-dummies" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.9 Is it possible to have passive points in ordination? </h2>
+<a name="Is-it-possible-to-have-passive-points-in-ordination_003f-1"></a>
+<h2 class="section">2.10 Is it possible to have passive points in ordination?</h2>
 
 <p><strong>Vegan</strong> does not have a concept of passive points, or a point that should
 only little influence the ordination results. However, you can add
@@ -956,79 +993,79 @@ available for basic eigenvector methods in <strong>vegan</strong> (<code>cca</co
 <code>methods(&quot;predict&quot;)</code>). You also can simulate the passive points in
 R by using low weights to row and columns (this is the method used in
 software with passive points). For instance, the following command makes
-row 3 &quot;passive&quot;: <code>dune[3,] &lt;- 0.001*dune[3,]</code>.
-
+row 3 &ldquo;passive&rdquo;: <code>dune[3,] &lt;- 0.001*dune[3,]</code>.
 </p>
+
 <hr size="6">
-<a name="NOD26"></a>
-<a name="SEC25"></a>
+<a name="Class-variables-and-dummies"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC24" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC26" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Is-it-possible-to-have-passive-points-in-ordination_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-are-environmental-arrows-scaled_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.10 Class variables and dummies </h2>
+<a name="Class-variables-and-dummies-1"></a>
+<h2 class="section">2.11 Class variables and dummies</h2>
 
 <p>You should define a class variable as an R <code>factor</code>, and <strong>vegan</strong> will
 automatically handle them with formula interface.  You also can define
 constrained ordination without formula interface, but then you must
 code your class variables by hand.
-
-</p><p>R (and <strong>vegan</strong>) knows both unordered and ordered factors.  Unordered
+</p>
+<p>R (and <strong>vegan</strong>) knows both unordered and ordered factors.  Unordered
 factors are internally coded as dummy variables, but one redundant
 level is removed or aliased.  With default contrasts, the removed
 level is the first one.  Ordered factors are expressed as polynomial
 contrasts. Both of these contrasts explained in standard R
 documentation. 
-
 </p>
+
 <hr size="6">
-<a name="NOD27"></a>
-<a name="SEC26"></a>
+<a name="How-are-environmental-arrows-scaled_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC25" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC27" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Class-variables-and-dummies" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#I-want-to-use-Helmert-or-sum-contrasts" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.11 How are environmental arrows scaled? </h2>
+<a name="How-are-environmental-arrows-scaled_003f-1"></a>
+<h2 class="section">2.12 How are environmental arrows scaled?</h2>
 
 <p>The printed output of <code>envfit</code> gives the direction cosines which
 are the coordinates of unit length arrows. For plotting, these are
 scaled by their correlation (square roots of column <code>r2</code>). You can
 see the scaled lengths of <code>envfit</code> arrows using command
 <code>scores</code>.
-
-</p><p>The scaled environmental vectors from <code>envfit</code> and the arrows for
+</p>
+<p>The scaled environmental vectors from <code>envfit</code> and the arrows for
 continuous environmental variables in constrained ordination
 (<code>cca</code>, <code>rda</code>, <code>capscale</code>) are adjusted to fill the
 current graph.  The lengths of arrows do not have fixed meaning with
 respect to the points (species, sites), but they can only compared
 against each other, and therefore only their relative lengths are
 important.
-
-</p><p>If you want change the scaling of the arrows, you can use <code>text</code>
+</p>
+<p>If you want change the scaling of the arrows, you can use <code>text</code>
 (plotting arrows and text) or <code>points</code> (plotting only arrows)
 functions for constrained ordination. These functions have argument
 <code>arrow.mul</code> which sets the multiplier.  The <code>plot</code> function
@@ -1037,8 +1074,8 @@ arrow multiplier.  If you save the invisible result of the constrained
 ordination <code>plot</code> command, you can see the value of the currently
 used <code>arrow.mul</code> which is saved as an attribute of <code>biplot</code>
 scores.
-
-</p><p>An unexported function <code>ordiArrowMul</code> is used to find the scaling
+</p>
+<p>An unexported function <code>ordiArrowMul</code> is used to find the scaling
 for the current plot. You can use this function to see how arrows would
 be scaled:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">sol &lt;- cca(varespec)
@@ -1046,142 +1083,143 @@ ef &lt;- envfit(sol ~ ., varechem)
 plot(sol)
 vegan:::ordiArrowMul(scores(ef, display=&quot;vectors&quot;))
 </pre></td></tr></table>
+
 <hr size="6">
-<a name="NOD28"></a>
-<a name="SEC27"></a>
+<a name="I-want-to-use-Helmert-or-sum-contrasts"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC26" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC28" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-are-environmental-arrows-scaled_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#What-are-aliased-variables-and-how-to-see-them_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.12 I want to use Helmert or sum contrasts </h2>
+<a name="I-want-to-use-Helmert-or-sum-contrasts-1"></a>
+<h2 class="section">2.13 I want to use Helmert or sum contrasts</h2>
 
 <p><code><strong>vegan</strong></code> uses standard R utilities for defining
 contrasts. The default in standard installations is to use treatment
 contrasts, but you can change the behaviour globally setting
 <code>options</code> or locally by using keyword <code>contrasts</code>. Please
 check the R help pages and user manuals for details.
-
-</p><hr size="6">
-<a name="NOD29"></a>
-<a name="SEC28"></a>
+</p>
+<hr size="6">
+<a name="What-are-aliased-variables-and-how-to-see-them_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC27" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC29" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#I-want-to-use-Helmert-or-sum-contrasts" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Plotting-aliased-variables" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.13 What are aliased variables and how to see them? </h2>
+<a name="What-are-aliased-variables-and-how-to-see-them_003f-1"></a>
+<h2 class="section">2.14 What are aliased variables and how to see them?</h2>
 
 <p>Aliased variable has no information because it can be expressed with
 the help of other variables.  Such variables are automatically removed
 in constrained ordination in <strong>vegan</strong>.  The aliased variables can be
 redundant levels of factors or whole variables.
-
-</p><p><strong>Vegan</strong> function <code>alias</code> gives the defining equations for aliased
+</p>
+<p><strong>Vegan</strong> function <code>alias</code> gives the defining equations for aliased
 variables.  If you only want to see the names of aliased variables or
 levels in solution <code>sol</code>, use <code>alias(sol, names.only=TRUE)</code>.
-
-</p><hr size="6">
-<a name="NOD30"></a>
-<a name="SEC29"></a>
+</p>
+<hr size="6">
+<a name="Plotting-aliased-variables"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC28" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC30" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#What-are-aliased-variables-and-how-to-see-them_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Constrained-permutations-in-vegan" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.14 Plotting aliased variables </h2>
+<a name="Plotting-aliased-variables-1"></a>
+<h2 class="section">2.15 Plotting aliased variables</h2>
 
 <p>You can fit vectors or class centroids for aliased variables using
 <code>envfit</code> function.  The <code>envfit</code> function uses weighted
 fitting, and the fitted vectors are identical to the vectors in
 correspondence analysis.
-
-</p><hr size="6">
-<a name="NOD31"></a>
-<a name="SEC30"></a>
+</p>
+<hr size="6">
+<a name="Constrained-permutations-in-vegan"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC29" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC31" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Plotting-aliased-variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-use-different-plotting-symbols-in-ordination-graphics_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.15 Constrained permutations in <strong>vegan</strong> </h2>
+<a name="Constrained-permutations-in-vegan-1"></a>
+<h2 class="section">2.16 Constrained permutations in <strong>vegan</strong></h2>
 
 <p>You can constrain your permutations within <code>strata</code> or levels of
 factors. You can use stratified permutations in all <strong>vegan</strong>
 functions that use permutation, such as <code>adonis</code>, <code>anosim</code>,
 <code>anova.cca</code>, <code>mantel</code>, <code>mrpp</code>, <code>envfit</code> and
 <code>protest</code>.
-
-</p><p><strong>Vegan</strong> will move to use <strong>permute</strong> package in all its
+</p>
+<p><strong>Vegan</strong> will move to use <strong>permute</strong> package in all its
 permutation tests, but currently this package is only used in
 <code>permutest.betadisper</code>. The <strong>permute</strong> package will allow
 restricted permutation designs for time series, line transects, spatial
 grids and blocking factors.
-
-</p><hr size="6">
-<a name="NOD32"></a>
-<a name="SEC31"></a>
+</p>
+<hr size="6">
+<a name="How-to-use-different-plotting-symbols-in-ordination-graphics_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC30" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC32" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Constrained-permutations-in-vegan" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-to-avoid-cluttered-ordination-graphs_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.16 How to use different plotting symbols in ordination graphics? </h2>
+<a name="How-to-use-different-plotting-symbols-in-ordination-graphics_003f-1"></a>
+<h2 class="section">2.17 How to use different plotting symbols in ordination graphics?</h2>
 
 <p>The default ordination <code>plot</code> function is intended for fast
 plotting and it is not very configurable. To use different plotting
@@ -1191,237 +1229,237 @@ the created empty frame (here <code>...</code> means other arguments you want
 to give to your <code>plot</code> command). The <code>points</code> and <code>text</code>
 commands are fully configurable, and allow different plotting symbols
 and characters.
-
-</p><hr size="6">
-<a name="NOD33"></a>
-<a name="SEC32"></a>
+</p>
+<hr size="6">
+<a name="How-to-avoid-cluttered-ordination-graphs_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC31" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC33" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-use-different-plotting-symbols-in-ordination-graphics_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Can-I-flip-an-axis-in-ordination-diagram_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.17 How to avoid cluttered ordination graphs? </h2>
+<a name="How-to-avoid-cluttered-ordination-graphs_003f-1"></a>
+<h2 class="section">2.18 How to avoid cluttered ordination graphs?</h2>
 
 <p>If there is a really high number of species or sites, the graphs often
 are congested and many labels are overwritten. It may be impossible to
 have complete readable graphics with some data sets. However, here are
 some tricks you can use:
-</p><ul class="toc">
+</p><ul>
 <li> 
-<p>Use only points, possibly with different types if you do not need
+Use only points, possibly with different types if you do not need
 to see the labels. You may need to first create an empty plot using
 <code>plot(..., type=&quot;n&quot;)</code>, if you are not satisfied with the default
 graph. (Here and below  <code>...</code> means other arguments you want
 to give to your <code>plot</code> command.)
 
-</p></li><li> 
-<p>Use points and add labels to desired points using interactive
+</li><li> 
+Use points and add labels to desired points using interactive
 <code>identify</code> command if you do not need to see all labels.
 
-</p></li><li> 
-<p>Add labels using function <code>ordilabel</code> which uses non-transparent
+</li><li> 
+Add labels using function <code>ordilabel</code> which uses non-transparent
 background to the text. The labels still shadow each other, but the
 uppermost labels are readable. Argument <code>priority</code> will help in
 displaying the most interesting labels.
 
-</p></li><li> 
-<p>Use <code>orditorp</code> function that uses labels only if these can be
+</li><li> 
+Use <code>orditorp</code> function that uses labels only if these can be
 added to a graph without overwriting other labels, and points otherwise,
 if you do not need to see all labels. You must first create an empty
 plot using  <code>plot(..., type=&quot;n&quot;)</code>, and then add labels or points
 with <code>orditorp</code>.  
 
-</p></li><li> 
-<p>Use <code>ordipointlabel</code> which uses points and text labels to the
+</li><li> 
+Use <code>ordipointlabel</code> which uses points and text labels to the
 points, and tries to optimize the location of the text to minimize the
 overlap. 
 
-</p></li><li>
-<p>Ordination <code>text</code> and <code>points</code> functions have argument
+</li><li>
+Ordination <code>text</code> and <code>points</code> functions have argument
 <code>select</code> that can be used for full control of selecting items
 plotted as text or points.
 
-</p></li><li> 
-<p>Use interactive <code>orditkplot</code> function that lets you drag
+</li><li> 
+Use interactive <code>orditkplot</code> function that lets you drag
 labels of points to better positions if you need to see all labels. Only
 one set of points can be used. 
 
-</p></li><li> 
-<p>Most <code>plot</code> functions allow you to zoom to a part of the
+</li><li> 
+Most <code>plot</code> functions allow you to zoom to a part of the
 graph using <code>xlim</code> and <code>ylim</code> arguments to reduce clutter in
 congested areas.  
 
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
-<a name="NOD34"></a>
-<a name="SEC33"></a>
+<a name="Can-I-flip-an-axis-in-ordination-diagram_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC32" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC34" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-to-avoid-cluttered-ordination-graphs_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Can-I-zoom-into-an-ordination-plot_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.18 Can I flip an axis in ordination diagram? </h2>
+<a name="Can-I-flip-an-axis-in-ordination-diagram_003f-1"></a>
+<h2 class="section">2.19 Can I flip an axis in ordination diagram?</h2>
 
 <p>Use <code>xlim</code> or <code>ylim</code> with flipped limits. If you have model
 <code>mod &lt;- cca(dune)</code> you can flip the first axis with <code>plot(mod,
 xlim = c(3, -2))</code>.
-
-</p><hr size="6">
-<a name="NOD35"></a>
-<a name="SEC34"></a>
+</p>
+<hr size="6">
+<a name="Can-I-zoom-into-an-ordination-plot_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC33" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Can-I-flip-an-axis-in-ordination-diagram_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.19 Can I zoom into an ordination plot? </h2>
+<a name="Can-I-zoom-into-an-ordination-plot_003f-1"></a>
+<h2 class="section">2.20 Can I zoom into an ordination plot?</h2>
 <p>You can use <code>xlim</code> and <code>ylim</code> arguments in <code>plot</code> or
 <code>ordiplot</code> to zoom into ordination diagrams. Normally you must set
 both <code>xlim</code> and <code>ylim</code> because ordination plots will keep the
 equal aspect ratio of axes, and they will fill the graph so that the
 longer axis will fit. 
-
-</p><p>Dynamic zooming can be done with function <code>orditkplot</code>. You can
+</p>
+<p>Dynamic zooming can be done with function <code>orditkplot</code>. You can
 directly save the edited <code>orditkplot</code> graph in various graphic
 formats, or you can export the graph object back to R and use
 <code>plot</code> to display the results. 
-
-</p><hr size="6">
-<a name="NOD36"></a>
-<a name="SEC35"></a>
+</p>
+<hr size="6">
+<a name="Other-analysis-methods"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC34" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC36" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Can-I-zoom-into-an-ordination-plot_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Is-there-TWINSPAN_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC15" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 3. Other analysis methods </h1>
+<a name="Other-analysis-methods-1"></a>
+<h1 class="chapter">3. Other analysis methods</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC36">3.1 Is there TWINSPAN?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          
+<tr><td align="left" valign="top"><a href="#Is-there-TWINSPAN_003f">3.1 Is there TWINSPAN?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC37">3.2 Why strata do not influence adonis results?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Why-strata-do-not-influence-adonis-results_003f">3.2 Why strata do not influence adonis results?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC38">3.3 How is deviance calculated?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-is-deviance-calculated_003f">3.3 How is deviance calculated?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD37"></a>
-<a name="SEC36"></a>
+<a name="Is-there-TWINSPAN_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC35" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC37" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Why-strata-do-not-influence-adonis-results_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 3.1 Is there TWINSPAN? </h2>
+<a name="Is-there-TWINSPAN_003f-1"></a>
+<h2 class="section">3.1 Is there TWINSPAN?</h2>
 
-<p>No.  It may be possible to port TWINSPAN to <strong>vegan</strong>, but it is
+<p>No.  It may be possible to port <acronym>TWINSPAN</acronym> to <strong>vegan</strong>, but it is
 not among the <strong>vegan</strong> top priorities.  If anybody wants to try porting, I
-will be happy to help.  TWINSPAN has a very permissive
+will be happy to help.  <acronym>TWINSPAN</acronym> has a very permissive
 license, and it would be completely legal to port the function into R.
-
-</p><hr size="6">
-<a name="NOD38"></a>
-<a name="SEC37"></a>
+</p>
+<hr size="6">
+<a name="Why-strata-do-not-influence-adonis-results_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC36" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC38" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Is-there-TWINSPAN_003f" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-is-deviance-calculated_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 3.2 Why strata do not influence adonis results? </h2>
+<a name="Why-strata-do-not-influence-adonis-results_003f-1"></a>
+<h2 class="section">3.2 Why strata do not influence adonis results?</h2>
 <p>Permutation happens only within <code>strata</code> and this influences the
 permutation distribution of the statistics and probably the significance
 levels, but <code>strata</code> do not influence the calculation of the
 statistics.
-
 </p>
+
 <hr size="6">
-<a name="NOD39"></a>
-<a name="SEC38"></a>
+<a name="How-is-deviance-calculated_003f"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC37" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Why-strata-do-not-influence-adonis-results_003f" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC35" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 3.3 How is deviance calculated? </h2>
+<a name="How-is-deviance-calculated_003f-1"></a>
+<h2 class="section">3.3 How is deviance calculated?</h2>
 
 <p>Some <strong>vegan</strong> functions, such as <code>radfit</code> use base R facility of
 <code>family</code> in maximum likelihood estimation.  This allows use of
@@ -1429,22 +1467,22 @@ several alternative error distributions, among them <code>&quot;poisson&quot;</c
 and <code>&quot;gaussian&quot;</code>. The R <code>family</code> also defines the
 deviance.  You can see the equations for deviance with commands like
 <code>poisson()$dev</code> or <code>gaussian()$dev</code>.  
-
-</p><p>In general, deviance is 2 times log.likelihood 
-shifted so that models with exact fit have zero deviance.
-
 </p>
+<p>In general, deviance is 2 times log.likelihood 
+shifted so that models with exact fit have zero deviance.
+</p>
+
 <hr size="6">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Jari Oksanen</em> on <em>November, 17 2011</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.70</em></a>.
+  This document was generated by <em>Jari Oksanen</em> on <em>May 24, 2012</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -1459,55 +1497,55 @@ shifted so that models with exact fit have zero deviance.
   <tr>
     <td align="center"> [ &lt; ] </td>
     <td align="center">Back</td>
-    <td>previous section in reading order</td>
+    <td>Previous section in reading order</td>
     <td>1.2.2</td>
   </tr>
   <tr>
     <td align="center"> [ &gt; ] </td>
     <td align="center">Forward</td>
-    <td>next section in reading order</td>
+    <td>Next section in reading order</td>
     <td>1.2.4</td>
   </tr>
   <tr>
     <td align="center"> [ &lt;&lt; ] </td>
     <td align="center">FastBack</td>
-    <td>beginning of this chapter or previous chapter</td>
+    <td>Beginning of this chapter or previous chapter</td>
     <td>1</td>
   </tr>
   <tr>
     <td align="center"> [ Up ] </td>
     <td align="center">Up</td>
-    <td>up section</td>
+    <td>Up section</td>
     <td>1.2</td>
   </tr>
   <tr>
     <td align="center"> [ &gt;&gt; ] </td>
     <td align="center">FastForward</td>
-    <td>next chapter</td>
+    <td>Next chapter</td>
     <td>2</td>
   </tr>
   <tr>
     <td align="center"> [Top] </td>
     <td align="center">Top</td>
-    <td>cover (top) of document</td>
+    <td>Cover (top) of document</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [Contents] </td>
     <td align="center">Contents</td>
-    <td>table of contents</td>
+    <td>Table of contents</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [Index] </td>
     <td align="center">Index</td>
-    <td>index</td>
+    <td>Index</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [ ? ] </td>
     <td align="center">About</td>
-    <td>about (help)</td>
+    <td>About (help)</td>
     <td> &nbsp; </td>
   </tr>
 </table>
@@ -1546,7 +1584,7 @@ shifted so that models with exact fit have zero deviance.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Jari Oksanen</em> on <em>November, 17 2011</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.70</em></a>.
+  This document was generated by <em>Jari Oksanen</em> on <em>May 24, 2012</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 
