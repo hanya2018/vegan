@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
 
+	* merge r2173-2176, 2185: ordihull labels, semintransparent
+	colours in ordihull & ordiellipse.
 	* merge r2170: bioenv accepts dissimilarities as input.
 	* merge r2167: warn about unequal aspect ratio in ordiplot3d.
 	* merge r2162: set equal axis scales for ordiplot3d.

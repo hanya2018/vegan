@@ -52,6 +52,14 @@
       \item \code{msoplot} is more configurable, and allows, for
         instance, setting y-axis limits.
 
+      \item Hulls and ellipses are now filled using semitransparent
+        colours in \code{ordihull} and \code{ordiellipse}, and the
+        user can set the degree of transparency with a new argument
+        \code{alpha}.  The filled shapes are used when these functions
+        are called with argument \code{draw = "polygon"}.  Function
+        \code{ordihull} puts labels (with argument \code{label = TRUE})
+        now in the real polygon centre.
+
     }
   } % end new features 	 
 
