@@ -60,6 +60,10 @@
         \code{ordihull} puts labels (with argument \code{label = TRUE})
         now in the real polygon centre.
 
+      \item Function \code{ordipointlabel} gained argument to
+        \code{select} only some of the items for plotting. The
+        argument can be used only with one set of points.
+
     }
   } % end new features 	 
 
