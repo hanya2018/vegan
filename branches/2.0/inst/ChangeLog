@@ -8,6 +8,7 @@ Version 2.0-4 (opened March 9, 2012)
 	* merge r2191-2193: standardise handling of 'select' arg in
 	those plotting functions that support it. Adds non-exported
 	function .checkSelect().
+	* merge r2182,2182,2199,2201: FAQ about data size in NMDS.
 	* merge r2178, 2180: ordipointlabel gains 'select' argument.
 	* merge r2173-2176, 2185: ordihull labels, semintransparent
 	colours in ordihull & ordiellipse.
