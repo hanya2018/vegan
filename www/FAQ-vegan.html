@@ -2,7 +2,7 @@
 <html>
 <!--This document contains answers to some of the most frequently asked
 questions about R package vegan. 
-This is version of $Date: 2012-05-27 17:55:57 +0300 (Sun, 27 May 2012) $.
+This is version of $Date: 2012-05-27 18:10:14 +0300 (Sun, 27 May 2012) $.
 
 
 This work is licensed under the Creative Commons Attribution 3.0
@@ -64,7 +64,7 @@ ul.toc {list-style: none}
 <h1 class="settitle"><strong>vegan</strong> FAQ</h1>
 <p>This document contains answers to some of the most frequently asked
 questions about R package <strong>vegan</strong>. 
-This is version of $Date: 2012-05-27 17:55:57 +0300 (Sun, 27 May 2012) $.
+This is version of $Date: 2012-05-27 18:10:14 +0300 (Sun, 27 May 2012) $.
 
 </p><blockquote>
 <p>This work is licensed under the Creative Commons Attribution 3.0
@@ -597,7 +597,7 @@ included contributions will be credited.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC16">2.1 I have only numeric and positive data but <strong>vegan</strong> still complaints</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">2.2 Can you analyse binary or cover class data?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#SEC17">2.2 Can I analyse binary or cover class data?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC18">2.3 Why dissimilarities in <strong>vegan</strong> differ from other sources?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
@@ -686,7 +686,7 @@ input data, and these were interpreted as missing values.
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 2.2 Can you analyse binary or cover class data? </h2>
+<h2 class="section"> 2.2 Can I analyse binary or cover class data? </h2>
 
 <p>Yes. Most <strong>vegan</strong> methods can handle binary data or cover abundance data.
 Most statistical tests are based on permutation, and do not make
@@ -746,8 +746,8 @@ because people use same names for different indices.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.4 Why NMDS stress is sometimes 0.1 and sometimes 10? </h2>
-<p>q
-Stress is a proportional measure of badness of fit. The proportions can
+
+<p>Stress is a proportional measure of badness of fit. The proportions can
 be expressed either as parts of one or as percents.  Function
 <code>isoMDS</code> (<strong>MASS</strong> package) uses percents, and function <code>monoMDS</code>
 (<strong>vegan</strong> package) uses proportions, and therefore the same stress is 100
