@@ -4,7 +4,7 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-4 (opened March 9, 2012)
 	
-	* merge r2195-7: bias adjusted betadisper.
+	* merge r2195-7, 2204: bias adjusted betadisper.
 	* merge r2191-2193: standardise handling of 'select' arg in
 	those plotting functions that support it. Adds non-exported
 	function .checkSelect().

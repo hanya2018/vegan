@@ -70,10 +70,10 @@
   \subsection{ANALYSES}{
     \itemize{
     
-      \item The method in \code{betadisper} is biased with small,
-        unequal sample sizes.  A bias adjusted version was developed
-        by Adrian Stier and Ben Bolker, and can be invoked with
-        argument \code{bias.adjust} (defaults \code{FALSE}).
+      \item The method in \code{betadisper} is biased with small sample
+        sizes.  A bias adjusted version was developed by Adrian Stier
+        and Ben Bolker, and can be invoked with argument
+        \code{bias.adjust} (defaults to \code{FALSE}).
          
     }
   } % end analyses
