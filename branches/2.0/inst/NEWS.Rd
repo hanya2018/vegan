@@ -62,8 +62,8 @@
 
       \item \code{ordiplot3d} returns function \code{envfit.convert}
         and the projected location of the \code{origin}.  Together
-        these functions can be used to add \code{envfit} results to
-        existint \code{ordiplot3d} plots.
+        these can be used to add \code{envfit} results to existing
+        \code{ordiplot3d} plots.
 
       \item Function \code{ordipointlabel} gained argument to
         \code{select} only some of the items for plotting. The
