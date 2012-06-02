@@ -45,6 +45,37 @@
                    col = arr.col)
         }
     }
+    ## save the location of the origin
+    pl$origin <- matrix(unlist(pl$xyz.convert(0, 0, 0)), nrow=1)
+    ## Add function that flattens 3d envfit object so that it can be
+    ## projected on the created 3d graph
+    xyz2xy <- pl$xyz.convert
+    envfit.convert <- function(object) {
+        if (!is.null(object$vectors)) {
+            rn <- rownames(object$vectors$arrows)
+            arr <- object$vectors$arrows[, choices, drop = FALSE]
+            arr <- sapply(xyz2xy(arr), cbind)
+            if (!is.matrix(arr))
+                arr <- matrix(arr, ncol = 2)
+            arr <- sweep(arr, 2, pl$origin)
+            rownames(arr) <- rn
+            object$vectors$arrows <- arr
+        }
+        if (!is.null(object$factors)) {
+            rn <- rownames(object$factors$centroids)
+            object$factors$centroids <-
+                object$factors$centroids[ ,choices, drop = FALSE]
+            object$factors$centroids <-
+                sapply(xyz2xy(object$factors$centroids), cbind)
+            if (!is.matrix(object$factors$centroids))
+                object$factors$centroids <-
+                    matrix(object$factors$centroids, ncol = 2)
+            rownames(object$factors$centroids) <- rn
+        }
+        object
+    }
+    pl$envfit.convert <- envfit.convert
+    ## save projected coordinates of points
     tmp <- pl$xyz.convert(x)
     pl$points <- cbind(tmp$x, tmp$y)
     rownames(pl$points) <- rownames(x)

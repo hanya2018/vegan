@@ -60,6 +60,11 @@
         \code{ordihull} puts labels (with argument \code{label = TRUE})
         now in the real polygon centre.
 
+      \item \code{ordiplot3d} returns function \code{envfit.convert}
+        and the projected location of the \code{origin}.  Together
+        these functions can be used to add \code{envfit} results to
+        existint \code{ordiplot3d} plots.
+
       \item Function \code{ordipointlabel} gained argument to
         \code{select} only some of the items for plotting. The
         argument can be used only with one set of points.
