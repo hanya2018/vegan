@@ -29,6 +29,16 @@
         this. Now \code{ordiplot3d} sets equal axis ranges, and the
         documents urge users to verify that the aspect ratio is
         reasonably equal and the graph looks like a cube.
+
+      \item \code{predict} for \code{cca} results with \code{type =
+        "response"} or \code{type = "working"} failed with
+        \code{newdata} if it did not have the same number of rows as
+        the original model data.  Now the \code{newdata} is ignored if
+        it has a wrong number of rows.  The number of rows must match
+        because the results in these models must be weighted by
+        original row totals.  The problem did not concern \code{rda}
+        or \code{capscale} results which do not need row weights.
+        Reported by Glenn De'ath.
     
     }
   }% end bug fixes
