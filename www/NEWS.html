@@ -39,21 +39,14 @@ et al. 2011 and <span class="pkg">vegan</span> help page.
 <li> <p><code>envfit</code> failed with unused factor levels.
 </p>
 </li>
-<li><p> Equal aspect ratio cannot be set exactly in
-<code>ordiplot3d</code> because underlying core routines do not allow
-this. Now <code>ordiplot3d</code> sets equal axis ranges, and the
-documents urge users to verify that the aspect ratio is
-reasonably equal and the graph looks like a cube.
-</p>
-</li>
 <li> <p><code>predict</code> for <code>cca</code> results with <code>type =
         "response"</code> or <code>type = "working"</code> failed with
-<code>newdata</code> if it did not have the same number of rows as
-the original model data.  Now the <code>newdata</code> is ignored if
-it has a wrong number of rows.  The number of rows must match
-because the results in these models must be weighted by
-original row totals.  The problem did not concern <code>rda</code>
-or <code>capscale</code> results which do not need row weights.
+<code>newdata</code> if the number of rows did not match with the
+original data.  Now the <code>newdata</code> is ignored if it has a
+wrong number of rows.  The number of rows must match because
+the results in <code>cca</code> must be weighted by original row
+totals.  The problem did not concern <code>rda</code> or
+<code>capscale</code> results which do not need row weights.
 Reported by Glenn De'ath.
 </p>
 </li></ul>
@@ -70,13 +63,22 @@ Reported by Glenn De'ath.
 <code>hiersimu</code> and <code>multipart</code>) have now <code>formula</code>
 and <code>default</code> methods.  The <code>formula</code> method is
 identical to the previous functions, but the <code>default</code>
-method can take two matrices as input.  If the second argument
-describing the hierarcy is missing, the method gives an
-overall partitioning to alpha, beta and gamma diversities.
+method can take two matrices as input. 
+</p>
+<p>Fast and easy overall partitioning to alpha, beta and gamma
+diversities can be made by omitting the argument describing
+the hierarchy.
 </p>
 </li>
-<li> <p><code>bioenv</code> accepts dissimilarities or square matrices
-that can be interpreted as dissimilarities as an alternative to
+<li><p> The method in <code>betadisper</code> is biased with small
+sample sizes.  The effects of bias are strongest with unequal
+sample sizes. A bias adjusted version was developed by Adrian
+Stier and Ben Bolker, and can be invoked with argument
+<code>bias.adjust</code> (defaults to <code>FALSE</code>).
+</p>
+</li>
+<li> <p><code>bioenv</code> accepts dissimilarities (or square matrices
+that can be interpreted as dissimilarities) as an alternative to
 community data.  This allows using other dissimilarities than
 those available in <code>vegdist</code>.
 </p>
@@ -99,25 +101,18 @@ and the projected location of the <code>origin</code>.  Together
 these can be used to add <code>envfit</code> results to existing
 <code>ordiplot3d</code> plots.
 </p>
+<p>Equal aspect ratio cannot be set exactly in <code>ordiplot3d</code>
+because underlying core routines do not allow this. Now
+<code>ordiplot3d</code> sets equal axis ranges, and the documents
+urge users to verify that the aspect ratio is reasonably equal
+and the graph looks like a cube.  If the problems cannot be
+solved in the future, the function may be removed from next
+releases of <span class="pkg">vegan</span>.
+</p>
 </li>
 <li><p> Function <code>ordipointlabel</code> gained argument to
 <code>select</code> only some of the items for plotting. The
 argument can be used only with one set of points.
-</p>
-</li></ul>
-
- 
-
-
-<h4>ANALYSES</h4>
-
-
-
-<ul>
-<li><p> The method in <code>betadisper</code> is biased with small sample
-sizes.  A bias adjusted version was developed by Adrian Stier
-and Ben Bolker, and can be invoked with argument
-<code>bias.adjust</code> (defaults to <code>FALSE</code>).
 </p>
 </li></ul>
 
