@@ -61,6 +61,10 @@
         community data.  This allows using other dissimilarities than
         those available in \code{vegdist}.
 
+      \item \code{plot} function for \code{envfit} results gained new
+        argument \code{bg} that can be used to set background colour for
+        plotted labels.
+
       \item \code{msoplot} is more configurable, and allows, for
         instance, setting y-axis limits.
 
