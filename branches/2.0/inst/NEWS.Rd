@@ -24,20 +24,14 @@
 
       \item \code{envfit} failed with unused factor levels.
 
-      \item Equal aspect ratio cannot be set exactly in
-        \code{ordiplot3d} because underlying core routines do not allow
-        this. Now \code{ordiplot3d} sets equal axis ranges, and the
-        documents urge users to verify that the aspect ratio is
-        reasonably equal and the graph looks like a cube.
-
       \item \code{predict} for \code{cca} results with \code{type =
         "response"} or \code{type = "working"} failed with
-        \code{newdata} if it did not have the same number of rows as
-        the original model data.  Now the \code{newdata} is ignored if
-        it has a wrong number of rows.  The number of rows must match
-        because the results in these models must be weighted by
-        original row totals.  The problem did not concern \code{rda}
-        or \code{capscale} results which do not need row weights.
+        \code{newdata} if the number of rows did not match with the
+        original data.  Now the \code{newdata} is ignored if it has a
+        wrong number of rows.  The number of rows must match because
+        the results in \code{cca} must be weighted by original row
+        totals.  The problem did not concern \code{rda} or
+        \code{capscale} results which do not need row weights.
         Reported by Glenn De'ath.
     
     }
@@ -50,15 +44,23 @@
         \code{hiersimu} and \code{multipart}) have now \code{formula}
         and \code{default} methods.  The \code{formula} method is
         identical to the previous functions, but the \code{default}
-        method can take two matrices as input.  If the second argument
-        describing the hierarcy is missing, the method gives an
-        overall partitioning to alpha, beta and gamma diversities.
+        method can take two matrices as input. 
 
-      \item \code{bioenv} accepts dissimilarities or square matrices
-        that can be interpreted as dissimilarities as an alternative to
+ 	Fast and easy overall partitioning to alpha, beta and gamma
+ 	diversities can be made by omitting the argument describing
+ 	the hierarchy.
+
+      \item The method in \code{betadisper} is biased with small
+        sample sizes.  The effects of bias are strongest with unequal
+        sample sizes. A bias adjusted version was developed by Adrian
+        Stier and Ben Bolker, and can be invoked with argument
+        \code{bias.adjust} (defaults to \code{FALSE}).
+
+      \item \code{bioenv} accepts dissimilarities (or square matrices
+        that can be interpreted as dissimilarities) as an alternative to
         community data.  This allows using other dissimilarities than
         those available in \code{vegdist}.
- 
+
       \item \code{msoplot} is more configurable, and allows, for
         instance, setting y-axis limits.
 
@@ -75,23 +77,20 @@
         these can be used to add \code{envfit} results to existing
         \code{ordiplot3d} plots.
 
+        Equal aspect ratio cannot be set exactly in \code{ordiplot3d}
+        because underlying core routines do not allow this. Now
+        \code{ordiplot3d} sets equal axis ranges, and the documents
+        urge users to verify that the aspect ratio is reasonably equal
+        and the graph looks like a cube.  If the problems cannot be
+        solved in the future, the function may be removed from next
+        releases of \pkg{vegan}.
+
       \item Function \code{ordipointlabel} gained argument to
         \code{select} only some of the items for plotting. The
         argument can be used only with one set of points.
 
     }
   } % end new features 	 
-
-  \subsection{ANALYSES}{
-    \itemize{
-    
-      \item The method in \code{betadisper} is biased with small sample
-        sizes.  A bias adjusted version was developed by Adrian Stier
-        and Ben Bolker, and can be invoked with argument
-        \code{bias.adjust} (defaults to \code{FALSE}).
-         
-    }
-  } % end analyses
 
 }%end version 2.0-4
 
