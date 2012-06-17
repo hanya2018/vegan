@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-4 (opened March 9, 2012)
+Version 2.0-4 (released June 18, 2012)
 
 	* merge r2215: plot.envfit() gains args 'bg' for background colour
 	of labels.
