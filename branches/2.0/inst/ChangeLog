@@ -6,6 +6,8 @@ Version 2.0-4 (opened March 9, 2012)
 
 	* merge r2215: plot.envfit() gains args 'bg' for background colour
 	of labels.
+	* cherry-pick from r2213: warn on empty rows in simper (picked
+	github revision cce42b3).
 	* merge r2206,7: check 'newdata' dims in predict(..., type =
 	"response"|"working") for CA results.
 	* merge r2195-7, 2204: bias adjusted betadisper.
