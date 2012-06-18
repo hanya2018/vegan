@@ -46,14 +46,14 @@
         identical to the previous functions, but the \code{default}
         method can take two matrices as input. 
 
- 	Fast and easy overall partitioning to alpha, beta and gamma
- 	diversities can be made by omitting the argument describing
- 	the hierarchy.
+ 	Functions \code{adipart} and \code{multipart} can be used for
+ 	fast and easy overall partitioning to alpha, beta and gamma
+ 	diversities by omitting the argument describing the hierarchy.
 
       \item The method in \code{betadisper} is biased with small
-        sample sizes.  The effects of bias are strongest with unequal
-        sample sizes. A bias adjusted version was developed by Adrian
-        Stier and Ben Bolker, and can be invoked with argument
+        sample sizes.  The effects of the bias are strongest with
+        unequal sample sizes. A bias adjusted version was developed by
+        Adrian Stier and Ben Bolker, and can be invoked with argument
         \code{bias.adjust} (defaults to \code{FALSE}).
 
       \item \code{bioenv} accepts dissimilarities (or square matrices
@@ -86,8 +86,8 @@
         \code{ordiplot3d} sets equal axis ranges, and the documents
         urge users to verify that the aspect ratio is reasonably equal
         and the graph looks like a cube.  If the problems cannot be
-        solved in the future, the function may be removed from next
-        releases of \pkg{vegan}.
+        solved in the future, \code{ordiplot3d} may be removed from
+        next releases of \pkg{vegan}.
 
       \item Function \code{ordipointlabel} gained argument to
         \code{select} only some of the items for plotting. The

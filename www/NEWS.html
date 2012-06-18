@@ -65,15 +65,15 @@ and <code>default</code> methods.  The <code>formula</code> method is
 identical to the previous functions, but the <code>default</code>
 method can take two matrices as input. 
 </p>
-<p>Fast and easy overall partitioning to alpha, beta and gamma
-diversities can be made by omitting the argument describing
-the hierarchy.
+<p>Functions <code>adipart</code> and <code>multipart</code> can be used for
+fast and easy overall partitioning to alpha, beta and gamma
+diversities by omitting the argument describing the hierarchy.
 </p>
 </li>
 <li><p> The method in <code>betadisper</code> is biased with small
-sample sizes.  The effects of bias are strongest with unequal
-sample sizes. A bias adjusted version was developed by Adrian
-Stier and Ben Bolker, and can be invoked with argument
+sample sizes.  The effects of the bias are strongest with
+unequal sample sizes. A bias adjusted version was developed by
+Adrian Stier and Ben Bolker, and can be invoked with argument
 <code>bias.adjust</code> (defaults to <code>FALSE</code>).
 </p>
 </li>
@@ -111,8 +111,8 @@ because underlying core routines do not allow this. Now
 <code>ordiplot3d</code> sets equal axis ranges, and the documents
 urge users to verify that the aspect ratio is reasonably equal
 and the graph looks like a cube.  If the problems cannot be
-solved in the future, the function may be removed from next
-releases of <span class="pkg">vegan</span>.
+solved in the future, <code>ordiplot3d</code> may be removed from
+next releases of <span class="pkg">vegan</span>.
 </p>
 </li>
 <li><p> Function <code>ordipointlabel</code> gained argument to
