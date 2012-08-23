@@ -5,9 +5,11 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-5 (opened June 18, 2012)
 
 	* merge r2254: stylistic in examples of Rd files.
-	* merge r2250: do not use paste0 in envift.Rd (fails in R 2.14). 
+	* merge r2250: do not use paste0 in envift.Rd (fails in R 2.14).
+	* merge r2249: fix vignette building with TeXLive 2012.
 	* merge r2246: remove dead code from cIndexKM() and R-devel CMD
 	check warning.
+	* merge r2244: more portable doc/Makefile
 	* merge r2237 thru 2240: add labels.envfit() and "labels" arg to
 	plot.envfit(). 
 	* merge r2225: biplot.rda 'type' fix.
