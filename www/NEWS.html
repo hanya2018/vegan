@@ -8,6 +8,79 @@
 
 <h2>vegan News</h2>
 
+<h3>Changes in version 2.0-5</h3>
+
+
+
+
+<h4>NEW FUNCTIONS</h4>
+
+
+
+<ul>
+<li><p> Most <span class="pkg">vegan</span> functions with permutation tests have now a
+<code>density</code> method that can be used to fit empirical
+probability distributions of permutations. There is a new
+<code>plot</code> method for these function that displays both the
+density and the observed statistic. The <code>density</code> function is
+available for <code>adonis</code>, <code>anosim</code>, <code>mantel</code>,
+<code>mantel.partial</code>, <code>mrpp</code>, <code>permutest.cca</code> and
+<code>procrustes</code>.
+</p>
+<p>Function <code>adonis</code> can return several statistics, and it has
+now a <code>densityplot</code> method (based on <span class="pkg">lattice</span>).
+</p>
+<p>Function <code>oecosimu</code> already had <code>density</code> and
+<code>densityplot</code>, but they are now similar to other <span class="pkg">vegan</span>
+methods, and also work with <code>adipart</code>, <code>hiersimu</code> and
+<code>multipart</code>. 
+</p>
+</ul>
+
+ 
+
+
+<h4>NEW FEATURES</h4>
+
+
+
+<ul>
+<li><p> Function for additive and multiplicative diversity
+partioning (<code>adipart</code>, <code>hiersimu</code> and <code>multipart</code>)
+have more flexible formula interface. Skipping the formula will
+now give a simple partitioning into alpha, beta and gamma
+diversity in <code>adipart</code> and <code>multipart</code>.
+</p>
+</li>
+<li><p> Labels can now be set in the <code>plot</code> of <code>envfit</code>
+results. The labels must be given in the same order that the
+function uses internally, and new support function <code>labels</code>
+can be used to display the default labels in their correct order.  
+</p>
+</ul>
+
+ 
+
+
+<h4>INSTALLATION AND BUILDING</h4>
+
+
+
+<ul>
+<li><p> Building of <span class="pkg">vegan</span> vignettes failed with the latest
+version of LaTeX (TeXLive 2012).
+</p>
+</li>
+<li><p> Changes in <font face="Courier New,Courier" color="#666666"><b>R</b></font> testing procedures gave warnings for
+<code>betadisper</code> and <code>cIndexKM</code> in development version of
+<font face="Courier New,Courier" color="#666666"><b>R</b></font>.  Internal changes in <font face="Courier New,Courier" color="#666666"><b>R</b></font> caused an error in
+<code>betadisper</code>.
+</p>
+</ul>
+
+ 
+
+
 <h3>Changes in version 2.0-4</h3>
 
 
@@ -49,7 +122,7 @@ totals.  The problem did not concern <code>rda</code> or
 <code>capscale</code> results which do not need row weights.
 Reported by Glenn De'ath.
 </p>
-</li></ul>
+</ul>
 
 
 
@@ -119,7 +192,7 @@ next releases of <span class="pkg">vegan</span>.
 <code>select</code> only some of the items for plotting. The
 argument can be used only with one set of points.
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -156,7 +229,7 @@ species.  The code was developed in
 <a href="https://github.com/jarioksa/vegan">GitHub</a>
 by Eduard Szöcs (Uni Landau, Germany).
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -188,7 +261,7 @@ requested axes was higher than the ordination object had.  This
 was reported as an error in <code>ordiplot</code> in
 <a href="https://stat.ethz.ch/pipermail/r-sig-ecology/2012-February/002768.html">R-sig-ecology</a> mailing list.
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -229,7 +302,7 @@ data with high beta diversity and variable sampling
 intensity. Thanks to consultation to Yong Cao (Univ Illinois,
 USA).
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -271,7 +344,7 @@ following fixing of the first bug. In fixing both bugs, a
 speed-up in the internal f.test() function is fully
 realised. Reported by Nicholas Lewin-Koh.
 </p>
-</li></ul>
+</ul>
 
   
 
@@ -291,7 +364,7 @@ coordinates to which the points were connected.  Typically these
 are class centroids of each point, but for constrained ordination
 with no <code>groups</code> they are the LC scores.
 </p>
-</li></ul>
+</ul>
 		 
   
 
@@ -332,7 +405,7 @@ follows Chase et al. (2011) <EM>Ecosphere</EM> 2:art24
 [<a href="http://www.esajournals.org/doi/abs/10.1890/ES10-00117.1">doi:10.1890/ES10-00117.1</a>],
 and was developed with the consultation of Brian Inouye.
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -371,7 +444,7 @@ changed to adapt to this change (<code>rda</code>, <code>capscale</code>,
 results but you probably wish to upgrade <span class="pkg">vegan</span> to avoid
 annoying warnings.
 </p>
-</li></ul>
+</ul>
 	
  
 
@@ -386,7 +459,7 @@ to optimize the statistic for tied column frequencies. Tracing
 showed that in most cases an improved ordering was found rather
 early in tries, and the results are equally good in most cases.
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -422,7 +495,7 @@ schemes. All <span class="pkg">vegan</span> permutation will gradually move to u
 <span class="pkg">permute</span>, but currently only <code>betadisper</code> uses the new
 feature. 
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -478,7 +551,7 @@ directly in non-linear regression with <code>nls</code>. These functions
 were implemented because they were found good for species-area
 models by Dengler (<EM>J. Biogeogr.</EM> 36, 728-744; 2009).
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -520,7 +593,7 @@ levels in the grouping factor <code>pool</code>.  Now also checks that
 the length of the <code>pool</code> matches the number of
 observations.
 </p>
-</li></ul>
+</ul>
 
  
 
@@ -539,7 +612,7 @@ code was removed in favour of the <span class="pkg">permute</span> package. This
 was not intended for normal use, but packages depending on that
 code in <span class="pkg">vegan</span> should instead depend on <span class="pkg">permute</span>.
 </p>
-</li></ul>
+</ul>
   
  
 
@@ -552,7 +625,7 @@ code in <span class="pkg">vegan</span> should instead depend on <span class="pkg
 <li> <p><code>treeheight</code> uses much snappier code. The results
 should be unchanged.
 </p>
-</li></ul>
+</ul>
 
  
 
