@@ -30,12 +30,6 @@
   \subsection{NEW FEATURES}{
     \itemize{
 
-      \item Function for additive and multiplicative diversity
-      partioning (\code{adipart}, \code{hiersimu} and \code{multipart})
-      have more flexible formula interface. Skipping the formula will
-      now give a simple partitioning into alpha, beta and gamma
-      diversity in \code{adipart} and \code{multipart}.
-
       \item Labels can now be set in the \code{plot} of \code{envfit}
       results. The labels must be given in the same order that the
       function uses internally, and new support function \code{labels}
