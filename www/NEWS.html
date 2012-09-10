@@ -45,17 +45,17 @@ methods, and also work with <code>adipart</code>, <code>hiersimu</code> and
 
 
 <ul>
-<li><p> Function for additive and multiplicative diversity
-partioning (<code>adipart</code>, <code>hiersimu</code> and <code>multipart</code>)
-have more flexible formula interface. Skipping the formula will
-now give a simple partitioning into alpha, beta and gamma
-diversity in <code>adipart</code> and <code>multipart</code>.
-</p>
-</li>
 <li><p> Labels can now be set in the <code>plot</code> of <code>envfit</code>
 results. The labels must be given in the same order that the
 function uses internally, and new support function <code>labels</code>
-can be used to display the default labels in their correct order.  
+can be used to display the default labels in their correct order.
+</p>
+</li>
+<li><p> Mantel tests (functions <code>mantel</code> and
+<code>mantel.partial</code>) gained argument <code>na.rm</code> which can be
+used to remove missing values. This options should be used with
+care: Permutation tests can be biased if the missing values were
+originally in matching or fixed positions.
 </p>
 </ul>
 
