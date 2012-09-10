@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-5 (opened June 18, 2012)
 
+	* merge r2271: tweak varpart.Rd. (plot coloured circles).
+	* merge r2267: tweak vegdist.Rd (ref to vegdist).
 	* merge r2260: streamline adonis (internal changes).
 	* merge r2258: protect betadisper against changes in R-devel API.
 	* merge r2254: stylistic in examples of Rd files.
