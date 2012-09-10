@@ -2,6 +2,67 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0-5}{
+
+  \subsection{NEW FUNCTIONS}{
+    \itemize{
+
+      \item Most \pkg{vegan} functions with permutation tests have now a
+      \code{density} method that can be used to fit empirical
+      probability distributions of permutations. There is a new
+      \code{plot} method for these function that displays both the
+      density and the observed statistic. The \code{density} function is
+      available for \code{adonis}, \code{anosim}, \code{mantel},
+      \code{mantel.partial}, \code{mrpp}, \code{permutest.cca} and
+      \code{procrustes}.
+
+      Function \code{adonis} can return several statistics, and it has
+      now a \code{densityplot} method (based on \pkg{lattice}).
+
+      Function \code{oecosimu} already had \code{density} and
+      \code{densityplot}, but they are now similar to other \pkg{vegan}
+      methods, and also work with \code{adipart}, \code{hiersimu} and
+      \code{multipart}. 
+
+    }
+  } % new functions
+
+  \subsection{NEW FEATURES}{
+    \itemize{
+
+      \item Function for additive and multiplicative diversity
+      partioning (\code{adipart}, \code{hiersimu} and \code{multipart})
+      have more flexible formula interface. Skipping the formula will
+      now give a simple partitioning into alpha, beta and gamma
+      diversity in \code{adipart} and \code{multipart}.
+
+      \item Labels can now be set in the \code{plot} of \code{envfit}
+      results. The labels must be given in the same order that the
+      function uses internally, and new support function \code{labels}
+      can be used to display the default labels in their correct order.  
+
+    }
+
+  } % new features
+  
+  \subsection{INSTALLATION AND BUILDING}{
+    \itemize{
+
+      \item Building of \pkg{vegan} vignettes failed with the latest
+      version of LaTeX (TeXLive 2012).
+
+      \item Changes in \R{} testing procedures gave warnings for
+      \code{betadisper} and \code{cIndexKM} in development version of
+      \R.  Internal changes in \R{} caused an error in
+      \code{betadisper}.
+      
+    }
+  } % installation and building
+  
+
+} % version 2.0-5
+
+
 \section{Changes in version 2.0-4}{
 
   \subsection{BUG FIXES}{
