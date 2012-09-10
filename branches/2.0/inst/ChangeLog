@@ -4,6 +4,7 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-5 (opened June 18, 2012)
 
+	* merge r2260: streamline adonis (internal changes).
 	* merge r2258: protect betadisper against changes in R-devel API.
 	* merge r2254: stylistic in examples of Rd files.
 	* merge r2250: do not use paste0 in envift.Rd (fails in R 2.14).
