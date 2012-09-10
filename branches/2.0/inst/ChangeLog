@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-5 (opened June 18, 2012)
 
+	* merge r2262, 2268:2270, and also r1950: mantel and
+	mantel.partial gained argument na.rm = FALSE. This needed hand
+	editing of merges, and also merging old r1950: beware and test.
 	* merge r2271: tweak varpart.Rd. (plot coloured circles).
 	* merge r2267: tweak vegdist.Rd (ref to vegdist).
 	* merge r2260: streamline adonis (internal changes).
