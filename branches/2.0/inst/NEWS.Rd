@@ -33,7 +33,13 @@
       \item Labels can now be set in the \code{plot} of \code{envfit}
       results. The labels must be given in the same order that the
       function uses internally, and new support function \code{labels}
-      can be used to display the default labels in their correct order.  
+      can be used to display the default labels in their correct order.
+
+      \item Mantel tests (functions \code{mantel} and
+      \code{mantel.partial}) gained argument \code{na.rm} which can be
+      used to remove missing values. This options should be used with
+      care: Permutation tests can be biased if the missing values were
+      originally in matching or fixed positions.
 
     }
 
