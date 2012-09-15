@@ -61,9 +61,6 @@ echo $contents; } ?>
 <h2>Vegan resources</h2>
 <p>Here some pointers to vegan resources:</p>
 <ul>
-	<li>Developer diaries: <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=267">Jari Oksanen</a>, <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=269">Gavin Simpson</a>,
- <a href="http://<?php echo $domain; ?>/developer/diary.php?diary_user=459">Peter Solymos</a>
-</li>
 
 <li>The project <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>summary page</strong></a> at R-Forge. </li>
 
@@ -75,9 +72,7 @@ echo $contents; } ?>
 
 <li>Vegan tutorial as a <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">pdf file</a>.</li>
 
-<li> The old  
-<a href="http://cc.oulu.fi/~jarioksa/softhelp/vegan.html">vegan home page</a> </li>  
-</ul>
+
 <hr />
 
 <p>
