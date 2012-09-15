@@ -18,7 +18,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php echo $group_name; ?></title>
-	<link href="<?php echo $themeroot; ?>styles/estilo1.css" rel="stylesheet" type="text/css" />
+	<link href="vegan.css" rel="stylesheet" type="text/css" />
   </head>
 
 <body>
@@ -56,10 +56,7 @@ echo $contents; } ?>
 <li><strong>Dissimilarity analyses:</strong> ANOVA using dissimilarities, ANOSIM, MRPP, BIOENV, Mantel and partial Mantel tests.</li>
 <li><strong>Data standardization:</strong> Hellinger, Wisconsin, Chi-square, Beals smoothing.</li>
 </ul>
-<p>
-<a href="http://<?php echo $domain; ?>/scm/?group_id=68">
-<img src="http://<?php echo $domain; ?>/images/downloadbar.gif" alt="DOWNLOAD" border="0" /></a>
-</p>
+
 
 <h2>Vegan resources</h2>
 <p>Here some pointers to vegan resources:</p>
