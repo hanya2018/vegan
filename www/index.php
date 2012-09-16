@@ -71,7 +71,7 @@ echo $contents; } ?>
 <li>Vegan <a href="FAQ-vegan.html">FAQ</a>.</li>
 
 <li>Vegan tutorial as a <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf">pdf file</a>.</li>
-
+</ul>
 
 <hr />
 
