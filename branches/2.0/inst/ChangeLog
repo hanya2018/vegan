@@ -3,8 +3,10 @@ $Date$
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-5 (opened June 18, 2012)
-
-	* merge r2288,9: scoping in anova.ccabyaxis and anova.ccabyterm.
+	
+	* merge r2291 thru 2296, 2298, 2300: radfit upgrade.
+	* merge r2287,8: scoping in anova.ccabyaxis and anova.ccabyterm.
+	* merge r2285: add predict.radfit.
 	* merge r2262, 2268:2270, and also r1950: mantel and
 	mantel.partial gained argument na.rm = FALSE. This needed hand
 	editing of merges, and also merging old r1950: beware and test.
