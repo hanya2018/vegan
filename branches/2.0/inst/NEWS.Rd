@@ -4,6 +4,21 @@
 
 \section{Changes in version 2.0-5}{
 
+  \subsection{BUG FIXES}{
+
+    \itemize{
+
+      \item \code{anova(<cca_object>, ...)} failed with \code{by =
+      "axis"} and \code{by = "term"}. The bug was reported by Dr Sven
+      Neulinger (Christian Albrecht University, Kiel, Germany).
+
+      \item \code{radlattice} did not honourour argument \code{BIC =
+      TRUE}, but always displayed AIC.
+
+    }
+
+  } % bug fixes
+
   \subsection{NEW FUNCTIONS}{
     \itemize{
 
@@ -22,7 +37,13 @@
       Function \code{oecosimu} already had \code{density} and
       \code{densityplot}, but they are now similar to other \pkg{vegan}
       methods, and also work with \code{adipart}, \code{hiersimu} and
-      \code{multipart}. 
+      \code{multipart}.
+
+      \item \code{radfit} functions got a \code{predict} method that
+      also accepts arguments \code{newdata} and \code{total} for new
+      ranks and site totals for prediction.  The functions can also
+      interpolate to non-integer \dQuote{ranks}, and in some models
+      also extrapolate.
 
     }
   } % new functions
@@ -40,6 +61,13 @@
       used to remove missing values. This options should be used with
       care: Permutation tests can be biased if the missing values were
       originally in matching or fixed positions.
+
+      \item \code{radfit} results can be consistently accessed with
+      the same methods whether they were a single model for a single
+      site, all models for a single site or all models for all sites
+      in the data.  All functions now have methods \code{AIC},
+      \code{coef}, \code{deviance}, \code{logLik}, \code{fitted},
+      \code{predict} and \code{residuals}.
 
     }
 
