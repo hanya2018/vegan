@@ -12,8 +12,8 @@
       "axis"} and \code{by = "term"}. The bug was reported by Dr Sven
       Neulinger (Christian Albrecht University, Kiel, Germany).
 
-      \item \code{radlattice} did not honourour argument \code{BIC =
-      TRUE}, but always displayed AIC.
+      \item \code{radlattice} did not honour argument \code{BIC = TRUE},
+      but always displayed AIC.
 
     }
 
