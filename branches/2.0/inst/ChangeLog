@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-5 (opened June 18, 2012)
+Version 2.0-5 (released October 8, 2012)
 
 	* merge r2309: anova.cca.Rd edits.
 	* merge r2307: no line breaks within \code{} in Rd.
