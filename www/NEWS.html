@@ -37,9 +37,9 @@ but always displayed AIC.
 
 <ul>
 <li><p> Most <span class="pkg">vegan</span> functions with permutation tests have now a
-<code>density</code> method that can be used to fit empirical
+<code>density</code> method that can be used to find empirical
 probability distributions of permutations. There is a new
-<code>plot</code> method for these function that displays both the
+<code>plot</code> method for these functions that displays both the
 density and the observed statistic. The <code>density</code> function is
 available for <code>adonis</code>, <code>anosim</code>, <code>mantel</code>,
 <code>mantel.partial</code>, <code>mrpp</code>, <code>permutest.cca</code> and
@@ -104,10 +104,13 @@ in the data.  All functions now have methods <code>AIC</code>,
 version of LaTeX (TeXLive 2012).
 </p>
 </li>
-<li><p> Changes in <font face="Courier New,Courier" color="#666666"><b>R</b></font> testing procedures gave warnings for
-<code>betadisper</code> and <code>cIndexKM</code> in development version of
-<font face="Courier New,Courier" color="#666666"><b>R</b></font>.  Internal changes in <font face="Courier New,Courier" color="#666666"><b>R</b></font> caused an error in
-<code>betadisper</code>.
+<li> <p><font face="Courier New,Courier" color="#666666"><b>R</b></font> versions later than 2.15-1 (including development
+version) report warnings and errors when installing and checking
+<span class="pkg">vegan</span>, and you must upgrade <span class="pkg">vegan</span> to this version.
+The warnings concern functions <code>cIndexKM</code> and
+<code>betadisper</code>, and the error occurs in <code>betadisper</code>.
+These errors and warnings were triggered by internal changes in
+<font face="Courier New,Courier" color="#666666"><b>R</b></font>.
 </p>
 </li></ul>
 
