@@ -23,9 +23,9 @@
     \itemize{
 
       \item Most \pkg{vegan} functions with permutation tests have now a
-      \code{density} method that can be used to fit empirical
+      \code{density} method that can be used to find empirical
       probability distributions of permutations. There is a new
-      \code{plot} method for these function that displays both the
+      \code{plot} method for these functions that displays both the
       density and the observed statistic. The \code{density} function is
       available for \code{adonis}, \code{anosim}, \code{mantel},
       \code{mantel.partial}, \code{mrpp}, \code{permutest.cca} and
@@ -79,10 +79,13 @@
       \item Building of \pkg{vegan} vignettes failed with the latest
       version of LaTeX (TeXLive 2012).
 
-      \item Changes in \R{} testing procedures gave warnings for
-      \code{betadisper} and \code{cIndexKM} in development version of
-      \R.  Internal changes in \R{} caused an error in
-      \code{betadisper}.
+      \item \R{} versions later than 2.15-1 (including development
+      version) report warnings and errors when installing and checking
+      \pkg{vegan}, and you must upgrade \pkg{vegan} to this version.
+      The warnings concern functions \code{cIndexKM} and
+      \code{betadisper}, and the error occurs in \code{betadisper}.
+      These errors and warnings were triggered by internal changes in
+      \R.
       
     }
   } % installation and building
