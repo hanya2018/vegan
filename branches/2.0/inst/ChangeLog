@@ -4,9 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
-	* merge 2318: dispindmorista gains p-values of output
-	* merge 2319, 2323: clamtest bug fixes and clarifications-
 	* merge 2325: fix rotation of axes in 2-d plot.procrustes().
+	* merge 2319, 2323: clamtest bug fixes and clarifications.
+	* merge 2318: dispindmorista gains p-values of output.
 	
 Version 2.0-5 (released October 8, 2012)
 
