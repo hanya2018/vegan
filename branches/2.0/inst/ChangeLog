@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
+	* merge 2345: FAQ update (github, metric NMDS space).
+	* merge 2342: unused factor levels in envfit/factorfit.
+	* merge 2341 (partial): visible space in pdf of Rnw files.
 	* merge 2336: stricter monoMDS convergence criteria.
 	* merge 2334,5: scores.monoMDS,metaMDS updates.
 	* merge 2332: add plot.nestednodf().
