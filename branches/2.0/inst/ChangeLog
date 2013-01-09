@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
+	* merge 2350: capscale species score scaling bug fix.
+	* merge 2349: multipart print bug fix.
 	* merge 2345: FAQ update (github, metric NMDS space).
 	* merge 2342: unused factor levels in envfit/factorfit.
 	* merge 2341 (partial): visible space in pdf of Rnw files.
