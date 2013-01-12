@@ -4,6 +4,9 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
+	* merge 2362: doc on r2357 for capscale.
+	* merge 2361: adjust imaginary axes similarly as real eigenvalue. 
+	* merge 2357: print additive constant in capscale.
 	* merge 2350: capscale species score scaling bug fix.
 	* merge 2349: multipart print bug fix.
 	* merge 2345: FAQ update (github, metric NMDS space).
