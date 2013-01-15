@@ -4,6 +4,7 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
+	* merge 2372: ordilabel uses ordiArgAbsorber when plotting
 	* merge 2369: clamtest fix and border cases.
 	* merge 2367: rectify mantel, summary.anosim print.
 	* merge 2362: doc on r2357 for capscale.
