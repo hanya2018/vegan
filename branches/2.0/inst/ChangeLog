@@ -8,6 +8,7 @@ Version 2.0-6 (opened October 8, 2012)
 	data.frame. Not merged: checking length of statistic when setting
 	its name.
 	* merge 2932,3: matching names in treedive() and treedist().
+	* merge 2385, 7: protest print, faster sum of squares in procrustes. 
 	* merge 2384: new FAQ entries.
 	* merge 2383: remove alias to print.wcmdscale.
 	* merge 2374,2376,2378,2382: orditorp gains argument select
