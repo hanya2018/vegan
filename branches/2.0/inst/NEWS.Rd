@@ -2,6 +2,54 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0-6}{
+
+  \subsection{BUG FIXES}{
+
+    \itemize{
+
+      \item \code{capscale} scaled species scores wrongly when other
+      dissimilarties than Euclidean distances were used.
+
+      \item \code{clamtest} 
+
+      \item \code{envfit} handles unused factor levels. 
+
+      \item \code{multipart} printed wrong information about the
+      analysis type (but did analysis correctly).
+
+      \item \code{procrustes}
+
+      \item \code{treedive} and \code{treedist} name matching. 
+
+    }
+ 
+  } % bug fixes
+
+  \subsection{NEW FEATURES}{
+
+    \itemize{
+
+      \item \code{dispindmorisita} gains \eqn{P}-value.
+
+      \item \code{metaMDS} and \code{monoMDS} have new default
+      convergence criteria.
+
+      \item \code{ordiR2step} gained new argument \code{R2scope} and
+      handles partial redundancy analysis (pRDA).
+
+      \item \code{orditorp} gained argument \code{select}
+
+      \item \code{protest} prints both \eqn{m_{12}^2}{squared m12} and
+      \eqn{R^2}{R2}.
+
+    }
+
+  } % new features
+   
+
+} % end 2.0-6
+
 \section{Changes in version 2.0-5}{
 
   \subsection{BUG FIXES}{
