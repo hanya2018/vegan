@@ -8,19 +8,40 @@
 
     \itemize{
 
-      \item \code{capscale} scaled species scores wrongly when other
-      dissimilarties than Euclidean distances were used.
+      \item The species scores were scaled correctly in
+      \code{capscale()} only when Euclidean distances were used. Most
+      graphics will change and should be redone.  The function also
+      now displays the value of the additive constant when argument
+      \code{add = TRUE} was used.
 
-      \item \code{clamtest} 
+      \item Function \code{clamtest()} failed to set the minimum
+      abundance threshold in some cases. The output was wrong when
+      some of the possible species groups were missing. The problems
+      were reported by Richard Telford (Bergen, Norway).
 
-      \item \code{envfit} handles unused factor levels. 
+      \item Plotting an object fitted by \code{envfit()} would fail if
+      \code{p.max} was used and there were unused levels for one or
+      more factors. The unused levels could result from deletion of
+      observations with missing values or simply the result of
+      supplying a subset of a larger data set to \code{envfit()}.
 
-      \item \code{multipart} printed wrong information about the
-      analysis type (but did analysis correctly).
+      \item \code{multipart()} printed wrong information about the
+      analysis type (but did analysis correctly). Reported by Valerie
+      Coudrain.
 
-      \item \code{procrustes}
+      \item \code{oecosimu()} failed if its \code{nestedfun} returned
+      a data frame. A more fundamental fix will be in \pkg{vegan}
+      2.2-0.
 
-      \item \code{treedive} and \code{treedist} name matching. 
+      \item The plot of two-dimensional \code{procrustes()} solutions
+      often draw original axes in a wrong angle. The problem was
+      reported by Elizabeth Ottesen (MIT).
+
+      \item Function \code{treedive()} for functional diversity did
+      not correctly match the species names in the community data and
+      classification tree when the tree containted species that did
+      not occur in the data.  Related function \code{treedist()} for
+      phylogenetic distances did not try to match the names at all.
 
     }
  
@@ -30,18 +51,47 @@
 
     \itemize{
 
-      \item \code{dispindmorisita} gains \eqn{P}-value.
+      \item \code{dispindmorisita()} output gained a new column for
+      Chi-squared based probabilities that the null hypothesis (random
+      distribution) is true.
 
-      \item \code{metaMDS} and \code{monoMDS} have new default
-      convergence criteria.
+      \item \code{metaMDS()} and \code{monoMDS()} have new default
+      convergence criteria. Most importantly, scale factor of the
+      gradient (\code{sfgrmin}) is stricter. The former limit was too
+      slack with large data sets and iterations stopped early without
+      getting close to the solution. In addition, \code{scores()}
+      ignore now requests to dimensions beyond those calculated
+      instead of failing, and \code{scores()} for \code{metaMDS()}
+      results do not drop dimensions.
 
-      \item \code{ordiR2step} gained new argument \code{R2scope} and
-      handles partial redundancy analysis (pRDA).
+      \item \code{msoplot()} gained \code{legend} argument for
+      positioning the legend.
 
-      \item \code{orditorp} gained argument \code{select}
+      \item Nestedness function \code{nestednodf()} gained a \code{plot}
+      method.
 
-      \item \code{protest} prints both \eqn{m_{12}^2}{squared m12} and
-      \eqn{R^2}{R2}.
+      \item \code{ordiR2step()} gained new argument \code{R2scope}
+      (defaults \code{TRUE}) which can be used to turn off the
+      criterion of stopping when the adjusted \eqn{R^2}{R2} of the
+      current model exceeds that of the scope.  This option allows
+      model building when the \code{scope} would be overdetermined
+      (number of predictors higher than number of observations).
+
+      \code{ordiR2step()} now handles partial redundancy analysis
+      (pRDA).
+
+      \item \code{orditorp()} gained argument \code{select} to select
+      the rows or columns of the results to display.
+
+      \item \code{protest()} prints the standardized residual sum of
+      squared \eqn{m_{12}^2}{squared m12} in addition to the squared
+      Procrustes correlation \eqn{R^2}{R2}.  Both were calculated, but
+      only the latter was displayed.
+
+      \item \code{wcmdscale()} gained methods for \code{print},
+      \code{plot} etc. of the results. These methods are only used if
+      the full \code{wcmdscale} result is returned with, e.g.,
+      argument \code{eig = TRUE}.
 
     }
 
