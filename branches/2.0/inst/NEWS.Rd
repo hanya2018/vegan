@@ -39,7 +39,7 @@
 
       \item Function \code{treedive()} for functional diversity did
       not correctly match the species names in the community data and
-      classification tree when the tree containted species that did
+      classification tree when the tree contained species that did
       not occur in the data.  Related function \code{treedist()} for
       phylogenetic distances did not try to match the names at all.
 
@@ -83,10 +83,14 @@
       \item \code{orditorp()} gained argument \code{select} to select
       the rows or columns of the results to display.
 
-      \item \code{protest()} prints the standardized residual sum of
-      squared \eqn{m_{12}^2}{squared m12} in addition to the squared
+      \item \code{protest()} prints the standardized residual
+      statistic \eqn{m_{12}^2}{squared m12} in addition to the squared
       Procrustes correlation \eqn{R^2}{R2}.  Both were calculated, but
       only the latter was displayed.
+
+      Permutation tests are much faster in \code{protest()}. Instead
+      of calling repeatedly \code{procrustes()}, the goodness of fit
+      statistic is evaluated within then function.
 
       \item \code{wcmdscale()} gained methods for \code{print},
       \code{plot} etc. of the results. These methods are only used if

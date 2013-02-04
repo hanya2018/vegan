@@ -55,7 +55,7 @@ reported by Elizabeth Ottesen (MIT).
 </li>
 <li><p> Function <code>treedive()</code> for functional diversity did
 not correctly match the species names in the community data and
-classification tree when the tree containted species that did
+classification tree when the tree contained species that did
 not occur in the data.  Related function <code>treedist()</code> for
 phylogenetic distances did not try to match the names at all.
 </p>
@@ -107,10 +107,14 @@ model building when the <code>scope</code> would be overdetermined
 the rows or columns of the results to display.
 </p>
 </li>
-<li> <p><code>protest()</code> prints the standardized residual sum of
-squared <i>squared m12</i> in addition to the squared
+<li> <p><code>protest()</code> prints the standardized residual
+statistic <i>squared m12</i> in addition to the squared
 Procrustes correlation <i>R2</i>.  Both were calculated, but
 only the latter was displayed.
+</p>
+<p>Permutation tests are much faster in <code>protest()</code>. Instead
+of calling repeatedly <code>procrustes()</code>, the goodness of fit
+statistic is evaluated within then function.
 </p>
 </li>
 <li> <p><code>wcmdscale()</code> gained methods for <code>print</code>,
