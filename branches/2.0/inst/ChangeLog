@@ -4,15 +4,19 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-6 (opened October 8, 2012)
 
-	* merge 2404: refer Legendre & Legendre for the vegan rda
-	algorithm. 
+	* merge 2420: cca cross references.
+	* merge 2417 thru 2419: predict & fitted upgraded for cca etc.  
+	* merge 2414: adjustment in predict.capscale.
+	* merge 2408: FAQ on random effects in cca etc.
+	* merge 2404,2411: refer Legendre & Legendre for the vegan rda
+	algorithm.
 	* merge 2934 (partial, mc): oecosimu handles nestedfun() returning
 	data.frame. Not merged: checking length of statistic when setting
 	its name.
 	* merge 2932,3: matching names in treedive() and treedist().
-	* merge 2388 (partial): faster protest, the part of evaluating the
-	test statistic hand crafted, because parallelizations caused
-	conflicts here.
+	* merge 2388 (partial), 2389, 2390: faster protest, the part of
+	evaluating the test statistic hand crafted, because
+	parallelizations caused conflicts here.
 	* merge 2385, 7: protest print, faster sum of squares in procrustes. 
 	* merge 2384: new FAQ entries.
 	* merge 2383: remove alias to print.wcmdscale.
