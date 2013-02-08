@@ -9,39 +9,41 @@
     \itemize{
 
       \item The species scores were scaled correctly in
-      \code{capscale()} only when Euclidean distances were used. Most
-      graphics will change and should be redone.  The function also
-      now displays the value of the additive constant when argument
-      \code{add = TRUE} was used.
+      \code{capscale()} only when Euclidean distances were used. Usually
+      \code{capscale()} is used with non-Euclidean distances, and in
+      these cases the scaling was wrong.  Most graphics will change and
+      should be redone.  The change of scaling mainly influences the
+      spread of species scores with respect to the site scores.
 
       \item Function \code{clamtest()} failed to set the minimum
-      abundance threshold in some cases. The output was wrong when
-      some of the possible species groups were missing. The problems
-      were reported by Richard Telford (Bergen, Norway).
+      abundance threshold in some cases. In addition, the output was
+      wrong when some of the possible species groups were missing. The
+      problems were reported by Richard Telford (Bergen, Norway).
 
       \item Plotting an object fitted by \code{envfit()} would fail if
       \code{p.max} was used and there were unused levels for one or
       more factors. The unused levels could result from deletion of
-      observations with missing values or simply the result of
+      observations with missing values or simply as the result of
       supplying a subset of a larger data set to \code{envfit()}.
 
       \item \code{multipart()} printed wrong information about the
       analysis type (but did analysis correctly). Reported by Valerie
       Coudrain.
 
-      \item \code{oecosimu()} failed if its \code{nestedfun} returned
-      a data frame. A more fundamental fix will be in \pkg{vegan}
-      2.2-0.
+      \item \code{oecosimu()} failed if its \code{nestedfun} returned a
+      data frame. A more fundamental fix will be in \pkg{vegan} 2.2-0,
+      where the structure of the \code{oecosimu()} result will change.
 
       \item The plot of two-dimensional \code{procrustes()} solutions
       often draw original axes in a wrong angle. The problem was
       reported by Elizabeth Ottesen (MIT).
 
-      \item Function \code{treedive()} for functional diversity did
-      not correctly match the species names in the community data and
-      classification tree when the tree contained species that did
-      not occur in the data.  Related function \code{treedist()} for
-      phylogenetic distances did not try to match the names at all.
+      \item Function \code{treedive()} for functional or phylogenetic
+      diversity did not correctly match the species names between the
+      community data and species tree when the tree contained species
+      that did not occur in the data.  Related function
+      \code{treedist()} for phylogenetic distances did not try to match
+      the names at all.
 
     }
  
@@ -50,6 +52,14 @@
   \subsection{NEW FEATURES}{
 
     \itemize{
+
+      \item The output of \code{capscale()} displays the value of the
+      additive constant when argument \code{add = TRUE} was used.
+      
+      \item \code{fitted()} functions for \code{cca()}, \code{rda()} and
+      \code{capscale()} can now return conditioned (partial) component
+      of the response: Argument \code{model} gained a new alternative
+      \code{model = "pCCA"}. 
 
       \item \code{dispindmorisita()} output gained a new column for
       Chi-squared based probabilities that the null hypothesis (random
@@ -71,11 +81,11 @@
       method.
 
       \item \code{ordiR2step()} gained new argument \code{R2scope}
-      (defaults \code{TRUE}) which can be used to turn off the
-      criterion of stopping when the adjusted \eqn{R^2}{R2} of the
-      current model exceeds that of the scope.  This option allows
-      model building when the \code{scope} would be overdetermined
-      (number of predictors higher than number of observations).
+      (defaults \code{TRUE}) which can be used to turn off the criterion
+      of stopping when the adjusted \eqn{R^2}{R-squared} of the current
+      model exceeds that of the scope.  This option allows model
+      building when the \code{scope} would be overdetermined (number of
+      predictors higher than number of observations).
 
       \code{ordiR2step()} now handles partial redundancy analysis
       (pRDA).
@@ -83,19 +93,21 @@
       \item \code{orditorp()} gained argument \code{select} to select
       the rows or columns of the results to display.
 
-      \item \code{protest()} prints the standardized residual
-      statistic \eqn{m_{12}^2}{squared m12} in addition to the squared
-      Procrustes correlation \eqn{R^2}{R2}.  Both were calculated, but
-      only the latter was displayed.
+      \item \code{protest()} prints the standardized residual statistic
+      \eqn{m_{12}^2}{squared m12} in addition to the squared Procrustes
+      correlation \eqn{R^2}{R-squared}.  Both were calculated, but only
+      the latter was displayed.
 
       Permutation tests are much faster in \code{protest()}. Instead
       of calling repeatedly \code{procrustes()}, the goodness of fit
-      statistic is evaluated within then function.
+      statistic is evaluated within the function. 
 
       \item \code{wcmdscale()} gained methods for \code{print},
       \code{plot} etc. of the results. These methods are only used if
-      the full \code{wcmdscale} result is returned with, e.g.,
-      argument \code{eig = TRUE}.
+      the full \code{wcmdscale} result is returned with, e.g., argument
+      \code{eig = TRUE}. The default is still to return only a matrix of
+      scores similarly as the standard \R function \code{cmdscale()},
+      and in that case the new methods are not used.
 
     }
 
@@ -110,9 +122,9 @@
 
     \itemize{
 
-      \item \code{anova(<cca_object>, ...)} failed with \code{by =
-      "axis"} and \code{by = "term"}. The bug was reported by Dr Sven
-      Neulinger (Christian Albrecht University, Kiel, Germany).
+      \item \code{anova(<cca_object>, ...)} failed with
+      \code{by = "axis"} and \code{by = "term"}. The bug was reported by
+      Dr Sven Neulinger (Christian Albrecht University, Kiel, Germany).
 
       \item \code{radlattice} did not honour argument \code{BIC = TRUE},
       but always displayed AIC.
@@ -218,8 +230,8 @@
 
       \item \code{envfit} failed with unused factor levels.
 
-      \item \code{predict} for \code{cca} results with \code{type =
-        "response"} or \code{type = "working"} failed with
+      \item \code{predict} for \code{cca} results with
+        \code{type = "response"} or \code{type = "working"} failed with
         \code{newdata} if the number of rows did not match with the
         original data.  Now the \code{newdata} is ignored if it has a
         wrong number of rows.  The number of rows must match because
@@ -395,10 +407,10 @@
      \item \code{stressplot} and \code{goodness} sometimes failed when
      \code{metaMDS} was based on \code{isoMDS} (\pkg{MASS} package)
      because \code{metaMDSdist} did not use the same defaults for
-     step-across (extended) dissimilarities as \code{metaMDS(...,
-     engine = "isoMDS")}. The change of defaults can also influence
-     triggering of step-across in \code{capscale(..., metaMDSdist =
-     TRUE)}.
+     step-across (extended) dissimilarities as
+     \code{metaMDS(..., engine = "isoMDS")}. The change of defaults can
+     also influence triggering of step-across in
+     \code{capscale(..., metaMDSdist = TRUE)}.
 
      \item \code{adonis} contained a minor bug resulting from
      incomplete implementation of a speed-up that did not affect the
