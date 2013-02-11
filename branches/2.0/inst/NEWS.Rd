@@ -8,16 +8,16 @@
 
     \itemize{
 
-      \item The species scores were scaled correctly in
-      \code{capscale()} only when Euclidean distances were used. Usually
-      \code{capscale()} is used with non-Euclidean distances, and in
-      these cases the scaling was wrong.  Most graphics will change and
-      should be redone.  The change of scaling mainly influences the
-      spread of species scores with respect to the site scores.
+      \item The species scores were scaled wrongly in
+      \code{capscale()}. They were scaled correctly only when Euclidean
+      distances were used, but usually \code{capscale()} is used with
+      non-Euclidean distances.  Most graphics will change and should be
+      redone.  The change of scaling mainly influences the spread of
+      species scores with respect to the site scores.
 
       \item Function \code{clamtest()} failed to set the minimum
       abundance threshold in some cases. In addition, the output was
-      wrong when some of the possible species groups were missing. The
+      wrong when some of the possible species groups were missing. Both
       problems were reported by Richard Telford (Bergen, Norway).
 
       \item Plotting an object fitted by \code{envfit()} would fail if
@@ -27,8 +27,8 @@
       supplying a subset of a larger data set to \code{envfit()}.
 
       \item \code{multipart()} printed wrong information about the
-      analysis type (but did analysis correctly). Reported by Valerie
-      Coudrain.
+      analysis type (but did the analysis correctly). Reported by
+      Valerie Coudrain.
 
       \item \code{oecosimu()} failed if its \code{nestedfun} returned a
       data frame. A more fundamental fix will be in \pkg{vegan} 2.2-0,

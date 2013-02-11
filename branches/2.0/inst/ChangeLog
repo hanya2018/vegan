@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-6 (opened October 8, 2012)
+Version 2.0-6 (released February 11, 2013)
 
 	* merge 2420, 2425: cca cross references.
 	* merge 2417 thru 2419: predict & fitted upgraded for cca etc.  
