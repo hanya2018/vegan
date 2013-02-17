@@ -8,6 +8,7 @@ Version 2.0-7 (opened February 17, 2013)
 	* merge r2434: return wcmdscale object always with non-default
 	arguments.
 	* merge r2432: edit cca.Rd.
+	* merge r2431,2433,2435 thru 2442: add tabasco().
 
 Version 2.0-6 (released February 11, 2013)
 
