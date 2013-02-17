@@ -2,6 +2,13 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 2.0-7 (opened February 17, 2013)
+
+	* merge r2443: edit cca.object.Rd.
+	* merge r2434: return wcmdscale object always with non-default
+	arguments.
+	* merge r2432: edit cca.Rd.
+
 Version 2.0-6 (released February 11, 2013)
 
 	* merge 2420, 2425: cca cross references.
