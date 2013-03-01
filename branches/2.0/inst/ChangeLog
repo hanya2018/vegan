@@ -4,6 +4,10 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-7 (opened February 17, 2013)
 
+	* merge r2453: nestedtemp failed with fill < 0.38%
+	* merge r2452: plot/text.cca gained axis.bp = TRUE argument. 
+	* merge r2448 (partly), 2449: print.monoMDS clearer about
+	convergence. Only this part merged: metaMDSiter untouched.
 	* merge r2443: edit cca.object.Rd.
 	* merge r2434: return wcmdscale object always with non-default
 	arguments.
