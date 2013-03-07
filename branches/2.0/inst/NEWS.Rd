@@ -2,6 +2,50 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.0.7}{
+
+  \subsection{NEW FUNCTIONS}{
+    \itemize{
+
+      \item \code{tabasco()} is a new function for graphical display
+      of community data matrix.  Technically it is only an interface
+      to \R \code{heatmap}, but its user interface and intended use is
+      closer to \pkg{vegan} \code{vegemite}. The function can reorder
+      the community data matrix similarly as \code{vegemite}, for
+      instance, by ordination results. Unlike \code{heatmap}, it only
+      displays dendrograms if supplied by the user, and it defaults to
+      re-order the dendrograms by correspondence analysis.  Species
+      are usually ordered to match site ordering.
+
+    }
+  } % new functions
+
+  \subsection{BUG FIXES}{
+    \itemize{
+
+      \item Function \code{fitspecaccum(..., model = "asymp")} fitted
+      logistic model instead of asymptotic model (or the same as 
+      \code{model = "logis"}).
+
+      \item \code{nestedtemp()} failed with very sparse data (fill
+      \eqn{< 0.38}\%).
+
+    }
+  } % bug fixes 
+
+  \subsection{NEW FEATURES}{
+    \itemize{
+
+      \item The \code{plot} function for constrained ordination
+      results (\code{cca}, \code{rda}, \code{capscale}) gained
+      argument \code{axis.bp} (defaults \code{TRUE}) which can be used
+      to suppress plotting axis scale for biplot arrays.
+
+    }
+  } % new features
+
+} % vegan 2.0-7
+
 \section{Changes in version 2.0-6}{
 
   \subsection{BUG FIXES}{
