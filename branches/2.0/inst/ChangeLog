@@ -12,6 +12,7 @@ Version 2.0-7 (opened February 17, 2013)
 	* merge r2452: plot/text.cca gained axis.bp = TRUE argument. 
 	* merge r2448 (partly), 2449: print.monoMDS clearer about
 	convergence. Only this part merged: metaMDSiter untouched.
+	* handcraft r2447: metaMDSiter gained argument 'maxit'.
 	* merge r2443: edit cca.object.Rd.
 	* merge r2434: return wcmdscale object always with non-default
 	arguments.
