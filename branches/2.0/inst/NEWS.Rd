@@ -41,6 +41,10 @@
       argument \code{axis.bp} (defaults \code{TRUE}) which can be used
       to suppress plotting axis scale for biplot arrays.
 
+      \item Number of iterations in nonmetric multidimensional scaling
+      (NMDS) can be set with keyword \code{maxit} (defaults
+      \code{200}) in \code{metaMDS}.
+
     }
   } % new features
 
