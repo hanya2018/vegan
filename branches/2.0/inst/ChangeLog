@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-7 (opened February 17, 2013)
 
+	* merge r2476: take back part of 2434 and return matrix from
+	wcmdscale unless eigenvalues are requested.
 	* merge r2469, 2470: do not use u.eig & v.eig.
 	* merge r2468: tabasco checks against negative data.
 	* merge r2462: fix "asymp" model in fitspecaccum.
