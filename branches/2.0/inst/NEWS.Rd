@@ -48,6 +48,21 @@
     }
   } % new features
 
+  \subsection{DEPRECATED}{
+
+    \itemize{
+
+      \item The result objects of \code{cca}, \code{rda} and
+      \code{capscale} will no longer have scores \code{u.eig},
+      \code{v.eig} and \code{wa.eig} in future versions of
+      \pkg{vegan}. All \pkg{vegan} functions use only normalized
+      scores and scale these for users as needed, and this change will
+      not influence normal users.  However, external scripts and
+      packages may need changes in the future versions of \pkg{vegan}.
+
+    }   
+  } % deprecated
+
 } % vegan 2.0-7
 
 \section{Changes in version 2.0-6}{

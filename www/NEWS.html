@@ -71,6 +71,24 @@ to suppress plotting axis scale for biplot arrays.
  
 
 
+<h4>DEPRECATED</h4>
+
+
+
+<ul>
+<li><p> The result objects of <code>cca</code>, <code>rda</code> and
+<code>capscale</code> will no longer have scores <code>u.eig</code>,
+<code>v.eig</code> and <code>wa.eig</code> in future versions of
+<span class="pkg">vegan</span>. All <span class="pkg">vegan</span> functions use only normalized
+scores and scale these for users as needed, and this change will
+not influence normal users.  However, external scripts and
+packages may need changes in the future versions of <span class="pkg">vegan</span>.
+</p>
+</li></ul>
+   
+ 
+
+
 <h3>Changes in version 2.0-6</h3>
 
 
