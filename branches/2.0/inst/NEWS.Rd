@@ -8,14 +8,14 @@
     \itemize{
 
       \item \code{tabasco()} is a new function for graphical display
-      of community data matrix.  Technically it is only an interface
-      to \R \code{heatmap}, but its user interface and intended use is
-      closer to \pkg{vegan} \code{vegemite}. The function can reorder
-      the community data matrix similarly as \code{vegemite}, for
-      instance, by ordination results. Unlike \code{heatmap}, it only
-      displays dendrograms if supplied by the user, and it defaults to
-      re-order the dendrograms by correspondence analysis.  Species
-      are usually ordered to match site ordering.
+      of community data matrix.  Technically it is an interface to \R
+      \code{heatmap}, but its use is closer to \pkg{vegan} function
+      \code{vegemite}. The function can reorder the community data
+      matrix similarly as \code{vegemite}, for instance, by ordination
+      results. Unlike \code{heatmap}, it only displays dendrograms if
+      supplied by the user, and it defaults to re-order the
+      dendrograms by correspondence analysis.  Species are ordered to
+      match site ordering or like determined by the user.
 
     }
   } % new functions
@@ -39,7 +39,7 @@
       \item The \code{plot} function for constrained ordination
       results (\code{cca}, \code{rda}, \code{capscale}) gained
       argument \code{axis.bp} (defaults \code{TRUE}) which can be used
-      to suppress plotting axis scale for biplot arrays.
+      to suppress axis scale for biplot arrays.
 
       \item Number of iterations in nonmetric multidimensional scaling
       (NMDS) can be set with keyword \code{maxit} (defaults
@@ -54,11 +54,11 @@
 
       \item The result objects of \code{cca}, \code{rda} and
       \code{capscale} will no longer have scores \code{u.eig},
-      \code{v.eig} and \code{wa.eig} in future versions of
-      \pkg{vegan}. All \pkg{vegan} functions use only normalized
-      scores and scale these for users as needed, and this change will
-      not influence normal users.  However, external scripts and
-      packages may need changes in the future versions of \pkg{vegan}.
+      \code{v.eig} and \code{wa.eig} in the future versions of
+      \pkg{vegan}. This change does not influence normal usage,
+      because \pkg{vegan} functions do not need these items.  However,
+      external scripts and packages may need changes in the future
+      versions of \pkg{vegan}.
 
     }   
   } % deprecated
