@@ -2,7 +2,13 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-7 (opened February 17, 2013)
+Version 2.0-8 (opened March 19, 2013)
+
+	* version 2.0-7 may be the last release in 2.0 series, and the
+	next release version may be a major upgrade 2.2-0 (this
+	information may change if there is a need for a 2.0 release).
+	
+Version 2.0-7 (released March 19, 2013)
 
 	* merge r2476: take back part of 2434 and return matrix from
 	wcmdscale unless eigenvalues are requested.
