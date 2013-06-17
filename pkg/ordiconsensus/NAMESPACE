@@ -1,0 +1,8 @@
+### Export
+
+export(coeffCompare,consensusRDA,RV)
+
+### Import
+
+import(stats)
+import(vegan)

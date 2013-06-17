@@ -1,0 +1,11 @@
+Package: ordiconsensus
+Type: Package
+Title: Consensus of canonical ordinations through the canonical redundancy analysis
+Version: 0.3-1
+Date: 2012-11-09
+Author: F. Guillaume Blanchet
+Maintainer: F. Guillaume Blanchet <guillaume.blanchet@helsinki.fi>
+Description: This package include function to calculate a consensus of canonical redundancy analyses performed using different association coefficients
+Depends: vegan
+Suggests: FactoMineR
+License: Unlimited
