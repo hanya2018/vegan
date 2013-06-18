@@ -1,7 +1,7 @@
 Package: ordiconsensus
 Type: Package
 Title: Consensus of canonical ordinations through the canonical redundancy analysis
-Version: 0.3-1
+Version: 0.3-2
 Date: 2012-11-09
 Author: F. Guillaume Blanchet
 Maintainer: F. Guillaume Blanchet <guillaume.blanchet@helsinki.fi>

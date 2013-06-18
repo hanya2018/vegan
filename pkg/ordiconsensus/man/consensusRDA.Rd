@@ -100,8 +100,8 @@ for(i in 1:ndis){
 ### Consensus RDA
 consRDA<-consensusRDA(ordiRes,ordiResTest,beetle,beetle.expl)
 summary(consRDA)
+axisLabels<-c(paste("Axis 1 - ",round(consRDA$values[1]/sum(consRDA$values),4)*100,sep=""),paste("Axis 2 - ",round(consRDA$values[2]/sum(consRDA$values),4)*100,sep=""))
 
-axisLabels<-c(paste("Axis 1 - ",round(consRDA$values[1]/sum(consRDA$values),4)*100,"%",sep=""),paste("Axis 2 - ",round(consRDA$values[2]/sum(consRDA$values),4)*100,"%",sep=""))
 plot(consRDA$siteConsensus[,1:2],pch=19,xlab=axisLabels[1],ylab=axisLabels[2],las=1)
 abline(h=0,v=0,lty=3)
 
@@ -110,6 +110,7 @@ text(consRDA$spConsensus[,1:2]*10,labels=rownames(consRDA$spConsensus),col="red"
 
 arrows(0,0,consRDA$descConsensus[,1]*0.4,consRDA$descConsensus[,2]*0.4,col="blue",length=0.1,angle=12)
 text(consRDA$descConsensus[,1:2]*0.4,labels=rownames(consRDA$descConsensus),col="blue")
+
 }
 
 \keyword{ multivariate }
