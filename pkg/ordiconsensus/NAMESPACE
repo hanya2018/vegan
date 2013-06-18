@@ -1,6 +1,6 @@
 ### Export
 
-export(coeffCompare,consensusRDA,RV,SADbin)
+export(coeffCompare,consensusRDA,RV,SADbin,simulSADcomm)
 
 ### Import
 

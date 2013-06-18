@@ -12,7 +12,7 @@ Package to perform a consensus RDA, a method that finds the consensus among diff
 \tabular{ll}{
 Package: \tab ordiconsensus\cr
 Type: \tab Package\cr
-Version: \tab 0.3-2\cr
+Version: \tab 0.4\cr
 Date: \tab 2012-11-12\cr
 License: \tab Unlimited\cr
 }
