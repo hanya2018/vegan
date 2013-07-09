@@ -4,9 +4,15 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-8 (opened March 19, 2013)
 
-	* version 2.0-7 may be the last release in 2.0 series, and the
-	next release version may be a major upgrade 2.2-0 (this
-	information may change if there is a need for a 2.0 release).
+	* merge r2540: remove hard-coded inconsolata fonts.
+	* merge r2539: stressplot return data in input order.
+	* merge r2538: use expression(R^2) in stressplot.
+	* merge r2535, 2536: better positioning of arrow labels.
+	* merge r2533: ordipointlabel uses ordiArgAbsorber.
+	* merge r2504: notation in adipart.Rd.
+	* merge r2497: avoid visible ~ in .Rnw.
+	* merge r2484 thru 2486: betadisper fixes (centroid with one
+	group, call it medoid).
 	
 Version 2.0-7 (released March 19, 2013)
 
