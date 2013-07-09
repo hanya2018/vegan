@@ -8,9 +8,11 @@ Version 2.0-8 (opened March 19, 2013)
 	* merge r2539: stressplot return data in input order.
 	* merge r2538: use expression(R^2) in stressplot.
 	* merge r2535, 2536: better positioning of arrow labels.
+	* merge r2534: lwd in ordisurf.
 	* merge r2533: ordipointlabel uses ordiArgAbsorber.
 	* merge r2504: notation in adipart.Rd.
 	* merge r2497: avoid visible ~ in .Rnw.
+	* merge r2490 thru 2493: ordisurf new options.
 	* merge r2484 thru 2486: betadisper fixes (centroid with one
 	group, call it medoid).
 	
