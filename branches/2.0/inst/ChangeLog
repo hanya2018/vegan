@@ -11,7 +11,9 @@ Version 2.0-8 (opened March 19, 2013)
 	* merge r2534: lwd in ordisurf.
 	* merge r2533: ordipointlabel uses ordiArgAbsorber.
 	* merge r2504: notation in adipart.Rd.
+	* merge r2498: adapt raupcrick to r2495.
 	* merge r2497: avoid visible ~ in .Rnw.
+	* merge r2495: fix twisted test direction in oecosimu.
 	* merge r2490 thru 2493: ordisurf new options.
 	* merge r2484 thru 2486: betadisper fixes (centroid with one
 	group, call it medoid).
