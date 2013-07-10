@@ -19,15 +19,20 @@
 
       \item \code{ordisurf} gained new arguments for more flexible
       definition of fitted models to better utilize the
-      \pkg{mgcv}\code{::gam} function. The linewidth of contours can
+      \pkg{mgcv}\code{::gam} function. 
+
+      The linewidth of contours can
       now be set with the argument \code{lwd}.
 
-      \item Labels to arrows are more cleanly positioned in
+      \item Labels to arrows are positioned in a better way in
       \code{plot} functions for the results of \code{envfit},
-      \code{cca}, \code{rda} and \code{capscale}.
+      \code{cca}, \code{rda} and \code{capscale}. The labels should no
+      longer overlap the arrow tips.
 
-      \item The wording for setting test direction is now clearer in
-      \code{oecosimu}.
+      \item The setting test direction is clearer in \code{oecosimu}.
+
+      \item \code{ordipointlabel} gained a \code{plot} method that can
+      be used to replot the saved result.
 
     }
   } % new features
