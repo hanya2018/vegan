@@ -2,7 +2,21 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-8 (opened March 19, 2013)
+Version 2.0-9 (opened August 23, 2013)
+
+	* merge r2588: remove unneeded utils::: in vegandocs (some remain). 
+	* merge r2583,7: remove cross-references to disappear in R-3.0-2.
+	* merge r2580,1: literature refs in specaccum.Rd and
+	betadisper.Rd.
+	* merge r2571: aspell fixes in Rd files (stressplot.wmcscale.Rd,
+	commsim.Rd and nullmodel.Rd did not exist in 2.0 and were
+	excluded).
+	* merge r2570: aspell fixes in R files.
+	* merge r2568: aspell fixes in Rd files.
+	* merge r2564: line wrapping in betadiver(help=TRUE).
+	* merge r2558: ordiktplot bmp device in all platforms. 
+	
+Version 2.0-8 (released July 10, 2013)
 
 	* merge r2540: remove hard-coded inconsolata fonts.
 	* merge r2539: stressplot return data in input order.
