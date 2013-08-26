@@ -6,6 +6,7 @@ Version 2.0-9 (opened August 23, 2013)
 
 	* merge 2590: typos.
 	* merge r2588: remove unneeded utils::: in vegandocs (some remain). 
+	* merge 2584,6: vegan Depends on lattice, avoid lattice:::
 	* merge r2583,7: remove cross-references to disappear in R-3.0-2.
 	* merge r2580,1: literature refs in specaccum.Rd and
 	betadisper.Rd.
