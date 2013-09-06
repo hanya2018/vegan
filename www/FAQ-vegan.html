@@ -2,7 +2,7 @@
 <html>
 <!-- This document contains answers to some of the most frequently asked
 questions about R package vegan. 
-This is version of $Date: 2013-01-22 19:55:06 +0200 (Tue, 22 Jan 2013) $.
+This is version of $Date: 2013-09-06 16:29:19 +0300 (Fri, 06 Sep 2013) $.
 
 This work is licensed under the Creative Commons Attribution 3.0
 License. To view a copy of this license, visit
@@ -13,7 +13,7 @@ California, 94105, USA.
 Copyright C 2008-2013 Jari Oksanen
 
  -->
-<!-- Created on February 5, 2013 by texi2html 1.82
+<!-- Created on September 6, 2013 by texi2html 1.82
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -65,7 +65,7 @@ ul.toc {list-style: none}
 <h1 class="settitle"><strong>vegan</strong> FAQ</h1>
 <p>This document contains answers to some of the most frequently asked
 questions about R package <strong>vegan</strong>. 
-This is version of $Date: 2013-01-22 19:55:06 +0200 (Tue, 22 Jan 2013) $.
+This is version of $Date: 2013-09-06 16:29:19 +0300 (Fri, 06 Sep 2013) $.
 </p>
 <blockquote><p>This work is licensed under the Creative Commons Attribution 3.0
 License. To view a copy of this license, visit
@@ -682,31 +682,33 @@ request to us for incorporating your changes in <strong>vegan</strong> releases.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027">2.10 cca fails with &ldquo;data.frame expected&rdquo; or &ldquo;&quot;site.env&quot; missing&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Variance-explained-by-ordination-axes">2.11 Variance explained by ordination axes.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Ordination-fails-with-_0060_0060Error-in-La_002esvd_0027_0027">2.11 Ordination fails with &ldquo;Error in La.svd&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Can-I-have-random-effects-in-constrained-ordination-or-in-adonis_003f">2.12 Can I have random effects in constrained ordination or in <code>adonis</code>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Variance-explained-by-ordination-axes">2.12 Variance explained by ordination axes.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Is-it-possible-to-have-passive-points-in-ordination_003f">2.13 Is it possible to have passive points in ordination?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Can-I-have-random-effects-in-constrained-ordination-or-in-adonis_003f">2.13 Can I have random effects in constrained ordination or in <code>adonis</code>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Class-variables-and-dummies">2.14 Class variables and dummies</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Is-it-possible-to-have-passive-points-in-ordination_003f">2.14 Is it possible to have passive points in ordination?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#How-are-environmental-arrows-scaled_003f">2.15 How are environmental arrows scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Class-variables-and-dummies">2.15 Class variables and dummies</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#I-want-to-use-Helmert-or-sum-contrasts">2.16 I want to use Helmert or sum contrasts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-are-environmental-arrows-scaled_003f">2.16 How are environmental arrows scaled?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#What-are-aliased-variables-and-how-to-see-them_003f">2.17 What are aliased variables and how to see them?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#I-want-to-use-Helmert-or-sum-contrasts">2.17 I want to use Helmert or sum contrasts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Plotting-aliased-variables">2.18 Plotting aliased variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#What-are-aliased-variables-and-how-to-see-them_003f">2.18 What are aliased variables and how to see them?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Constrained-permutations-in-vegan">2.19 Constrained permutations in <strong>vegan</strong></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Plotting-aliased-variables">2.19 Plotting aliased variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#How-to-use-different-plotting-symbols-in-ordination-graphics_003f">2.20 How to use different plotting symbols in ordination graphics?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Constrained-permutations-in-vegan">2.20 Constrained permutations in <strong>vegan</strong></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#How-to-avoid-cluttered-ordination-graphs_003f">2.21 How to avoid cluttered ordination graphs?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-use-different-plotting-symbols-in-ordination-graphics_003f">2.21 How to use different plotting symbols in ordination graphics?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Can-I-flip-an-axis-in-ordination-diagram_003f">2.22 Can I flip an axis in ordination diagram?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#How-to-avoid-cluttered-ordination-graphs_003f">2.22 How to avoid cluttered ordination graphs?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Can-I-zoom-into-an-ordination-plot_003f">2.23 Can I zoom into an ordination plot?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top"><a href="#Can-I-flip-an-axis-in-ordination-diagram_003f">2.23 Can I flip an axis in ordination diagram?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Can-I-zoom-into-an-ordination-plot_003f">2.24 Can I zoom into an ordination plot?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
 </table>
 
@@ -1004,7 +1006,7 @@ command <code>vegandocs(&quot;decision&quot;)</code>.
 <a name="cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#How-the-RDA-results-are-scaled_003f" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Variance-explained-by-ordination-axes" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination-fails-with-_0060_0060Error-in-La_002esvd_0027_0027" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
@@ -1030,9 +1032,49 @@ you do not need package <strong>ade4</strong>, you can detach it with command
 <code>detach(package:ade4)</code>.
 </p>
 <hr size="6">
-<a name="Variance-explained-by-ordination-axes"></a>
+<a name="Ordination-fails-with-_0060_0060Error-in-La_002esvd_0027_0027"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#cca-fails-with-_0060_0060data_002eframe-expected_0027_0027-or-_0060_0060_0022site_002eenv_0022-missing_0027_0027" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variance-explained-by-ordination-axes" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ordination" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-analysis-methods" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Ordination-fails-with-_0060_0060Error-in-La_002esvd_0027_0027-1"></a>
+<h2 class="section">2.11 Ordination fails with &ldquo;Error in La.svd&rdquo;</h2>
+
+<p>Constrained ordination (<code>cca</code>, <code>rda</code>, <code>capscale</code>) will
+sometimes fail with error message 
+<code>Error in La.svd(x, nu, nv): error code 1 from Lapack routine 'dgesdd'.</code>  
+</p>
+<p>It seems that the basic problem is in the <code>svd</code> function of
+<code>LAPACK</code> that is used for numerical analysis in R.  <code>LAPACK</code>
+is an external library that is beyond the control of package developers
+and R core team so that these problems may be unsolvable. It seems that
+the problems with the LAPACK code are so common that even the help page
+of <code>svd</code> warns about them
+</p>
+<p>Reducing the range of constraints (environmental variables) helps
+sometimes. For instance, multiplying constraints by a constant &lt; 1. This
+rescaling does not influence the numerical results of constrained
+ordination, but it can complicate further analyses when values of
+constraints are needed, because the same scaling must be applied
+there. We can only hope that this problem is fixed in the future
+versions of R and <code>LAPACK</code>.
+</p>
+<hr size="6">
+<a name="Variance-explained-by-ordination-axes"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Ordination-fails-with-_0060_0060Error-in-La_002esvd_0027_0027" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Can-I-have-random-effects-in-constrained-ordination-or-in-adonis_003f" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="#Ordination" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
@@ -1048,7 +1090,7 @@ you do not need package <strong>ade4</strong>, you can detach it with command
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Variance-explained-by-ordination-axes_002e"></a>
-<h2 class="section">2.11 Variance explained by ordination axes.</h2>
+<h2 class="section">2.12 Variance explained by ordination axes.</h2>
 
 <p>In general, <strong>vegan</strong> does not directly give any statistics on the
 &ldquo;variance explained&rdquo; by ordination axes or by the constrained axes.
@@ -1125,7 +1167,7 @@ nonlinear fit and gives this statistic.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Can-I-have-random-effects-in-constrained-ordination-or-in-adonis_003f-1"></a>
-<h2 class="section">2.12 Can I have random effects in constrained ordination or in <code>adonis</code>?</h2>
+<h2 class="section">2.13 Can I have random effects in constrained ordination or in <code>adonis</code>?</h2>
 
 <p>No. Strictly speaking, this is impossible. However, you can define
 models that respond to similar goals as random effects models, although
@@ -1182,7 +1224,7 @@ available in <strong>vegan</strong>.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Is-it-possible-to-have-passive-points-in-ordination_003f-1"></a>
-<h2 class="section">2.13 Is it possible to have passive points in ordination?</h2>
+<h2 class="section">2.14 Is it possible to have passive points in ordination?</h2>
 
 <p><strong>Vegan</strong> does not have a concept of passive points, or a point that should
 only little influence the ordination results. However, you can add
@@ -1217,7 +1259,7 @@ row 3 &ldquo;passive&rdquo;: <code>dune[3,] &lt;- 0.001*dune[3,]</code>.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Class-variables-and-dummies-1"></a>
-<h2 class="section">2.14 Class variables and dummies</h2>
+<h2 class="section">2.15 Class variables and dummies</h2>
 
 <p>You should define a class variable as an R <code>factor</code>, and <strong>vegan</strong> will
 automatically handle them with formula interface.  You also can define
@@ -1251,7 +1293,7 @@ documentation.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="How-are-environmental-arrows-scaled_003f-1"></a>
-<h2 class="section">2.15 How are environmental arrows scaled?</h2>
+<h2 class="section">2.16 How are environmental arrows scaled?</h2>
 
 <p>The printed output of <code>envfit</code> gives the direction cosines which
 are the coordinates of unit length arrows. For plotting, these are
@@ -1305,7 +1347,7 @@ vegan:::ordiArrowMul(scores(ef, display=&quot;vectors&quot;))
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="I-want-to-use-Helmert-or-sum-contrasts-1"></a>
-<h2 class="section">2.16 I want to use Helmert or sum contrasts</h2>
+<h2 class="section">2.17 I want to use Helmert or sum contrasts</h2>
 
 <p><code><strong>vegan</strong></code> uses standard R utilities for defining
 contrasts. The default in standard installations is to use treatment
@@ -1332,7 +1374,7 @@ check the R help pages and user manuals for details.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="What-are-aliased-variables-and-how-to-see-them_003f-1"></a>
-<h2 class="section">2.17 What are aliased variables and how to see them?</h2>
+<h2 class="section">2.18 What are aliased variables and how to see them?</h2>
 
 <p>Aliased variable has no information because it can be expressed with
 the help of other variables.  Such variables are automatically removed
@@ -1362,7 +1404,7 @@ levels in solution <code>sol</code>, use <code>alias(sol, names.only=TRUE)</code
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Plotting-aliased-variables-1"></a>
-<h2 class="section">2.18 Plotting aliased variables</h2>
+<h2 class="section">2.19 Plotting aliased variables</h2>
 
 <p>You can fit vectors or class centroids for aliased variables using
 <code>envfit</code> function.  The <code>envfit</code> function uses weighted
@@ -1388,7 +1430,7 @@ correspondence analysis.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Constrained-permutations-in-vegan-1"></a>
-<h2 class="section">2.19 Constrained permutations in <strong>vegan</strong></h2>
+<h2 class="section">2.20 Constrained permutations in <strong>vegan</strong></h2>
 
 <p>You can constrain your permutations within <code>strata</code> or levels of
 factors. You can use stratified permutations in all <strong>vegan</strong>
@@ -1421,7 +1463,7 @@ grids and blocking factors.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="How-to-use-different-plotting-symbols-in-ordination-graphics_003f-1"></a>
-<h2 class="section">2.20 How to use different plotting symbols in ordination graphics?</h2>
+<h2 class="section">2.21 How to use different plotting symbols in ordination graphics?</h2>
 
 <p>The default ordination <code>plot</code> function is intended for fast
 plotting and it is not very configurable. To use different plotting
@@ -1451,7 +1493,7 @@ and characters.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="How-to-avoid-cluttered-ordination-graphs_003f-1"></a>
-<h2 class="section">2.21 How to avoid cluttered ordination graphs?</h2>
+<h2 class="section">2.22 How to avoid cluttered ordination graphs?</h2>
 
 <p>If there is a really high number of species or sites, the graphs often
 are congested and many labels are overwritten. It may be impossible to
@@ -1523,7 +1565,7 @@ congested areas.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Can-I-flip-an-axis-in-ordination-diagram_003f-1"></a>
-<h2 class="section">2.22 Can I flip an axis in ordination diagram?</h2>
+<h2 class="section">2.23 Can I flip an axis in ordination diagram?</h2>
 
 <p>Use <code>xlim</code> or <code>ylim</code> with flipped limits. If you have model
 <code>mod &lt;- cca(dune)</code> you can flip the first axis with <code>plot(mod,
@@ -1548,7 +1590,7 @@ xlim = c(3, -2))</code>.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Can-I-zoom-into-an-ordination-plot_003f-1"></a>
-<h2 class="section">2.23 Can I zoom into an ordination plot?</h2>
+<h2 class="section">2.24 Can I zoom into an ordination plot?</h2>
 <p>You can use <code>xlim</code> and <code>ylim</code> arguments in <code>plot</code> or
 <code>ordiplot</code> to zoom into ordination diagrams. Normally you must set
 both <code>xlim</code> and <code>ylim</code> because ordination plots will keep the
@@ -1684,7 +1726,7 @@ shifted so that models with exact fit have zero deviance.
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Jari Oksanen</em> on <em>February 5, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Jari Oksanen</em> on <em>September 6, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -1786,7 +1828,7 @@ shifted so that models with exact fit have zero deviance.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Jari Oksanen</em> on <em>February 5, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Jari Oksanen</em> on <em>September 6, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 
