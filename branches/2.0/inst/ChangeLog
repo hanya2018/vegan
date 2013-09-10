@@ -4,6 +4,8 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-9 (opened August 23, 2013)
 
+	* merge 2613: 'medoid' to 'median' in betadisper output and doc.
+	* merge 2600: remove tools::: in vegandocs().
 	* merge 2593: remove stats::: in anova.ccabyaxis().
 	* merge 2590: typos.
 	* merge r2588: remove unneeded utils::: in vegandocs (some remain). 
