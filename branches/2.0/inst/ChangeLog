@@ -19,6 +19,9 @@ Version 2.0-9 (opened August 23, 2013)
 	* merge r2570: aspell fixes in R files.
 	* merge r2568: aspell fixes in Rd files.
 	* merge r2564: line wrapping in betadiver(help=TRUE).
+	* merge r2562, 2563, 2565-7, 2572-6: edit and reformat Rnw file;
+	decision-vegan.Rnw required hand-editing due to conflicts in
+	text on parallel processing that was not merged.
 	* merge r2558: ordiktplot bmp device in all platforms. 
 	
 Version 2.0-8 (released July 10, 2013)
