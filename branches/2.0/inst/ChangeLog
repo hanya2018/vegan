@@ -5,10 +5,15 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 Version 2.0-9 (opened August 23, 2013)
 
 	* merge 2613: 'medoid' to 'median' in betadisper output and doc.
+	* merge 2605, 7: FAQ about La.svd errors in cca/rda/capscale.
+	* merge 2604: print.vectorfit zaps zeros.
 	* merge 2600: remove tools::: in vegandocs().
+	* merge 2599: remove workarounds for R <= 2.13.0.
+	* merge 2598: remove workarounds for R <= 2.12.0.
 	* merge 2597: move vignettes from inst/doc to vignettes/; depend
 	on R 2.14.0.
 	* merge 2593: remove stats::: in anova.ccabyaxis().
+	* merge 2592: expand varpart.Rd to avoid questions.
 	* merge 2590: typos.
 	* merge r2588: remove unneeded utils::: in vegandocs (some remain). 
 	* merge 2584,6: vegan Depends on lattice, avoid lattice:::
