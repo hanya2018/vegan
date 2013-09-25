@@ -2,7 +2,7 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
-Version 2.0-9 (opened August 23, 2013)
+Version 2.0-9 (released September 25, 2013)
 
 	* merge 2618: a typo.
 	* merge 2613: 'medoid' to 'median' in betadisper output and doc.
@@ -21,7 +21,7 @@ Version 2.0-9 (opened August 23, 2013)
 	* merge r2583,7: remove cross-references to disappear in R-3.0-2.
 	* merge r2580,1: literature refs in specaccum.Rd and
 	betadisper.Rd.
-	* merge r2571: aspell fixes in Rd files (stressplot.wmcscale.Rd,
+	* merge r2571: aspell fixes in Rd files (stressplot.wcmdscale.Rd,
 	commsim.Rd and nullmodel.Rd did not exist in 2.0 and were
 	excluded).
 	* merge r2570: aspell fixes in R files.
