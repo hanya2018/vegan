@@ -13,6 +13,7 @@ directory 1.17.
 
 vegan release: revision (date) directory at vegan-forge
 
+2.0-9:   r2622 (Wed, 25 Sep 2013) branches/2.0
 2.0-8:	 r2549 (Wed, 10 Jul 2013) branches/2.0
 2.0-7:   r2482 (Tue, 19 Mar 2013) branches/2.0
 2.0-6:   r2429 (Mon, 11 Feb 2013) branches/2.0
