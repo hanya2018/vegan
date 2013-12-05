@@ -2,6 +2,11 @@ $Date$
 
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
+Version 2.0-10 (opened December 5, 2013)
+
+	* merge 2527: adapt permutest.betadisper to the CRAN release of
+	permute 0.8-0.
+
 Version 2.0-9 (released September 25, 2013)
 
 	* merge 2618: a typo.
