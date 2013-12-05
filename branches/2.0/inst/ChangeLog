@@ -4,8 +4,17 @@ VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-10 (opened December 5, 2013)
 
+	* merge 2641: subset in renyi/spec/tsallisaccum.
+	* merge 2630,1,2: fisherfit new algo and delete profile & confint.
+	* merge 2628,9: plot vectorfit *should* work with constant
+	(non-variable) vectors: partial conflict, needs checking.
+	* merge 2627: zap zeros in print.cca.
+	* merge 2626: nestednodf fill and consinstency in quantitative
+	data.
 	* merge 2527: adapt permutest.betadisper to the CRAN release of
 	permute 0.8-0.
+	* merge 2451, 2454, 2455, 2465: weighted specaccum.
+	* conflicts (not applied): r2625 (oecosimu), 2638 (oecosimu.Rd)
 
 Version 2.0-9 (released September 25, 2013)
 

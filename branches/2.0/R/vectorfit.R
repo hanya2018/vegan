@@ -18,6 +18,7 @@
     H <- qr.fitted(Q, Pw)
     heads <- qr.coef(Q, Pw)
     r <- diag(cor(H, Pw)^2)
+    r[is.na(r)] <- 0
     heads <- decostand(heads, "norm", 2)
     heads <- t(heads)
     if (is.null(colnames(X))) 
