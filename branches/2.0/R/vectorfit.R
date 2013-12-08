@@ -37,7 +37,7 @@
             Hperm <- qr.fitted(Q, take)
             permstore[i, ] <- diag(cor(Hperm, take))^2
         }
-        permstore <- sweep(permstore, 2, r, ">")
+        permstore <- sweep(permstore, 2, r, ">=")
         pvals <- (apply(permstore, 2, sum) + 1)/(permutations + 1)
     }
     else pvals <- NULL
