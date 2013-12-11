@@ -3,7 +3,8 @@ $Date$
 VEGAN RELEASE VERSIONS at http://cran.r-project.org/
 
 Version 2.0-10 (opened December 5, 2013)
-	
+
+	* r2815: update email in simper.Rd.
 	* merge 2809,2810: treat all non-numeric variables as factors
 	inenvfit.
 	* merge 2713 man/: remove references to very old R versions in man
