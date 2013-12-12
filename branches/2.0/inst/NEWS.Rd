@@ -31,7 +31,8 @@
       logical) are coerced to factors if possible. The function also
       should work with degenerate data, like only one level of a
       factor or a constant value of a continuous environmental
-      variable.
+      variable. The ties were wrongly in assessing permutation
+      \eqn{P}-values in \code{vectorfit}.
 
       \item \code{nestednodf} with quantitative data was not
       consistent with binary models, and the fill was wrongly
