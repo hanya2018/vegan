@@ -11,8 +11,13 @@ function(data,method=c("log","modlog","modhalflog"),base=2){
 ### copyleft - Guillaume Blanchet - August 2008
 ##################################################################
 	method<-match.arg(method)
-	
 	"%w/o%" <- function(x,y) x[!x %in% y] #--  x without y
+	
+	#CC# General check
+	if(any(data!=round(data))){
+		stop("'data' should only include integer values")
+	}
+	
 	#CC# Find the number of class to be used
 	spmax<-max(data)
 

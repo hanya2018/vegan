@@ -4,7 +4,7 @@
 Species-abundance distribution (SAD) bins
 }
 \description{
-This function constructs bins for a species-abundance distribution. The function was designed so that every variation of bins can easily be constructed. 
+This function constructs bins for a species-abundance distribution. It was designed so that every variation of binnings can easily be constructed. 
 }
 \usage{
 SADbin(data, method = c("log", "modlog", "modhalflog"), base = 2)
@@ -18,7 +18,7 @@ A vector of species abundance for the whole study area.
 A character string defining which binning method to use.
 }
   \item{base}{
-The logarithm base used to perform the binning 
+The log base to use to perform the binning. 
 }
 }
 \details{
@@ -30,7 +30,7 @@ log (using a base = 2) : Bin 1 = 1, Bin 2 = 2, Bin 3 = 3-4, Bin 4 = 5-8, ...
 
 modlog (using a base = 2) : Bin 1 = 1, Bin 2 = 2-3, Bin 3 = 4-7, Bin 4 = 8-15,...
 
-modhalflog (using a base = 2) : Bin 1 = half the number of species with 1 individuals, Bin 2  = half the number of species with 2 individuals, all species with 3 individuals and half the number of species with 4 individuals, Bin 3 = 4-8, abundances that fall exactly on the boundary are divided equally between the given bin and the next lower bin, and so on.
+modhalflog (using a base = 2) : Bin 1 = half the number of species with 1 individuals, Bin 2  = half the number of species with 1 individuals and half of the number of species with 2 individuals, Bin 3 = half of the number of species with 2 individuals, all species with 3 individuals and half of the number of species with 4 individuals; and so on.
 }
 
 \value{

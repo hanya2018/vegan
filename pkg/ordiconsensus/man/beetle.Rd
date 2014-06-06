@@ -53,7 +53,7 @@ data(beetle.expl)
     \item{\code{Trecapic}}{\emph{Trechus apicalis}}
     \item{\code{Trecchal}}{\emph{Trechus chalybeus}}
 
-The \code{beetle.expl} data set is a data frame that contains the relative basal area of the 25 trees closest to the center of each sampling site. The relative basal area is presented by tree species. 
+The \code{beetle.expl} data set is a data frame that contains the relative basal area of the 25 trees closest to the center of each sampled site. The relative basal area is presented by tree species. 
 
     \item{\code{Pt}}{Aspen (\emph{Populus tremuloides})}
     \item{\code{Bp}}{White birch (\emph{Betula papyrifera})}

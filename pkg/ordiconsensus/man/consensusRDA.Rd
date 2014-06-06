@@ -4,7 +4,7 @@
 Calculates a consensus RDA
 }
 \description{
-Calculates a consensus RDA. That is a consensus of a series of RDA performed on the same data using different association coefficients.
+Calculates a consensus RDA. That is, a consensus for a series of RDA performed on the same data using different association coefficients.
 }
 \usage{
 consensusRDA(ordires, ordisigniaxis, resp.var, expl.var, pval = 0.05, scaling = 2)
@@ -12,33 +12,33 @@ consensusRDA(ordires, ordisigniaxis, resp.var, expl.var, pval = 0.05, scaling = 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{ordires}{
- A list of \code{\link[vegan]{rda}} or \code{\link[vegan]{capscale}} result object that includes a series of RDA or distance-based RDA (dbRDA) performed with different association coefficients on the same data.
+ A list of \code{\link[vegan]{rda}} or \code{\link[vegan]{capscale}} result object that includes a series of RDA or distance-based RDA (db-RDA) performed with different association coefficients on the same data.
 }
   \item{ordisigniaxis}{
- A list of \code{\link[vegan]{anova.cca}} object where each axis was tested for each RDA (or dbRDA) in \code{ordires}. This argument can also be a vector defining the number of significant axes in the RDA. See details. 
+ A list of \code{\link[vegan]{anova.cca}} object where each axis of each RDA (or db-RDA) given in \code{ordires} was tested for significance. This argument can also be a vector defining the number of significant axes in each RDA. See details. 
 }
   \item{resp.var}{
- A matrix of the response variables (species) used to construct all the RDA (or dbRDA) in \code{ordires}.
+ A matrix of the response variables (species) used to construct all the RDAs (or db-RDAs) in \code{ordires}.
 }
   \item{expl.var}{
- A matrix of the explanatory variables used to construct all the RDA (or dbRDA) in \code{ordires}.
+ A matrix of the explanatory variables used to construct all the RDAs (or db-RDAs) in \code{ordires}.
 }
   \item{pval}{
  Numeric. P-value threshold to select the number of axes to use. This argument is only active if a list of \code{\link[vegan]{anova.cca}} object is given for the argument \code{ordisigniaxis}, otherwise it is not considered. Default is 0.05.
 }
   \item{scaling}{
- Type of scaling used to project the results. A distance scaling (scaling 1) or a correlation scaling (scaling 2) can be used. Default is scaling 1. See details for more information.
+ Type of scaling used to project the consensus RDA result. A distance scaling (scaling = 1) or a correlation scaling (scaling = 2) can be used. Default is scaling = 1. See details for more information.
 }
 }
 \details{
-For the argument \code{ordisigniaxis}, if a vector of number of significant axes is given for each RDA, it is assumed that the significant axes are selected in sequential order from the first axis.
-Although it is possible for the scaling to be 3 (it is available in the vegan package), this scaling should only be used for canonical correspondence analysis (CCA), it does not make any sense to use in the RDA framework.
+For the argument \code{ordisigniaxis}, if a vector defining the number of significant axes is given, it is assumed that the significant axes are selected in sequential order from the first axis.
+Although it is possible for the scaling to be 3 (it is available in the vegan package), this scaling should only be used for canonical correspondence analysis (CCA); it does not make any sense to use in the RDA framework.
 }
 \value{
  \item{value}{A vector of eigenvalues associated to the axes of the consensus RDA}
  \item{siteConsensus}{A matrix of consensus sites scores}
  \item{spConsensus}{A matrix of consensus species scores}
- \item{descConsensus}{A matrix of consensus canonical coefficient}
+ \item{descConsensus}{A matrix of consensus canonical coefficients}
 }
 \author{
 F. Guillaume Blanchet
