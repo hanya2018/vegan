@@ -71,44 +71,61 @@ hell<-decostand(beetle,method="hellinger")
 ordiRes[[3]]<-rda(hell~.,data=beetle.expl)
 
 ### db-RDA Bray-Curtis
-ordiRes[[4]]<-capscale(sqrt(vegdist(beetle,method="bray"))~.,data=beetle.expl,comm=beetle)
+bray<-sqrt(vegdist(beetle,method="bray"))
+ordiRes[[4]]<-capscale(bray~.,data=beetle.expl,comm=beetle)
 	
 ### db-RDA square-root Bray-Curtis
-ordiRes[[5]]<-capscale(sqrt(vegdist(beetle^0.5,method="bray"))~.,data=beetle.expl,comm=beetle^0.5)
+bray.sqrt<-sqrt(vegdist(beetle^0.5,method="bray"))
+ordiRes[[5]]<-capscale(bray.sqrt~.,data=beetle.expl,comm=beetle^0.5)
 	
 ### db-RDA fourth-root Bray-Curtis
-ordiRes[[6]]<-capscale(sqrt(vegdist(beetle^0.25,method="bray"))~.,data=beetle.expl,comm=beetle^0.25)
+bray.fort<-sqrt(vegdist(beetle^0.25,method="bray"))
+ordiRes[[6]]<-capscale(bray.fort~.,data=beetle.expl,comm=beetle^0.25)
 	
 ### db-RDA modified Gower log 2
-ordiRes[[7]]<-capscale(vegdist(decostand(beetle, "log",logbase=2), "altGower")~.,data=beetle.expl,comm=decostand(beetle, "log",logbase=2)) ### Warning message stem from log transformation of 0
+beetleLog2<-decostand(beetle, "log",logbase=2)
+mGowerLog2<-vegdist(beetleLog2, "altGower")
+ordiRes[[7]]<-capscale(mGowerLog2~.,data=beetle.expl,comm=beetleLog2)
 	
 ### db-RDA modified Gower log 5
-ordiRes[[8]]<-capscale(vegdist(decostand(beetle, "log",logbase=5), "altGower")~.,data=beetle.expl,comm=decostand(beetle, "log",logbase=5)) ### Warning message stem from log transformation of 0
+beetleLog5<-decostand(beetle, "log",logbase=5)
+mGowerLog5<-vegdist(beetleLog5, "altGower")
+ordiRes[[8]]<-capscale(mGowerLog5~.,data=beetle.expl,comm=beetleLog5)
 	
 ### db-RDA modified Gower log 10
-ordiRes[[9]]<-capscale(vegdist(decostand(beetle, "log",logbase=10), "altGower")~.,data=beetle.expl,comm=decostand(beetle, "log",logbase=10)) ### Warning message stem from log transformation of 0
+beetleLog10<-decostand(beetle, "log",logbase=10)
+mGowerLog10<-vegdist(beetleLog10, "altGower")
+ordiRes[[9]]<-capscale(mGowerLog10~.,data=beetle.expl,comm=beetleLog10)
 
 #----------------
 ### Test RDA axis 
 #----------------
 ordiResTest<-vector("list",length=ndis)
 
+\dontrun{
 for(i in 1:ndis){
-	ordiResTest[[i]]<-anova.cca(ordiRes[[i]],by="axis",cutoff=0.1)
+	ordiResTest[[i]]<-anova.cca(ordiRes[[i]],by="axis",cutoff=0.1,perm.max=100)
 }
+}
+
+ordiResTest<-c(3,3,4,4,4,4,3,4,4) ## This output is an alternative to the previous code
+
 
 ### Consensus RDA
 consRDA<-consensusRDA(ordiRes,ordiResTest,beetle,beetle.expl)
 summary(consRDA)
-axisLabels<-c(paste("Axis 1 - ",round(consRDA$values[1]/sum(consRDA$values),4)*100,sep=""),paste("Axis 2 - ",round(consRDA$values[2]/sum(consRDA$values),4)*100,sep=""))
+XaxisLabels<-paste("Axis 1 - ",round(consRDA$values[1]/sum(consRDA$values),4)*100,sep="")
+YaxisLabels<-paste("Axis 2 - ",round(consRDA$values[2]/sum(consRDA$values),4)*100,sep="")
 
-plot(consRDA$siteConsensus[,1:2],pch=19,xlab=axisLabels[1],ylab=axisLabels[2],las=1)
+plot(consRDA$siteConsensus[,1:2],pch=19,xlab=XaxisLabels,ylab=YaxisLabels,las=1)
 abline(h=0,v=0,lty=3)
 
-arrows(0,0,consRDA$spConsensus[,1]*10,consRDA$spConsensus[,2]*10,col="red",length=0.1,angle=12)
+arrows(0,0,consRDA$spConsensus[,1]*10,consRDA$spConsensus[,2]*10,
+       col="red",length=0.1,angle=12)
 text(consRDA$spConsensus[,1:2]*10,labels=rownames(consRDA$spConsensus),col="red")
 
-arrows(0,0,consRDA$descConsensus[,1]*0.4,consRDA$descConsensus[,2]*0.4,col="blue",length=0.1,angle=12)
+arrows(0,0,consRDA$descConsensus[,1]*0.4,consRDA$descConsensus[,2]*0.4,
+      col="blue",length=0.1,angle=12)
 text(consRDA$descConsensus[,1:2]*0.4,labels=rownames(consRDA$descConsensus),col="blue")
 
 }

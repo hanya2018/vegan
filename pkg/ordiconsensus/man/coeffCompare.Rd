@@ -67,22 +67,31 @@ chisq<-decostand(beetle,method="chi.square")
 ordiRes[[4]]<-rda(chisq~.,data=beetle.expl)
 
 ### db-RDA Bray-Curtis
-ordiRes[[5]]<-capscale(sqrt(vegdist(beetle,method="bray"))~.,data=beetle.expl,comm=beetle)
+bray<-sqrt(vegdist(beetle,method="bray"))
+ordiRes[[5]]<-capscale(bray~.,data=beetle.expl,comm=beetle)
 	
 ### db-RDA square-root Bray-Curtis
-ordiRes[[6]]<-capscale(sqrt(vegdist(beetle^0.5,method="bray"))~.,data=beetle.expl,comm=beetle)
+bray.sqrt<-sqrt(vegdist(beetle^0.5,method="bray"))
+ordiRes[[6]]<-capscale(bray.sqrt~.,data=beetle.expl,comm=beetle^0.5)
 	
 ### db-RDA fourth-root Bray-Curtis
-ordiRes[[7]]<-capscale(sqrt(vegdist(beetle^0.25,method="bray"))~.,data=beetle.expl,comm=beetle)
+bray.fort<-sqrt(vegdist(beetle^0.25,method="bray"))
+ordiRes[[7]]<-capscale(bray.fort~.,data=beetle.expl,comm=beetle^0.25)
 	
 ### db-RDA modified Gower log 2
-ordiRes[[8]]<-capscale(vegdist(decostand(beetle, "log",logbase=2), "altGower")~.,data=beetle.expl,comm=beetle) ### Warning message stem from log transformation of 0
+beetleLog2<-decostand(beetle, "log",logbase=2)
+mGowerLog2<-vegdist(beetleLog2, "altGower")
+ordiRes[[8]]<-capscale(mGowerLog2~.,data=beetle.expl,comm=beetleLog2)
 	
 ### db-RDA modified Gower log 5
-ordiRes[[9]]<-capscale(vegdist(decostand(beetle, "log",logbase=5), "altGower")~.,data=beetle.expl,comm=beetle) ### Warning message stem from log transformation of 0
+beetleLog5<-decostand(beetle, "log",logbase=5)
+mGowerLog5<-vegdist(beetleLog5, "altGower")
+ordiRes[[9]]<-capscale(mGowerLog5~.,data=beetle.expl,comm=beetleLog5)
 	
 ### db-RDA modified Gower log 10
-ordiRes[[10]]<-capscale(vegdist(decostand(beetle, "log",logbase=10), "altGower")~.,data=beetle.expl,comm=beetle) ### Warning message stem from log transformation of 0
+beetleLog10<-decostand(beetle, "log",logbase=10)
+mGowerLog10<-vegdist(beetleLog10, "altGower")
+ordiRes[[10]]<-capscale(mGowerLog10~.,data=beetle.expl,comm=beetleLog10)
 
 ### Compare association coefficients
 AssoComp<-coeffCompare(ordiRes,rep(7,ndis))
@@ -91,7 +100,8 @@ AssoComp<-coeffCompare(ordiRes,rep(7,ndis))
 ### Draw a graphic to visualize the comparison
 #---------------------------------------------
 ### Name of association coefficient compared
-name<-c("Species profiles","Chord","Hellinger","Chi2","Bray-Curtis","(Bray-Curtis)^0.5","(Bray-Curtis)^0.25","mGowerlog2","mGowerlog5","mGowerlog10")
+name<-c("Species profiles","Chord","Hellinger","Chi2","Bray-Curtis",
+"(Bray-Curtis)^0.5","(Bray-Curtis)^0.25","mGowerlog2","mGowerlog5","mGowerlog10")
 
 plot(AssoComp$mst,type="t",labels=name,xlab="",ylab="",main="MST Sites scores")
 

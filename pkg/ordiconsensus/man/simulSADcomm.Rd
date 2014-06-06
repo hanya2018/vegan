@@ -6,7 +6,9 @@ Simulate community matrix with constant SAD
 \description{
 This function simulates community matrices with the same species abundance distribution following patterns defined by a set of explanatory variables. This function was used to simulate community matrices in Blanchet et al. (In press)}
 \usage{
-simulSADcomm(sp.abund, expl.var, expl.rand.sel = TRUE, nexpl.comb = 2, binary = FALSE, fix.expl = NULL, nsite = 50, weight = NULL, range.weight = c(0, 2), sd.expl = FALSE, norm = c(0, 1))
+simulSADcomm(sp.abund, expl.var, expl.rand.sel = TRUE, nexpl.comb = 2, 
+             binary = FALSE, fix.expl = NULL, nsite = 50, weight = NULL, 
+             range.weight = c(0, 2), sd.expl = FALSE, norm = c(0, 1))
 }
 \arguments{
   \item{sp.abund}{
