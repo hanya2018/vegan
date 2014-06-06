@@ -8,4 +8,4 @@ Maintainer: F. Guillaume Blanchet <guillaume.blanchet@helsinki.fi>
 Description: This package include function to calculate a consensus of canonical redundancy analyses performed using different association coefficients
 Depends: vegan
 Suggests: FactoMineR
-License: Unlimited
+License: GPL-2
