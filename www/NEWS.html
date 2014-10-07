@@ -8,6 +8,156 @@
 
 <h2>vegan News</h2>
 
+<h3>Changes in version 2.2-0</h3>
+
+
+
+<h4>GENERAL</h4>
+
+
+<ul>
+<li><p> Parallel processing
+</p>
+</li>
+<li><p> Restricted permutations
+</p>
+</li>
+<li><p> New null models   
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>INSTALLATION</h4>
+
+
+<ul>
+<li><p> Changes in NAMESPACE and passes tests
+</p>
+</li>
+<li><p> Split <span class="pkg">vegan3d</span>
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>NEW FUNCTIONS</h4>
+
+
+<ul>
+<li><p> Dispersion weighting <code>dispweight</code> plus a new method
+for generalized dispersion weigthing <code>gdispweight</code>.
+</p>
+</li>
+<li> <p><code>hclust</code> support functions <code>reorder</code>, <code>rev</code>
+and <code>scores</code>.
+</p>
+</li>
+<li> <p><code>permustats</code> to extract and inspect permutation
+results with support functions <code>summary</code>, <code>density</code>,
+<code>densityplot</code>, <code>qqnorm</code> and <code>qqmath</code>.
+</p>
+</li>
+<li> <p><code>stressplot</code> functions.
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>BUG FIXES</h4>
+
+ 
+
+
+<h4>NEW FEATURES</h4>
+
+
+<ul>
+<li> <p><code>anova.cca</code> functions re-written, and added an option
+of analysing a sequence of models against each other.
+</p>
+</li>
+<li> <p><code>simulate</code> functions for <code>cca</code> and <code>rda</code>
+can return several simulations in a <code>nullmodel</code> compatible
+object. The functions can produce simulations with correlated
+errors (also for <code>capscale</code>).
+</p>
+</li>
+<li> <p><code>bioenv</code> can use Manhattan, Gower and Mahalanobis
+distances in addition to Euclidean. New helper function
+<code>bioenvdist</code> can extract the dissimilarities applied in
+best model or any other model.
+</p>
+</li>
+<li> <p><code>MDSrotate</code> can rotate to multidimensional target.
+</p>
+</li>
+<li> <p><code>nestednodf</code> gained new option for defining weighted
+nestedness statistic.
+</p>
+</li>
+<li> <p><code>rankindex</code> can use Manhattan, Gower and Mahalanobis
+distance in addition to Euclidean.
+</p>
+</li>
+<li> <p><code>spantree</code> gained a support function <code>as.hclust</code>
+to change the minimum spannig tree into an <code>hclust</code> tree.
+</p>
+</li>
+<li> <p><code>fitspecaccum</code> can do weighted analysis.
+</p>
+</li>
+<li> <p><code>vegdist</code> gained Mahalanobis distance.
+</p>
+</li>
+<li><p> Nomenclature updated in plant community
+data. <code>varespec</code> and <code>dune</code> use 8-character names (4
+from genus + 4 from species epithet). New data set on
+phylogenetic distances for <code>dune</code>.
+</p>
+</li>
+<li><p> User configurable plots for <code>rarecurve</code>.
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>DEPRECATED AND DEFUNCT</h4>
+
+
+<ul>
+<li> <p><code>strata</code> deprecated in permutations. It is still
+accepted but will be phased out in next releases. Use <code>how</code>
+of <span class="pkg">permute</span> package.
+</p>
+</li>
+<li> <p><code>cca</code>, <code>rda</code> and <code>capscale</code> do not return
+scores scaled by eigenvalues: use <code>scores</code> function to
+extract scaled results.
+</p>
+</li>
+<li> <p><code>commsimulator</code> is deprecated. Replace
+<code>commsimulator(x, method)</code> with <code>simulate(nullmodel(x,
+      method))</code>.
+</p>
+</li>
+<li> <p><code>density</code> and <code>densityplot</code> for permutation
+results: use <code>density(permustats(&lt;permutation-object))</code>.
+</p>
+</li>
+<li> <p><code>ordirgl</code> with its support functions, other <span class="pkg">rgl</span>
+functions and <code>ordiplot3d</code> were moved to the <span class="pkg">vegan3d</span>
+package.
+</p>
+</li></ul>
+ 
+ 
+
+
 <h3>Changes in version 2.0-10</h3>
 
 
