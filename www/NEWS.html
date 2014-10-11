@@ -69,6 +69,24 @@ results with support functions <code>summary</code>, <code>density</code>,
 
 <h4>BUG FIXES</h4>
 
+
+<ul>
+<li> <p><code>ordiellipse</code> can handle points exactly on a line,
+including only two points.
+</p>
+</li>
+<li><p> plotting <code>radfit</code> results for several species failed if
+any of the communities had no species or had only one species.
+</p>
+</li>
+<li> <p><code>RsquareAdj</code> for <code>capscale</code> with negative
+eigenvalues will now report <code>NA</code>.
+</p>
+</li>
+<li> <p><code>simper</code> failed when a group had only a single member.
+</p>
+</li></ul>
+
  
 
 
@@ -83,7 +101,8 @@ of analysing a sequence of models against each other.
 <li> <p><code>simulate</code> functions for <code>cca</code> and <code>rda</code>
 can return several simulations in a <code>nullmodel</code> compatible
 object. The functions can produce simulations with correlated
-errors (also for <code>capscale</code>).
+errors (also for <code>capscale</code>) in parametric simulation with
+Gaussian error.
 </p>
 </li>
 <li> <p><code>bioenv</code> can use Manhattan, Gower and Mahalanobis
@@ -92,22 +111,53 @@ distances in addition to Euclidean. New helper function
 best model or any other model.
 </p>
 </li>
+<li> <p><code>cascadeKM</code> of only one group will be <code>NA</code> instead
+of a random value. 
+</p>
+</li>
+<li> <p><code>metaMDS(..., trace = 2)</code> will show convergence
+information with the default <code>monoMDS</code> engine.
+</p>
+</li>
 <li> <p><code>MDSrotate</code> can rotate to multidimensional target.
 </p>
 </li>
-<li> <p><code>nestednodf</code> gained new option for defining weighted
-nestedness statistic.
+<li> <p><code>nestednodf</code> gained new option for defining
+alternatives of weighted nestedness statistic.
+</p>
+</li>
+<li> <p><code>ordiellipse</code>, <code>ordihull</code> and <code>ordiellipse</code>
+can handle missing values in <code>groups</code>.
+</p>
+</li>
+<li> <p><code>ordispider</code> can now use spatial medians instead of
+means. 
 </p>
 </li>
 <li> <p><code>rankindex</code> can use Manhattan, Gower and Mahalanobis
 distance in addition to Euclidean.
 </p>
 </li>
+<li><p> User can set colours and line types in unction
+<code>rarecurve</code> for plotting rarefaction curves.
+</p>
+</li>
 <li> <p><code>spantree</code> gained a support function <code>as.hclust</code>
 to change the minimum spannig tree into an <code>hclust</code> tree.
 </p>
 </li>
-<li> <p><code>fitspecaccum</code> can do weighted analysis.
+<li> <p><code>fitspecaccum</code> can do weighted analysis. Gained
+<code>lines</code> method.
+</p>
+</li>
+<li> <p><code>tabasco</code> uses now <code>reorder.hclust</code> for
+<code>hclust</code> for better ordering than previously when it cast
+trees to <code>dendrogram</code> objects.
+</p>
+</li>
+<li> <p><code>treedive</code> and <code>treedist</code> default now to
+<code>match.force = TRUE</code> and can be silenced with
+<code>verbose = FALSE</code>.
 </p>
 </li>
 <li> <p><code>vegdist</code> gained Mahalanobis distance.
