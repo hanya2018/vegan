@@ -16,13 +16,72 @@
 
 
 <ul>
-<li><p> Parallel processing
+<li><p> Several <span class="pkg">vegan</span> functions can now use parallel
+processing for slow and repeating calculations. All these
+functions have argument <code>parallel</code>. The argument can be an
+integer giving the number of parallel processes. In unix-alikes
+(Mac OS, Linux) this will launch <code>"multicore"</code> processing
+and in Windows it will set up <code>"snow"</code> clusters as desribed
+in the documentation of <span class="pkg">parallel</span> package. If <code>option</code>
+<code>"mc.cores"</code> is set to an integer &gt; 1, this will be used to
+automatically start parallel processing. Finally, the argument
+can also be a previously set up <code>"snow"</code> cluster which will
+be used both in Windows and in unix-alikes. <span class="pkg">Vegan</span> vignette
+on Design decision explains the implementation (use
+<code>vegandocs("decission")</code>, and <span class="pkg">parallel</span> package has more
+extensive documentation on parallel processing in <font face="Courier New,Courier" color="#666666"><b>R</b></font>.
+</p>
+<p>The following function use parallel processing in analysing
+permutatin statistics: <code>adonis</code>, <code>anosim</code>,
+<code>anova.cca</code> (and <code>permutest.cca</code>), <code>mantel</code> (and
+<code>mantel.partial</code>), <code>mrpp</code>, <code>permutest.betadisper</code>
+and <code>simper</code>. In addition, <code>bioenv</code> can compare
+several candidate sets of models in paralle, <code>metaMDS</code> can
+launch several random starts in parallel, and <code>oecosimu</code>
+can evaluate test statistics for several null models in
+parallel.
 </p>
 </li>
-<li><p> Restricted permutations
+<li><p> All permutation tests are based on the <span class="pkg">permute</span>
+package which offers strong tools for restricted
+permutation. All these functions have argument
+<code>permutations</code>. The default usage of simple non-restricted
+permutations is achieved by giving a single integer number as
+its argument. Restricted permutations can be defined using the
+<code>how</code> function of the <span class="pkg">permute</span> package. Finally, the
+argument can be a permutation matrix where rows define
+permutations. It is possible to use external or user constructed
+permutations.
+</p>
+<p>See <code>help(permutations)</code> for a brief introduction on
+permutations in <span class="pkg">vegan</span>, and <span class="pkg">permute</span> package for the
+full documention. The vignette of the <span class="pkg">permute</span> package can
+be read from <span class="pkg">vegan</span> with command
+<code>vegandocs("permutations")</code>.
+</p>
+<p>The following functions use the <span class="pkg">permute</span> package:
+<code>CCorA</code>, <code>adonis</code>, <code>anosim</code>, <code>anova.cca</code>
+(plus associated <code>permutest.cca</code>, <code>add1.cca</code>,
+<code>drop1.cca</code>, <code>ordistep</code>, <code>ordiR2step</code>),
+<code>envfit</code> (plus associated <code>factorfit</code> and
+<code>vectorfit</code>), <code>mantel</code> (and <code>mantel.partial</code>),
+<code>mrpp</code>, <code>mso</code>, <code>permutest.betadisper</code>,
+<code>protest</code> and <code>simper</code>.
 </p>
 </li>
-<li><p> New null models   
+<li><p> Community null model generation has been completely
+redesigned and rewritten. The communities are constructed with
+new <code>nullmodel</code> function and defined in a low level
+<code>commsim</code> function. The actual null models are generated
+with a <code>simulate</code> function that builds an array of null
+models. The new null models include a wide array of quantitative
+models in addition to the old binary models, and users can plug
+in their own generating functions. The basic tool invoking and
+analysing null models is <code>oecosimu</code>. The null models are
+often used only for the analysis of nestedness, but the
+implementation in <code>oecosimu</code> allows analysing any
+statistic, and null models are better seen as an alternative to
+permutation tests.
 </p>
 </li></ul>
  
@@ -33,10 +92,15 @@
 
 
 <ul>
-<li><p> Changes in NAMESPACE and passes tests
+<li> <p><span class="pkg">vegan</span> package dependencies and namespace imports
+were adapted to changes in <font face="Courier New,Courier" color="#666666"><b>R</b></font>, and no more trigger warnings and
+notes in package tests.
 </p>
 </li>
-<li><p> Split <span class="pkg">vegan3d</span>
+<li><p> Three-dimensional ordination graphics using
+<span class="pkg">scatterplot3d</span> for static plots and <span class="pkg">rgl</span> for dynamic
+plots were removed from <span class="pkg">vegan</span> and moved to a companion
+package <span class="pkg">vegan3d</span>. The package is available in CRAN.
 </p>
 </li></ul>
  
@@ -47,20 +111,44 @@
 
 
 <ul>
-<li><p> Dispersion weighting <code>dispweight</code> plus a new method
-for generalized dispersion weigthing <code>gdispweight</code>.
+<li><p> Function <code>dispweight</code> implements dispersion weighting
+of Clarke et al. (<EM>Marine Ecology Progress Series</EM>, 320,
+11&ndash;27).  In addition, we implemented a new method for
+generalized dispersion weighting <code>gdispweight</code>. Both
+methods downweight species that are significantly
+over-dispersed.
 </p>
 </li>
-<li> <p><code>hclust</code> support functions <code>reorder</code>, <code>rev</code>
-and <code>scores</code>.
+<li><p> New <code>hclust</code> support functions <code>reorder</code>,
+<code>rev</code> and <code>scores</code>. Functions <code>reorder</code> and
+<code>rev</code> are similar as these functions for <code>dendrogram</code>
+objects. However, <code>reorder</code> can use (and defaults to)
+weighted mean. In weighted mean the node average is always the
+mean of member leaves, whereas the <code>dendrogram</code> uses always
+the unweighted means of joined branches.
 </p>
 </li>
 <li> <p><code>permustats</code> to extract and inspect permutation
 results with support functions <code>summary</code>, <code>density</code>,
-<code>densityplot</code>, <code>qqnorm</code> and <code>qqmath</code>.
+<code>densityplot</code>, <code>qqnorm</code> and <code>qqmath</code>. The
+<code>density</code> and <code>qqnorm</code> are standard <font face="Courier New,Courier" color="#666666"><b>R</b></font> tools that
+only work with one statistic, and <code>densityplot</code> and
+<code>qqmath</code> are <span class="pkg">lattice</span> graphics that work with
+univariate and multivariate statistics. The results of following
+functions can be extracted: <code>anosim</code>, <code>adonis</code>,
+<code>mantel</code> (and <code>mantel.partial</code>), <code>mrpp</code>,
+<code>oecosimu</code>, <code>permustest.cca</code> (but not the
+corresponding <code>anova</code> methods),
+<code>permutest.betadisper</code>, and <code>protest</code>.
 </p>
 </li>
-<li> <p><code>stressplot</code> functions.
+<li> <p><code>stressplot</code> functions display the ordination
+distances at given number of dimensions against original
+distances.  These are a generalization of <code>stressplot</code> for
+<code>metaMDS</code>, and always use the inherent distances of each
+ordination method. The functions are available for the results
+<code>capscale</code>, <code>cca</code>, <code>princomp</code>, <code>prcomp</code>,
+<code>rda</code>, and <code>wcmdscale</code>.
 </p>
 </li></ul>
  
@@ -71,6 +159,10 @@ results with support functions <code>summary</code>, <code>density</code>,
 
 
 <ul>
+<li> <p><code>cascadeKM</code> of only one group will be <code>NA</code> instead
+of a random value. 
+</p>
+</li>
 <li> <p><code>ordiellipse</code> can handle points exactly on a line,
 including only two points.
 </p>
@@ -80,7 +172,8 @@ any of the communities had no species or had only one species.
 </p>
 </li>
 <li> <p><code>RsquareAdj</code> for <code>capscale</code> with negative
-eigenvalues will now report <code>NA</code>.
+eigenvalues will now report <code>NA</code> instead of using biased
+method of <code>rda</code> results.
 </p>
 </li>
 <li> <p><code>simper</code> failed when a group had only a single member.
@@ -94,8 +187,11 @@ eigenvalues will now report <code>NA</code>.
 
 
 <ul>
-<li> <p><code>anova.cca</code> functions re-written, and added an option
-of analysing a sequence of models against each other.
+<li> <p><code>anova.cca</code> functions were re-written to use the
+<span class="pkg">permute</span> package. Old results may not be exactly
+reproduced, and models with missing data may fail in several
+cases. There is a new option of analysing a sequence of models
+against each other.
 </p>
 </li>
 <li> <p><code>simulate</code> functions for <code>cca</code> and <code>rda</code>
@@ -106,24 +202,29 @@ Gaussian error.
 </p>
 </li>
 <li> <p><code>bioenv</code> can use Manhattan, Gower and Mahalanobis
-distances in addition to Euclidean. New helper function
-<code>bioenvdist</code> can extract the dissimilarities applied in
-best model or any other model.
-</p>
-</li>
-<li> <p><code>cascadeKM</code> of only one group will be <code>NA</code> instead
-of a random value. 
+distances in addition to the default Euclidean. New helper
+function <code>bioenvdist</code> can extract the dissimilarities
+applied in best model or any other model.
 </p>
 </li>
 <li> <p><code>metaMDS(..., trace = 2)</code> will show convergence
 information with the default <code>monoMDS</code> engine.
 </p>
 </li>
-<li> <p><code>MDSrotate</code> can rotate to multidimensional target.
+<li><p> Function <code>MDSrotate</code> can rotate a <i>k</i>-dimensional
+ordination to <i>k-1</i> variables. When these variables are
+correlated (like usually is the case), the vectors can also be
+correlated to previously rotated dimensions, but will be
+uncorrelated to all later ones.
 </p>
 </li>
-<li> <p><code>nestednodf</code> gained new option for defining
-alternatives of weighted nestedness statistic.
+<li> <p><span class="pkg">vegan</span> 2.0-10 changed the weighted <code>nestednodf</code>
+so that weighted analysis of binary data was equivalent to
+binary analysis. However, this broke the equivalence to the
+original method. Now the function has an argument <code>wbinary</code>
+to select the method of analysis. The problem was reported and a
+fix submitted by Vanderlei Debastiani (Universidade Federal do
+Rio Grande do Sul, Brasil).
 </p>
 </li>
 <li> <p><code>ordiellipse</code>, <code>ordihull</code> and <code>ordiellipse</code>
@@ -135,7 +236,7 @@ means.
 </p>
 </li>
 <li> <p><code>rankindex</code> can use Manhattan, Gower and Mahalanobis
-distance in addition to Euclidean.
+distance in addition to the default Euclidean.
 </p>
 </li>
 <li><p> User can set colours and line types in unction
@@ -151,8 +252,8 @@ to change the minimum spannig tree into an <code>hclust</code> tree.
 </p>
 </li>
 <li> <p><code>tabasco</code> uses now <code>reorder.hclust</code> for
-<code>hclust</code> for better ordering than previously when it cast
-trees to <code>dendrogram</code> objects.
+<code>hclust</code> object for better ordering than previously when it
+cast trees to <code>dendrogram</code> objects.
 </p>
 </li>
 <li> <p><code>treedive</code> and <code>treedist</code> default now to
@@ -163,10 +264,13 @@ trees to <code>dendrogram</code> objects.
 <li> <p><code>vegdist</code> gained Mahalanobis distance.
 </p>
 </li>
-<li><p> Nomenclature updated in plant community
-data. <code>varespec</code> and <code>dune</code> use 8-character names (4
+<li><p> Nomenclature updated in plant community data with the help
+of <span class="pkg">Taxonstand</span> and <span class="pkg">taxize</span> packages. The taxonomy of
+the <code>dune</code> data was adapted to the same sources and APG
+III.  <code>varespec</code> and <code>dune</code> use 8-character names (4
 from genus + 4 from species epithet). New data set on
-phylogenetic distances for <code>dune</code>.
+phylogenetic distances for <code>dune</code> was extracted from Zanne
+et al. (<EM>Nature</EM>, 2014).
 </p>
 </li>
 <li><p> User configurable plots for <code>rarecurve</code>.
@@ -180,7 +284,7 @@ phylogenetic distances for <code>dune</code>.
 
 
 <ul>
-<li> <p><code>strata</code> deprecated in permutations. It is still
+<li> <p><code>strata</code> are deprecated in permutations. It is still
 accepted but will be phased out in next releases. Use <code>how</code>
 of <span class="pkg">permute</span> package.
 </p>
@@ -196,12 +300,8 @@ extract scaled results.
 </p>
 </li>
 <li> <p><code>density</code> and <code>densityplot</code> for permutation
-results: use <code>density(permustats(&lt;permutation-object))</code>.
-</p>
-</li>
-<li> <p><code>ordirgl</code> with its support functions, other <span class="pkg">rgl</span>
-functions and <code>ordiplot3d</code> were moved to the <span class="pkg">vegan3d</span>
-package.
+results: use <code>permustats</code> with its <code>density</code> and
+<code>densityplot</code> method.
 </p>
 </li></ul>
  
