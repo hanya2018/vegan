@@ -12,6 +12,18 @@
 
 
 
+<h4>GENERAL</h4>
+
+
+<ul>
+<li><p> This is a maintenance release to avoid warning messages
+caused by changes in CRAN repository.
+</p>
+</li></ul>
+
+
+
+
 <h4>INSTALLATION</h4>
 
 
@@ -22,7 +34,7 @@ function for interactive editing of ordination graphics.
 </p>
 </li></ul>
 
-
+ 
 
 
 <h4>BUG FIXES</h4>
@@ -48,6 +60,18 @@ following the guidelines of Chiu, Wang, Walther &amp; Chao,
 <EM>Biometrics</EM> 70, 671&ndash;682 (2014),
 <a href="http://onlinelibrary.wiley.com/doi/10.1111/biom.12200/suppinfo">online
 supplementary material</a>.
+</p>
+</li>
+<li><p> Diversity accumulation functions <code>specaccum</code>,
+<code>renyiaccum</code>, <code>tsallisaccum</code>, <code>poolaccum</code> and
+<code>estaccumR</code> use now <span class="pkg">permute</span> package for permutations
+of the order of sampling sites. Normally these functions only
+need simple random permutation of sites, but restricted
+permutation of the <span class="pkg">permute</span> package and user-supplied
+permutation matrices can be used.
+</p>
+</li>
+<li> <p><code>estaccumR</code> function can use parallel processing.
 </p>
 </li>
 <li> <p><code>linestack</code> accepts now expressions as labels. This
