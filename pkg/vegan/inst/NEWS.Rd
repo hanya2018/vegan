@@ -4,6 +4,15 @@
 
 \section{Changes in version 2.2-1}{
 
+  \subsection{GENERAL}{
+    \itemize{
+
+      \item This is a maintenance release to avoid warning messages
+      caused by changes in CRAN repository.
+    
+    }
+  }% end general
+
   \subsection{INSTALLATION}{
     \itemize{
 
@@ -12,7 +21,7 @@
       function for interactive editing of ordination graphics.
 
     }
-  }
+  } % installation
 
   \subsection{BUG FIXES}{
     \itemize{
@@ -33,6 +42,16 @@
       \emph{Biometrics} 70, 671--682 (2014),
       \href{http://onlinelibrary.wiley.com/doi/10.1111/biom.12200/suppinfo}{online
       supplementary material}.
+
+      \item Diversity accumulation functions \code{specaccum},
+      \code{renyiaccum}, \code{tsallisaccum}, \code{poolaccum} and
+      \code{estaccumR} use now \pkg{permute} package for permutations
+      of the order of sampling sites. Normally these functions only
+      need simple random permutation of sites, but restricted
+      permutation of the \pkg{permute} package and user-supplied
+      permutation matrices can be used.
+
+      \item \code{estaccumR} function can use parallel processing.
 
       \item \code{linestack} accepts now expressions as labels. This
       allows using mathematical symbols and formula given as
