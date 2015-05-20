@@ -55,7 +55,7 @@ concerned Windows OS.
  
 
 
-<h4>NEW FEATURES</h4>
+<h4>NEW FEATURES AND FUNCTIONS</h4>
 
 
 <ul>
@@ -85,6 +85,41 @@ other <span class="pkg">vegan</span> functions.
 <li> <p><code>orditkplot</code> can export graphics in SVG format. SVG is
 a vector graphics format which can be edited with several external
 programs, such as Illustrator and Inkscape.
+</p>
+</li>
+<li><p> Rarefaction curve (<code>rarecurve</code>) and species
+accumulation models (<code>specaccum</code>, <code>fitspecaccum</code>)
+gained new functions to estimate the slope of curve at given
+location. Originally this was based on a response to an
+<a href="https://stat.ethz.ch/pipermail/r-sig-ecology/2015-May/005038.html">R-SIG-ecology</a>
+query. For rarefaction curves, the function is <code>rareslope</code>,
+and for species accumulation models it is <code>specslope</code>.
+</p>
+<p>The functions are based on analytic equations, and can also be
+evaluated at interpolated non-integer values. In
+<code>specaccum</code> models the functions can be only evaluated for
+analytic models <code>"exact"</code>, <code>"rarefaction"</code> and
+<code>"coleman"</code>. With <code>"random"</code> and <code>"collector"</code>
+methods you can only use finite differences
+(<code>diff(fitted(&lt;result.object&gt;))</code>). Analytic functions for
+slope are used for all non-linear regression models known to
+<code>fitspecaccum</code>.
+</p>
+</li>
+<li><p> Species accumulation models (<code>specaccum</code>) and
+non-liner regression models for species accumulation
+(<code>fitspecaccum</code>) work more consistently with weights. In
+all cases, the models are defined using the number of sites as
+independent variable, which with weights means that observations
+can be non-integer numbers of virtual sites. The <code>predict</code>
+models also use the number of sites with <code>newdata</code>,
+and for analytic models they can estimate the expected values
+for non-integer number of sites, and for non-analytic randomized
+or collector models they can interpolate on non-integer values.
+</p>
+</li>
+<li> <p><code>fitspecaccum</code> gained support functions <code>AIC</code>
+and <code>deviance</code>.
 </p>
 </li>
 <li><p> The <code>varpart</code> plots of four-component models were
