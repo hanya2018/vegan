@@ -2,6 +2,45 @@
 \title{vegan News}
 \encoding{UTF-8}
 
+\section{Changes in version 2.3-1}{
+
+  \subsection{BUG FIXES}{
+    \itemize{
+
+      \item Automated model building in constrained ordination
+      (\code{cca}, \code{rda}, \code{capscale}) with \code{step},
+      \code{ordistep} and \code{ordiR2step} could fail if there were
+      aliased candidate variables, or constraints that were completely
+      explained by other variables already in the model. This was a
+      regression introduced in \pkg{vegan} 2.2-0.
+
+      \item Constrained ordination methods \code{cca}, \code{rda} and
+      \code{capscale} treat character variables as factors in analysis,
+      but did not return their centroids for plotting.
+
+      \item Recovery of original data in \code{metaMDS} when computing
+      WA scores for species would fail if the expression supplied to
+      argument \code{comm} was long & got deparsed to multiple
+      strings. \code{metaMDSdist} now returns the (possibly modified)
+      data frame of community data \code{comm} as attribute
+      \code{"comm"} of the returned \code{dist} object. \code{metaMDS}
+      now uses this to compute the WA species scores for the NMDS. In
+      addition, the deparsed expression for \code{comm} is now robust to
+      long expressions.  Reported by Richard Telford.
+
+      \item Function \code{rarecurve} did not check its input and this
+      could cause confusing error messages. Now function checks that
+      input data are integers that can be interpreted as counts on
+      individuals and all sampling units have some species. Unchecked
+      bad inputs were the reason for problems reported in
+      \href{http://stackoverflow.com/questions/30856909/error-while-using-rarecurve-in-r}{Stackoverflow (Error while using rarecurve)}.
+
+    }
+
+  }
+
+}
+
 \section{Changes in version 2.3-0}{
 
   \subsection{BUG FIXES}{
