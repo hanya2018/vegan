@@ -47,11 +47,29 @@
       input data are integers that can be interpreted as counts on
       individuals and all sampling units have some species. Unchecked
       bad inputs were the reason for problems reported in
-      \href{http://stackoverflow.com/questions/30856909/error-while-using-rarecurve-in-r}{Stackoverflow (Error while using rarecurve)}.
+      \href{http://stackoverflow.com/questions/30856909/error-while-using-rarecurve-in-r}{Stackoverflow}.
 
     }
+  } % bug fixes
 
-  }
+  \subsection{NEW FEATURES AND FUNCTIONS}{
+    \itemize{
+      
+     \item Scaling of ordination axes in \code{cca}, \code{rda} and
+     \code{capscale} can now be expressed with descriptive strings
+     \code{"none"}, \code{"sites"}, \code{"species"} or
+     \code{"symmetric"} to tell which kind of scores should be scaled by
+     eigenvalues. These can be further modified with arguments
+     \code{hill} in \code{cca} and \code{correlation} in \code{rda}. The
+     old numeric scaling can still be used.
+
+     \item The permutation data can be extracted from \code{anova}
+     results of constrained ordination (\code{cca}, \code{rda},
+     \code{capscale}) and further analysed with \code{permustats}
+     function.
+     
+   }
+  } % new features and functions
 
 }
 
