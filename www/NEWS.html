@@ -54,6 +54,10 @@ addition, the deparsed expression for <code>comm</code> is now robust to
 long expressions.  Reported by Richard Telford.
 </p>
 </li>
+<li> <p><code>metaMDS</code> and <code>monoMDS</code> did not accept missing
+values in dissimilarities.
+</p>
+</li>
 <li><p> Function <code>rarecurve</code> did not check its input and this
 could cause confusing error messages. Now function checks that
 input data are integers that can be interpreted as counts on
@@ -83,6 +87,12 @@ old numeric scaling can still be used.
 results of constrained ordination (<code>cca</code>, <code>rda</code>,
 <code>capscale</code>) and further analysed with <code>permustats</code>
 function.
+</p>
+</li>
+<li><p> Added environmental data set <code>BCI.env</code> to the Barro
+Colorado Island tree data. Most useful variables are the UTM
+coordinates of sample plots. Other variables are constant or nearly
+constant and of little use in normal analysis.
 </p>
 </li></ul>
 
