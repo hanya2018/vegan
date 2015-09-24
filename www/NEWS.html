@@ -54,8 +54,8 @@ addition, the deparsed expression for <code>comm</code> is now robust to
 long expressions.  Reported by Richard Telford.
 </p>
 </li>
-<li> <p><code>metaMDS</code> and <code>monoMDS</code> did not accept missing
-values in dissimilarities.
+<li> <p><code>metaMDS</code> and <code>monoMDS</code> rejected dissimilarities
+with missing values.
 </p>
 </li>
 <li><p> Function <code>rarecurve</code> did not check its input and this
@@ -89,10 +89,10 @@ results of constrained ordination (<code>cca</code>, <code>rda</code>,
 function.
 </p>
 </li>
-<li><p> Added environmental data set <code>BCI.env</code> to the Barro
-Colorado Island tree data. Most useful variables are the UTM
-coordinates of sample plots. Other variables are constant or nearly
-constant and of little use in normal analysis.
+<li><p> New data set <code>BCI.env</code> of site information for the Barro
+Colorado Island tree community data. Most useful variables are the
+UTM coordinates of sample plots. Other variables are constant or
+nearly constant and of little use in normal analysis.
 </p>
 </li></ul>
 
