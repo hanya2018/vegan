@@ -7,7 +7,8 @@
   \subsection{BUG FIXES}{
     \itemize{
 
-      \item Display of gridded permutation results failed.
+      \item Printing details of a gridded permutation design would fail
+      when the grid was at the within-plot level.
 
       \item \code{ordicluster} joined the branches at wrong coordinates
       in some cases.
@@ -21,6 +22,17 @@
 
   \subsection{NEW FEATURES}{
     \itemize{
+
+      \item \code{adonis} and \code{capscale} functions recognize
+      symmetric square matrices as dissimilarities. Formerly
+      dissimilarities had to be given as \code{"dist"} objects such as
+      produced by \code{dist} or \code{vegdist} functions, and data
+      frames and matrices were regarded as observations x variables
+      data which could confuse users (e.g., issue
+      \href{https://github.com/vegandevs/vegan/issues/147}{#147}).
+
+      \item \code{mso} accepts \code{"dist"} objects for the distances
+      among locations as an alternative to coordinates of locations.
 
       \item \code{text}, \code{points} and \code{lines} functions for
       \code{procrustes} analysis gained new argument \code{truemean}
