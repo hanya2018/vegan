@@ -15,7 +15,8 @@
 
 
 <ul>
-<li><p> Display of gridded permutation results failed.
+<li><p> Printing details of a gridded permutation design would fail
+when the grid was at the within-plot level.
 </p>
 </li>
 <li> <p><code>ordicluster</code> joined the branches at wrong coordinates
@@ -35,6 +36,19 @@ and also influenced <code>ordiareatest</code>.
 
 
 <ul>
+<li> <p><code>adonis</code> and <code>capscale</code> functions recognize
+symmetric square matrices as dissimilarities. Formerly
+dissimilarities had to be given as <code>"dist"</code> objects such as
+produced by <code>dist</code> or <code>vegdist</code> functions, and data
+frames and matrices were regarded as observations x variables
+data which could confuse users (e.g., issue
+<a href="https://github.com/vegandevs/vegan/issues/147">#147</a>).
+</p>
+</li>
+<li> <p><code>mso</code> accepts <code>"dist"</code> objects for the distances
+among locations as an alternative to coordinates of locations.
+</p>
+</li>
 <li> <p><code>text</code>, <code>points</code> and <code>lines</code> functions for
 <code>procrustes</code> analysis gained new argument <code>truemean</code>
 which allows adding <code>procrustes</code> items to the plots of
