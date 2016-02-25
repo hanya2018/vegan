@@ -7,6 +7,68 @@
 
 <h2>vegan News</h2>
 
+<h3>Changes in version 2.3-4</h3>
+
+
+
+<h4>BUG FIXES</h4>
+
+
+<ul>
+<li> <p><code>betadiver</code> index <code>19</code> had wrong sign in one of
+its terms.
+</p>
+</li>
+<li> <p><code>linestack</code> failed when the <code>labels</code> were given,
+but the input scores had no names. Reported by Jeff Wood (ANU,
+Canberra, ACT).
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>DEPRECATED</h4>
+
+
+<ul>
+<li> <p><code>vegandocs</code> is deprecated. Current <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> provides better
+tools for seeing extra documentation.
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>VIGNETTES</h4>
+
+
+<ul>
+<li><p> All vignettes are built with standard <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> tools and can be
+browsed with <code>browseVignettes</code>. Earlier <code>FAQ-vegan</code> and
+<code>partitioning</code> were only accessible with <code>vegandocs</code>
+function. 
+</p>
+</li></ul>
+ 
+ 
+
+
+<h4>BUILDING</h4>
+
+
+<ul>
+<li><p> Dependence on external software <code>texi2dvi</code> was
+removed. Version 6.1 of <code>texi2dvi</code> was incompatible with <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+and prevented building <span class="pkg">vegan</span>. The <code>FAQ-vegan</code> that was
+earlier built with <code>texi2dvi</code> uses now <span class="pkg">knitr</span>. Because
+of this, <span class="pkg">vegan</span> is now dependent on <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-3.0.0.
+</p>
+</li></ul>
+ 
+ 
+
+
 <h3>Changes in version 2.3-3</h3>
 
 
