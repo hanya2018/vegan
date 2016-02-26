@@ -33,7 +33,8 @@ Canberra, ACT).
 
 <ul>
 <li> <p><code>vegandocs</code> is deprecated. Current <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> provides better
-tools for seeing extra documentation.
+tools for seeing extra documentation (<code>news()</code> and
+<code>browseVignettes()</code>).
 </p>
 </li></ul>
  
@@ -45,9 +46,9 @@ tools for seeing extra documentation.
 
 <ul>
 <li><p> All vignettes are built with standard <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> tools and can be
-browsed with <code>browseVignettes</code>. Earlier <code>FAQ-vegan</code> and
+browsed with <code>browseVignettes</code>. <code>FAQ-vegan</code> and
 <code>partitioning</code> were only accessible with <code>vegandocs</code>
-function. 
+function.
 </p>
 </li></ul>
  
@@ -62,7 +63,9 @@ function.
 removed. Version 6.1 of <code>texi2dvi</code> was incompatible with <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 and prevented building <span class="pkg">vegan</span>. The <code>FAQ-vegan</code> that was
 earlier built with <code>texi2dvi</code> uses now <span class="pkg">knitr</span>. Because
-of this, <span class="pkg">vegan</span> is now dependent on <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-3.0.0.
+of this, <span class="pkg">vegan</span> is now dependent on <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-3.0.0.  Fixes issue
+<a href="https://github.com/vegandevs/vegan/issues/158">#158</a> in
+Github.
 </p>
 </li></ul>
  
