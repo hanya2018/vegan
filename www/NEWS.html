@@ -7,6 +7,28 @@
 
 <h2>vegan News</h2>
 
+<h3>Changes in version 2.3-5</h3>
+
+
+
+<h4>BUG FIXES</h4>
+
+
+<ul>
+<li> <p><code>eigenvals</code> fails with <code>prcomp</code> results in
+<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-devel. The next version of <code>prcomp</code> will have an
+argument to limit the number of eigenvalues shown
+(<code>rank.</code>), and this breaks <code>eigenvals</code> in <span class="pkg">vegan</span>.
+</p>
+</li>
+<li> <p><code>calibrate</code> failed for <code>cca</code> and friends if
+<code>rank</code> was given.
+</p>
+</li></ul>
+ 
+ 
+
+
 <h3>Changes in version 2.3-4</h3>
 
 
